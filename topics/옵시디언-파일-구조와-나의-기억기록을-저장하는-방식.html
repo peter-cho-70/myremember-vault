@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>옵시디언 파일 구조와 나의 기억·기록을 저장하는 방식 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">옵시디언 파일 구조와 나의 기억·기록을 저장하는 방식</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/대시보드.html">#대시보드</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="옵시디언-파일-구조와-나의-기억기록을-저장하는-방식">옵시디언 파일 구조와 나의 기억·기록을 저장하는 방식</h1>
+<div class="wrap">
+<div class="header hero">
+<div class="eyebrow">
+<p>Obsidian 완전 정복 가이드</p>
+</div>
+<h1 id="옵시디언-파일-구조와-나의-기억기록을-저장하는-방식-1">옵시디언 파일 구조와 나의 기억·기록을 저장하는 방식</h1>
+<p>옵시디언은 화려한 앱처럼 보이지만, 실제로는 그냥 “내 컴퓨터 안의 마크다운 텍스트 파일 폴더”입니다. 이 문서에서는 그 파일들이 디스크에 어떻게 저장되는지부터, 노트 한 장의 내부 구조, 그리고 이를 활용해 나만의 생각과 기록을 체계적으로 쌓아가는 방법(PARA, Zettelkasten, 데일리 노트 등)까지 정리했습니다.</p>
+</div>
+<h2 id="목차">목차</h2>
+<ol type="1">
+<li><a href="#what">Vault(볼트)란 무엇인가</a></li>
+<li><a href="#disk">디스크에 실제로 저장되는 모습</a></li>
+<li><a href="#config">.obsidian 설정 폴더 안쪽</a></li>
+<li><a href="#note">노트 파일 하나의 내부 구조</a></li>
+<li><a href="#link">링크와 백링크: 폴더보다 중요한 것</a></li>
+<li><a href="#organize">폴더 구조 설계 방법론</a></li>
+<li><a href="#memory">나의 기억·기록을 저장하는 방식</a></li>
+<li><a href="#flow">캡처부터 정리까지: 실전 흐름</a></li>
+<li><a href="#extra">첨부파일, 캔버스, 플러그인</a></li>
+<li><a href="#sync">백업과 동기화</a></li>
+<li><a href="#best">정리 팁 &amp; 모범 사례</a></li>
+</ol>
+<section id="what">
+<h2 id="vault볼트란-무엇인가"><span class="num">1</span>Vault(볼트)란 무엇인가</h2>
+<p>옵시디언에서 “볼트(Vault)”는 데이터베이스가 아니라, 그냥 하나의 폴더입니다.</p>
+<div class="card">
+<p>볼트는 컴퓨터 안의 평범한 폴더 하나와 그 하위 폴더들로 이루어져 있습니다. 그 안의 노트는 전부 <code>.md</code> 확장자를 가진 순수 텍스트(마크다운) 파일입니다. 특별한 저장 형식이나 잠긴 데이터베이스가 아니기 때문에, 메모장이나 다른 텍스트 편집기로 열어도 내용을 그대로 읽고 수정할 수 있습니다.</p>
+<p>이 구조 덕분에 다음이 가능해집니다.</p>
+<ul>
+<li><strong>로컬 우선(local-first):</strong> 인터넷 연결이나 서버 없이도 모든 노트에 접근 가능</li>
+<li><strong>데이터 소유권:</strong> 회사가 망하거나 서비스가 종료돼도 내 파일은 내 컴퓨터에 그대로 남음</li>
+<li><strong>이식성:</strong> 폴더를 통째로 복사, 백업, Git 관리, 다른 앱으로 이전하기가 쉬움</li>
+<li><strong>영속성:</strong> 마크다운은 수십 년이 지나도 열어볼 수 있는 표준 텍스트 형식</li>
+</ul>
+</div>
+<div class="badge-row">
+<p><span class="badge">= 폴더 + 마크다운 파일</span> <span class="badge">전용 데이터베이스 없음</span> <span class="badge">로컬 파일 시스템 기반</span></p>
+</div>
+</section>
+<section id="disk">
+<h2 id="디스크에-실제로-저장되는-모습"><span class="num">2</span>디스크에 실제로 저장되는 모습</h2>
+<p>옵시디언 앱을 다 걷어내고 파일 탐색기(Finder/윈도우 탐색기)로 볼트 폴더를 열어보면 실제로 이런 모습입니다.</p>
+<div class="file-tree">
+<p>MyVault/ ← 볼트 루트 폴더 ├── .obsidian/ ← 옵시디언 설정(숨김 폴더, 3장 참고) ├── .trash/ ← 옵시디언 안에서 삭제한 파일이 임시 보관되는 곳 ├── 00 Inbox/ │ └── 2026-08-06 아이디어 메모.md ├── 01 Daily Notes/ │ ├── 2026-08-05.md │ └── 2026-08-06.md ├── 02 Projects/ │ └── 옵시디언 가이드 작성.md ├── 03 Areas/ │ └── 건강 관리.md ├── 04 Resources/ │ └── 마크다운 문법 정리.md ├── 05 Archive/ ├── Attachments/ ← 이미지, PDF, 첨부파일 │ ├── screenshot-01.png │ └── reference.pdf └── Templates/ └── 일일 노트 템플릿.md</p>
+</div>
+<p>즉, 옵시디언이 하는 일은 이 폴더 안의 <code>.md</code> 파일들을 예쁘게 렌더링하고, 파일들 사이의 <code>&lt;span class="broken-link" title="깨진 링크: [[링크]]"&gt;링크&lt;/span&gt;</code>를 그래프로 시각화해주는 것뿐입니다. 파일 자체의 위치나 이름은 사용자가 원하는 대로 완전히 자유롭게 정할 수 있습니다.</p>
+</section>
+<section id="config">
+<h2 id="obsidian-설정-폴더-안쪽"><span class="num">3</span>.obsidian 설정 폴더 안쪽</h2>
+<p>볼트 루트에 있는 <code>.obsidian</code> 폴더는 이름이 점(.)으로 시작해 기본적으로 숨겨져 있으며, 해당 볼트의 모든 개인화 설정을 담고 있습니다.</p>
+<div class="file-tree">
+<p>.obsidian/ ├── app.json ← 에디터 기본 설정 ├── appearance.json ← 테마, 폰트 크기 등 화면 설정 ├── core-plugins.json ← 내장(코어) 플러그인 on/off 목록 ├── community-plugins.json← 설치한 커뮤니티 플러그인 목록 ├── hotkeys.json ← 단축키 설정 ├── workspace.json ← 현재 열려있는 창 배치, 탭 상태 ├── graph.json ← 그래프 뷰 필터/설정 ├── themes/ ← 설치한 테마 파일들 ├── snippets/ ← 커스텀 CSS 스니펫 └── plugins/ ← 각 커뮤니티 플러그인의 코드와 데이터 └── dataview/ ├── main.js ├── manifest.json └── data.json</p>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">파일/폴더</th>
+<th style="text-align: left;">역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>workspace.json</code></td>
+<td style="text-align: left;">창 배치·탭 상태를 저장. 파일을 열 때마다 계속 갱신되므로 Git으로 볼트를 관리한다면 <code>.gitignore</code>에 추가하는 것이 일반적입니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>plugins/</code></td>
+<td style="text-align: left;">설치한 각 플러그인의 실행 코드와 설정값이 이 하위 폴더에 저장됩니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>themes/</code>, <code>snippets/</code></td>
+<td style="text-align: left;">화면 꾸미기 관련 파일. 노트 내용과는 무관합니다.</td>
+</tr>
+</tbody>
+</table>
+<div class="tip">
+<p><strong>핵심 포인트</strong> <code>.obsidian</code> 폴더는 “앱 설정”일 뿐, 여기에 여러분의 노트 내용은 하나도 들어있지 않습니다. 노트 데이터는 전부 볼트 루트에 있는 일반 <code>.md</code> 파일들입니다.</p>
+</div>
+</section>
+<section id="note">
+<h2 id="노트-파일-하나의-내부-구조"><span class="num">4</span>노트 파일 하나의 내부 구조</h2>
+<p>노트 하나를 열어보면 크게 두 부분으로 나뉩니다: 맨 위의 “속성(Properties, 구 프론트매터)”과 그 아래의 본문 마크다운입니다.</p>
+<pre><code>---
+title: 옵시디언 파일구조 정리
+date: 2026-08-06
+tags:
+  - obsidian
+  - 노트정리법
+status: 진행중
+관련: &quot;&lt;span class=&quot;broken-link&quot; title=&quot;깨진 링크: [[제텔카스텐]]&quot;&gt;제텔카스텐&lt;/span&gt;&quot;
+---
+
+# 옵시디언 파일구조 정리
+
+오늘 읽은 내용을 정리한다. 핵심은 &lt;span class=&quot;broken-link&quot; title=&quot;깨진 링크: [[Zettelkasten]]&quot;&gt;Zettelkasten&lt;/span&gt; 방식과
+&lt;span class=&quot;broken-link&quot; title=&quot;깨진 링크: [[PARA 방법론]]&quot;&gt;PARA 방법론&lt;/span&gt;을 어떻게 조합할지다.
+
+&gt; [!note] 오늘의 인사이트
+&gt; 폴더보다 링크가 더 중요하다.
+
+관련 이미지: !&lt;span class=&quot;broken-link&quot; title=&quot;깨진 링크: [[screenshot-01.png]]&quot;&gt;screenshot-01.png&lt;/span&gt;
+
+#대시보드 #대시보드</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">구성 요소</th>
+<th style="text-align: left;">문법</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">속성(Properties)</td>
+<td style="text-align: left;"><code>--- ... ---</code> 사이 YAML</td>
+<td style="text-align: left;">제목, 날짜, 태그, 상태 등 구조화된 메타데이터. 검색·필터·Dataview·Bases 기능이 이 값을 활용함</td>
+</tr>
+<tr>
+<td style="text-align: left;">위키링크</td>
+<td style="text-align: left;">`&lt;span class=“broken-link”</td>
+<td style="text-align: left;">title=“깨진 링크: [[노트 이름]]”&gt;노트 이름</span>` 다른 노트로 연결되는 링크. 파일을 옮기거나 이름을 바꿔도 옵시디언이 자동으로 링크를 갱신해줌</td>
+</tr>
+<tr>
+<td style="text-align: left;">임베드</td>
+<td style="text-align: left;">`!&lt;span class=“broken-link</td>
+<td style="text-align: left;">” title=“깨진 링크: [[파일명]]”&gt;파일명</span>` 다른 노트나 이미지의 내용을 현재 노트 안에 통째로 삽입해서 보여줌</td>
+</tr>
+<tr>
+<td style="text-align: left;">태그</td>
+<td style="text-align: left;"><code>#태그명</code></td>
+<td style="text-align: left;">본문 어디서든 붙일 수 있는 분류 라벨. 폴더 없이도 주제를 가로질러 묶을 수 있음</td>
+</tr>
+<tr>
+<td style="text-align: left;">콜아웃</td>
+<td style="text-align: left;"><code>&gt; [!note]</code></td>
+<td style="text-align: left;">강조 박스(노트, 경고, 팁 등)를 만드는 문법</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="link">
+<h2 id="링크와-백링크-폴더보다-중요한-것"><span class="num">5</span>링크와 백링크: 폴더보다 중요한 것</h2>
+<p>옵시디언의 진짜 힘은 폴더 계층구조가 아니라 <strong>노트 사이의 연결</strong>에 있습니다.</p>
+<div class="grid2">
+<section id="정방향-링크-outgoing-link" class="method-card">
+<h4>정방향 링크 (Outgoing Link)</h4>
+<p>내가 작성 중인 노트에서 <code>&lt;span class="broken-link" title="깨진 링크: [[다른 노트]]"&gt;다른 노트&lt;/span&gt;</code>라고 적으면 그 노트로 연결됩니다.</p>
+</section>
+<section id="백링크-backlink" class="method-card">
+<h4>백링크 (Backlink)</h4>
+<p>반대로, “어떤 노트들이 지금 이 노트를 링크하고 있는지”가 화면 하단/사이드바에 자동으로 표시됩니다. 직접 되돌아가서 링크를 추가할 필요가 없습니다.</p>
+</section>
+</div>
+<p>이렇게 쌓인 링크들은 <strong>그래프 뷰(Graph View)</strong>에서 노드와 선으로 시각화되어, 내 생각들이 어떻게 서로 연결되어 있는지 한눈에 볼 수 있게 해줍니다. 폴더는 “내가 미리 정해둔 하나의 분류”일 뿐이지만, 링크는 “나중에 발견되는 실제 아이디어 사이의 관계”를 보여줍니다.</p>
+<div class="tip">
+<p><strong>왜 폴더보다 링크인가</strong> 노트 하나는 보통 여러 주제에 걸쳐 있습니다. 폴더에는 파일을 한 곳에만 넣을 수 있지만, 링크와 태그는 하나의 노트를 여러 맥락에 동시에 연결할 수 있습니다. 그래서 옵시디언 헤비 유저 중에는 폴더를 거의 쓰지 않고 링크와 태그만으로 전체를 운영하는 경우도 많습니다.</p>
+</div>
+</section>
+<section id="organize">
+<h2 id="폴더-구조-설계-방법론"><span class="num">6</span>폴더 구조 설계 방법론</h2>
+<p>폴더를 아예 안 쓸 수도 있지만, 최소한의 뼈대는 있는 게 관리하기 편합니다. 대표적인 세 가지 접근법을 소개합니다.</p>
+<h3 id="para-방법론">① PARA 방법론</h3>
+<div class="card">
+<p>Tiago Forte가 제안한 방식으로, 정보를 “주제”가 아니라 “실행 가능성(actionability)” 기준으로 4개 폴더에 나눕니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">폴더</th>
+<th style="text-align: left;">의미</th>
+<th style="text-align: left;">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Projects</strong></td>
+<td style="text-align: left;">마감이 있는 진행 중인 일</td>
+<td style="text-align: left;">“옵시디언 가이드 작성”</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Areas</strong></td>
+<td style="text-align: left;">지속적으로 관리해야 하는 삶의 영역</td>
+<td style="text-align: left;">“건강”, “재정”</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resources</strong></td>
+<td style="text-align: left;">나중에 참고할 주제별 자료</td>
+<td style="text-align: left;">“마크다운 문법”</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Archive</strong></td>
+<td style="text-align: left;">끝났거나 더 이상 활성화되지 않은 것</td>
+<td style="text-align: left;">완료된 프로젝트</td>
+</tr>
+</tbody>
+</table>
+<p>여기에 캡처용 <code>Inbox</code> 폴더를 하나 더 추가한 “5-폴더 시스템”도 널리 쓰입니다: 일단 뭐든 Inbox에 던져놓고, 나중에 정해진 시간에 나머지 4개 폴더로 분류합니다.</p>
+</div>
+<h3 id="zettelkasten제텔카스텐">② Zettelkasten(제텔카스텐)</h3>
+<div class="card">
+<p>독일 사회학자 니클라스 루만이 사용한 방식으로, 폴더 대신 <strong>링크</strong>로 지식을 조직합니다. 폴더는 3~4개 정도로 최소화하고(예: 임시 노트함, 문헌 노트, 영구 노트), 핵심은 노트를 만드는 방식입니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">노트 종류</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Fleeting Note (순간 노트)</td>
+<td style="text-align: left;">떠오른 생각을 빠르게 휘갈겨 쓴 임시 메모. 나중에 정리 대상</td>
+</tr>
+<tr>
+<td style="text-align: left;">Literature Note (문헌 노트)</td>
+<td style="text-align: left;">책·글을 읽으며 내 말로 요약한 노트. 출처를 함께 기록</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permanent Note (영구 노트)</td>
+<td style="text-align: left;">하나의 노트 = 하나의 완결된 아이디어(원자성). 다른 영구 노트와 <code>&lt;span class="broken-link" title="깨진 링크: [[링크]]"&gt;링크&lt;/span&gt;</code>로 연결</td>
+</tr>
+</tbody>
+</table>
+<p>영구 노트들이 쌓이고 서로 링크되면서 시간이 지날수록 스스로 지식의 네트워크를 형성하고, 예상치 못한 아이디어 간 연결(측면 사고, lateral thinking)이 자연스럽게 드러납니다.</p>
+</div>
+<h3 id="단순-폴더-태그-혼합형">③ 단순 폴더 + 태그 혼합형</h3>
+<div class="card">
+<p>가장 무난한 절충안입니다. 폴더는 5~10개 이내의 대분류(1단계, 많아도 2단계 깊이)로만 유지하고, 세부 분류는 <code>#태그</code>와 <code>속성(Properties)</code>, 링크로 처리합니다. 폴더 depth가 3~4단계를 넘어가면 대체로 너무 복잡해졌다는 신호입니다.</p>
+</div>
+</section>
+<section id="memory">
+<h2 id="나의-기억기록을-저장하는-방식"><span class="num">7</span>나의 기억·기록을 저장하는 방식</h2>
+<p>옵시디언에서 “내 기억을 저장한다”는 것은 결국 아래 몇 가지 패턴의 조합입니다.</p>
+<h3 id="데일리-노트-daily-notes">① 데일리 노트 (Daily Notes)</h3>
+<div class="card">
+<p>내장된 <strong>Daily Notes</strong> 플러그인을 쓰면 그날 날짜(예: <code>2026-08-06.md</code>)로 된 노트가 자동 생성됩니다. 하루 동안의 생각, 회의 메모, 일기, 할 일을 여기에 시간순으로 던져놓는 “일기장이자 로그” 역할을 합니다.</p>
+<ul>
+<li>매일 새 노트를 만들 필요 없이 단축키 하나로 오늘의 노트로 이동</li>
+<li>템플릿(Templater 플러그인)을 연결해 항상 같은 형식(오늘의 할 일, 감정 기록, 회고 질문 등)으로 시작 가능</li>
+<li>나중에 이 데일리 노트 안의 좋은 문장·아이디어를 뽑아 “영구 노트”로 승격시키는 것이 Zettelkasten과 결합하는 전형적인 흐름</li>
+</ul>
+</div>
+<h3 id="원자적-영구-노트-atomic-permanent-notes">② 원자적 영구 노트 (Atomic Permanent Notes)</h3>
+<div class="card">
+<p>기억해두고 싶은 개념이나 통찰 하나당 노트 파일 하나를 만듭니다. 제목은 그 내용을 한 문장으로 표현하고, 관련된 다른 노트로 링크를 겁니다. “내가 언젠가 다시 찾아볼 만한 완결된 생각”은 데일리 노트에 묻어두지 않고 독립된 파일로 승격시키는 것이 핵심입니다.</p>
+</div>
+<h3 id="moc-지도-노트-map-of-content">③ MOC (지도 노트, Map of Content)</h3>
+<div class="card">
+<p>특정 주제에 대한 노트가 많아지면, 그 주제의 “목차” 역할을 하는 노트를 하나 만들어 관련 노트들을 링크로 모아둡니다. 폴더처럼 딱딱하게 고정되지 않고, 하나의 노트가 여러 MOC에 동시에 속할 수 있다는 것이 폴더와의 차이입니다.</p>
+</div>
+<h3 id="속성properties을-이용한-구조화-기록">④ 속성(Properties)을 이용한 구조화 기록</h3>
+<div class="card">
+<p>단순 텍스트 회고를 넘어, 감정 점수·읽은 책·운동 기록처럼 규칙적인 데이터를 남기고 싶다면 YAML 속성에 <code>mood: 4</code>, <code>book: "클린 코드"</code> 같은 값을 기록하고, <strong>Dataview</strong>나 <strong>Bases</strong> 같은 플러그인으로 이 값들을 모아 표나 대시보드로 뽑아볼 수 있습니다.</p>
+</div>
+<h3 id="비교-기록-방식-선택-기준">비교: 기록 방식 선택 기준</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">기록하려는 것</th>
+<th style="text-align: left;">추천 방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">오늘 있었던 일, 순간적 생각</td>
+<td style="text-align: left;">데일리 노트</td>
+</tr>
+<tr>
+<td style="text-align: left;">다시 꺼내 쓸 개념·아이디어</td>
+<td style="text-align: left;">원자적 영구 노트 + 링크</td>
+</tr>
+<tr>
+<td style="text-align: left;">여러 노트를 아우르는 주제</td>
+<td style="text-align: left;">MOC(지도 노트)</td>
+</tr>
+<tr>
+<td style="text-align: left;">수치·패턴으로 추적하고 싶은 습관·데이터</td>
+<td style="text-align: left;">속성(Properties) + Dataview/Bases</td>
+</tr>
+<tr>
+<td style="text-align: left;">당장 분류하기 애매한 것</td>
+<td style="text-align: left;">Inbox 폴더에 임시 저장 후 나중에 정리</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="flow">
+<h2 id="캡처부터-정리까지-실전-흐름"><span class="num">8</span>캡처부터 정리까지: 실전 흐름</h2>
+<p>많은 옵시디언 사용자가 따르는 전형적인 파이프라인입니다.</p>
+<ol type="1">
+<li><strong>캡처:</strong> 생각이 떠오르면 형식 고민 없이 오늘의 데일리 노트나 Inbox 폴더에 바로 적는다.</li>
+<li><strong>수집 검토:</strong> 하루/주 단위로 Inbox와 데일리 노트를 훑어보며 계속 남길 가치가 있는 내용을 고른다.</li>
+<li><strong>승격:</strong> 가치 있는 생각은 제목을 붙인 독립 노트(영구 노트)로 옮기고, 관련 노트에 <code>&lt;span class="broken-link" title="깨진 링크: [[링크]]"&gt;링크&lt;/span&gt;</code>를 건다.</li>
+<li><strong>연결:</strong> 백링크·그래프 뷰를 보며 이 새 노트가 기존의 어떤 노트들과 이어지는지 확인하고 추가로 링크한다.</li>
+<li><strong>지도화:</strong> 같은 주제의 노트가 쌓이면 MOC 노트를 만들어 목록화한다.</li>
+<li><strong>보관:</strong> 끝난 프로젝트나 더 이상 쓰지 않는 자료는 Archive 폴더로 옮긴다.</li>
+</ol>
+</section>
+<section id="extra">
+<h2 id="첨부파일-캔버스-플러그인"><span class="num">9</span>첨부파일, 캔버스, 플러그인</h2>
+<h3 id="첨부파일-attachments">첨부파일 (Attachments)</h3>
+<p>이미지, PDF, 오디오처럼 볼트 바깥에서 만들어져 나중에 추가된 파일을 “첨부파일”이라고 합니다. 설정에서 새 첨부파일을 저장할 폴더(예: <code>Attachments/</code>)를 지정할 수 있으며, <code>!&lt;span class="broken-link" title="깨진 링크: [[파일명]]"&gt;파일명&lt;/span&gt;</code> 문법으로 노트 안에 바로 삽입해 보여줍니다.</p>
+<h3 id="canvas-캔버스">Canvas (캔버스)</h3>
+<p>노트·이미지·텍스트 카드를 자유롭게 배치하는 무한 캔버스 기능으로, <code>.canvas</code> 확장자의 JSON 파일로 저장됩니다. 마인드맵이나 프로젝트 보드처럼 시각적으로 생각을 정리할 때 사용합니다. 다만 일반 노트와 달리 아직 YAML 속성(frontmatter)을 지원하지 않습니다.</p>
+<h3 id="플러그인">플러그인</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">플러그인</th>
+<th style="text-align: left;">용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Daily Notes / Periodic Notes</td>
+<td style="text-align: left;">일간·주간·월간 노트 자동 생성</td>
+</tr>
+<tr>
+<td style="text-align: left;">Templater</td>
+<td style="text-align: left;">노트 생성 시 자동으로 서식·날짜·변수를 채워주는 템플릿</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dataview</td>
+<td style="text-align: left;">속성 값을 조건으로 검색해 표·목록으로 뽑아내는 쿼리 엔진</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bases</td>
+<td style="text-align: left;">속성을 기반으로 데이터베이스 형태의 뷰(표, 보드 등)를 만드는 최신 코어 기능</td>
+</tr>
+<tr>
+<td style="text-align: left;">Excalidraw</td>
+<td style="text-align: left;">손그림 스타일의 다이어그램·스케치 작성</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sync">
+<h2 id="백업과-동기화"><span class="num">10</span>백업과 동기화</h2>
+<p>볼트가 결국 “그냥 폴더”이기 때문에 동기화·백업 방법도 자유롭습니다.</p>
+<div class="grid2">
+<section id="obsidian-sync-유료-공식-기능" class="method-card">
+<h4>Obsidian Sync (유료 공식 기능)</h4>
+<p>기기 간 볼트를 자동 동기화하고 버전 기록도 남겨주는 공식 서비스.</p>
+</section>
+<section id="클라우드-폴더-동기화" class="method-card">
+<h4>클라우드 폴더 동기화</h4>
+<p>볼트 폴더를 iCloud Drive, Google Drive, Dropbox 등의 동기화 폴더 안에 두는 방법. 무료지만 동시 편집 시 충돌 위험이 있음.</p>
+</section>
+<section id="git" class="method-card">
+<h4>Git</h4>
+<p><code>obsidian-git</code> 같은 플러그인으로 볼트를 Git 저장소처럼 버전 관리. <code>.obsidian/workspace.json</code>처럼 자주 바뀌는 설정 파일은 보통 <code>.gitignore</code>에 넣습니다.</p>
+</section>
+<section id="수동-백업" class="method-card">
+<h4>수동 백업</h4>
+<p>볼트 폴더를 통째로 복사해 외장 드라이브나 다른 저장소에 주기적으로 백업.</p>
+</section>
+</div>
+</section>
+<section id="best">
+<h2 id="정리-팁-모범-사례"><span class="num">11</span>정리 팁 &amp; 모범 사례</h2>
+<div class="card">
+<ul>
+<li><strong>폴더는 최소, 링크는 최대:</strong> 폴더 depth 3~4단계를 넘기지 말고, 세부 분류는 태그·속성·링크로 해결하세요.</li>
+<li><strong>일단 캡처, 나중에 정리:</strong> 기록 순간에 완벽하게 분류하려 하지 말고 Inbox나 데일리 노트에 먼저 던져두세요.</li>
+<li><strong>하나의 노트 = 하나의 생각:</strong> 노트가 너무 길고 여러 주제를 담고 있다면 쪼개서 각각 링크로 연결하세요.</li>
+<li><strong>제목을 문장으로:</strong> “메모1”보다 “폴더보다 링크가 검색에 유리한 이유”처럼 내용이 드러나는 제목이 나중에 찾기 쉽습니다.</li>
+<li><strong>정기적으로 되돌아보기:</strong> 주간·월간 리뷰 시간을 정해 Inbox를 비우고, MOC를 갱신하세요.</li>
+<li><strong>설정 파일은 노트가 아니다:</strong> <code>.obsidian</code> 폴더를 직접 손대거나 지우면 앱 설정이 초기화될 수 있으니 주의하세요(노트 내용 자체는 안전합니다).</li>
+</ul>
+</div>
+</section>
+<p>옵시디언 공식 도움말 문서, 커뮤니티 가이드(PARA/Zettelkasten 관련) 자료를 참고해 2026년 8월 기준으로 정리했습니다. 세부 UI나 기능명은 버전 업데이트에 따라 달라질 수 있습니다.</p>
+</div>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/옵시디언-파일-구조와-나의-기억기록을-저장하는-방식.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

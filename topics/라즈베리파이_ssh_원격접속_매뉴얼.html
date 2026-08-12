@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라즈베리파이_SSH_원격접속_매뉴얼 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">라즈베리파이_SSH_원격접속_매뉴얼</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/IOT.html">#IOT</a><a class="tag" href="../tags/md.html">#md</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="라즈베리파이_ssh_원격접속_매뉴얼">라즈베리파이_SSH_원격접속_매뉴얼</h1>
+<p>RASPBERRY PI 4 · macOS</p>
+<p>라즈베리파이 SSH 원격 접속 매뉴얼 입문부터 실전 활용까지, 10페이지로 끝내기</p>
+<p>대상 기기 · Raspberry Pi 4 (Raspberry Pi OS Bookworm 기준) 클라이언트 · macOS 터미널 작성일 · 2026년 8월</p>
+<p>목 차</p>
+<ol type="1">
+<li><p>SSH 개념과 준비물 2 SSH가 무엇이고 왜 쓰는가 / 필요한 것들</p></li>
+<li><p>SSH 활성화 3가지 방법 3 Imager · raspi-config · ssh 빈 파일</p></li>
+<li><p>맥에서 첫 접속하기 4 IP 찾기 · ssh 명령 · 접속 후 기본 점검</p></li>
+<li><p>SSH 키 인증 설정 5 비밀번호 없이 안전하게 로그인</p></li>
+<li><p>보안 강화 6 비밀번호 차단 · 포트 변경 · fail2ban · 방화벽</p></li>
+<li><p>파일 전송 7 scp · sftp · rsync · Finder 연결</p></li>
+<li><p>SSH로 실제로 하는 일 8 tmux · 서비스 관리 · 자동화 · GPIO</p></li>
+<li><p>외부(인터넷)에서 접속하기 9 Tailscale · Pi Connect · 포트포워딩 · VNC 터널</p></li>
+<li><p>문제 해결 &amp; 참고 사이트 10 에러별 원인과 해결 · 추천 링크</p>
+<pre><code>                                                                               라즈베리파이 SSH 원격 접속 매뉴얼</code></pre></li>
+</ol>
+<p>SECTION 01</p>
+<p>SSH 개념과 준비물 SSH란? SSH(Secure Shell)는 네트워크를 통해 다른 컴퓨터의 터미널을 암호화된 통로로 조작하는 방법입니다. 라즈베리파이에 모니터·키보드·마우스를 연결하지 않고, 맥에서 터미널 창 하나만 열어 라즈베리파이를 완전히 제어할 수 있습니다. 이렇게 모니터 없이 운영하는 방식을 헤드리스(headless) 구성이라 부르며, 24시간 켜두는 홈서버·홈오토메이션 용도에서는 사실상 표준입니다.</p>
+<p>방식 용도 특징</p>
+<p>SSH 명령줄(터미널) 가볍고 빠름. 인터넷이 느려도 잘 동작. 이 매뉴얼의 주제</p>
+<p>VNC 그래픽 화면 공유 마우스로 조작. 대역폭 많이 씀</p>
+<p>SFTP/SCP 파일 전송 SSH 위에서 동작. 별도 설정 불필요</p>
+<p>Pi Connect 브라우저 원격 공식 서비스. 터미널·화면 둘 다 지원</p>
+<p>준비물 체크리스트 • Raspberry Pi 4 — 2GB 이상 권장 (홈서버 용도는 4GB가 편함) • microSD 카드 — 32GB 이상, Class 10 / A1 등급 이상. 저품질 카드는 잦은 파일시스템 손상의 원인 • 정품 USB-C 전원 어댑터 — 5V/3A. 전력 부족은 원인 불명 재부팅·SD 손상으로 이어짐 • 유선 랜(권장) 또는 Wi-Fi — 서버 용도라면 유선이 안정적 • 맥 — macOS에는 SSH 클라이언트가 기본 내장되어 있어 별도 설치 불필요 • Raspberry Pi Imager — 공식 SD 카드 굽기 프로그램 (raspberrypi.com/software)</p>
+<p>OS 선택 모니터를 아예 안 붙일 거라면 Raspberry Pi OS Lite (64-bit) 를 추천합니다. 데스크톱 환경이 없어 메모리와 SD 용량을 크게 아낄 수 있고, SSH만으로 모든 작업이 가능합니다. 나중에 화면이 필요해지면 데스크톱 패키지를 추가 설치하면 됩니다.</p>
+<p>중요 · 기본 계정이 사라졌습니다 예전의 pi / raspberry 기본 계정은 보안상의 이유로 폐지되었습니다. 요즘 Raspberry Pi OS는 SD 카드를 구울 때 또는 첫 부팅 시 사용자 이름과 비밀번호를 직접 정해야 합니다. 오래된 블로그 글을 따라 하다가 “pi 계정으로 로그인이 안 된다”고 헤매는 가장 흔한 이유입니다.</p>
+<p>이 매뉴얼의 표기 규칙 • 맥에서 실행하는 명령 → [맥] 표시 • 라즈베리파이에서 실행하는 명령 → [파이] 표시 • pi4 는 예시 호스트명, peter 는 예시 사용자명입니다. 본인 설정에 맞게 바꾸세요.</p>
+<pre><code>                                                   2 / 10
+
+                                                                              라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 02</p>
+<p>SSH 활성화 3가지 방법 라즈베리파이는 보안을 위해 SSH가 기본으로 꺼져 있습니다. 아래 셋 중 상황에 맞는 하나를 쓰면 됩니다.</p>
+<p>방법 A · Raspberry Pi Imager에서 미리 켜기 (가장 추천) SD 카드를 구울 때 설정하는 방식으로, 카드를 넣고 전원만 켜면 바로 SSH 접속이 가능합니다. 모니터가 아예 필요 없습니다. 1. Raspberry Pi Imager 실행 → 기기 / OS / SD 카드 선택 2. NEXT 클릭 → “OS 커스터마이즈 설정을 편집하시겠습니까?” → 설정 편집 3. 일반 탭: 호스트명(예: pi4 ), 사용자명·비밀번호, Wi-Fi SSID/암호, 국가, 시간대 입력 4. 서비스 탭: SSH 사용 체크 → ◦ 비밀번호 인증 사용 — 간단하게 시작할 때 ◦ 공개 키 인증만 허용 — 맥에 이미 SSH 키가 있다면 이쪽이 훨씬 안전 (5장 참고) 5. 저장 → 쓰기 → SD 카드를 파이에 꽂고 전원 인가</p>
+<p>방법 B · 모니터를 붙일 수 있다면 raspi-config [파이] sudo raspi-config</p>
+<p>3 Interface Options → I2 SSH → Yes → Finish. 또는 명령 한 줄로도 됩니다.</p>
+<p>[파이] sudo systemctl enable –now ssh</p>
+<p>데스크톱 환경이라면 기본 설정 → Raspberry Pi Configuration → Interfaces → SSH 에서 토글해도 동일합니다.</p>
+<p>방법 C · 이미 구운 SD 카드에 나중에 켜기 (ssh 빈 파일) 이미 OS를 설치한 카드인데 SSH를 안 켜둔 경우입니다. SD 카드를 맥에 꽂으면 bootfs (구버전은 boot )라는 이름의 볼륨이 보입니다. 그 최상위에 확장 자 없는 빈 파일 ssh 를 만들면, 다음 부팅 때 SSH가 자동으로 켜지고 파일은 스스로 삭제됩니다.</p>
+<p>[맥] touch /Volumes/bootfs/ssh</p>
+<p>주의 macOS의 텍스트 편집기로 만들면 ssh.txt 가 되어 동작하지 않습니다. 반드시 위 touch 명령을 쓰거나, 확장자를 완전히 제거하세요. 또한 이 방식만으로는 계정이 만들어지지 않으므로, 계정이 없는 새 이미지라면 같은 위치에 userconf.txt 로 계정 정보를 넣어야 합니다(Imager 방식이 훨씬 편합니다).</p>
+<p>SSH가 켜졌는지 확인 [파이] sudo systemctl status ssh # active (running) 이면 정상</p>
+<p>[파이] sudo ss -tlnp | grep :22 # 22번 포트를 sshd가 듣고 있는지 확인</p>
+<pre><code>                                                    3 / 10
+
+                                                                           라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 03</p>
+<p>맥에서 첫 접속하기 1단계 · 라즈베리파이의 주소 찾기 가장 쉬운 방법: 호스트명 사용 Raspberry Pi OS는 mDNS(Bonjour)를 지원하므로, IP를 몰라도 호스트명.local 로 접속됩니다. 맥은 Bonjour가 기본 내장이라 아무 설정 없이 바로 됩 니다.</p>
+<p>[맥] ping pi4.local</p>
+<p>IP 주소를 직접 찾는 방법 # 방법 1 — 공유기 관리 페이지의 “연결된 기기” 목록 확인 # 방법 2 — 맥에서 같은 네트워크 스캔 (arp) [맥] arp -a | grep -i “b8:27:eb|dc:a6:32|e4:5f:01” # 라즈베리파이 재단의 대표 MAC 주소 접두사입니다</p>
+<p># 방법 3 — 파이에 모니터가 붙어 있다면 [파이] hostname -I</p>
+<p>2단계 · 접속 [맥] ssh peter@pi4.local # 또는 [맥] ssh peter@192.168.0.42</p>
+<p>처음 접속하면 아래와 같은 지문(fingerprint) 확인 메시지가 나옵니다. yes 를 입력하면 해당 키가 맥의 ~/.ssh/known_hosts 에 저장되고, 이후로는 묻지 않습니다.</p>
+<p>The authenticity of host ‘pi4.local’ can’t be established. ED25519 key fingerprint is SHA256:xxxxxxxxxxxxxxxx. Are you sure you want to continue connecting (yes/no)? yes</p>
+<p>비밀번호를 입력하면 프롬프트가 peter@pi4:~ $ 로 바뀝니다. 이 시점부터 입력하는 모든 명령은 라즈베리파이에서 실행됩니다. 빠져나올 때는 exit 또는 Ctrl+D.</p>
+<p>3단계 · 접속 직후 반드시 할 일 [파이] sudo apt update &amp;&amp; sudo apt full-upgrade -y # 패키지 최신화 [파이] sudo raspi-config # 시간대·로케일·확장 설정 [파이] passwd # 비밀번호가 약하다면 변경 [파이] sudo reboot # 커널 업데이트 시 재부팅</p>
+<p>매번 긴 주소 치기 귀찮다면 · SSH config 맥의 ~/.ssh/config 파일에 별칭을 등록해두면 ssh pi4 한 단어로 접속됩니다. 매우 편하니 꼭 설정하세요.</p>
+<p>[맥] nano ~/.ssh/config</p>
+<p>Host pi4 HostName pi4.local User peter Port 22 ServerAliveInterval 60 ServerAliveCountMax 3</p>
+<p>[맥] chmod 600 ~/.ssh/config [맥] ssh pi4 # 이제 이것만으로 접속</p>
+<p>ServerAliveInterval의 역할 60초마다 신호를 보내 연결이 살아있음을 알립니다. 공유기나 방화벽이 유휴 연결을 끊어버려 “가만히 있으면 SSH가 멈춘다”는 문제가 사라집니다.</p>
+<pre><code>                                                             4 / 10
+
+                                                                                           라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 04</p>
+<p>SSH 키 인증 설정 비밀번호 방식은 추측·무차별 대입(brute force) 공격에 노출됩니다. 키 인증은 수학적으로 추측이 사실상 불가능한 한 쌍의 파일을 사용하므로 훨씬 안전 하고, 동시에 매번 비밀번호를 칠 필요도 없어집니다. 보안과 편의를 동시에 얻는 유일한 설정입니다.</p>
+<p>개념 — 공개키와 개인키 파일 위치 성격</p>
+<p>개인키 id_ed25519 맥 (내 손안) 절대 유출 금지. 남에게 보내거나 복사하지 않음</p>
+<p>공개키 id_ed25519.pub 라즈베리파이 공개돼도 무방. 접속할 서버마다 등록</p>
+<p>맥이 “나는 이 공개키에 대응하는 개인키를 갖고 있다”는 것을 암호학적으로 증명하면 파이가 문을 열어주는 구조입니다.</p>
+<p>1단계 · 맥에서 키 생성 [맥] ls ~/.ssh/ # 이미 id_ed25519 가 있으면 이 단계 생략 가능</p>
+<p>[맥] ssh-keygen -t ed25519 -C “peter-macbook”</p>
+<p>• 저장 위치를 물으면 그냥 Enter (기본값 ~/.ssh/id_ed25519 ) • passphrase는 개인키 자체를 보호하는 암호입니다. 설정을 권장하며, 맥의 키체인에 등록하면 매번 입력할 필요가 없습니다. ed25519 는 현재 권장되는 방식으로, 예전 RSA보다 짧고 빠르며 안전합니다.</p>
+<p>2단계 · 공개키를 파이에 복사 [맥] ssh-copy-id peter@pi4.local</p>
+<p>비밀번호를 한 번 입력하면 공개키가 파이의 ~/.ssh/authorized_keys 에 자동 등록됩니다. ssh-copy-id 가 없다면 수동으로도 가능합니다.</p>
+<p>[맥] cat ~/.ssh/id_ed25519.pub | ssh peter@pi4.local<br />
+“mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp;<br />
+cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys”</p>
+<p>3단계 · 확인 [맥] ssh peter@pi4.local # 비밀번호를 묻지 않고 바로 로그인되면 성공</p>
+<p>4단계 · 맥 키체인에 passphrase 저장 (선택) 맥의 ~/.ssh/config 맨 위에 아래를 추가하면, passphrase를 한 번만 입력하고 이후 재부팅해도 자동으로 불러옵니다.</p>
+<p>Host * UseKeychain yes AddKeysToAgent yes IdentityFile ~/.ssh/id_ed25519</p>
+<p>권한(permission) 문제가 90% 키 인증이 안 될 때 원인의 대부분은 파일 권한입니다. SSH는 권한이 느슨하면 보안상 아예 키를 무시합니다. 파이에서 아래를 실행해 정리하세요.</p>
+<p>[파이] chmod 700 ~/.ssh [파이] chmod 600 ~/.ssh/authorized_keys [파이] chown -R <span class="math inline"><em>U</em><em>S</em><em>E</em><em>R</em>:</span>USER ~/.ssh</p>
+<pre><code>                                                                5 / 10
+
+                                                                           라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 05</p>
+<p>보안 강화</p>
+<p>순서를 지키세요 이 장은 4장의 키 인증이 동작하는 것을 확인한 뒤에만 진행하세요. 아니면 자기 자신이 잠깁니다(lock out). 설정 변경 후에는 기존 SSH 창을 닫지 말고 새 창으로 접속을 확인하세요. 실패하면 열린 창에서 되돌릴 수 있습니다.</p>
+<p>1 · 비밀번호 로그인 차단 [파이] sudo nano /etc/ssh/sshd_config</p>
+<p>아래 항목을 찾아 값을 맞추고, 줄 앞의 # 은 지웁니다.</p>
+<p>PubkeyAuthentication yes PasswordAuthentication no ChallengeResponseAuthentication no PermitRootLogin no</p>
+<p>[파이] sudo sshd -t # 문법 검사 (출력 없으면 정상) [파이] sudo systemctl restart ssh</p>
+<p>Bookworm 이후 주의점 /etc/ssh/sshd_config.d/ 안의 파일이 본 설정을 덮어쓸 수 있습니다. 바꿨는데도 비밀번호로 로그인된다면 sudo grep -r “PasswordAuthentication” /etc/ssh/ 로 확인하세요.</p>
+<p>2 · SSH 포트 변경 (선택) 22번을 다른 번호로 바꾸면 자동화된 무차별 스캔의 대부분을 피할 수 있습니다. 근본적인 보안 강화는 아니지만 로그가 훨씬 깨끗해집니다.</p>
+<p># /etc/ssh/sshd_config 에서 Port 2222</p>
+<p>[맥] ssh -p 2222 peter@pi4.local # ~/.ssh/config 에 Port 2222 로 적어두면 그냥 ssh pi4 로 접속됨</p>
+<p>3 · fail2ban — 무차별 대입 자동 차단 로그를 감시하다가 로그인을 반복 실패하는 IP를 자동으로 차단해 줍니다.</p>
+<p>[파이] sudo apt install fail2ban -y [파이] sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local [파이] sudo nano /etc/fail2ban/jail.local</p>
+<p># — jail.local 에서 [sshd] 항목을 아래처럼 — [sshd] enabled = true port = ssh # 포트를 바꿨다면 2222 maxretry = 3 # 3회 실패 시 bantime = 1h # 1시간 차단 findtime = 10m</p>
+<p>[파이] sudo systemctl restart fail2ban [파이] sudo fail2ban-client status sshd # 차단 현황 확인</p>
+<p>4 · 방화벽(UFW) [파이] sudo apt install ufw -y [파이] sudo ufw allow 22/tcp # 반드시 SSH 부터 열고 시작 [파이] sudo ufw allow 80,443/tcp # 웹서버를 돌린다면 [파이] sudo ufw enable [파이] sudo ufw status verbose</p>
+<p>순서 절대 주의 ufw enable 을 SSH 포트를 열기 전에 실행하면 그 즉시 연결이 끊기고 다시 접속할 수 없습니다. 모니터를 연결하거나 SD 카드를 다시 굽는 것 외에 복구 방법이 없습니다.</p>
+<p>5 · 자동 보안 업데이트 [파이] sudo apt install unattended-upgrades -y [파이] sudo dpkg-reconfigure -plow unattended-upgrades</p>
+<pre><code>                                                             6 / 10
+
+                                                                                        라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 06</p>
+<p>파일 전송 SSH가 동작하면 파일 전송 기능은 추가 설정 없이 이미 사용 가능합니다. FTP 서버 같은 것을 따로 설치할 필요가 없습니다.</p>
+<p>scp — 한 번에 복사 # 맥 → 파이 [맥] scp ~/Desktop/app.py peter@pi4.local:/home/peter/</p>
+<p># 파이 → 맥 [맥] scp peter@pi4.local:/home/peter/log.txt ~/Downloads/</p>
+<p># 폴더 통째로 (-r) [맥] scp -r ~/projects/webapp peter@pi4.local:/home/peter/</p>
+<p># 포트를 바꿨다면 대문자 -P [맥] scp -P 2222 file.txt peter@pi4.local:~/</p>
+<p>rsync — 변경분만 전송 (대량·반복 작업에 최적) 이미 있는 파일은 건너뛰고 달라진 부분만 보내므로, 두 번째 실행부터는 압도적으로 빠릅니다. 중단된 전송의 이어받기도 지원합니다.</p>
+<p>[맥] rsync -avz –progress ~/projects/webapp/ peter@pi4.local:~/webapp/</p>
+<p># 옵션 의미 # -a 권한·시간 등 속성 보존 -v 진행 표시 -z 압축 전송 # –delete 보내는 쪽에서 지운 파일을 받는 쪽에서도 삭제 (완전 동기화) # –exclude ‘.git’ 특정 폴더 제외</p>
+<p>끝의 슬래시(/)가 의미를 바꿉니다 webapp/ → 폴더 안의 내용 을 복사 webapp → 폴더 자체 를 대상 안에 복사 ( ~/webapp/webapp/ 이 됨)</p>
+<p>sftp — 대화형 파일 탐색 [맥] sftp peter@pi4.local</p>
+<p>sftp&gt; ls # 원격 목록 sftp&gt; lls # 로컬 목록 sftp&gt; cd /var/log # 원격 이동 sftp&gt; lcd ~/Desktop sftp&gt; get syslog # 내려받기 sftp&gt; put app.py # 올리기 sftp&gt; get -r logs/ # 폴더 내려받기 sftp&gt; bye</p>
+<p>맥 GUI로 연결하기 도구 방법</p>
+<p>Cyberduck / FileZilla 프로토콜 SFTP 선택 → 서버 pi4.local , 포트 22, 사용자명 입력. 드래그&amp;드롭으로 전송 (무료)</p>
+<p>VS Code 확장 Remote - SSH 설치 → 파이의 폴더를 로컬처럼 열어 편집. 개발용으로 가장 편함</p>
+<p>Mountain Duck / macFUSE 파이의 폴더를 Finder에 드라이브처럼 마운트</p>
+<p>SSHFS — 파이 폴더를 맥에 통째로 마운트 [맥] brew install –cask macfuse [맥] brew install gromgit/fuse/sshfs-mac [맥] mkdir ~/pi4 [맥] sshfs peter@pi4.local:/home/peter ~/pi4 [맥] umount ~/pi4 # 해제</p>
+<p>마운트하면 파이의 파일을 맥의 일반 앱(텍스트 편집기, 이미지 뷰어 등)으로 직접 열 수 있습니다.</p>
+<pre><code>                                                                7 / 10
+
+                                                                      라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 07</p>
+<p>SSH로 실제로 하는 일 접속 자체는 수단일 뿐입니다. 아래가 SSH로 실제로 하게 되는 일들입니다.</p>
+<p>1 · 세션 유지 — tmux (거의 필수) SSH 연결이 끊기면 실행 중이던 작업도 같이 죽습니다. tmux를 쓰면 연결이 끊겨도 파이 안에서 작업이 계속 돌고, 나중에 다시 붙을 수 있습니다. 긴 설치· 빌드·다운로드 작업에서 필수입니다.</p>
+<p>[파이] sudo apt install tmux -y</p>
+<p>[파이] tmux new -s work # ‘work’ 세션 시작 # 작업 실행 … # Ctrl+B 를 누른 뒤 D → 세션에서 빠져나옴 (작업은 계속 실행)</p>
+<p>[파이] tmux ls # 세션 목록 [파이] tmux attach -t work # 다시 붙기</p>
+<p>주요 단축키: Ctrl+B 후 % 세로 분할 · ” 가로 분할 · 방향키 이동 · c 새 창 · x 창 닫기</p>
+<p>2 · 시스템 상태 확인 [파이] htop # 실시간 CPU/메모리 (sudo apt install htop) [파이] df -h # 디스크 여유 공간 [파이] free -h # 메모리 사용량 [파이] vcgencmd measure_temp # CPU 온도 — 80℃ 넘으면 성능 제한 걸림 [파이] vcgencmd get_throttled # 0x0 이면 정상, 아니면 전력/발열 문제 [파이] uptime # 켜둔 시간과 부하 [파이] journalctl -f # 시스템 로그 실시간 감시</p>
+<p>3 · 서비스 관리 (홈서버 운영의 핵심) [파이] sudo systemctl status pihole-FTL # 상태 확인 [파이] sudo systemctl restart nginx # 재시작 [파이] sudo systemctl enable myapp # 부팅 시 자동 시작 [파이] sudo systemctl disable bluetooth # 자동 시작 해제 [파이] sudo journalctl -u nginx -n 50 # 해당 서비스 로그 50줄</p>
+<p>4 · 예약 작업 (cron) [파이] crontab -e</p>
+<p># 분 시 일 월 요일 명령 0 4 * * * /home/peter/backup.sh # 매일 새벽 4시 백업 <em>/10 </em> * * * /home/peter/sensor.py # 10분마다 센서 기록 <span class="citation" data-cites="reboot">@reboot</span> /home/peter/startup.sh # 부팅 시 1회 실행</p>
+<p>5 · 원격 명령 한 줄 실행 (접속하지 않고) [맥] ssh pi4 “vcgencmd measure_temp” [맥] ssh pi4 “sudo reboot” [맥] ssh pi4 “docker ps”</p>
+<p># 맥에서 파이 상태를 매일 확인하는 스크립트도 이렇게 만들 수 있음 [맥] ssh pi4 “df -h / | tail -1” &gt;&gt; ~/pi_disk_log.txt</p>
+<p>6 · GPIO 제어 (Pi 4 · Bookworm 기준) [파이] pinout # 핀 배치도 출력 [파이] gpioget gpiochip0 17 # 17번 핀 읽기 [파이] gpioset gpiochip0 17=1 # 17번 핀 HIGH</p>
+<p># Python [파이] pip install gpiozero –break-system-packages</p>
+<p>SSH로 접속해 스크립트를 실행하면, 맥에 앉은 채로 방 반대편의 LED·릴레이·모터를 제어할 수 있습니다.</p>
+<pre><code>                                                            8 / 10
+
+                                                                     라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 08</p>
+<p>외부(인터넷)에서 접속하기 지금까지는 집 안의 같은 네트워크에서의 접속이었습니다. 밖에서도 접속하려면 아래 방법 중 하나가 필요합니다. 추천 순서대로 정리했습니다.</p>
+<p>방법 1 · Tailscale — 가장 권장 기기들끼리 개인 VPN 망을 만들어 주는 서비스입니다. 공유기 설정을 전혀 건드리지 않고, 포트를 하나도 열지 않으며, 통신사가 공인 IP를 주지 않는 환경 (CGNAT)에서도 동작합니다. 개인 사용은 무료입니다.</p>
+<p>[파이] curl -fsSL https://tailscale.com/install.sh | sh [파이] sudo tailscale up # 출력되는 URL을 브라우저에서 열어 계정으로 로그인</p>
+<p>[파이] tailscale ip -4 # 100.x.x.x 형태의 주소 확인</p>
+<p>맥에도 Tailscale 앱을 설치하고 같은 계정으로 로그인한 뒤,</p>
+<p>[맥] ssh peter@100.x.x.x # MagicDNS를 켜면 ssh peter@pi4 로도 접속 가능</p>
+<p>왜 가장 좋은가 파이가 인터넷에 노출되지 않으므로 스캔당할 포트 자체가 없습니다. 포트포워딩의 보안 위험과 DDNS의 번거로움을 한 번에 없앱니다. 카페·회사·해외 어디서든 동작합니다.</p>
+<p>방법 2 · Raspberry Pi Connect — 공식 서비스 라즈베리파이 재단의 공식 원격 접속 서비스로, 브라우저만으로 터미널과 화면 공유에 접속합니다. 설치가 가장 간단합니다.</p>
+<p>[파이] sudo apt update &amp;&amp; sudo apt install rpi-connect -y # Lite(터미널 전용)라면: sudo apt install rpi-connect-lite -y</p>
+<p>[파이] rpi-connect on [파이] rpi-connect signin # 출력된 URL에서 계정 연결</p>
+<p>이후 맥의 브라우저에서 connect.raspberrypi.com 에 로그인하면 기기 목록이 뜹니다. 개인 사용자는 무료이며, 데스크톱 버전에는 기본 설치되어 있습니 다.</p>
+<p>방법 3 · 포트포워딩 + DDNS — 권장하지 않음 공유기에서 외부 포트를 파이의 22번으로 연결하는 전통적 방식입니다. 전 세계에서 스캔당하는 상태가 되므로, 아래를 모두 갖춘 경우에만 쓰세요. • 비밀번호 로그인 완전 차단 + 키 인증만 허용 (5장) • fail2ban 동작 중 • 22가 아닌 높은 번호의 포트 사용 • 고정 IP가 없다면 DuckDNS 등 DDNS 설정</p>
+<p>SSH 터널링 — 파이의 웹 서비스를 맥에서 보기 파이에서만 돌아가는 서비스(관리 페이지, VNC 등)를 외부에 포트를 열지 않고 맥 브라우저에서 여는 방법입니다. SSH의 가장 강력한 기능 중 하나입니다.</p>
+<p># 파이의 8080 포트를 맥의 8080 포트로 끌어옴 [맥] ssh -L 8080:localhost:8080 peter@pi4.local # 맥 브라우저에서 http://localhost:8080 접속</p>
+<p># VNC를 SSH 위로 암호화해서 사용 [맥] ssh -L 5901:localhost:5901 peter@pi4.local # VNC 뷰어에서 localhost:5901 로 접속</p>
+<p># 터미널 없이 터널만 백그라운드로 [맥] ssh -fNL 8080:localhost:8080 peter@pi4.local</p>
+<p>옵션 의미</p>
+<p>-L 로컬 포워딩 — 내 쪽 포트를 원격으로 연결</p>
+<p>-f 백그라운드로 실행</p>
+<p>-N 명령 실행 없이 터널만 유지</p>
+<p>-D 1080 SOCKS 프록시 — 브라우저 전체 트래픽을 집으로 우회</p>
+<pre><code>                                                       9 / 10
+
+                                                                                             라즈베리파이 SSH 원격 접속 매뉴얼</code></pre>
+<p>SECTION 09</p>
+<p>문제 해결 &amp; 참고 사이트 에러별 원인과 해결 증상 원인과 해결</p>
+<p>Connection refused SSH 서비스가 꺼져 있거나 포트가 다름. 파이에서 sudo systemctl status ssh 확인, 2장의 활성화 절차 를 다시 진행. 포트를 바꿨다면 -p 옵션 확인</p>
+<p>Connection timed out IP가 틀렸거나, 파이가 네트워크에 없거나, 방화벽이 막고 있음. ping pi4.local 로 먼저 도달 여부 확인. 파 이가 부팅 중일 수도 있으니 1분 대기</p>
+<p>Permission denied (publickey) 비밀번호 로그인이 차단된 상태에서 키가 등록되지 않음. 파이의 ~/.ssh 권한을 700 , authorized_keys 를 600 으로 맞추세요. 맥에서 ssh -v 로 어떤 키를 시도하는지 확인 가능</p>
+<p>Permission denied (password) 사용자명 또는 비밀번호 오류. 최신 OS에는 pi 계정이 없습니다. 파이의 /var/log/auth.log 에 실제 원인 이 남습니다</p>
+<p>Host key verification failed OS를 다시 설치했거나 SD 카드를 바꿔 파이의 신원 키가 변경됨. 맥에서 옛 기록을 지우면 됩니다: ssh-keygen -R pi4.local</p>
+<p>pi4.local 을 못 찾음 mDNS 미동작. IP로 직접 접속해 보고, 파이에서 sudo apt install avahi-daemon 설치</p>
+<p>접속은 되는데 자꾸 끊김 맥의 ~/.ssh/config 에 ServerAliveInterval 60 추가 (4장). Wi-Fi 절전 모드도 원인일 수 있음</p>
+<p>느리거나 알 수 없이 재부팅 전원 부족 또는 발열. vcgencmd get_throttled 가 0x0 이 아니면 정품 5V/3A 어댑터와 방열판을 확인</p>
+<p>진단용 필수 명령 [맥] ssh -v peter@pi4.local # 상세 로그 (-vvv 는 더 자세히) [파이] sudo systemctl status ssh # 서비스 상태 [파이] sudo sshd -t # 설정 파일 문법 검사 [파이] sudo tail -f /var/log/auth.log # 로그인 시도 실시간 확인 [파이] sudo ss -tlnp | grep ssh # 실제로 듣고 있는 포트</p>
+<p>참고 사이트 사이트 주소 내용</p>
+<p>공식 문서 — 원격 접속 raspberrypi.com/documentation/computers/ 가장 정확한 1차 자료. 막히면 여기부터 remote-access.html</p>
+<p>Raspberry Pi Connect raspberrypi.com/documentation/services/ 공식 원격 접속 서비스 설정법 connect.html</p>
+<p>공식 포럼 forums.raspberrypi.com 에러 메시지를 그대로 검색하면 대부분 답이 있음</p>
+<p>Pi My Life Up pimylifeup.com 단계별 튜토리얼이 매우 친절. 초보자에게 최적</p>
+<p>RaspberryTips raspberrytips.com 헤드리스 설정·보안 관련 글이 충실</p>
+<p>Tailscale 문서 tailscale.com/kb 외부 접속 구성의 표준 안내서</p>
+<p>SSH Academy ssh.com/academy/ssh SSH 자체의 원리와 옵션 백과사전</p>
+<p>Explain Shell explainshell.com 모르는 명령어를 붙여넣으면 옵션별로 해설</p>
+<p>Awesome Raspberry Pi github.com/thibmaek/awesome-raspberry-pi 프로젝트·도구 모음집</p>
+<p>r/raspberry_pi reddit.com/r/raspberry_pi 실사용자 사례와 최신 정보</p>
+<p>다음 단계 추천 SSH 접속이 익숙해졌다면 → ① Docker 설치 후 서비스별로 컨테이너 분리 → ② Pi-hole로 집 전체 광고 차단 → ③ Tailscale로 외부 접속 확보 → ④ 정기 백 업 스크립트 + cron 등록. 이 순서로 가면 안정적인 개인 홈서버가 완성됩니다.</p>
+<pre><code>                                                           10 / 10</code></pre>
+<p>#md #IOT 개발</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/라즈베리파이_ssh_원격접속_매뉴얼.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

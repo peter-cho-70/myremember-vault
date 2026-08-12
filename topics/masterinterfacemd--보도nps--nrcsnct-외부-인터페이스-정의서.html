@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MasterInterface.md — 보도NPS ↔ NRCS(NCT) 외부 인터페이스 정의서 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">MasterInterface.md — 보도NPS ↔ NRCS(NCT) 외부 인터페이스 정의서</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/MasterInterface.html">#MasterInterface</a><a class="tag" href="../tags/NRCS.html">#NRCS</a><a class="tag" href="../tags/md.html">#md</a><a class="tag" href="../tags/보도NPS.html">#보도NPS</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="masterinterface.md-보도nps-nrcsnct-외부-인터페이스-정의서">MasterInterface.md — 보도NPS ↔︎ NRCS(NCT) 외부 인터페이스 정의서</h1>
+<blockquote>
+<p>원본: <code>[보도NPS_NCT_A50_001]_외부인터페이스 설계서_Ver.0.95.pptx</code> (전체 30슬라이드) 목적: AI 지원 개발(“바이브 코딩”) 시 매 세션 다시 pptx를 열어보지 않고도 바로 참조할 수 있도록, 인터페이스 스펙을 코드 관점(엔드포인트·요청/응답 필드·상태값)으로 재구성한 문서.</p>
+</blockquote>
+<hr />
+<h2 id="개요">1. 개요</h2>
+<ul>
+<li><p><strong>연동 시스템</strong>: 보도NPS(NewsManager — MAXNINE 계열) ↔︎ NRCS(NCT — gemiso 계열)</p></li>
+<li><p><strong>프로토콜</strong>: MOS(Media Object Server) — 방송 뉴스룸 시스템 간 표준 XML 연동 프로토콜</p></li>
+<li><p><strong>공통 최상위 XML 구조</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">mos</span>&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">mosID</span>&gt;news.maxnine.NewsManager&lt;/<span class="kw">mosID</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">ncsID</span>&gt;ncs.news.gemiso.com&lt;/<span class="kw">ncsID</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">messageID</span>&gt;333&lt;/<span class="kw">messageID</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 인터페이스별 본문 --&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">mos</span>&gt;</span></code></pre></div></li>
+<li><p><strong>전송 방식은 “누가 서버 역할인가”에 따라 달라짐</strong> — 구현 시 가장 먼저 확인할 것: | 서버 역할 | 전송 방식 | 비고 | |—|—|—| | NRCS가 서버 | RESTful — <code>PUT</code>/<code>GET</code> + XML body | Base URL <code>http://10.153.151.71:9200/nrcs/MosService/</code> | | NewsManager(NPS)가 서버 | SOAP/WSDL — 단일 함수 <code>MosServiceCall(string aXML): string</code> | WSDL <code>http://ip:port/mxService?wsdl</code>, 실배포 <code>http://NewsNPSURL/MosServiceCall</code> |</p>
+<p>SOAP 쪽은 URL 경로로 액션을 구분하지 않고, XML 내부 루트 태그(<code>&lt;roElementAction operation="INSERT"&gt;</code> 등)로 액션을 구분한다는 점이 REST 쪽과 다름.</p></li>
+</ul>
+<h2 id="공통-규칙">2. 공통 규칙</h2>
+<h3 id="공통-필드-모든-메시지-최상위">2.1 공통 필드 (모든 메시지 최상위)</h3>
+<table>
+<thead>
+<tr>
+<th>태그</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mosID</code></td>
+<td>string</td>
+<td>보내는 장비 ID</td>
+</tr>
+<tr>
+<td><code>ncsID</code></td>
+<td>string</td>
+<td>NRCS ID</td>
+</tr>
+<tr>
+<td><code>messageID</code></td>
+<td>string</td>
+<td>메시지 고유 ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>messageID 생성 규칙</strong>: <code>{MachineType}{MMddHHmmssffff}</code> (월일시분초+밀리초 4자리) 예) <code>M08091352338889</code></p>
+<table>
+<thead>
+<tr>
+<th>MachineType 코드</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N</td>
+<td>보도정보</td>
+</tr>
+<tr>
+<td>M</td>
+<td>큐시트관리</td>
+</tr>
+<tr>
+<td>T</td>
+<td>큐시트 진행</td>
+</tr>
+<tr>
+<td>V</td>
+<td>송출서버운용</td>
+</tr>
+<tr>
+<td>C</td>
+<td>자막운용</td>
+</tr>
+<tr>
+<td>P</td>
+<td>프롬프트 운용</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>구현 필수 규칙</strong>: 요청/응답 메시지의 <code>messageID</code>는 반드시 일치해야 한다. 수신한 메시지를 다른 시스템으로 릴레이할 때는 초기 messageID를 그대로 유지한다(재생성 금지 — 이력 추적용).</p>
+</blockquote>
+<h2 id="데이터-모델-계층">3. 데이터 모델 계층</h2>
+<pre><code>RO (큐시트/Rundown)
+ └─ Story (꼭지)
+     └─ Item (아이템: 영상 / 자막 / 앵커멘트)</code></pre>
+<h3 id="ro큐시트-필드">3.1 RO(큐시트) 필드</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>필드</th>
+<th>타입</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>roID</code></td>
+<td>string</td>
+<td>큐시트 ID</td>
+<td></td>
+</tr>
+<tr>
+<td><code>roSlug</code></td>
+<td>string</td>
+<td>프로그램명(뉴스명)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>roChannel</code></td>
+<td>string</td>
+<td>채널명</td>
+<td>예: MBC (roReqAll 응답에만 존재)</td>
+</tr>
+<tr>
+<td><code>roEdStart</code></td>
+<td>string</td>
+<td>방송시작시간</td>
+<td>인터페이스마다 포맷이 다름 — 아래 §7-3 참고</td>
+</tr>
+<tr>
+<td><code>roEdDur</code></td>
+<td>string</td>
+<td>방송길이(편성)</td>
+<td><code>HH:MM:SS</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.state</code></td>
+<td>string</td>
+<td>방송상태</td>
+<td><code>대기</code>(확정전) / <code>준비</code>(확정) / <code>방송중</code> / <code>완료</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.confirm</code></td>
+<td>string</td>
+<td>확정유무</td>
+<td><code>Y</code> / <code>N</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.pgmID</code></td>
+<td>string</td>
+<td>프로그램 코드</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.anc</code></td>
+<td>string</td>
+<td>앵커</td>
+<td><code>"홍길동/갑순이"</code> — 복수 앵커는 <code>/</code>로 구분</td>
+</tr>
+<tr>
+<td><code>mosPayload.pd</code></td>
+<td>string</td>
+<td>담당 PD</td>
+<td><code>"총괄PD/진행PD"</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.cgColor</code></td>
+<td>string</td>
+<td>자막 지정색</td>
+<td>특수 포맷, §7-5 참고</td>
+</tr>
+<tr>
+<td><code>story</code></td>
+<td>list</td>
+<td>꼭지 목록</td>
+<td>§3.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="story꼭지-필드">3.2 Story(꼭지) 필드</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>필드</th>
+<th>타입</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storyID</code></td>
+<td>string</td>
+<td>꼭지 고유 ID</td>
+<td></td>
+</tr>
+<tr>
+<td><code>storySlug</code></td>
+<td>string</td>
+<td>꼭지 제목</td>
+<td></td>
+</tr>
+<tr>
+<td><code>storyNum</code></td>
+<td>integer</td>
+<td>순번</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.state</code></td>
+<td>string</td>
+<td>방송상태</td>
+<td><code>대기</code>/<code>준비</code>/<code>방송중</code>/<code>완료</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.orderId</code></td>
+<td>string</td>
+<td>아이템 순서</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.articleID</code></td>
+<td>string</td>
+<td>기사 ID</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.beginTime</code></td>
+<td>string</td>
+<td>시작시간</td>
+<td><code>HH:mm:ss</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.runTime</code></td>
+<td>int</td>
+<td>방송길이(초)</td>
+<td>앵커멘트+기사 합산</td>
+</tr>
+<tr>
+<td><code>mosPayload.form</code></td>
+<td>string</td>
+<td>형식 코드</td>
+<td><code>"출"</code>, <code>"완"</code> 등 약물 스타일 코드</td>
+</tr>
+<tr>
+<td><code>mosPayload.journalist</code></td>
+<td>string</td>
+<td>기자명</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.script.num</code></td>
+<td>string</td>
+<td>기사 순번</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.script.ancMent</code></td>
+<td>string</td>
+<td>원본 앵커멘트</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.script.context</code></td>
+<td>string</td>
+<td>원본 기사 본문</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.scriptLastDate</code></td>
+<td>string</td>
+<td>기사 최종 작성시간</td>
+<td><code>YYYY-MM-DD HH:mm:ss</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.sign_A</code></td>
+<td>string</td>
+<td>약물 코드 A</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.sign_C</code></td>
+<td>string</td>
+<td>약물 코드 C</td>
+<td>CODE를 파일명으로 사용, 송출/NRCS 양측에 동일 등록 필요</td>
+</tr>
+<tr>
+<td><code>mosPayload.dveYN</code></td>
+<td>string</td>
+<td>어깨걸이 여부</td>
+<td>전체걸이 여부</td>
+</tr>
+<tr>
+<td><code>mosPayload.memo</code></td>
+<td>string</td>
+<td>메모</td>
+<td></td>
+</tr>
+<tr>
+<td><code>item</code></td>
+<td>list</td>
+<td>아이템 목록</td>
+<td>§3.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="item아이템-타입별-구조">3.3 Item(아이템) — 타입별 구조</h3>
+<p>아이템 종류는 <code>mosID</code>(장비명)와 <code>itemID</code> 접두 규칙으로 구분한다.</p>
+<h4 id="a-영상-아이템-mosid-video-계열-itemid-접두-v">(a) 영상 아이템 — <code>mosID: Video</code> 계열, <code>itemID</code> 접두 <code>V:</code></h4>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>필드</th>
+<th>타입</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemID</code></td>
+<td>string</td>
+<td>아이템 고유ID</td>
+<td><code>V:0000</code></td>
+</tr>
+<tr>
+<td><code>itemSlug</code></td>
+<td>string</td>
+<td>영상 제목</td>
+<td></td>
+</tr>
+<tr>
+<td><code>objID</code></td>
+<td>string</td>
+<td>매칭 시간(버전ID)</td>
+<td><code>= verTime</code></td>
+</tr>
+<tr>
+<td><code>mosID</code></td>
+<td>string</td>
+<td>장비명</td>
+<td><code>Video</code></td>
+</tr>
+<tr>
+<td><code>objPaths.objPath</code></td>
+<td>string</td>
+<td>파일명</td>
+<td><strong>사용하지 않음</strong> (deprecated)</td>
+</tr>
+<tr>
+<td><code>itemEdDur</code></td>
+<td>string</td>
+<td>재생길이</td>
+<td><code>HH:MM:SS:FF</code>(프레임 포함)</td>
+</tr>
+<tr>
+<td><code>mosPayload.mediaInfo.contentId</code></td>
+<td>string</td>
+<td>콘텐츠 ID</td>
+<td>MAM 유일 ID</td>
+</tr>
+<tr>
+<td><code>mosPayload.mediaInfo.verTime</code></td>
+<td>int</td>
+<td>매칭 시간</td>
+<td>예: <code>110203000</code>(시분초밀리초)</td>
+</tr>
+<tr>
+<td><code>mosPayload.mediaInfo.title</code></td>
+<td>string</td>
+<td>제목</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.mediaInfo.duration</code></td>
+<td>string</td>
+<td>재생길이</td>
+<td><code>HH:MM:SS:FF</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.mediaInfo.creator</code></td>
+<td>string</td>
+<td>편집자명</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="b-자막-아이템-mosid-cg-itemid-접두-c">(b) 자막 아이템 — <code>mosID: CG</code>, <code>itemID</code> 접두 <code>C:</code></h4>
+<table>
+<thead>
+<tr>
+<th>필드</th>
+<th>타입</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemID</code></td>
+<td>string</td>
+<td>아이템 고유ID</td>
+<td><code>C:0000</code></td>
+</tr>
+<tr>
+<td><code>itemSlug</code></td>
+<td>string</td>
+<td>비고</td>
+<td></td>
+</tr>
+<tr>
+<td><code>objID</code></td>
+<td>string</td>
+<td>Script Num</td>
+<td>자막 위치 참조용 기사본문 번호</td>
+</tr>
+<tr>
+<td><code>mosID</code></td>
+<td>string</td>
+<td>장비명</td>
+<td><code>CG</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.cgFile</code></td>
+<td>string</td>
+<td>파일명</td>
+<td>템플릿 파일 전체 경로+확장자</td>
+</tr>
+<tr>
+<td><code>mosPayload.cgType</code></td>
+<td>string</td>
+<td>자막 타입</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.cgVar</code></td>
+<td>string</td>
+<td>자막 내용</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mosPayload.lineNum</code></td>
+<td>integer</td>
+<td>자막 위치</td>
+<td>기사 본문 상 위치</td>
+</tr>
+</tbody>
+</table>
+<h4 id="c-앵커멘트-아이템-mosid-prompter-itemid-접두-m">(c) 앵커멘트 아이템 — <code>mosID: Prompter</code>, <code>itemID</code> 접두 <code>M:</code></h4>
+<table>
+<thead>
+<tr>
+<th>필드</th>
+<th>타입</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemID</code></td>
+<td>string</td>
+<td>아이템 고유ID</td>
+<td><code>M:1</code></td>
+</tr>
+<tr>
+<td><code>itemSlug</code></td>
+<td>string</td>
+<td>앵커멘트 제목</td>
+<td>보통 <code>Null</code></td>
+</tr>
+<tr>
+<td><code>objID</code></td>
+<td>string</td>
+<td>수정시간</td>
+<td><code>YYYYMMDD HHmmss</code></td>
+</tr>
+<tr>
+<td><code>mosID</code></td>
+<td>string</td>
+<td>장비명</td>
+<td><code>Prompter</code></td>
+</tr>
+<tr>
+<td><code>itemEdDur</code></td>
+<td>string</td>
+<td>예상 길이</td>
+<td><code>HH:MM:SS:FF</code></td>
+</tr>
+<tr>
+<td><code>mosPayload.ancMent</code></td>
+<td>string</td>
+<td>앵커멘트 내용</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="인터페이스-nrcs가-서버-restful-큐시트">4. 인터페이스 — NRCS가 서버 (RESTful, 큐시트)</h2>
+<p>Base URL: <code>http://10.153.151.71:9200/nrcs/MosService/</code> (환경별 IP 변경 필요 — §7-8)</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>인터페이스</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>요청 핵심 필드</th>
+<th>응답 핵심 필드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Heartbeat</td>
+<td>PUT</td>
+<td><code>/Heartbeat</code></td>
+<td><code>time</code></td>
+<td><code>time</code>(echo)</td>
+<td>생존 확인</td>
+</tr>
+<tr>
+<td>2</td>
+<td>roReqAll</td>
+<td>PUT</td>
+<td><code>/RoReqAll</code></td>
+<td><code>roEdStart</code>(방송일, <code>YYYY-MM-DD</code>)</td>
+<td><code>roListAll &gt; ro[]</code> (§3.1)</td>
+<td>특정 날짜 큐시트 목록 조회</td>
+</tr>
+<tr>
+<td>3</td>
+<td>roReq</td>
+<td>PUT</td>
+<td><code>/RoReq</code></td>
+<td><code>roID</code></td>
+<td><code>roList</code>(§3.1) + <code>story[]</code>(§3.2) + <code>item[]</code>(§3.3)</td>
+<td>큐시트 상세(전체 트리) 조회</td>
+</tr>
+<tr>
+<td>4</td>
+<td>roListDone</td>
+<td>PUT</td>
+<td><code>/RoListDone</code></td>
+<td><code>ro</code> 전체 구조(§3.1~3.3)</td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>방송완료 큐시트 정보 저장</td>
+</tr>
+<tr>
+<td>5</td>
+<td>roElementAction(MOVE)</td>
+<td>PUT</td>
+<td><code>/RoElementAction/MOVE</code></td>
+<td><code>roID</code>, <code>element_target.storyID</code>, <code>element_source.storyID[]</code></td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>꼭지 순서 이동. <code>element_target</code> 없으면 맨 아래로 이동</td>
+</tr>
+<tr>
+<td>6</td>
+<td>roElementStat(RO)</td>
+<td>PUT</td>
+<td><code>/roElementStat/RO</code></td>
+<td><code>roID</code>, <code>status</code>, <code>time</code></td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>큐시트 전체 방송상태 갱신 — <code>status</code>: <code>"01"</code>대기/<code>"02"</code>준비/<code>"03"</code>방송중/<code>"04"</code>완료</td>
+</tr>
+<tr>
+<td>7</td>
+<td>roElementStat(STORY)</td>
+<td>PUT</td>
+<td><code>/RoElementStat/STORY</code></td>
+<td><code>roID</code>, <code>storyID</code>, <code>status</code>, <code>time</code></td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>개별 꼭지 방송상태 갱신</td>
+</tr>
+</tbody>
+</table>
+<h2 id="인터페이스-newsmanagernps가-서버-soap-큐시트">5. 인터페이스 — NewsManager(NPS)가 서버 (SOAP, 큐시트)</h2>
+<p>WSDL: <code>http://ip:port/mxService?wsdl</code> / 실배포: <code>http://NewsNPSURL/MosServiceCall</code> 함수 시그니처: <code>MosServiceCall(string aXML): string</code></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>인터페이스</th>
+<th>XML 루트 태그</th>
+<th>요청 핵심 필드</th>
+<th>응답 핵심 필드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Heartbeat</td>
+<td><code>&lt;heartbeat&gt;</code></td>
+<td><code>time</code></td>
+<td><code>time</code>(echo)</td>
+<td>생존 확인</td>
+</tr>
+<tr>
+<td>2</td>
+<td>roElementAction(INSERT)</td>
+<td><code>&lt;roElementAction operation="INSERT"&gt;</code></td>
+<td><code>roID</code>, <code>element_source.story</code>(§3.2)</td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>속보(SB) 등 신규 꼭지 삽입</td>
+</tr>
+<tr>
+<td>3</td>
+<td>roElementAction(REPLACE)</td>
+<td><code>&lt;roElementAction operation="REPLACE"&gt;</code></td>
+<td><code>roID</code>, <code>actionType</code>(<code>"STORY"</code>/<code>"PITEM"</code>/<code>"VITEM"</code>/<code>"CITEM"</code>), <code>element_source.story</code></td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>아이템/꼭지 정보 변경 — <code>actionType</code>으로 STORY 전체 / P(앵커멘트) / V(영상) / C(자막) 단위 구분</td>
+</tr>
+<tr>
+<td>4</td>
+<td>roElementStat(RO)</td>
+<td><code>&lt;roElementStat element="RO"&gt;</code></td>
+<td><code>roID</code>, <code>status</code>, <code>time</code></td>
+<td><code>roAck{roID, roStatus}</code></td>
+<td>큐시트 상태 변경 수신</td>
+</tr>
+</tbody>
+</table>
+<h2 id="인터페이스-하단롤크롤티커-연동">6. 인터페이스 — 하단롤(크롤/티커) 연동</h2>
+<h3 id="nrcs가-서버-restful-조회-전용">6.1 NRCS가 서버 (RESTful, 조회 전용)</h3>
+<p>Base URL: <code>http://10.153.151.71:9200/nrcs/MosService/</code></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>인터페이스</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>요청</th>
+<th>응답</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>mosReqObjList</td>
+<td>GET</td>
+<td><code>/mosReqObjList</code></td>
+<td><code>searchField.roll_id</code>, <code>searchField.brdc_dt</code>(방송일)</td>
+<td><code>mosList &gt; mosObj[]{objID, objSlug, objType, changed, description}</code></td>
+<td>하단롤 목록 조회. <strong>확정된 것만 조회됨</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>mosReqObj</td>
+<td>GET</td>
+<td><code>/mosReqObj</code></td>
+<td><code>objID</code></td>
+<td><code>mosObj{objID, objSlug, objType, changed, description}</code> + <code>mosExternalMetadata.mosPayload.roll_item[]{cate_nm, ctt}</code></td>
+<td>하단롤 상세 조회</td>
+</tr>
+</tbody>
+</table>
+<p><code>objType</code> 값: <code>TICKER</code>, 그리고 문서상 <code>CRAWAL</code>로 표기(§7-6 오탈자 의심 참고)</p>
+<h3 id="newsmanagernps가-서버-soap-생성전송">6.2 NewsManager(NPS)가 서버 (SOAP, 생성/전송)</h3>
+<p><code>http://NewsNPSURL/MosServiceCall</code>, 함수 <code>MosServiceCall(string aXML): string</code></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>인터페이스</th>
+<th>XML 루트 태그</th>
+<th>요청</th>
+<th>응답</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>mosObjCreate</td>
+<td><code>&lt;mosObjCreate&gt;</code></td>
+<td><code>objID</code>(Roll_ID 또는 전송일시), <code>objSlug</code>, <code>objType</code>(<code>"CRAWL"</code>/<code>"TICKER"</code>/<code>"CG"</code>), <code>mosExternalMetadata.mosPayload.cgFile</code>/<code>cgVar</code>(CG인 경우만)</td>
+<td><code>mosAck{objID, status}</code>(성공시 <code>status</code> Null)</td>
+<td>속보 자막 및 하단롤 전송</td>
+</tr>
+</tbody>
+</table>
+<h2 id="구현-시-주의할-점-원본-문서에서-확인된-특이모호-사항">7. 구현 시 주의할 점 (원본 문서에서 확인된 특이/모호 사항)</h2>
+<ol type="1">
+<li><strong>방향에 따라 프로토콜이 다르다.</strong> NRCS가 서버면 REST, NewsManager가 서버면 SOAP. 한 시스템 안에서도 “받는 인터페이스”와 “보내는 인터페이스”의 통신 방식이 다르므로, 클라이언트 구현과 서버 구현을 명확히 분리해서 설계할 것.</li>
+<li><strong>messageID 규칙을 꼭 지킬 것</strong> — 요청/응답 쌍 일치, 릴레이 시 재생성 금지.</li>
+<li><strong>방송상태 표기 방식이 인터페이스마다 다르다.</strong> RO/Story의 <code>mosPayload.state</code>는 문자열(<code>대기</code>/<code>준비</code>/<code>방송중</code>/<code>완료</code>)이지만, <code>roElementStat</code>에서는 숫자 코드(<code>"01"</code>/<code>"02"</code>/<code>"03"</code>/<code>"04"</code>)를 쓴다. 구현 시 이 둘을 매핑하는 테이블이 필요하다.</li>
+<li><strong><code>objPaths.objPath</code> 필드는 원본에 “사용하지 않음”으로 명시</strong>되어 있다 — 파싱은 하되 로직에서 무시해도 됨.</li>
+<li><strong>날짜/시간 포맷이 인터페이스마다 다르다.</strong> <code>roEdStart</code>가 <code>roReqAll</code> 요청에서는 날짜만(<code>YYYY-MM-DD</code>), <code>roReq</code>/<code>roListDone</code> 응답에서는 전체 일시(<code>YYYY-MM-DDTHH:mm:ss</code>)로 쓰인다. 파서를 인터페이스별로 분리하거나, 유연한 날짜 파서를 쓸 것.</li>
+<li><strong>오탈자 의심 필드</strong>: 하단롤 <code>objType</code> 값이 조회(§6.1)에서는 <code>"CRAWAL"</code>, 생성(§6.2)에서는 <code>"CRAWL"</code>로 서로 다르게 표기됨 — 실제 연동 상대 시스템이 어느 쪽 문자열을 쓰는지 반드시 실측 확인 후 구현할 것(하드코딩 시 오탐 위험).</li>
+<li><strong><code>cgColor</code> 값 포맷이 특수하다</strong> — 괄호 종류로 R,G,B를 구분: <code>{,}=R,G,B</code> / <code>&lt;,&gt;=R,G,B</code> / <code>[,]=R,G,B</code>. 별도 파싱 로직 필요.</li>
+<li><strong>Base URL의 IP(<code>10.153.151.71:9200</code>)는 특정 환경(개발/스테이징 추정)에 하드코딩된 값</strong>이다. 실제 구현 시 환경변수/설정파일로 분리할 것. <code>NewsNPSURL</code>도 마찬가지로 실제 값을 확인해야 하는 플레이스홀더.</li>
+<li><strong>원본 pptx의 슬라이드 2(개정이력)·3(인터페이스 목록 요약표)가 Ver.0.95임에도 빈 템플릿 상태</strong>로 남아있다 — 문서 자체가 완전히 최신화되지 않았을 가능성이 있으므로, 실제 구현 착수 전 발주처/상대 시스템 담당자에게 최신 버전 여부를 확인하는 것을 권장한다.</li>
+</ol>
+<h2 id="원본-출처">8. 원본 출처</h2>
+<p><code>[보도NPS_NCT_A50_001]_외부인터페이스 설계서_Ver.0.95.pptx</code> (총 30슬라이드). python-pptx로 전체 텍스트·표를 추출한 뒤 이 문서로 재구성함 — 원본 XML 예시나 표의 정확한 문구가 필요하면 원본 pptx를 다시 확인할 것.</p>
+<p>#MasterInterface #md #보도NPS #NRCS</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/masterinterfacemd--보도nps--nrcsnct-외부-인터페이스-정의서.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세션 한도를 미리 알고, 스스로 압축하고, 대화의 맥락을 끊기지 않게 이어가는 법 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">세션 한도를 미리 알고, 스스로 압축하고, 대화의 맥락을 끊기지 않게 이어가는 법</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/md.html">#md</a><a class="tag" href="../tags/가이드.html">#가이드</a><a class="tag" href="../tags/세션.html">#세션</a><a class="tag" href="../tags/완벽.html">#완벽</a><a class="tag" href="../tags/한도.html">#한도</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="세션-한도를-미리-알고-스스로-압축하고-대화의-맥락을-끊기지-않게-이어가는-법">세션 한도를 미리 알고, 스스로 압축하고, 대화의 맥락을 끊기지 않게 이어가는 법</h1>
+<p>Claude 효율적 업무 가이드</p>
+<h1 id="세션-한도를-미리-알고-스스로-압축하고-대화의-맥락을-끊기지-않게-이어가는-법-1">세션 한도를 미리 알고, 스스로 압축하고, 대화의 맥락을 끊기지 않게 이어가는 법</h1>
+<p>대화가 길어지면 Claude는 자동으로 내용을 요약(압축)해버립니다. 그 순간 중요한 맥락이 사라지면 작업이 어긋나기 시작합니다. 이 문서는 압축이 <strong>나도 모르게</strong> 일어나기 전에 내가 먼저 통제권을 쥐고, 며칠에 걸친 작업도 맥락을 잃지 않고 이어가는 실전 방법을 다룹니다.</p>
+<p>한도 미리 파악 선제적 압축 맥락 연속성 복사해 쓰는 프롬프트 포함</p>
+<h2 id="목차">목차</h2>
+<ol type="1">
+<li><a href="#why">왜 컨텍스트를 관리해야 하나</a></li>
+<li><a href="#step1">1단계 · 한도를 미리 안다</a></li>
+<li><a href="#step2">2단계 · 내가 먼저 압축한다</a></li>
+<li><a href="#step3">3단계 · 맥락을 이어가게 만든다</a></li>
+<li><a href="#step4">4단계 · 애초에 덜 쓰게 만든다</a></li>
+<li><a href="#workflow">실전 워크플로 (하루 루틴)</a></li>
+<li><a href="#prompts">복사해서 쓰는 프롬프트 모음</a></li>
+<li><a href="#anti">이런 습관은 피하세요</a></li>
+<li><a href="#checklist">최종 체크리스트</a></li>
+</ol>
+<h2 id="왜-컨텍스트를-관리해야-하나">0왜 컨텍스트를 관리해야 하나</h2>
+<p>Claude는 매 요청마다 <strong>지금까지의 대화 전체</strong>를 다시 읽습니다. 한 줄짜리 질문을 해도, 하루 종일 쌓인 대화가 통째로 함께 전송됩니다.</p>
+<p>이로 인해 생기는 세 가지 문제:</p>
+<ul>
+<li><strong>비용·사용량 증가</strong> — 아침에 연 세션에 저녁에 짧게 질문해도, 하루치 대화 전부가 매번 다시 계산됩니다.</li>
+<li><strong>품질 저하</strong> — 컨텍스트가 반쯤 차면 정말 중요한 내용이 잡음에 묻혀 응답 품질이 떨어지기 시작합니다.</li>
+<li><strong>예고 없는 압축</strong> — 한도에 가까워지면 Claude가 알아서 대화를 요약해버립니다. 이때 무엇을 남길지는 <strong>Claude가 추측</strong>합니다. 내가 정하지 않으면 정작 필요한 게 사라질 수 있습니다.</li>
+</ul>
+<p>따라서 핵심 전략은 하나입니다. <strong>압축이 자동으로 일어나기 전에, 내가 원하는 방식으로 먼저 압축한다.</strong></p>
+<h3 id="컨텍스트-사용률에-따른-행동-지침">컨텍스트 사용률에 따른 행동 지침</h3>
+<p>0–40% 편하게 작업</p>
+<p>40–70% 정리 시작</p>
+<p>70–85% 압축</p>
+<p>85%+ 위험</p>
+<p>그냥 작업해도 좋음 다음 큰 작업 전에 <code>/compact</code> 고려 지시문을 붙여 직접 압축 자동 압축 임박, 지금 정리</p>
+<p><strong>가장 중요한 습관</strong> 새 작업을 시작하기 <strong>직전</strong>에 압축하세요. 작업 도중에 자동 압축이 걸리면 방금 파악한 내용이 요약되어 날아갑니다.</p>
+<h2 id="한도를-미리-안다">1한도를 미리 안다</h2>
+<p>모르고 당하지 않으려면 먼저 계기판을 봐야 합니다. 세 가지 도구가 있습니다.</p>
+<h3 id="context-지금-컨텍스트가-얼마나-찼는지">① <code>/context</code> — 지금 컨텍스트가 얼마나 찼는지</h3>
+<p>입력창에 <code>/context</code>를 치면 현재 컨텍스트 사용량이 색깔 그리드로 나타납니다. 단순히 몇 %인지만이 아니라, <strong>무엇이 공간을 잡아먹고 있는지</strong>(시스템 프롬프트, MCP 도구, 읽어들인 파일, 대화 기록 등)까지 항목별로 보여주고 최적화 제안도 함께 줍니다.</p>
+<ul>
+<li><code>/context</code> — 기본 그리드와 요약</li>
+<li><code>/context all</code> — 항목별 상세 내역까지 전부 펼쳐 보기</li>
+</ul>
+<p>한도를 넘어섰다면 얼마나 초과했는지, 어떤 명령으로 공간을 확보할지도 함께 알려줍니다.</p>
+<h3 id="상태줄에-항상-띄워두기-매번-치지-않아도-되게">② 상태줄에 항상 띄워두기 — 매번 치지 않아도 되게</h3>
+<p>매번 <code>/context</code>를 치는 대신, 화면 하단 상태줄에 사용률을 <strong>상시 표시</strong>할 수 있습니다. 가장 쉬운 방법은 그냥 말로 시키는 것입니다.</p>
+<p>그대로 입력하세요</p>
+<p>/statusline 모델 이름과 컨텍스트 사용률을 진행 막대와 함께 보여줘</p>
+<p>Claude가 알아서 스크립트를 만들어 <code>~/.claude/</code>에 저장하고 설정까지 잡아줍니다. 직접 설정하고 싶다면 <code>~/.claude/settings.json</code>에 다음을 넣어도 됩니다.</p>
+<pre><code>{
+  &quot;statusLine&quot;: {
+    &quot;type&quot;: &quot;command&quot;,
+    &quot;command&quot;: &quot;jq -r &#39;\&quot;[\\(.model.display_name)] \\(.context_window.used_percentage // 0)% context\&quot;&#39;&quot;
+  }
+}</code></pre>
+<p>이렇게 해두면 대화 중에 사용률이 계속 눈에 들어와서, 70%를 넘기기 전에 자연스럽게 정리하게 됩니다.</p>
+<h3 id="usage-플랜-한도와-무엇이-소모하는지">③ <code>/usage</code> — 플랜 한도와 무엇이 소모하는지</h3>
+<p>컨텍스트(한 대화의 크기)와 플랜 사용량(내 요금제 한도)은 서로 다른 개념입니다. <code>/usage</code>는 후자를 보여줍니다.</p>
+<ul>
+<li>세션 비용, 플랜 사용 한도 막대</li>
+<li>스킬 · 서브에이전트 · 플러그인 · MCP 서버별 사용 비중</li>
+<li><strong>행동 플래그</strong> — "긴 컨텍스트", "캐시 미스"처럼 최근 사용량의 10% 이상을 차지하는 원인을 콕 집어 알려줌</li>
+<li><code>d</code> / <code>w</code> 키로 최근 24시간 ↔︎ 7일 전환</li>
+</ul>
+<p>별칭은 <code>/cost</code>, <code>/stats</code>입니다.</p>
+<h3 id="자동-압축-시점을-내가-정하기">④ 자동 압축 시점을 내가 정하기</h3>
+<p><code>/autocompact</code>는 "컨텍스트가 얼마나 찼을 때 자동 압축을 시작할지" 그 문턱값을 직접 설정하는 명령입니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">명령</th>
+<th style="text-align: left;">의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">/autocompact</td>
+<td style="text-align: left;">인자 없이 실행하면 현재 설정값을 보여줌</td>
+</tr>
+<tr>
+<td style="text-align: left;">/autocompact 500k</td>
+<td style="text-align: left;">50만 토큰까지 차면 자동 압축 (여유 있게)</td>
+</tr>
+<tr>
+<td style="text-align: left;">/autocompact 200k</td>
+<td style="text-align: left;">20만 토큰에서 압축 (자주, 가볍게 유지)</td>
+</tr>
+<tr>
+<td style="text-align: left;">/autocompact auto</td>
+<td style="text-align: left;">모델에 맞춰 튜닝된 기본값으로 복귀</td>
+</tr>
+</tbody>
+</table>
+<p>10만~100만 토큰 범위에서 지정 가능하며, <code>200000</code>, <code>500k</code>, <code>1M</code>, 혹은 그냥 <code>200</code>(=20만) 같은 형태 모두 인식합니다. 설정값은 사용자 설정에 저장되어 다음 세션에도 적용됩니다.</p>
+<h2 id="내가-먼저-압축한다">2내가 먼저 압축한다</h2>
+<p>자동 압축은 "무엇이 중요한지"를 Claude가 추측합니다. 직접 압축하면 <strong>내가 지정</strong>할 수 있습니다. 이 차이가 결정적입니다.</p>
+<h3 id="핵심-압축에-지시문을-붙인다">핵심: 압축에 지시문을 붙인다</h3>
+<p>그냥 <code>/compact</code>만 치지 마세요. 무엇을 남길지 함께 적으면 훨씬 쓸모 있는 요약이 남습니다.</p>
+<p>나쁜 예</p>
+<p>/compact</p>
+<p>좋은 예</p>
+<p>/compact 지금까지 확정한 파일 구조 결정, 사용하기로 한 라이브러리 목록, 그리고 아직 해결 못 한 인증 버그의 재현 조건은 반드시 보존해줘. 시행착오 과정은 버려도 돼.</p>
+<p>요약본에 무엇을 남길지 명시하면, 압축 후에도 Claude가 작업 맥락을 정확히 유지합니다.</p>
+<h3 id="compact냐-clear냐-판단-기준"><code>/compact</code>냐 <code>/clear</code>냐 — 판단 기준</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: left;">/compact</th>
+<th style="text-align: left;">/clear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>하는 일</strong></td>
+<td style="text-align: left;">대화를 요약해 압축, 맥락은 유지</td>
+<td style="text-align: left;">대화를 완전히 비우고 새로 시작</td>
+</tr>
+<tr>
+<td><strong>언제</strong></td>
+<td style="text-align: left;">같은 작업을 계속 이어갈 때</td>
+<td style="text-align: left;">완전히 다른 작업으로 넘어갈 때</td>
+</tr>
+<tr>
+<td><strong>비용</strong></td>
+<td style="text-align: left;">요약하려면 전체를 읽어야 하므로 비쌈</td>
+<td style="text-align: left;">공짜</td>
+</tr>
+<tr>
+<td><strong>맥락</strong></td>
+<td style="text-align: left;">요약본 형태로 남음</td>
+<td style="text-align: left;">프로젝트 메모리(CLAUDE.md)만 남고 대화는 사라짐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>비용 관점의 팁</strong> 큰 대화를 <code>/compact</code>하는 것 자체가 큰 요청입니다. 맥락을 이어갈 필요가 없다면 <code>/clear</code>가 훨씬 저렴합니다. 무관한 작업으로 넘어갈 땐 망설이지 말고 <code>/clear</code>.</p>
+<h3 id="claude.md에-압축-규칙을-못-박아두기">CLAUDE.md에 압축 규칙을 못 박아두기</h3>
+<p>매번 지시문을 쓰기 번거롭다면, 프로젝트 루트의 <code>CLAUDE.md</code>에 압축 기본 방침을 적어두면 됩니다. 자동 압축에도 적용됩니다.</p>
+<pre><code># Compact instructions
+
+압축할 때는 다음을 반드시 보존해줘:
+- 확정된 아키텍처 결정과 그 이유
+- 현재 진행 중인 작업의 목표와 남은 할 일
+- 재현 조건이 파악된 버그 정보
+- 사용자가 명시적으로 요청한 제약 조건
+
+다음은 버려도 됨:
+- 실패한 시도의 상세 과정
+- 이미 해결된 오류 메시지 전문
+- 파일 전체 내용 덤프</code></pre>
+<p>이 파일은 <strong>압축 후에도 디스크에서 다시 읽어들여지므로</strong>, 한 번 적어두면 계속 효력이 있습니다.</p>
+<p><strong>새 세션에서는 압축이 안 됩니다</strong> 막 시작한 대화에서 <code>/compact</code>를 치면 <code>Not enough messages to compact.</code>라고 나옵니다. 요약할 내용이 아직 없기 때문입니다. 정상입니다.</p>
+<h2 id="맥락을-이어가게-만든다">3맥락을 이어가게 만든다</h2>
+<p>압축하고 나서도, 세션을 새로 열어도, 며칠 뒤에 돌아와도 Claude가 상황을 기억하게 만드는 장치들입니다.</p>
+<h3 id="압축-후에-무엇이-살아남는가">압축 후에 무엇이 살아남는가</h3>
+<p>이 표를 이해하면 "어디에 정보를 적어둬야 안 사라지는지"가 명확해집니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">정보의 종류</th>
+<th style="text-align: left;">압축 후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">시스템 프롬프트, 출력 스타일</td>
+<td style="text-align: left;">그대로 유지 (대화 기록의 일부가 아님)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>프로젝트 루트 CLAUDE.md</strong></td>
+<td style="text-align: left;"><strong>디스크에서 다시 읽어들임 → 안전</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>자동 메모리(auto memory)</strong></td>
+<td style="text-align: left;"><strong>디스크에서 다시 읽어들임 → 안전</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">하위 폴더의 중첩 CLAUDE.md</td>
+<td style="text-align: left;">해당 폴더 파일을 다시 읽을 때까지 사라짐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>paths:</code>가 붙은 규칙</td>
+<td style="text-align: left;">매칭되는 파일을 다시 읽을 때까지 사라짐</td>
+</tr>
+<tr>
+<td style="text-align: left;">호출했던 스킬 본문</td>
+<td style="text-align: left;">다시 주입되지만 스킬당 5천 토큰·전체 2만5천 토큰 제한, 오래된 것부터 탈락</td>
+</tr>
+<tr>
+<td style="text-align: left;">대화 내용 자체</td>
+<td style="text-align: left;">요약본으로 대체됨</td>
+</tr>
+</tbody>
+</table>
+<p><strong>결론</strong> <strong>절대 잊히면 안 되는 정보는 대화가 아니라 프로젝트 루트의 <code>CLAUDE.md</code>에 적어두세요.</strong> 대화에만 있는 정보는 압축 대상입니다.</p>
+<h3 id="claude.md를-작업-기억-장치로-쓰기">① CLAUDE.md를 "작업 기억 장치"로 쓰기</h3>
+<p><code>/init</code>으로 처음 만들고, <code>/memory</code>로 편집합니다. 여기에 무엇을 적을지가 핵심입니다.</p>
+<ul>
+<li><strong>적어야 할 것</strong> — 프로젝트 고유의 규칙, 함정, 왜 그렇게 결정했는지의 이유, 도구 기본값과 다른 관례</li>
+<li><strong>적지 말아야 할 것</strong> — 디렉터리 구조나 의존성 목록처럼 Claude가 코드를 보면 알 수 있는 것 (토큰만 낭비)</li>
+<li><strong>분량</strong> — 200줄 이내를 목표로. 세션 시작마다 통째로 로드되기 때문입니다.</li>
+</ul>
+<p>특정 워크플로에만 필요한 긴 지침은 CLAUDE.md 대신 <strong>스킬</strong>로 빼세요. 스킬은 필요할 때만 불려오므로 평소엔 컨텍스트를 차지하지 않습니다.</p>
+<h3 id="세션을-넘나들며-이어가기-rename-clear-resume">② 세션을 넘나들며 이어가기: <code>/rename</code> → <code>/clear</code> → <code>/resume</code></h3>
+<p>공식 권장 패턴입니다.</p>
+<ol type="1">
+<li><strong><code>/rename 결제모듈-리팩터링</code></strong> — 지금 세션에 알아볼 수 있는 이름을 붙입니다.</li>
+<li><strong><code>/clear</code></strong> — 다른 작업으로 넘어가며 컨텍스트를 비웁니다.</li>
+<li><strong><code>/resume</code></strong> — 나중에 이름으로 찾아 원래 대화를 그대로 되살립니다.</li>
+</ol>
+<p>이름을 안 붙이면 나중에 세션 목록에서 어느 게 뭐였는지 찾기가 매우 어렵습니다. <strong><code>/clear</code> 전에 <code>/rename</code></strong>을 습관으로 만드세요.</p>
+<h3 id="핸드오프-노트-가장-확실한-연속성-장치">③ 핸드오프 노트 — 가장 확실한 연속성 장치</h3>
+<p>세션을 끝내기 전에 Claude에게 "다음 세션의 나에게 남기는 메모"를 파일로 쓰게 하는 방법입니다. 압축이든 <code>/clear</code>든 무관하게 살아남습니다.</p>
+<p>세션 종료 전에 입력</p>
+<p>지금까지의 작업을 <code>NOTES.md</code>에 이어쓰기로 정리해줘. 형식은:<br />
+① 오늘 완료한 것 ② 확정된 결정과 그 이유 ③ 아직 미해결인 문제와 지금까지 시도한 것 ④ 다음에 할 일 순서<br />
+나중에 이 파일만 읽고도 바로 이어서 작업할 수 있을 만큼 구체적으로 써줘.</p>
+<p>다음 세션을 열면 이렇게 시작합니다.</p>
+<p>다음 세션 첫 프롬프트</p>
+<p><code>NOTES.md</code>를 읽고 마지막 작업 상태를 파악한 다음, "다음에 할 일" 첫 번째 항목부터 시작해줘. 시작하기 전에 네가 이해한 현재 상황을 3줄로 요약해서 확인받아줘.</p>
+<p>이 방식은 컨텍스트를 거의 쓰지 않으면서(파일 하나만 읽음) 며칠에 걸친 작업의 맥락을 완벽하게 이어줍니다.</p>
+<h3 id="rewind-잘못된-방향으로-갔을-때">④ <code>/rewind</code> — 잘못된 방향으로 갔을 때</h3>
+<p>Claude가 엉뚱한 방향으로 가고 있다면 즉시 <kbd>Esc</kbd>로 멈추고 <code>/rewind</code>로 코드와 대화를 이전 체크포인트로 되돌리세요. 잘못된 경로를 계속 끌고 가면 컨텍스트만 오염되고 비용도 늘어납니다. Esc 두 번 연타로도 같은 효과를 냅니다.</p>
+<p><code>/rewind</code>는 특정 지점부터 <strong>요약</strong>하는 기능도 함께 제공하므로, "여기부터 여기까지는 쓸모없었으니 정리해줘" 같은 용도로도 쓸 수 있습니다.</p>
+<h2 id="애초에-덜-쓰게-만든다">4애초에 덜 쓰게 만든다</h2>
+<p>압축을 잘하는 것보다, 처음부터 컨텍스트를 적게 쓰는 게 낫습니다.</p>
+<h3 id="서브에이전트에게-큰-읽기를-떠넘기기">서브에이전트에게 큰 읽기를 떠넘기기</h3>
+<p>가장 효과가 큰 기법입니다. 로그 분석, 자료 조사, 대량 파일 탐색처럼 결과물은 짧은데 과정이 방대한 작업은 서브에이전트에게 맡기세요. <strong>파일 내용은 서브에이전트의 컨텍스트에 쌓이고, 내 대화에는 요약본만 돌아옵니다.</strong></p>
+<p>이렇게 요청하세요</p>
+<p>서브에이전트를 하나 띄워서 <code>src/</code> 전체에서 인증 관련 코드가 어디에 흩어져 있는지 조사하게 하고, 파일 경로와 각각의 역할만 목록으로 요약해서 받아줘. 파일 내용 전문은 가져오지 마.</p>
+<p>공식 문서 예시 기준으로, 서브에이전트가 6,100토큰을 읽어도 내 대화에는 420토큰짜리 결과만 돌아옵니다.</p>
+<h3 id="그-외-실효성-높은-방법들">그 외 실효성 높은 방법들</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">방법</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>구체적으로 요청하기</strong></td>
+<td style="text-align: left;">"코드베이스 개선해줘"는 광범위한 스캔을 유발합니다. "<code>auth.ts</code>의 로그인 함수에 입력 검증을 추가해줘"처럼 좁히면 읽는 파일이 확 줍니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>플랜 모드 활용</strong></td>
+<td style="text-align: left;">큰 변경 전에 <code>/plan</code>(또는 Shift+Tab)으로 계획부터 세우면, 방향이 틀려서 전부 다시 하는 낭비를 막습니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>안 쓰는 MCP 서버 끄기</strong></td>
+<td style="text-align: left;"><code>/mcp</code>로 목록을 보고 지금 안 쓰는 서버는 비활성화. <code>gh</code>, <code>aws</code> 같은 CLI 도구가 있으면 MCP보다 컨텍스트 효율이 좋습니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>모델 맞추기</strong></td>
+<td style="text-align: left;">대부분의 작업은 Sonnet으로 충분합니다. Opus는 복잡한 설계 판단에만. <code>/model</code>로 전환.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>추론 강도 조절</strong></td>
+<td style="text-align: left;">단순 작업은 <code>/effort low</code>로 낮추면 사고 토큰(출력 토큰으로 과금)을 아낍니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>긴 지침은 스킬로</strong></td>
+<td style="text-align: left;">CLAUDE.md는 항상 로드되지만, 스킬은 호출될 때만 로드됩니다. PR 리뷰 절차 같은 특수 워크플로는 스킬로 빼세요.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>훅으로 전처리</strong></td>
+<td style="text-align: left;">1만 줄 로그를 Claude가 다 읽는 대신, 훅이 <code>ERROR</code>만 grep해서 넘겨주면 수만 토큰이 수백 토큰이 됩니다.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>점진적으로 검증</strong></td>
+<td style="text-align: left;">한 파일 쓰고 테스트, 또 한 파일. 문제를 싸게 잡을 수 있을 때 잡습니다.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>캐시 미스에 주의</strong> 한 시간 넘게 자리를 비웠다가 돌아와 첫 메시지를 보내면, 캐시가 만료되어 전체 대화를 처음부터 다시 처리합니다. 오래 자리를 비울 예정이라면 미리 <code>/compact</code>로 줄여두거나, 세션 이름을 붙이고 <code>/clear</code>하는 편이 낫습니다.</p>
+<h2 id="실전-워크플로-하루-루틴">5실전 워크플로 (하루 루틴)</h2>
+<p>위 내용을 하나의 흐름으로 엮으면 이렇게 됩니다.</p>
+<h3 style="margin-top:0;" id="작업-시작">작업 시작</h3>
+<ol type="1">
+<li><strong>새 작업이면 <code>/clear</code>부터.</strong> 이전 작업의 잔재가 남아있으면 매 메시지마다 낭비됩니다.</li>
+<li><strong>이어지는 작업이면 <code>/resume</code>으로 그 세션을 되살리거나, <code>NOTES.md</code>를 읽히고 시작.</strong></li>
+<li><strong>큰 작업이면 <code>/plan</code>으로 계획부터.</strong> 승인 후 실행에 들어갑니다.</li>
+</ol>
+<h3 id="작업-중">작업 중</h3>
+<ol type="1">
+<li><strong>상태줄로 사용률을 흘끗흘끗 확인.</strong> 없으면 가끔 <code>/context</code>.</li>
+<li><strong>방대한 조사가 필요하면 서브에이전트에게.</strong></li>
+<li><strong>방향이 틀렸다 싶으면 즉시 Esc → <code>/rewind</code>.</strong> 끌고 가지 않습니다.</li>
+<li><strong>70%를 넘기면, 다음 작업 단계로 넘어가기 직전에 지시문을 붙여 <code>/compact</code>.</strong></li>
+</ol>
+<h3 id="작업-마무리">작업 마무리</h3>
+<ol type="1">
+<li><strong><code>NOTES.md</code>에 핸드오프 노트를 쓰게 한다.</strong></li>
+<li><strong>재사용할 규칙이 생겼다면 <code>/memory</code>로 CLAUDE.md에 반영.</strong></li>
+<li><strong><code>/rename</code>으로 세션에 이름을 붙인다.</strong></li>
+<li><strong><code>/clear</code>로 정리하고 마친다.</strong> (또는 그냥 종료)</li>
+</ol>
+<p>주기적으로 <code>/usage</code>를 열어 무엇이 사용량을 잡아먹는지 확인하고, <code>/doctor</code>로 안 쓰는 스킬·MCP·플러그인의 컨텍스트 비용을 점검하세요.</p>
+<h2 id="복사해서-쓰는-프롬프트-모음">6복사해서 쓰는 프롬프트 모음</h2>
+<p>그대로 붙여넣어 쓸 수 있는 문장들입니다.</p>
+<p>압축 전 — 무엇을 남길지 지정</p>
+<p>/compact 지금까지 확정한 설계 결정과 그 이유, 현재 미해결 이슈와 시도해본 방법, 다음 단계 계획은 반드시 남겨줘. 중간에 실패한 시도의 상세 로그와 이미 해결된 오류 메시지는 버려도 돼.</p>
+<p>압축 전 — 스스로 판단하게 시키기</p>
+<p>지금 컨텍스트 상황을 <code>/context</code>로 확인하고, 지금 압축하는 게 좋을지 판단해줘. 압축이 필요하다면 이 대화에서 반드시 보존해야 할 항목을 먼저 목록으로 뽑아 보여주고, 내 확인을 받은 뒤에 그 항목을 지시문에 넣어 압축해줘.</p>
+<p>세션 종료 전 — 핸드오프 노트 작성</p>
+<p><code>NOTES.md</code>에 오늘 작업을 이어쓰기로 정리해줘. ① 완료한 것 ② 확정된 결정과 이유 ③ 미해결 문제와 시도한 방법 ④ 다음에 할 일 순서. 이 파일만 읽고도 바로 이어서 작업할 수 있을 만큼 구체적으로.</p>
+<p>다음 세션 시작 — 맥락 복원</p>
+<p><code>NOTES.md</code>와 <code>CLAUDE.md</code>를 읽고 현재 상황을 파악해줘. 파악한 내용을 3줄로 요약해서 나에게 확인받은 다음, "다음에 할 일" 첫 항목부터 시작해줘.</p>
+<p>조사를 서브에이전트에게 위임</p>
+<p>이건 파일을 많이 읽어야 하는 작업이니 서브에이전트에게 맡겨줘. 결과는 핵심 요약과 파일 경로 목록만 받아오고, 파일 전문은 내 대화로 가져오지 마.</p>
+<p>컨텍스트 다이어트 요청</p>
+<p><code>/context all</code>로 지금 무엇이 컨텍스트를 많이 쓰는지 확인하고, 줄일 수 있는 항목 세 가지를 구체적인 조치와 함께 제안해줘.</p>
+<p>장기 작업 규칙을 못 박기</p>
+<p>앞으로 이 프로젝트에서 작업할 때 지킬 규칙을 <code>CLAUDE.md</code>에 정리해줘. 압축 시 보존할 항목, 작업 완료 시 <code>NOTES.md</code>를 갱신하는 절차, 큰 조사는 서브에이전트에게 위임한다는 원칙을 포함해줘. 200줄을 넘기지 마.</p>
+<h2 id="이런-습관은-피하세요">7이런 습관은 피하세요</h2>
+<p><strong>하루 종일 한 세션을 열어두고 온갖 작업을 다 하기</strong> 무관한 이전 작업이 매 메시지마다 함께 전송되어 사용량이 눈덩이처럼 불어납니다. 작업이 바뀌면 <code>/clear</code>.</p>
+<p><strong>자동 압축이 걸릴 때까지 방치하기</strong> 무엇을 남길지 Claude가 추측합니다. 정작 필요한 결정 사항이 사라지고 나서야 알게 됩니다.</p>
+<p><strong>작업 도중에 압축하기</strong> 한창 파악한 내용이 요약되어 흐려집니다. 압축은 <strong>한 단계를 끝내고 다음 단계로 넘어가는 경계</strong>에서.</p>
+<p><strong>중요한 결정을 대화 속에만 남겨두기</strong> 대화는 압축 대상입니다. 잊히면 안 되는 것은 <code>CLAUDE.md</code>나 <code>NOTES.md</code>처럼 <strong>파일</strong>에 적어두세요.</p>
+<p><strong>CLAUDE.md에 모든 걸 다 적기</strong> 세션 시작마다 통째로 로드됩니다. 200줄을 넘기지 말고, 특수 워크플로는 스킬로 분리하세요.</p>
+<p><strong>이름 없이 <code>/clear</code>하기</strong> 나중에 <code>/resume</code>으로 찾을 수가 없습니다. <code>/rename</code> 먼저.</p>
+<h2 id="최종-체크리스트">8최종 체크리스트</h2>
+<h3 style="margin-top:0;" id="한-번만-해두면-되는-세팅">한 번만 해두면 되는 세팅</h3>
+<ul>
+<li><code>/statusline 컨텍스트 사용률을 진행 막대로 보여줘</code> — 상시 계기판 설치</li>
+<li><code>/init</code> → <code>/memory</code> — 프로젝트 CLAUDE.md 정비 (200줄 이내)</li>
+<li>CLAUDE.md에 <code># Compact instructions</code> 섹션 추가</li>
+<li><code>/autocompact</code>로 자동 압축 시점을 내 스타일에 맞게 조정</li>
+<li><code>/mcp</code>로 안 쓰는 서버 정리, <code>/doctor</code>로 전체 점검</li>
+</ul>
+<h3 id="매-세션마다-하는-것">매 세션마다 하는 것</h3>
+<ul>
+<li>새 작업 → <code>/clear</code>로 시작</li>
+<li>큰 작업 → <code>/plan</code>으로 계획부터</li>
+<li>방대한 조사 → 서브에이전트에게 위임</li>
+<li>사용률 70% 근처 → 지시문 붙여 <code>/compact</code></li>
+<li>방향 이탈 → Esc → <code>/rewind</code></li>
+<li>종료 전 → <code>NOTES.md</code> 갱신 → <code>/rename</code> → <code>/clear</code></li>
+</ul>
+<p><strong>한 문장으로 요약하면</strong> <strong>계기판을 켜두고(<code>/statusline</code>), 경계에서 내가 먼저 지시문을 붙여 압축하고(<code>/compact ~</code>), 잊히면 안 되는 것은 파일에 적는다(<code>CLAUDE.md</code>, <code>NOTES.md</code>).</strong></p>
+<p>Claude Code 공식 문서(context-window, costs, commands, statusline) 기준으로 2026년 8월에 정리했습니다.<br />
+버전 업데이트에 따라 명령어 동작과 임계값은 달라질 수 있습니다.</p>
+<p>#md #가이드 #완벽 #세션 #한도</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/세션-한도를-미리-알고-스스로-압축하고-대화의-맥락을-끊기지-않게-이어가는-법-2.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

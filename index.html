@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyRemember</title>
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">대시보드</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<p class="page-lede">vault 노트 14개 · 태그 16개 · <span id="dash-date-desc"></span></p>
+
+<div class="dashboard-layout">
+  <div class="dashboard-main">
+    <div class="card">
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-label">오늘 할 일</span>
+          <span class="stat-value"><span id="stat-todo">0</span>건</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">vault 노트</span>
+          <span class="stat-value">14개</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">태그</span>
+          <span class="stat-value">16개</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 할 일 -->
+    <div class="card">
+      <div class="card-head">
+        <p class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          할 일 <span id="todo-date-label" class="muted"></span>
+        </p>
+        <div class="todo-toolbar">
+          <button id="todo-prev-day" type="button" class="btn-icon" aria-label="전날">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <input id="todo-date-picker" type="date">
+          <button id="todo-next-day" type="button" class="btn-icon" aria-label="다음날">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <button id="todo-today-btn" type="button" class="btn btn-secondary">오늘</button>
+        </div>
+      </div>
+      <div id="todo-list"></div>
+      <p id="todo-empty" class="empty-hint" style="display:none;">이 날짜에 등록된 할 일이 없습니다.</p>
+      <div class="todo-add-row">
+        <input id="todo-input" type="text" placeholder="할 일 추가…">
+        <button id="todo-add" class="btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          추가
+        </button>
+      </div>
+      <p class="card-note">이 목록은 vault 마크다운과는 별개로, 이 브라우저의 localStorage에만 저장됩니다.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <p class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><path d="M7.5 7.5 10.5 10.5M13.5 13.5 16.5 16.5M16.5 7.5 13.5 10.5M7.5 16.5 10.5 13.5"/></svg>
+          노트 그래프 <span class="muted">태그 기준</span>
+        </p>
+      </div>
+      <svg id="graph-widget-svg" class="graph-widget-svg"></svg>
+      <p id="graph-widget-empty" class="empty-hint" style="display:none;">아직 노트가 없습니다.</p>
+      <div id="graph-widget-legend" class="graph-legend"></div>
+      <p id="graph-widget-hint" class="empty-hint" style="display:none;padding:.4rem 0 0;text-align:left;"></p>
+      <p class="card-note">같은 태그의 노트, <code>[[링크]]</code>로 연결된 노트끼리 가까이 모입니다. 점을 클릭하면 해당 노트로 이동합니다.</p>
+    </div>
+
+
+    <!-- 메모 -->
+    <div class="card memo-card">
+      <div class="card-head">
+        <p class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          빠른 메모
+        </p>
+      </div>
+      <textarea id="memo" placeholder="나중에 daily note나 topic으로 옮길 메모를 여기 잠깐 적어두세요…"></textarea>
+      <div class="memo-foot">
+        <span id="memo-status" class="memo-status"></span>
+        <button id="memo-save" class="btn">저장</button>
+      </div>
+      <p class="card-note">vault 파일에는 저장되지 않는 브라우저 스크래치 메모입니다. 정식 기록은 daily note나 topic 노트에 남기세요.</p>
+    </div>
+  </div>
+
+  <div class="dashboard-side">
+    <div class="card side-tabs-card">
+      <div class="side-tabs" role="tablist">
+        <button type="button" class="side-tab active" data-tab="gmail" role="tab" aria-selected="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Gmail
+        </button>
+        <button type="button" class="side-tab" data-tab="calendar" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+          캘린더
+        </button>
+        <button type="button" class="side-tab" data-tab="stocks" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          관심종목
+        </button>
+        <button type="button" class="side-tab" data-tab="youtube" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+          유튜브
+        </button>
+      </div>
+
+      <div class="side-tab-panel" data-panel="gmail">
+        <p class="muted side-tab-summary">받은편지함 3639통 · 안읽음 2504통</p>
+        <div>
+          <div class="mail-row">
+            <span class="avatar">S</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">Samsung</span>
+                <span class="mail-time">08/11 10:40</span>
+              </span>
+              <span class="mail-subject">(광고) 갤럭시탭 S11 + 네이버플러스 1개월 | 신학기 준비 완벽패키지</span>
+              <span class="mail-snippet">학용품 구매보다 똑똑한 신학기 준비, 지금 시작</span>
+            </span>
+          </div>
+          <div class="mail-row">
+            <span class="avatar">Y</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">YES24</span>
+                <span class="mail-time">08/10 15:39</span>
+              </span>
+              <span class="mail-subject">(광고) 2026년 2학기 완벽 공략! 예스24 문구 10%할인 + 사은품 행사 오픈</span>
+              <span class="mail-snippet">예스24배송 2학기 스터디 완벽 공략! 10% 할인 쿠폰과 사은품 받아가세요</span>
+            </span>
+          </div>
+          <div class="mail-row">
+            <span class="avatar">F</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">Flow</span>
+                <span class="mail-time">08/10 15:06</span>
+              </span>
+              <span class="mail-subject">(광고) 플로우 AI Work OS 8월 한정 — 14일 무료체험</span>
+              <span class="mail-snippet">프로젝트·메신저부터 문서·목표·AI까지 한곳에서 씁니다</span>
+            </span>
+          </div>
+          <div class="mail-row">
+            <span class="avatar">신</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">신한은행</span>
+                <span class="mail-time">08/10 07:34</span>
+              </span>
+              <span class="mail-subject">[신한은행] 직불카드 회원약관 개정(26.9.10)</span>
+              <span class="mail-snippet">직불카드 서비스 종료 및 회원 탈회 처리시 통지 절차 마련</span>
+            </span>
+          </div>
+          <div class="mail-row">
+            <span class="avatar">Q</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">QNAP</span>
+                <span class="mail-time">08/10 06:36</span>
+              </span>
+              <span class="mail-subject">QNAP eNews Issue 63 | New Solutions, Major Updates &amp; Security Tips</span>
+              <span class="mail-snippet">QNAP just earned Japan&#39;s JC-STAR Level 1 certification</span>
+            </span>
+          </div>
+          <div class="mail-row">
+            <span class="avatar">Y</span>
+            <span class="mail-body">
+              <span class="mail-top">
+                <span class="mail-from">YES24</span>
+                <span class="mail-time">08/09 23:41</span>
+              </span>
+              <span class="mail-subject">(광고) 한 권의 책이 나만의 이야기가 되는 순간 [다락편지 1406호]</span>
+              <span class="mail-snippet">책을 읽는 것보다 어려운 건 그 책에 대해 글을 쓰는 일인 것 같습니다</span>
+            </span>
+          </div>
+        </div>
+        <p class="card-note">Gmail 검색 API로 가져온 스냅샷 (2026-08-11 기준, INBOX 라벨 스레드 수)</p>
+      </div>
+
+      <div class="side-tab-panel" data-panel="calendar" hidden>
+        <p class="muted side-tab-summary">이번 주 일정 · 캘린더 6개 (08/11 ~ 08/17)</p>
+        <div>
+          <div class="day-sep">08/11 (화)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">Y</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">10:30-13:00</span>
+              <span class="event-title">[장익선] 멘토링 미팅(이대경)</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+            <div class="event-row">
+              <span class="event-time">15:00-18:00</span>
+              <span class="event-title">[장익선]조명업계 대표님 간담회</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+            <div class="event-row">
+              <span class="event-time">18:30-21:00</span>
+              <span class="event-title">[장익선] 1830 조명모임</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+          <div class="day-sep">08/12 (수) · 오늘</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">Y</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">06:30-07:00</span>
+              <span class="event-title">조성현 아침에 깨우기</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">10:30-11:30</span>
+              <span class="event-title">[장익선] 1030 안전관리파트 이정규 님 미팅</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+            <div class="event-row">
+              <span class="event-time">16:30-20:00</span>
+              <span class="event-title">[장익선]RAPA 저녁미팅</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+            <div class="event-row">
+              <span class="event-time">17:00-21:45</span>
+              <span class="event-title">성윤이 학원 -고등학교</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+          <div class="day-sep">08/13 (목)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">R</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">07:00-07:30</span>
+              <span class="event-title">조성현 10시 수업 깨우기</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">12:30-19:30</span>
+              <span class="event-title">근무</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">14:00-15:00</span>
+              <span class="event-title">[장익선] 방송협회 사무총장 미팅</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+          <div class="day-sep">08/14 (금)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">[백선하] 패밀리데이</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">휴</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">07:00-07:30</span>
+              <span class="event-title">성현 10시 수업 깨우기</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">08:00-12:00</span>
+              <span class="event-title">장안정) 오후 반차</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
+          <div class="day-sep">08/15 (토)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">광복절</span>
+<span class="event-cal-badge">대한민국의 휴일</span>            </div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">전기료(13.9만)</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">U</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">16:00-24:00</span>
+              <span class="event-title">근무 (익일로 이어짐)</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">21:30-22:30</span>
+              <span class="event-title">전은진 생일</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+          <div class="day-sep">08/16 (일)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">W</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">00:00-07:30</span>
+              <span class="event-title">근무 (전일 야간 연속)</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">13:00-17:00</span>
+              <span class="event-title">성윤이 학원-고등학교</span>
+<span class="event-cal-badge">조충남 개인일정</span>            </div>
+          <div class="day-sep">08/17 (월)</div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">쉬는 날 광복절</span>
+<span class="event-cal-badge">대한민국의 휴일</span>            </div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">Y</span>
+<span class="event-cal-badge">보도기술부 일정</span>            </div>
+        </div>
+        <p class="card-note">Google Calendar API로 가져온 스냅샷입니다 (2026-08-12 기준, 접근 가능한 캘린더 전체: 대한민국의 휴일·조충남 개인일정·KOBETA·보도기술부 일정에 이번 주 일정 있음 — 쌍용 프로젝트 진행 보고·2026학년 대입 전형일·경매일정·MBC 보도NPS 구축 프로젝트·MBC기술인협회·30대 MBC 방송기술인 협회는 이번 주엔 일정 없음).</p>
+      </div>
+
+      <div class="side-tab-panel" data-panel="stocks" hidden>
+        <p class="empty-hint">종목 스냅샷이 없습니다.</p>
+        <p class="card-note">실시간 시세 API가 연결돼 있지 않고, WebSearch로 두 번 조회한 코스피 지수가 서로 모순돼(6,258 vs 6,299) 신뢰할 수 없어 이번 스냅샷에는 비워둠 — scripts/build-dashboard-snapshot.py --help 참고</p>
+      </div>
+
+      <div class="side-tab-panel" data-panel="youtube" hidden>
+        <p class="empty-hint">
+          아직 유튜브 시청기록이 없습니다. <a href="https://takeout.google.com" target="_blank" rel="noopener">Google Takeout</a>에서
+          "YouTube and YouTube Music" → 기록 → <code>watch-history.json</code>을 내려받아
+          <code>scripts/webviewer/data/youtube-watch-history.json</code>에 넣고
+          <code>python3 scripts/analyze-youtube-history.py</code>를 실행하세요.
+        </p>
+      </div>
+
+      <p class="card-note" style="border-top:none;">Gmail·캘린더·관심종목·유튜브는 생성 시점의 스냅샷입니다 — 실시간 데이터가 아닙니다.</p>
+    </div>
+  </div>
+</div>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="assets/theme.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/gate-hash.js"></script>
+<script src="assets/password-gate.js"></script>
+<script src="assets/graph-data.js"></script>
+<script>window.MYREMEMBER_ROOT = "";</script>
+<script src="assets/graph-widget.js"></script>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

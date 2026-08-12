@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스킬(Skills) 추가하는 법 &amp; 직접 만드는 법 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">스킬(Skills) 추가하는 법 &amp; 직접 만드는 법</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="스킬skills-추가하는-법-직접-만드는-법">스킬(Skills) 추가하는 법 &amp; 직접 만드는 법</h1>
+<div class="wrap">
+<div class="header hero">
+<div class="eyebrow">
+<p>Claude / Cowork 사용 가이드</p>
+</div>
+<h1 id="스킬skills-추가하는-법-직접-만드는-법-1">스킬(Skills) 추가하는 법 &amp; 직접 만드는 법</h1>
+<p>Claude에게 나만의 전문 지식과 반복 업무 방식을 가르치는 기능인 “스킬”을 활성화하고, 남이 만든 스킬을 추가하고, 처음부터 직접 만드는 방법까지 한 문서에서 정리했습니다.</p>
+</div>
+<h2 id="목차">목차</h2>
+<ol type="1">
+<li><a href="#what">스킬이란 무엇인가</a></li>
+<li><a href="#enable">스킬 기능 켜기 (사전 준비)</a></li>
+<li><a href="#add-builtin">Anthropic 기본 스킬 사용하기</a></li>
+<li><a href="#add-custom">커스텀 스킬 추가하기 (업로드)</a></li>
+<li><a href="#directory">디렉터리·공유 스킬 설치하기</a></li>
+<li><a href="#record">화면 녹화로 스킬 만들기 (Mac)</a></li>
+<li><a href="#creator">/skill-creator 로 빠르게 만들기</a></li>
+<li><a href="#manual">SKILL.md 직접 작성하기</a></li>
+<li><a href="#resources">참고 파일·스크립트 추가하기</a></li>
+<li><a href="#package">패키징(ZIP)과 업로드</a></li>
+<li><a href="#test">테스트 및 디버깅</a></li>
+<li><a href="#share">동료·조직과 공유하기</a></li>
+<li><a href="#best">베스트 프랙티스</a></li>
+<li><a href="#security">보안 고려사항</a></li>
+<li><a href="#trouble">문제 해결(트러블슈팅)</a></li>
+</ol>
+<section id="what">
+<h2 id="스킬이란-무엇인가"><span class="num">1</span>스킬이란 무엇인가</h2>
+<p>스킬은 Claude에게 특정 조직이나 개인의 업무 방식에 특화된 지식과 절차를 가르치는 방법입니다.</p>
+<div class="card">
+<p>스킬은 최소 <code>SKILL.md</code> 파일 하나로 구성된 폴더입니다. 여기에는 “언제, 어떻게” 이 스킬을 사용할지에 대한 설명과 지침이 담겨 있고, 필요하면 참고 문서·템플릿·실행 스크립트도 함께 담을 수 있습니다.</p>
+<p>좋은 스킬의 조건은 다음과 같습니다.</p>
+<ul>
+<li>구체적이고 반복되는 하나의 작업을 해결한다</li>
+<li>Claude가 따라 하기 쉬운 명확한 지침을 담고 있다</li>
+<li>필요하면 예시를 포함한다</li>
+<li>“언제 사용해야 하는지”를 분명히 정의한다</li>
+<li>모든 걸 하려 하지 않고 하나의 워크플로에 집중한다</li>
+</ul>
+</div>
+<div class="badge-row">
+<p><span class="badge">Free / Pro / Max / Team / Enterprise 지원</span> <span class="badge">코드 실행 기능 필요</span> <span class="badge">Claude Code / API 베타 지원</span></p>
+</div>
+</section>
+<section id="enable">
+<h2 id="스킬-기능-켜기-사전-준비"><span class="num">2</span>스킬 기능 켜기 (사전 준비)</h2>
+<p>스킬을 쓰려면 먼저 “코드 실행 및 파일 생성” 기능이 켜져 있어야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">플랜</th>
+<th style="text-align: left;">활성화 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Free / Pro / Max</td>
+<td style="text-align: left;"><code>설정 &gt; Capabilities</code>에서 “코드 실행 및 파일 생성”을 켠다</td>
+</tr>
+<tr>
+<td style="text-align: left;">Team</td>
+<td style="text-align: left;">조직 차원에서 기본적으로 활성화되어 있음</td>
+</tr>
+<tr>
+<td style="text-align: left;">Enterprise</td>
+<td style="text-align: left;">Owner가 <code>조직 설정 &gt; Skills</code>에서 “코드 실행 및 파일 생성”과 “Skills”를 모두 켜야 함</td>
+</tr>
+</tbody>
+</table>
+<p>활성화 후에는 <code>Customize &gt; Skills</code> 메뉴에서 개별 스킬을 켜고 끌 수 있습니다.</p>
+</section>
+<section id="add-builtin">
+<h2 id="anthropic-기본-스킬-사용하기"><span class="num">3</span>Anthropic 기본 스킬 사용하기</h2>
+<p>Anthropic이 기본 제공하는 스킬들은 별도 설치 없이 코드 실행 기능만 켜져 있으면 자동으로 동작합니다. 대표적으로 다음이 있습니다.</p>
+<ul>
+<li>Excel 스프레드시트 생성 및 편집</li>
+<li>Word 문서 작성</li>
+<li>PowerPoint 프레젠테이션 생성</li>
+<li>PDF 생성 및 처리</li>
+</ul>
+<div class="tip">
+<p><strong>따로 호출할 필요가 없어요</strong> 예를 들어 “3분기 실적 PPT 만들어줘”라고 요청하면 Claude가 알아서 PowerPoint 스킬을 사용합니다.</p>
+</div>
+</section>
+<section id="add-custom">
+<h2 id="커스텀-스킬-추가하기-업로드"><span class="num">4</span>커스텀 스킬 추가하기 (업로드)</h2>
+<p>이미 만들어둔(또는 남에게 받은) 스킬 ZIP 파일을 추가하는 절차입니다.</p>
+<ol type="1">
+<li><code>claude.ai/customize/skills</code>로 이동합니다.</li>
+<li>“+” 버튼을 클릭한 뒤 “+ Create skill”을 선택합니다.</li>
+<li>“Upload a skill”을 선택합니다.</li>
+<li>스킬 폴더를 압축한 ZIP 파일을 업로드합니다.</li>
+<li>업로드된 스킬은 목록에 추가되며, 토글로 켜고 끌 수 있습니다.</li>
+</ol>
+<div class="warn">
+<p><strong>참고</strong> 개인 계정에 업로드한 커스텀 스킬은 기본적으로 나에게만 보입니다. Team/Enterprise에서 조직 전체에 배포하려면 관리자가 “Provision skills for your organization” 절차를 거쳐야 합니다.</p>
+</div>
+</section>
+<section id="directory">
+<h2 id="디렉터리공유-스킬-설치하기"><span class="num">5</span>디렉터리·공유 스킬 설치하기</h2>
+<p>Team/Enterprise 플랜에서는 스킬 목록이 세 영역으로 나뉩니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">구분</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Personal skills</td>
+<td style="text-align: left;">내가 직접 만들거나 업로드한 스킬</td>
+</tr>
+<tr>
+<td style="text-align: left;">Shared skills</td>
+<td style="text-align: left;">동료가 나에게 직접 공유한 스킬 (활성화 전엔 회색 표시)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Organization skills</td>
+<td style="text-align: left;">조직 전체에 공유되었거나 관리자가 배포한 스킬 (디렉터리에서 설치)</td>
+</tr>
+</tbody>
+</table>
+<p>Cowork에서는 좌측 사이드바의 <strong>Customize</strong> → “+” 버튼 → <strong>Skills</strong> 탭에서 원하는 스킬을 찾아 “Install”을 누르면 됩니다. 끄더라도 디렉터리에는 남아 있어 나중에 다시 설치할 수 있습니다.</p>
+</section>
+<section id="record">
+<h2 id="화면-녹화로-스킬-만들기-mac-전용"><span class="num">6</span>화면 녹화로 스킬 만들기 (Mac 전용)</h2>
+<p>직접 SKILL.md를 작성하지 않고, 화면 작업을 녹화하면 Claude가 스킬을 자동으로 만들어 줍니다. (Pro/Max/Team, Mac용 Cowork에서만 지원)</p>
+<ol type="1">
+<li>Claude for Mac을 최신 버전으로 업데이트합니다.</li>
+<li>처음 녹화 시 요청되는 macOS 권한(손쉬운 사용, 화면 기록)을 허용합니다.</li>
+<li>녹화에 담기면 안 되는 창·대화는 미리 닫아둡니다.</li>
+<li>Cowork 작성창의 “+” 버튼 → “Record a skill”, 또는 <code>Customize &gt; Skills</code> → “Add” → “Record your screen”으로 녹화를 시작합니다.</li>
+<li>평소 하던 대로 작업을 진행합니다. 마이크를 켠 채 설명을 말로 덧붙이면 더 정확한 스킬이 만들어집니다.</li>
+<li>“Done”을 누르면 Claude가 녹화를 분석해 새 스킬(또는 기존 스킬 업데이트)을 제안합니다.</li>
+<li>제안된 내용을 검토한 뒤 “Save” 또는 “Update”를 눌러 저장합니다.</li>
+</ol>
+<div class="warn">
+<p><strong>주의</strong> 녹화 중에는 화면과 음성이 모두 캡처됩니다. 비밀번호, 민감정보, 사적인 대화는 화면에 띄우지 마세요. 녹화 영상 자체는 보관되지 않지만, 스킬 생성 근거가 된 스크린샷은 해당 작업(Task) 안에 남습니다.</p>
+</div>
+</section>
+<section id="creator">
+<h2 id="skill-creator-로-빠르게-만들기"><span class="num">7</span>/skill-creator 로 빠르게 만들기</h2>
+<p>Claude Code나 Cowork가 열려 있다면 <code>/skill-creator</code>를 입력하고 원하는 작업을 설명하기만 하면 됩니다. Claude가 사용 사례를 인터뷰 형식으로 물어보고, 초안을 작성하고, 테스트 프롬프트를 생성해 직접 실행해본 뒤, 평가와 반복(iteration)까지 도와줍니다. 처음 스킬을 만들 때 가장 쉬운 경로입니다.</p>
+</section>
+<section id="manual">
+<h2 id="skill.md-직접-작성하기"><span class="num">8</span>SKILL.md 직접 작성하기</h2>
+<p>모든 스킬의 핵심은 <code>SKILL.md</code> 파일입니다. 맨 위에 YAML 형식의 메타데이터(front matter)가 있고, 그 아래 본문에 실제 지침을 마크다운으로 적습니다.</p>
+<h3 id="필수-메타데이터">필수 메타데이터</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">필드</th>
+<th style="text-align: left;">설명</th>
+<th style="text-align: left;">제한</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">사람이 읽기 쉬운 스킬 이름 (예: Brand Guidelines)</td>
+<td style="text-align: left;">최대 64자</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>description</code></td>
+<td style="text-align: left;">무엇을 하는 스킬이고 언제 사용해야 하는지 설명. Claude가 이 필드를 보고 스킬 호출 여부를 결정하므로 가장 중요함</td>
+<td style="text-align: left;">최대 200자</td>
+</tr>
+</tbody>
+</table>
+<h3 id="선택-메타데이터">선택 메타데이터</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">필드</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>dependencies</code></td>
+<td style="text-align: left;">스킬 실행에 필요한 패키지 (예: <code>python&gt;=3.8, pandas&gt;=1.5.0</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disable-model-invocation</code></td>
+<td style="text-align: left;">Claude가 자동으로 호출하지 못하게 하고, 사용자가 명시적으로 호출할 때만 동작하게 설정</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>allowed-tools</code></td>
+<td style="text-align: left;">스킬이 사용할 수 있는 도구 범위 제한</td>
+</tr>
+</tbody>
+</table>
+<div class="tip">
+<p><strong>왜 description이 가장 중요한가</strong> 메타데이터는 “점진적 공개(progressive disclosure)” 구조의 첫 단계입니다. Claude는 전체 내용을 다 읽기 전에 먼저 name/description만 보고 이 스킬이 지금 상황에 필요한지 판단합니다. description이 모호하면 필요한 순간에도 스킬이 호출되지 않을 수 있습니다.</p>
+</div>
+<h3 id="예시-skill.md-전체-구조">예시: SKILL.md 전체 구조</h3>
+<pre><code>---
+name: Brand Guidelines
+description: Apply Acme Corp brand guidelines to presentations and documents, including official colors, fonts, and logo usage.
+---
+
+## Overview
+This skill provides Acme Corp&#39;s official brand guidelines for creating
+consistent, professional materials. Apply these standards whenever
+creating presentations, documents, or marketing materials that
+represent Acme Corp.
+
+## Brand Colors
+- Primary: #FF6B35 (Coral)
+- Secondary: #004E89 (Navy Blue)
+- Accent: #F7B801 (Gold)
+- Neutral: #2E2E2E (Charcoal)
+
+## Typography
+Headers: Montserrat Bold
+Body text: Open Sans Regular
+- H1: 32pt / H2: 24pt / Body: 11pt
+
+## Logo Usage
+Always use the full-color logo on light backgrounds, and the white
+logo on dark backgrounds. Maintain minimum 0.5 inch spacing around
+the logo.
+
+## When to Apply
+Apply these guidelines whenever creating PowerPoint presentations,
+external Word documents, marketing materials, or client reports.
+
+## Resources
+See the resources folder for logo files and font downloads.</code></pre>
+<p>실제로는 <code>name</code>/<code>description</code>이 YAML front matter(<code>---</code> 사이)에 들어가야 하며, 위 예시의 <code>## Metadata</code> 섹션처럼 본문에 풀어 적는 방식도 통용되지만 공식 스펙 기준으로는 YAML front matter가 표준 형식입니다.</p>
+</section>
+<section id="resources">
+<h2 id="참고-파일스크립트-추가하기"><span class="num">9</span>참고 파일·스크립트 추가하기</h2>
+<h3 id="참고-문서레퍼런스">참고 문서(레퍼런스)</h3>
+<p>SKILL.md 하나에 다 담기엔 정보가 너무 많을 때(예: 특정 상황에만 필요한 세부 규칙), 같은 폴더 안에 <code>REFERENCE.md</code> 같은 추가 파일을 만들고 SKILL.md 본문에서 이를 언급하면, Claude가 필요한 순간에 해당 파일을 불러와 참고합니다.</p>
+<h3 id="실행-스크립트">실행 스크립트</h3>
+<p>더 복잡한 스킬은 실행 가능한 코드 파일을 함께 담아 Claude가 직접 실행하도록 할 수 있습니다. 예: Python(pandas, numpy, matplotlib), JavaScript/Node.js, 파일 편집·시각화용 패키지 등. Claude와 Claude Code는 스킬 로드 시 PyPI·npm 같은 표준 저장소에서 패키지를 설치할 수 있지만, API 스킬 환경에서는 런타임 중 추가 패키지 설치가 불가능하므로 모든 의존성을 사전에 포함해야 합니다.</p>
+<div class="file-tree">
+<p>my-skill/ ├── SKILL.md ← 필수, 메타데이터 + 지침 ├── REFERENCE.md ← 선택, 세부 참고 자료 ├── scripts/ │ └── generate_report.py └── resources/ ├── logo.png └── template.pptx</p>
+</div>
+</section>
+<section id="package">
+<h2 id="패키징zip과-업로드"><span class="num">10</span>패키징(ZIP)과 업로드</h2>
+<p>스킬 폴더가 완성되면 다음 규칙에 따라 압축합니다.</p>
+<ol type="1">
+<li>폴더 이름이 스킬 이름과 일치하는지 확인합니다.</li>
+<li>해당 폴더를 통째로 ZIP으로 압축합니다.</li>
+<li>ZIP 안에는 폴더가 최상위 루트로 들어가야 하며, 파일들이 ZIP 루트에 바로 흩어져 있으면 안 됩니다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">올바른 구조</th>
+<th style="text-align: left;">잘못된 구조</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">my-skill.zip └── my-skill/ ├── SKILL.md └── resources/</td>
+<td style="text-align: left;">my-skill.zip ├── SKILL.md └── resources/</td>
+</tr>
+</tbody>
+</table>
+<p>이후 <code>Customize &gt; Skills</code> → “+” → “+ Create skill” → “Upload a skill”에서 이 ZIP 파일을 업로드하면 됩니다. (4장 참고)</p>
+</section>
+<section id="test">
+<h2 id="테스트-및-디버깅"><span class="num">11</span>테스트 및 디버깅</h2>
+<h3 id="업로드-전-체크리스트">업로드 전 체크리스트</h3>
+<ul>
+<li>SKILL.md 내용이 명확한지 다시 읽어본다</li>
+<li>description이 “언제 이 스킬을 써야 하는지”를 정확히 반영하는지 확인한다</li>
+<li>본문에서 언급한 참고 파일이 실제로 올바른 위치에 존재하는지 확인한다</li>
+<li>예시 프롬프트로 Claude가 스킬을 실제로 호출하는지 테스트한다</li>
+</ul>
+<h3 id="업로드-후-체크리스트">업로드 후 체크리스트</h3>
+<ol type="1">
+<li><code>Customize &gt; Skills</code>에서 스킬을 켠다.</li>
+<li>스킬이 트리거되어야 할 여러 프롬프트로 테스트해본다.</li>
+<li>Claude의 thinking(추론 과정)을 확인해 실제로 스킬을 로드했는지 검토한다.</li>
+<li>기대한 대로 호출되지 않으면 description을 다시 다듬는다.</li>
+</ol>
+<div class="tip">
+<p><strong>채팅에서 바로 수정하기</strong> 스킬 파일을 대화창 옆에서 바로 열어 수정할 수 있습니다. 바꾸고 싶은 텍스트를 선택하고 “Edit with Claude”를 눌러 요청하면 됩니다. 파일이 여러 개면 각 파일에 수정 요청을 남겨두고 한꺼번에 보내면 Claude가 한 번에 반영합니다.</p>
+</div>
+</section>
+<section id="share">
+<h2 id="동료조직과-공유하기"><span class="num">12</span>동료·조직과 공유하기</h2>
+<p>Team/Enterprise 플랜에서는 내가 만든 스킬을 특정 동료 또는 조직 전체와 공유할 수 있습니다. (기본적으로 꺼져 있으며, 관리자가 <code>조직 설정 &gt; Skills</code>에서 공유 기능을 켜야 “Share” 버튼이 나타납니다.)</p>
+<ol type="1">
+<li><code>Customize &gt; Skills</code>에서 내가 만든 스킬을 연다.</li>
+<li>“Share”를 클릭한다.</li>
+<li>“특정 인원”(이름/이메일 입력) 또는 “조직 전체” 중 대상을 선택한다.</li>
+<li>“Share”를 눌러 완료한다.</li>
+</ol>
+<p>공유받은 스킬은 보기 전용입니다. 상대는 켜고 사용할 수 있지만 내용을 수정할 수는 없으며, 원본이 업데이트되면 자동으로 최신 버전이 반영됩니다.</p>
+</section>
+<section id="best">
+<h2 id="베스트-프랙티스"><span class="num">13</span>베스트 프랙티스</h2>
+<div class="card">
+<ul>
+<li><strong>작게, 하나에 집중:</strong> 하나의 거대한 스킬보다 목적별로 나뉜 여러 스킬이 더 잘 조합됩니다.</li>
+<li><strong>설명을 명확히:</strong> description은 Claude가 호출 여부를 판단하는 유일한 근거입니다. 구체적으로 적으세요.</li>
+<li><strong>단순하게 시작:</strong> 복잡한 스크립트보다 먼저 마크다운 지침만으로 시작하고, 필요하면 나중에 확장하세요.</li>
+<li><strong>예시를 넣기:</strong> 입력/출력 예시를 SKILL.md에 포함하면 “성공한 결과물”이 무엇인지 Claude가 더 잘 이해합니다.</li>
+<li><strong>점진적으로 테스트:</strong> 한 번에 크게 만들지 말고, 변경할 때마다 테스트하세요.</li>
+<li><strong>스킬끼리 조합:</strong> 스킬은 서로를 명시적으로 참조할 수는 없지만, Claude가 필요에 따라 여러 스킬을 자동으로 함께 사용합니다.</li>
+<li><strong>공개 표준 참고:</strong> <a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>의 Agent Skills 스펙을 따르면 다른 플랫폼과도 호환되는 스킬을 만들 수 있습니다.</li>
+</ul>
+</div>
+</section>
+<section id="security">
+<h2 id="보안-고려사항"><span class="num">14</span>보안 고려사항</h2>
+<div class="warn">
+<p><strong>신뢰할 수 있는 출처의 스킬만 사용하세요</strong></p>
+<ul>
+<li>SKILL.md에 스크립트를 추가할 때는 신중하게 검토하세요.</li>
+<li>API 키, 비밀번호 등 민감정보를 코드에 하드코딩하지 마세요.</li>
+<li>다운로드한 스킬은 활성화하기 전에 반드시 내용을 검토하세요.</li>
+<li>외부 서비스 접근이 필요하면 적절한 MCP 연결을 사용하세요.</li>
+</ul>
+<p>가장 큰 위험은 <strong>프롬프트 인젝션</strong>(Claude가 의도치 않은 동작을 하도록 조작당하는 것)과 악성 패키지·데이터로 인한 <strong>정보 유출</strong>입니다. 동료가 공유한 스킬이라도 신뢰도가 낮다면 번들된 파일, 의존 패키지, 외부 네트워크 접속 여부를 먼저 확인하세요.</p>
+</div>
+</section>
+<section id="trouble">
+<h2 id="문제-해결트러블슈팅"><span class="num">15</span>문제 해결(트러블슈팅)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">증상</th>
+<th style="text-align: left;">확인할 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Skills 메뉴가 안 보임</td>
+<td style="text-align: left;">Settings &gt; Capabilities(개인) 또는 조직 설정 &gt; Skills(Team/Enterprise)에서 코드 실행이 켜져 있는지 확인</td>
+</tr>
+<tr>
+<td style="text-align: left;">Claude가 스킬을 사용하지 않음</td>
+<td style="text-align: left;">스킬이 켜져 있는지, description이 사용 시점을 명확히 설명하는지, 지침이 명확한지 확인. “내 브랜드 가이드 스킬로 만들어줘”처럼 명시적으로 요청해보기</td>
+</tr>
+<tr>
+<td style="text-align: left;">업로드 실패</td>
+<td style="text-align: left;">ZIP 용량 초과, 폴더명과 스킬명 불일치, SKILL.md 누락, 이름/설명에 허용되지 않는 문자 사용 여부 확인</td>
+</tr>
+<tr>
+<td style="text-align: left;">스킬이 회색으로 비활성 표시</td>
+<td style="text-align: left;">조직 차원 또는 개인 설정에서 코드 실행이 꺼져 있을 수 있음. 관리자 또는 본인 설정 확인</td>
+</tr>
+<tr>
+<td style="text-align: left;">Share 버튼이 안 보임</td>
+<td style="text-align: left;">조직 owner가 “Share with organization” 또는 “Skill sharing” 토글을 켜야 함</td>
+</tr>
+</tbody>
+</table>
+</section>
+<p>작성 기준: Claude Help Center “How to create custom skills”, “Use skills in Claude” (2026년 8월 확인 기준, 기능은 업데이트될 수 있습니다)<br />
+참고 예시 스킬: <a href="https://github.com/anthropics/skills/tree/main/skills" target="_blank" rel="noopener">github.com/anthropics/skills</a></p>
+</div>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/스킬skills-추가하는-법--직접-만드는-법-2.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

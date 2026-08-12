@@ -1,0 +1,2788 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D 프린터 완벽 가이드 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 02:21 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">3D 프린터 완벽 가이드</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/3D프린트.html">#3D프린트</a><a class="tag" href="../tags/가이드.html">#가이드</a><a class="tag" href="../tags/완벽.html">#완벽</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="d-프린터-완벽-가이드">3D 프린터 완벽 가이드</h1>
+<h2 id="초급자부터-중급자까지-모든-정보-통합-문서">초급자부터 중급자까지 모든 정보 통합 문서</h2>
+<p><strong>작성일:</strong> 2026년 8월 8일<br />
+<strong>목적:</strong> 3D 프린터 구매 및 모델링 학습을 위한 종합 가이드</p>
+<hr />
+<h2 id="목차">📋 목차</h2>
+<ol type="1">
+<li><a href="#-프린터-모델-비교">프린터 모델 비교</a></li>
+<li><a href="#-뱀부랩-a1-vs-a1-mini-상세-비교">뱀부랩 A1 vs A1 Mini 상세 비교</a></li>
+<li><a href="#-악세사리-완벽-가이드">악세사리 완벽 가이드</a></li>
+<li><a href="#-구매-비용-계산">구매 비용 계산</a></li>
+<li><a href="#-3d-모델링-프로그램">3D 모델링 프로그램</a></li>
+<li><a href="#-stl-모델-다운로드-사이트">STL 모델 다운로드 사이트</a></li>
+<li><a href="#-한국-커뮤니티-정보">한국 커뮤니티 정보</a></li>
+<li><a href="#-학습-로드맵">학습 로드맵</a></li>
+<li><a href="#-3d-모델링-설계-팁">3D 모델링 설계 팁</a></li>
+<li><a href="#-프린터-유지보수-가이드">프린터 유지보수 가이드</a></li>
+<li><a href="#-최종-정리">최종 정리</a></li>
+</ol>
+<hr />
+<h1 id="프린터-모델-비교">🖨️ 프린터 모델 비교</h1>
+<h2 id="뱀부랩-bambu-lab---초급중급자-최강-추천">뱀부랩 (Bambu Lab) - 초급/중급자 최강 추천</h2>
+<h3 id="a1-mini-초급자-최고-선택">A1 Mini (초급자 최고 선택)</h3>
+<p><strong>기본 사양</strong> - 빌드 볼륨: 180 × 180 × 180mm (가장 작음) - 정가: 약 57-58만원 (글로벌: $399) - 중고 가격: 30-40만원대 추정</p>
+<p><strong>기계적 특성</strong> - 프레임: 카르테시안 (베드 슬링어 방식) - X축: 직선 레일 - Y축: 연마봉 + 금속롤러 - Z축: 싱글 가이드 + 리드스크류</p>
+<p><strong>온도 및 성능</strong> - 핫엔드 최고 온도: 300°C - 베드 최고 온도: 80°C - 최대 인쇄 속도: 500mm/s - 첫 출력 성공률: 95%+ (플러그앤플레이)</p>
+<p><strong>특징 및 장점</strong> - ✅ 가장 조용한 모델 (다른 프린터보다 훨씬 조용함) - ✅ 매우 간편한 셋업 (20분 내) - ✅ 자동 베드 레벨링 (고주파 와전류 센서) - ✅ 능동 유량 보정 (필라멘트 자동 조정) - ✅ 진동 공명 제거 (울렁거림 없음) - ✅ 컴팩트 사이즈 - ✅ 터치스크린: 2.4인치 (응답성 좋음)</p>
+<p><strong>제한사항</strong> - ❌ 베드 온도 80°C (PLA 위주, ABS 비권장) - ❌ 출력 공간 상대적으로 작음 - ❌ 고온 필라멘트 대응 제한</p>
+<p><strong>필요 작업 공간:</strong> 약 60 × 40cm (매우 컴팩트)</p>
+<p><strong>추천 대상</strong> - 공간이 부족한 사용자 - PLA 중심으로 작은 물건 출력 - 저렴한 입문 모델 원하는 사람 - 조용한 환경 필요한 경우</p>
+<hr />
+<h3 id="a1-성능과-크기의-균형">A1 (성능과 크기의 균형)</h3>
+<p><strong>기본 사양</strong> - 빌드 볼륨: 256 × 256 × 256mm (정방형 10인치) - 정가: 약 60-61만원 (글로벌: $399) - 중고 가격: 40-50만원대 추정</p>
+<p><strong>기계적 특성</strong> - 프레임: 카르테시안 (베드 슬링어 방식) - X축: 직선 레일 (A1 Mini와 동일) - Y축: 연마봉 + 금속롤러 (A1 Mini와 동일) - Z축: <strong>듀얼 연마봉</strong> + 리드스크류 (더 견고함!)</p>
+<p><strong>온도 및 성능</strong> - 핫엔드 최고 온도: 300°C - 베드 최고 온도: 100°C ⭐ (고온 재료 지원) - 최대 인쇄 속도: 500mm/s - 출력 품질: <strong>P1S 동급</strong> 🌟</p>
+<p><strong>특징 및 장점</strong> - ✅ A1 Mini의 모든 장점 + 큰 출력 공간 - ✅ 높은 베드 온도 (고온 필라멘트 가능) - ✅ 더 견고한 Z축 구조 (듀얼 가이드) - ✅ 큰 터치스크린: 3.5인치 (조작 더 편함) - ✅ PEI 마그네틱 베드 기본 제공 - ✅ 퀵스왑 노즐 시스템 (10초에 교체)</p>
+<p><strong>제한사항</strong> - 상대적으로 더 큼 (90 × 60cm 공간 필요) - 초기 생산분 리콜 이슈 (현재 해결됨)</p>
+<p><strong>필요 작업 공간:</strong> 약 90 × 60cm</p>
+<p><strong>추천 대상</strong> - 큰 모델 자주 출력 - ABS, PETG 등 다양한 재료 사용 - 추가 비용 약간 더 쓸 수 있는 사람 - 산업/전문가 용도</p>
+<hr />
+<h3 id="a1-combo-멀티컬러-완전판">A1 Combo (멀티컬러 완전판)</h3>
+<p><strong>기본 사양</strong> - A1 + AMS Lite 포함 - 정가: 약 56만원 (글로벌: $559) - 단품 A1(60만원) + Lite(27만원) = 87만원과 비교하면 <strong>매우 저렴!</strong></p>
+<p><strong>추천 이유</strong> - 멀티컬러 원한다면 <strong>Combo가 훨씬 싼</strong> ✅ - 4가지 색상 자동 전환 - 모든 A1 장점 포함</p>
+<hr />
+<h3 id="p1s-고급-기능이-필요할-때">P1S (고급 기능이 필요할 때)</h3>
+<p><strong>기본 사양</strong> - 빌드 볼륨: 256 × 256 × 256mm - 특징: <strong>밀폐형 구조</strong> (인클로저 내장) - 가격대: A1보다 약간 비쌈 - 용도: 고온 필라멘트, 고급 재료 인쇄</p>
+<p><strong>특징</strong> - ✅ 완전 밀폐형 (ABS, ASA 안정적 인쇄) - ✅ 탄소 필터 기본 포함 - ✅ 전문가용 기능</p>
+<hr />
+<h3 id="p2s-최신-고급형---강력-추천">P2S (최신 고급형 - 강력 추천) 🌟</h3>
+<p><strong>기본 사양</strong> - 빌드 볼륨: 256 × 256 × 256mm (P1S와 동일) - 정가: 약 79만원 (한국) - 특징: <strong>최신 기술 적용</strong>, <strong>20색 멀티컬러 가능</strong> - 프레임: <strong>CoreXY 구조</strong> (P1S보다 향상) - 용도: 다양한 고급 재료, 대량 멀티컬러 인쇄</p>
+<p><strong>기계적 특성</strong> - 빌드 플레이트: 256 × 256 × 256mm - 프레임: CoreXY (고속 정밀 구조) - 밀폐형 챔버: 자동 순환 환기 시스템 - 터치스크린: 대형 (직관적 조작)</p>
+<p><strong>온도 및 성능</strong> - 핫엔드 최고 온도: 300°C (표준) - 베드 최고 온도: 100°C - 최대 인쇄 속도: 매우 빠름 (자세한 수치는 공식 스펙 참조) - 출력 품질: <strong>P1S 수준 이상</strong></p>
+<p><strong>특징 및 장점</strong> - ✅ <strong>최대 20색 멀티컬러</strong> (AMS 2 Pro 4개 + AMS HT 4개 연결) - AMS Lite 1개로는 4색만 가능하지만, 전용 AMS 2 Pro로 확장 가능 - ✅ 완전 밀폐형 (ABS, ASA, PA 등 모든 고온 재료 지원) - ✅ 자동 환기 시스템 (온도 자동 조절) - ✅ 탄소 필터 기본 포함 (악취 제거) - ✅ 내장 카메라 (모니터링, 실패 감지) - ✅ H2D 노즐 호환 (다양한 크기/종류 선택 가능) - ✅ RFID 자동 감지 시스템 - ✅ 고급 안정화 기술 적용 - ✅ 최신 뱀부랩 기술 모두 탑재</p>
+<p><strong>지원 필라멘트</strong> - PLA, PETG, TPU, PC, ABS, ASA 등 <strong>모든 재료</strong> 완벽 지원</p>
+<p><strong>호환성</strong> - ✅ AMS 2 Pro와의 최고 호환성 - ✅ Bambu Studio 완전 통합 - ⚠️ A1 노즐과는 호환 안 됨 (H2D 노즐만 호환)</p>
+<p><strong>제한사항</strong> - 가격이 높음 (약 80만원) - 공간 더 필요 (챔버형)</p>
+<p><strong>필요 작업 공간:</strong> 약 100 × 60cm 이상</p>
+<p><strong>추천 대상</strong> - 🌟 다양한 색상 많이 사용하는 사람 (20색!) - 🌟 ABS, ASA 등 고온 재료 자주 사용 - 🌟 전문적 수준의 출력 품질 원함 - 🌟 장시간 안정적 인쇄 필요 - 🌟 예산이 충분한 프로 사용자</p>
+<p><strong>P1S vs P2S 차이점</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>P1S</th>
+<th>P2S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>약 100만원</td>
+<td>약 79만원</td>
+</tr>
+<tr>
+<td><strong>기술</strong></td>
+<td>기존 기술</td>
+<td>최신 기술</td>
+</tr>
+<tr>
+<td><strong>AMS 호환성</strong></td>
+<td>기본 AMS</td>
+<td>AMS 2 Pro 최적화</td>
+</tr>
+<tr>
+<td><strong>멀티컬러</strong></td>
+<td>4색 (Lite)</td>
+<td>20색 (최대)</td>
+</tr>
+<tr>
+<td><strong>환기 시스템</strong></td>
+<td>기본형</td>
+<td>자동 순환형</td>
+</tr>
+<tr>
+<td><strong>출력 품질</strong></td>
+<td>우수</td>
+<td>매우 우수</td>
+</tr>
+<tr>
+<td><strong>노즐 호환성</strong></td>
+<td>P1S 전용</td>
+<td>H2D 호환</td>
+</tr>
+</tbody>
+</table>
+<p><strong>팁</strong>: P2S는 P1S보다 가격이 저렴하면서 <strong>최신 기술</strong>을 모두 적용한 모델입니다. AMS 2 Pro와 함께 사용하면 매우 강력합니다.</p>
+<hr />
+<h2 id="크리얼리티-creality---저가형-옵션">크리얼리티 (Creality) - 저가형 옵션</h2>
+<h3 id="ender-3-v3-se">Ender 3 V3 SE</h3>
+<p><strong>사양</strong> - 빌드 볼륨: 220 × 220 × 250mm - 정가: 30-40만원대 (예상) - 최대 속도: 250mm/s - 자동 레벨링: CR Touch 센서</p>
+<p><strong>특징</strong> - ✅ 가장 저렴한 옵션 - ✅ 기본 기능 충실 - ❌ 자동화 기능 제한적</p>
+<p><strong>추천 대상:</strong> 극단적으로 저예산인 경우</p>
+<hr />
+<h3 id="ender-3-v3-ke-상위-모델">Ender 3 V3 KE (상위 모델)</h3>
+<p><strong>차이점</strong> - 최대 속도: 500mm/s (V3 SE의 2배) - WiFi 지원 - 더 빠른 고속 인쇄</p>
+<hr />
+<h2 id="프루사-prusa---프리미엄-고품질">프루사 (Prusa) - 프리미엄 고품질</h2>
+<h3 id="original-prusa-i3-mk3s">Original Prusa i3 MK3S+</h3>
+<p><strong>사양</strong> - 빌드 볼륨: 210 × 250 × 210mm - 조립 완성품: 약 111만원 ($999) - 조립 키트: 약 83만원 ($749) - 중고 가격: 70-85만원 추정</p>
+<p><strong>특징</strong> - ✅ <strong>세계 최초 삼축 자동 교정</strong> - ✅ 마그네틱 플렉스 베드 - ✅ 필라멘트 자동 감지 - ✅ 장기 지원 가능 (커뮤니티 활발) - ❌ 가격이 높음 - ❌ 조립 모델은 시간이 많이 걸림</p>
+<p><strong>추천 대상:</strong> 최고 품질을 추구하는 사람 (예산 충분할 때)</p>
+<hr />
+<h1 id="뱀부랩-a1-vs-a1-mini-상세-비교">📊 뱀부랩 A1 vs A1 Mini 상세 비교</h1>
+<h2 id="핵심-사양-비교">핵심 사양 비교</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>A1 Mini</th>
+<th>A1</th>
+<th>승자</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>출력 크기</strong></td>
+<td>180³mm</td>
+<td>256³mm</td>
+<td>A1 (큰 물건)</td>
+</tr>
+<tr>
+<td><strong>정가</strong></td>
+<td>58만원</td>
+<td>61만원</td>
+<td>비슷함</td>
+</tr>
+<tr>
+<td><strong>베드 온도</strong></td>
+<td>80°C</td>
+<td>100°C</td>
+<td>A1 (고온 재료)</td>
+</tr>
+<tr>
+<td><strong>터치스크린</strong></td>
+<td>2.4인치</td>
+<td>3.5인치</td>
+<td>A1 (조작성)</td>
+</tr>
+<tr>
+<td><strong>소음</strong></td>
+<td>⭐⭐⭐⭐⭐ 최조용</td>
+<td>⭐⭐⭐</td>
+<td>Mini (차이 많음)</td>
+</tr>
+<tr>
+<td><strong>작업 공간</strong></td>
+<td>60×40cm 작음</td>
+<td>90×60cm 넓음</td>
+<td>A1 (융통성)</td>
+</tr>
+<tr>
+<td><strong>구동 복잡도</strong></td>
+<td>심플함</td>
+<td>더 견고함</td>
+<td>A1 (신뢰성)</td>
+</tr>
+<tr>
+<td><strong>ABS 출력</strong></td>
+<td>❌ 비권장</td>
+<td>✅ 가능</td>
+<td>A1 (재료 범위)</td>
+</tr>
+<tr>
+<td><strong>첫 세팅 시간</strong></td>
+<td>20분</td>
+<td>20분</td>
+<td>동일</td>
+</tr>
+<tr>
+<td><strong>성공률</strong></td>
+<td>95%+</td>
+<td>95%+</td>
+<td>동일</td>
+</tr>
+</tbody>
+</table>
+<h2 id="상황별-선택-가이드">상황별 선택 가이드</h2>
+<h3 id="a1-mini를-선택해야-할-때"><strong>A1 Mini를 선택해야 할 때</strong></h3>
+<p>✅ 책상 위나 좁은 공간에 놓을 것<br />
+✅ PLA 주로 인쇄 (소형 피규어, 액세서리)<br />
+✅ 조용한 환경 중요 (사무실, 침실)<br />
+✅ 가족과 함께 있는 곳<br />
+✅ 최저 비용 추구</p>
+<p><strong>사용 예시:</strong> 책꽂이, 탁상용 피규어, 케이블 홀더, 선글라스 거치대</p>
+<h3 id="a1을-선택해야-할-때"><strong>A1을 선택해야 할 때</strong></h3>
+<p>✅ 10cm 이상의 큰 모델 자주 출력<br />
+✅ ABS, PETG 등 다양한 재료 사용 계획<br />
+✅ 베드 온도 안정성 중요<br />
+✅ 터치스크린 큰 것 편함<br />
+✅ 산업/프로토타입용</p>
+<p><strong>사용 예시:</strong> 기계 부품, 기계식 키보드, 대형 모형, 함, 대형 거치대</p>
+<hr />
+<h1 id="악세사리-완벽-가이드">🛠️ 악세사리 완벽 가이드</h1>
+<h2 id="ams-lite-자동-멀티컬러-시스템">1. AMS Lite (자동 멀티컬러 시스템)</h2>
+<h3 id="개요">개요</h3>
+<p><strong>용도:</strong> 4가지 색상 필라멘트 자동 교체</p>
+<h3 id="상세-정보">상세 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>27-30만원 (글로벌 $269)</td>
+</tr>
+<tr>
+<td><strong>호환성</strong></td>
+<td>A1, A1 Mini (1개만 연결 가능)</td>
+</tr>
+<tr>
+<td><strong>색상 수</strong></td>
+<td>최대 4가지</td>
+</tr>
+<tr>
+<td><strong>주요 기능</strong></td>
+<td>RFID 인식, 자동 백업, 색상 자동 전환</td>
+</tr>
+<tr>
+<td><strong>호환 필라멘트</strong></td>
+<td>PLA, PETG, TPU, PVA</td>
+</tr>
+<tr>
+<td><strong>폐기물</strong></td>
+<td>색상 변경마다 약간의 폐기물 발생</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="필요한-경우">필요한 경우</h3>
+<ul>
+<li>✅ 멀티컬러 출력 원할 때 필수</li>
+<li>✅ 색상 변경을 자동화하고 싶을 때</li>
+<li>✅ 생산성 향상 원할 때</li>
+</ul>
+<h3 id="불필요한-경우">불필요한 경우</h3>
+<ul>
+<li>❌ 단색만 인쇄할 예정</li>
+<li>❌ 색상 변경 수동으로 괜찮을 때</li>
+</ul>
+<h3 id="가격-팁">💰 가격 팁</h3>
+<pre><code>A1 단품 구매 + AMS Lite 별도: 60만 + 30만 = 90만원
+A1 Combo (A1 + Lite): 56만원
+→ Combo가 34만원 저렴! (Combo 강력 추천)</code></pre>
+<hr />
+<h2 id="ams-2-pro-건조-기능-포함">2. AMS 2 Pro (건조 기능 포함)</h2>
+<h3 id="개요-1">개요</h3>
+<p><strong>용도:</strong> 필라멘트 자동 건조 + 멀티컬러</p>
+<h3 id="상세-정보-1">상세 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>약 50만원대 (예상)</td>
+</tr>
+<tr>
+<td><strong>주요 기능</strong></td>
+<td>AMS Lite + 필라멘트 건조</td>
+</tr>
+<tr>
+<td><strong>건조 방식</strong></td>
+<td>액티브 에어벤트 (30% 더 빠름)</td>
+</tr>
+<tr>
+<td><strong>A1 호환성</strong></td>
+<td>2025년 3분기 예정 ⏳</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="필요한-경우-1">필요한 경우</h3>
+<ul>
+<li>✅ PETG, ASA, ABS 등 습도 민감 재료 사용</li>
+<li>✅ 한국의 습한 환경 (특히 여름)</li>
+<li>✅ 멀티컬러 + 건조 한 번에 해결</li>
+</ul>
+<h3 id="출시-시기">출시 시기</h3>
+<pre><code>현재: P2S, X1C만 지원
+2025년 Q3: A1 시리즈 지원 예정
+→ A1 사용자는 기다려야 함</code></pre>
+<hr />
+<h2 id="필라멘트-드라이박스-습도-관리">3. 필라멘트 드라이박스 (습도 관리)</h2>
+<h3 id="개요-2">개요</h3>
+<p><strong>용도:</strong> 필라멘트 보관 중 습도 제어</p>
+<h3 id="가격대별-옵션">가격대별 옵션</h3>
+<h4 id="저가형-1만원-미만">저가형 (1만원 미만)</h4>
+<pre><code>지퍼백 + 실리카겔 조합
+장점: 저렴, 효과 있음
+단점: 수동으로 관리해야 함</code></pre>
+<h4 id="프리미엄-10-15만원">프리미엄 (10-15만원)</h4>
+<pre><code>자동 습도 제어 드라이박스
+장점: 자동화, 편함, 장기 보관 가능
+단점: 비쌈</code></pre>
+<h3 id="필요성-평가">필요성 평가</h3>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>필요성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLA만 사용</td>
+<td>⭐⭐ (선택사항)</td>
+</tr>
+<tr>
+<td>PETG, ASA 사용</td>
+<td>⭐⭐⭐⭐⭐ (필수)</td>
+</tr>
+<tr>
+<td>한국 기후</td>
+<td>⭐⭐⭐⭐ (추천)</td>
+</tr>
+<tr>
+<td>여름철 습도 높을 때</td>
+<td>⭐⭐⭐⭐⭐ (필수)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="추천">추천</h3>
+<p>초보자는 지퍼백으로 시작 → 필요시 업그레이드</p>
+<hr />
+<h2 id="엔클로저-밀폐-케이스">4. 엔클로저 (밀폐 케이스)</h2>
+<h3 id="개요-3">개요</h3>
+<p><strong>용도:</strong> 프린터 주변 밀폐 공간 생성</p>
+<h3 id="상세-정보-2">상세 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>30-50만원 (서드파티)</td>
+</tr>
+<tr>
+<td><strong>공식 제품</strong></td>
+<td>없음 (A1은 개방형 설계)</td>
+</tr>
+<tr>
+<td><strong>인기 제품</strong></td>
+<td>FNATR, Ikea DIY</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐ (선택사항)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="기능">기능</h3>
+<ul>
+<li>✅ 먼지 차단</li>
+<li>✅ LED 조명 추가 가능</li>
+<li>✅ 온도 안정화</li>
+<li>✅ 카메라 마운트</li>
+</ul>
+<h3 id="필요한-경우-2">필요한 경우</h3>
+<ul>
+<li>✅ ABS, ASA, PA 등 고온 필라멘트 인쇄</li>
+<li>✅ 먼지 많은 환경</li>
+<li>✅ 온도 제어 필요</li>
+</ul>
+<h3 id="불필요한-경우-1">불필요한 경우</h3>
+<ul>
+<li>❌ PLA만 사용</li>
+<li>❌ 공간 부족</li>
+<li>❌ 뱀부랩 공식 비권장 (개방형 설계이므로)</li>
+</ul>
+<h3 id="중요">⚠️ 중요</h3>
+<p>통풍/환기 필수 (악성 가스 배출)</p>
+<hr />
+<h2 id="노즐-소모품">5. 노즐 (소모품)</h2>
+<h3 id="개요-4">개요</h3>
+<p><strong>용도:</strong> 호환 사이즈별 인쇄 속도/해상도 조절</p>
+<h3 id="기본-정보">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기본 제공</strong></td>
+<td>0.4mm 노즐 1개</td>
+</tr>
+<tr>
+<td><strong>교체 가격</strong></td>
+<td>각 3-5만원</td>
+</tr>
+<tr>
+<td><strong>교체 주기</strong></td>
+<td>500-1000시간 사용 후</td>
+</tr>
+<tr>
+<td><strong>교체 시간</strong></td>
+<td>약 10초 (A1의 퀵스왑 시스템)</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="노즐-종류">노즐 종류</h3>
+<table>
+<thead>
+<tr>
+<th>크기</th>
+<th>용도</th>
+<th>출력 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0.2mm</strong></td>
+<td>매우 미세한 디테일</td>
+<td>매우 느림</td>
+</tr>
+<tr>
+<td><strong>0.4mm</strong></td>
+<td>표준 (기본)</td>
+<td>표준</td>
+</tr>
+<tr>
+<td><strong>0.6mm</strong></td>
+<td>빠른 인쇄</td>
+<td>빠름</td>
+</tr>
+<tr>
+<td><strong>0.8mm</strong></td>
+<td>초고속</td>
+<td>매우 빠름</td>
+</tr>
+</tbody>
+</table>
+<h3 id="추천-구성">추천 구성</h3>
+<pre><code>처음: 0.4mm (기본)
+추가 구매: 0.6mm, 0.8mm (속도 실험용)
+총 비용: 기본 + 8만원 정도</code></pre>
+<hr />
+<h2 id="빌드-플레이트">6. 빌드 플레이트</h2>
+<h3 id="개요-5">개요</h3>
+<p><strong>용도:</strong> 출력물 접착, 표면 질감 선택</p>
+<h3 id="정보">정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기본 제공</strong></td>
+<td>PEI 마그네틱 플레이트 1개</td>
+</tr>
+<tr>
+<td><strong>가격</strong></td>
+<td>5-7만원 (추가 구매)</td>
+</tr>
+<tr>
+<td><strong>종류</strong></td>
+<td>듀얼 텍스처 (무광/유광)</td>
+</tr>
+<tr>
+<td><strong>교체 시기</strong></td>
+<td>심하게 긁혔을 때 (1년 이상)</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐ (나중에)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="추천-1">추천</h3>
+<ul>
+<li>처음은 기본 플레이트로 충분</li>
+<li>1년 후 여분 1개 구비</li>
+<li>다양한 텍스처 원할 때 추가 구매</li>
+</ul>
+<hr />
+<h2 id="필라멘트-bambu-lab-공식">7. 필라멘트 (Bambu Lab 공식)</h2>
+<h3 id="정보-1">정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>2-4만원/kg (일반보다 비쌈)</td>
+</tr>
+<tr>
+<td><strong>종류</strong></td>
+<td>PLA, PETG, TPU, 카본강화 등</td>
+</tr>
+<tr>
+<td><strong>주요 기능</strong></td>
+<td>RFID 자동 인식, 설정 자동화</td>
+</tr>
+<tr>
+<td><strong>필요성 평가</strong></td>
+<td>⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="추천-2">추천</h3>
+<pre><code>1단계: 공식 필라멘트로 품질 검증
+2단계: 써드파티 필라멘트로 비용 절감 (잘 작동함)</code></pre>
+<hr />
+<h2 id="카메라-조명">8. 카메라 &amp; 조명</h2>
+<h3 id="카메라">카메라</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기본 제공</strong></td>
+<td>내장 카메라 (0.5 FPS, 저화질)</td>
+</tr>
+<tr>
+<td><strong>추가 카메라</strong></td>
+<td>약 5만원</td>
+</tr>
+<tr>
+<td><strong>필요성</strong></td>
+<td>⭐ (기본으로 충분)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="조명">조명</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>3-5만원</td>
+</tr>
+<tr>
+<td><strong>필요성</strong></td>
+<td>⭐ (엔클로저 있을 때만)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="결론">결론</h3>
+<p>기본 카메라로 충분. 필요시 나중에 업그레이드</p>
+<hr />
+<h2 id="악세사리-우선순위">악세사리 우선순위</h2>
+<h3 id="필수-처음부터">📌 필수 (처음부터)</h3>
+<pre><code>❌ 없음 - 기본 구성으로 완전히 사용 가능</code></pre>
+<h3 id="강력-추천-첫-2-3개월">💪 강력 추천 (첫 2-3개월)</h3>
+<pre><code>1순위: AMS Lite - 멀티컬러 원하면 필수 (30만원)
+2순위: 필라멘트 드라이박스 - 습도 관리 (1-15만원)
+3순위: 노즐 세트 - 장기 사용 대비 (8만원)</code></pre>
+<h3 id="선택사항-나중에-필요하면">🎯 선택사항 (나중에 필요하면)</h3>
+<pre><code>4순위: 엔클로저 - ABS 등 고온 재료 시 (30-50만원)
+5순위: 탄소 필터 - 악취 제거 (2-5만원)
+6순위: 추가 플레이트 - 현재 것 닳으면 (5-7만원)
+7순위: 카메라 업그레이드 - 기본으로 충분 (5만원)</code></pre>
+<hr />
+<h1 id="구매-비용-계산">💰 구매 비용 계산</h1>
+<h2 id="a1-mini-기본-구성-단색만">A1 Mini 기본 구성 (단색만)</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>가격</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1 Mini 정가</td>
+<td>58만원</td>
+<td>기본 기계</td>
+</tr>
+<tr>
+<td>필라멘트 드라이박스</td>
+<td>1만원</td>
+<td>지퍼백 + 실리카겔</td>
+</tr>
+<tr>
+<td>여분 노즐 (2개)</td>
+<td>8만원</td>
+<td>0.6mm, 0.8mm</td>
+</tr>
+<tr>
+<td><strong>1차 총액</strong></td>
+<td><strong>67만원</strong></td>
+<td><strong>초급자 충분</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a1-mini-combo-멀티컬러">A1 Mini Combo (멀티컬러)</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>가격</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1 Mini Combo</td>
+<td>58만원</td>
+<td>기본 + AMS Lite</td>
+</tr>
+<tr>
+<td>여분 노즐</td>
+<td>8만원</td>
+<td>선택사항</td>
+</tr>
+<tr>
+<td>드라이박스</td>
+<td>1만원</td>
+<td>선택사항</td>
+</tr>
+<tr>
+<td><strong>1차 총액</strong></td>
+<td><strong>58-67만원</strong></td>
+<td><strong>멀티컬러 완벽</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a1-전체-프리미엄-구성">A1 전체 프리미엄 구성</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>가격</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1 Combo</td>
+<td>56만원</td>
+<td>프린터 + AMS Lite</td>
+</tr>
+<tr>
+<td>엔클로저</td>
+<td>45만원</td>
+<td>ABS 인쇄</td>
+</tr>
+<tr>
+<td>탄소 필터</td>
+<td>5만원</td>
+<td>악취 제거</td>
+</tr>
+<tr>
+<td>프리미엄 드라이박스</td>
+<td>10만원</td>
+<td>자동 습도 관리</td>
+</tr>
+<tr>
+<td>추가 플레이트</td>
+<td>7만원</td>
+<td>백업용</td>
+</tr>
+<tr>
+<td><strong>2차 총액</strong></td>
+<td><strong>123만원</strong></td>
+<td><strong>거의 완벽한 셋업</strong></td>
+</tr>
+<tr>
+<td>AMS 2 Pro (미래)</td>
+<td>50만원</td>
+<td>2025년 Q3 이후</td>
+</tr>
+<tr>
+<td><strong>최종 총액</strong></td>
+<td><strong>약 173만원</strong></td>
+<td><strong>완전 프로 셋업</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="비용별-추천-조합">비용별 추천 조합</h2>
+<h3 id="극저예산-58만원">1️⃣ 극저예산 (58만원)</h3>
+<pre><code>A1 Mini 단품만
+- 최소한의 투자
+- 기본 설정으로 시작
+- 필요하면 나중에 추가</code></pre>
+<h3 id="입문자-추천-67만원">2️⃣ 입문자 추천 (67만원) 🌟</h3>
+<pre><code>A1 Mini + 기본 악세사리
+- 드라이박스 (1만원)
+- 여분 노즐 (8만원)
+- 초급자에게 최적</code></pre>
+<h3 id="가성비-최고-58만원">3️⃣ 가성비 최고 (58만원)</h3>
+<pre><code>A1 Mini Combo (멀티컬러)
+- 프린터 + AMS Lite
+- 따로 사면 87만원인데 56만원
+- 멀티컬러 원한다면 필수</code></pre>
+<h3 id="풍족한-예산-120-150만원">4️⃣ 풍족한 예산 (120-150만원)</h3>
+<pre><code>A1 Combo + 악세사리
+- 프린터 + AMS Lite: 56만원
+- 드라이박스: 1만원
+- 노즐 세트: 8만원
+- 엔클로저: 45만원
+- 탄소 필터: 5만원
+→ 완벽한 셋업</code></pre>
+<h3 id="고급-기능-원할-때-79만원">5️⃣ 고급 기능 원할 때 (79만원) 🌟</h3>
+<pre><code>P2S 단품
+- 최신 기술 모두 탑재
+- 20색 멀티컬러 가능
+- 모든 재료 지원 (ABS, ASA 등)
+- 1대로 충분</code></pre>
+<h3 id="프로급-멀티컬러-셋업-130만원">6️⃣ 프로급 멀티컬러 셋업 (130만원)</h3>
+<pre><code>P2S + AMS 2 Pro
+- 프린터: 79만원
+- AMS 2 Pro: 50만원 (예상)
+- 필라멘트 자동 건조
+- 20색 완벽 구성</code></pre>
+<hr />
+<h1 id="d-모델링-프로그램">🎨 3D 모델링 프로그램</h1>
+<h2 id="프로그램-선택-가이드">프로그램 선택 가이드</h2>
+<h3 id="초급자라면-tinkercad-추천">초급자라면? → <strong>TinkerCAD</strong> 추천</h3>
+<h3 id="중급자라면-fusion-360-추천">중급자라면? → <strong>Fusion 360</strong> 추천</h3>
+<h3 id="고급자라면-blender-또는-fusion-360">고급자라면? → <strong>Blender</strong> 또는 <strong>Fusion 360</strong></h3>
+<h3 id="빠르게-만들고-싶다면-meshy-ai">빠르게 만들고 싶다면? → <strong>Meshy</strong> (AI)</h3>
+<hr />
+<h2 id="tinkercad-가장-추천">1. TinkerCAD ⭐⭐⭐⭐⭐ (가장 추천)</h2>
+<h3 id="기본-정보-1">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>무료</td>
+</tr>
+<tr>
+<td><strong>접근성</strong></td>
+<td>⭐⭐⭐⭐⭐ (매우 쉬움)</td>
+</tr>
+<tr>
+<td><strong>플랫폼</strong></td>
+<td>브라우저 기반 (설치 불필요)</td>
+</tr>
+<tr>
+<td><strong>학습 난이도</strong></td>
+<td>⭐ (1시간이면 시작 가능)</td>
+</tr>
+<tr>
+<td><strong>추천 대상</strong></td>
+<td>3D 프린팅 입문자</td>
+</tr>
+<tr>
+<td><strong>웹사이트</strong></td>
+<td>https://www.tinkercad.com</td>
+</tr>
+</tbody>
+</table>
+<h3 id="장점">장점</h3>
+<pre><code>✅ 브라우저에서 바로 사용 가능 (설치 불필요)
+✅ 블록식 인터페이스 (드래그 &amp; 드롭)
+✅ 완전 초보자도 30분이면 기본 사용 가능
+✅ STL 내보내기 매우 간단
+✅ 무료 (오토데스크 제공)
+✅ 한국어 지원
+✅ 튜토리얼 풍부</code></pre>
+<h3 id="단점">단점</h3>
+<pre><code>❌ 고급 기능 부족
+❌ 정교한 모델은 어려움
+❌ 텍스처, 렌더링 없음
+❌ 복잡한 설계는 제한적</code></pre>
+<h3 id="사용-예시">사용 예시</h3>
+<pre><code>🎯 만들 수 있는 것:
+- 상자, 홀더 (케이블, 선글라스, 사무용품)
+- 간단한 피규어
+- 기본 기계 부품
+- 책꽂이, 선반
+- 액세서리, 괄호</code></pre>
+<h3 id="학습-순서">학습 순서</h3>
+<pre><code>1단계: 튜토리얼 보기 (30분)
+2단계: 간단한 상자 만들어보기 (1시간)
+3단계: 홀더류 만들어보기 (2-3시간)
+→ 기본 마스터!</code></pre>
+<hr />
+<h2 id="fusion-360-중급-추천">2. Fusion 360 ⭐⭐⭐⭐ (중급 추천)</h2>
+<h3 id="기본-정보-2">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>무료 (개인/학생/취미용)</td>
+</tr>
+<tr>
+<td><strong>접근성</strong></td>
+<td>⭐⭐⭐ (보통 어려움)</td>
+</tr>
+<tr>
+<td><strong>플랫폼</strong></td>
+<td>클라우드 기반</td>
+</tr>
+<tr>
+<td><strong>학습 난이도</strong></td>
+<td>⭐⭐⭐ (1-2주 공부 필요)</td>
+</tr>
+<tr>
+<td><strong>추천 대상</strong></td>
+<td>정밀 부품, 엔지니어링 설계</td>
+</tr>
+<tr>
+<td><strong>웹사이트</strong></td>
+<td>https://www.autodesk.com/products/fusion-360/overview</td>
+</tr>
+</tbody>
+</table>
+<h3 id="장점-1">장점</h3>
+<pre><code>✅ 강력한 CAD 기능 (업계 표준)
+✅ 파라메트릭 설계 가능 (수정 용이)
+✅ 시뮬레이션 기능 포함
+✅ STL 내보내기 안정적
+✅ 무료 개인용 라이선스 제공
+✅ 광범위한 튜토리얼</code></pre>
+<h3 id="단점-1">단점</h3>
+<pre><code>❌ 학습 곡선이 가파름
+❌ 클라우드 기반 (인터넷 필수)
+❌ 초보자에겐 복잡함
+❌ 무료 라이선스에 제한 있음 (년 1회 갱신)</code></pre>
+<h3 id="사용-예시-1">사용 예시</h3>
+<pre><code>🎯 만들 수 있는 것:
+- 정밀 기계 부품
+- 기계식 키보드 (케이스, 스윗치 등)
+- 정밀한 함, 거치대
+- 나사산이 있는 부품
+- 맞춤형 어댑터
+- 프로토타입 설계</code></pre>
+<h3 id="학습-순서-1">학습 순서</h3>
+<pre><code>1단계: 인터페이스 이해 (1시간)
+2단계: 기본 스케치 만들기 (2시간)
+3단계: 3D 모델 익스트루드 (2시간)
+4단계: 모서리 깎기, 구멍 뚫기 (2시간)
+5단계: 복잡한 모델 시도 (며칠)
+→ 기본 마스터!</code></pre>
+<h3 id="팁">💡 팁</h3>
+<p>TinkerCAD로 먼저 배운 후 Fusion 360으로 업그레이드하면 학습이 훨씬 수월</p>
+<hr />
+<h2 id="blender-고급자용">3. Blender ⭐⭐⭐ (고급자용)</h2>
+<h3 id="기본-정보-3">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>무료 (오픈소스)</td>
+</tr>
+<tr>
+<td><strong>접근성</strong></td>
+<td>⭐ (매우 어려움)</td>
+</tr>
+<tr>
+<td><strong>플랫폼</strong></td>
+<td>로컬 설치 필요</td>
+</tr>
+<tr>
+<td><strong>학습 난이도</strong></td>
+<td>⭐⭐⭐⭐⭐ (수개월 필요)</td>
+</tr>
+<tr>
+<td><strong>추천 대상</strong></td>
+<td>복잡한 모델, 아트워크</td>
+</tr>
+<tr>
+<td><strong>웹사이트</strong></td>
+<td>https://www.blender.org</td>
+</tr>
+</tbody>
+</table>
+<h3 id="장점-2">장점</h3>
+<pre><code>✅ 매우 강력한 기능
+✅ 3D 모델링 + 렌더링 통합
+✅ 전문 수준 결과물 가능
+✅ 완전 무료 (오픈소스)
+✅ 대규모 커뮤니티</code></pre>
+<h3 id="단점-2">단점</h3>
+<pre><code>❌ 가파른 학습 곡선 (매우 어려움)
+❌ 초보자 진입 장벽 높음
+❌ 3D 프린팅보다 애니메이션/렌더링 중심
+❌ 수개월 학습 필요</code></pre>
+<h3 id="사용-예시-2">사용 예시</h3>
+<pre><code>🎯 만들 수 있는 것:
+- 복잡한 유기적 형태
+- 예술 작품
+- 정밀 조각 모델
+- 복합 기계 부품
+- 건축 모델</code></pre>
+<h3 id="추천-3">추천</h3>
+<p>3D 프린팅 초보자라면 <strong>TinkerCAD → Fusion 360</strong> 경로 추천. Blender는 필요할 때 배우기.</p>
+<hr />
+<h2 id="meshy-ai-혁신">4. Meshy ⭐⭐⭐⭐ (AI 혁신)</h2>
+<h3 id="기본-정보-4">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>무료 (월 100 크레딧), 유료 플랜</td>
+</tr>
+<tr>
+<td><strong>접근성</strong></td>
+<td>⭐⭐⭐⭐⭐ (매우 쉬움)</td>
+</tr>
+<tr>
+<td><strong>플랫폼</strong></td>
+<td>웹 기반 AI 도구</td>
+</tr>
+<tr>
+<td><strong>학습 난이도</strong></td>
+<td>⭐ (모델링 지식 불필요)</td>
+</tr>
+<tr>
+<td><strong>추천 대상</strong></td>
+<td>빠른 프로토타입, AI 활용</td>
+</tr>
+<tr>
+<td><strong>웹사이트</strong></td>
+<td>https://www.meshy.ai</td>
+</tr>
+</tbody>
+</table>
+<h3 id="특징">특징</h3>
+<pre><code>🤖 AI 기반 자동 모델 생성
+- 텍스트 설명 입력 → STL 생성
+- 이미지 업로드 → 3D 변환
+- 빠른 속도 (몇 분)
+- 모델링 지식 불필요</code></pre>
+<h3 id="장점-3">장점</h3>
+<pre><code>✅ 매우 빠름 (몇 분)
+✅ 모델링 없이 바로 생성 가능
+✅ 창의적인 아이디어 빠르게 현실화
+✅ 초보자도 프로 수준 결과물</code></pre>
+<h3 id="단점-3">단점</h3>
+<pre><code>❌ 정밀도 제한적
+❌ 세부 조정 어려움
+❌ 매우 정교한 모델은 부족
+❌ 월 크레딧 제한 (무료)</code></pre>
+<h3 id="사용-예시-3">사용 예시</h3>
+<pre><code>🎯 좋은 용도:
+- 피규어, 조각상 생성
+- 동물, 캐릭터 모델
+- 개념 프로토타입
+- 빠른 테스트
+
+❌ 부적합:
+- 정밀 기계 부품
+- 나사산 필요한 것
+- 수 mm 단위 공차</code></pre>
+<h3 id="명령어-예시">명령어 예시</h3>
+<pre><code>텍스트: &quot;귀여운 고양이 피규어&quot;
+이미지: 고양이 사진 업로드
+→ 3D 모델 자동 생성
+→ STL 다운로드
+→ 프린터에서 즉시 출력!</code></pre>
+<hr />
+<h2 id="freecad-무료-cad">5. FreeCAD (무료 CAD)</h2>
+<h3 id="기본-정보-5">기본 정보</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>가격</strong></td>
+<td>무료 (오픈소스)</td>
+</tr>
+<tr>
+<td><strong>특징</strong></td>
+<td>파라메트릭 CAD</td>
+</tr>
+<tr>
+<td><strong>추천 대상</strong></td>
+<td>정밀 기계 부품</td>
+</tr>
+</tbody>
+</table>
+<h3 id="특징-1">특징</h3>
+<pre><code>✅ Fusion 360의 무료 대체제
+✅ 공차 설계 가능
+✅ 엔지니어링 부품에 좋음
+❌ 인터페이스 복잡함</code></pre>
+<hr />
+<h2 id="프로그램-선택-결정-트리">프로그램 선택 결정 트리</h2>
+<pre><code>Q1. 모델링 경험이 있나요?
+  → 아니오 → Q2로
+  → 예 → Fusion 360 또는 Blender
+
+Q2. 빨리 만들고 싶나요?
+  → 예 → Meshy (AI) 추천
+  → 아니오 → Q3로
+
+Q3. 정밀 부품을 만들 계획인가요?
+  → 예 → Fusion 360 추천
+  → 아니오 → TinkerCAD 추천</code></pre>
+<hr />
+<h1 id="stl-모델-다운로드-사이트">🌐 STL 모델 다운로드 사이트</h1>
+<h2 id="상위-5개-사이트-순위">상위 5개 사이트 순위</h2>
+<table>
+<thead>
+<tr>
+<th>순위</th>
+<th>사이트</th>
+<th>모델 수</th>
+<th>특징</th>
+<th>추천도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Thingiverse</td>
+<td>280만+</td>
+<td>가장 큼, 커뮤니티 활발</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Printables</td>
+<td>50만+</td>
+<td>고품질, UI 좋음</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Cults3D</td>
+<td>200만+</td>
+<td>필터 좋음, 유료/무료</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>MyMiniFactory</td>
+<td>100만+</td>
+<td>미니어처 특화</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>MakerWorld</td>
+<td>많음</td>
+<td>뱀부랩 최적화</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="thingiverse-가장-크다">1. Thingiverse 🥇 (가장 크다)</h2>
+<p><strong>주소:</strong> https://www.thingiverse.com</p>
+<p><strong>특징</strong> - 280만+ STL 파일 (가장 큼) - 가장 오래된 플랫폼 - 활발한 커뮤니티</p>
+<p><strong>장점</strong></p>
+<pre><code>✅ 가장 많은 선택지
+✅ 거의 모든 것을 찾을 수 있음
+✅ 커뮤니티 활발 (댓글, 개선 사항)
+✅ 필터링 기능 우수
+✅ 사용자 평가 시스템</code></pre>
+<p><strong>단점</strong></p>
+<pre><code>❌ UI가 낡음
+❌ 로딩이 느릴 때 있음
+❌ 품질 편차 큼</code></pre>
+<p><strong>추천 대상:</strong> 가장 많은 선택지 원할 때</p>
+<p><strong>검색 팁</strong></p>
+<pre><code>예: &quot;cable holder&quot;
+    &quot;phone stand&quot;
+    &quot;desk organizer&quot;</code></pre>
+<hr />
+<h2 id="printables-품질-최고">2. Printables 🥈 (품질 최고)</h2>
+<p><strong>주소:</strong> https://www.printables.com</p>
+<p><strong>특징</strong> - 프루사 리서치에서 운영 - 고품질 모델 중심 - 깔끔한 인터페이스</p>
+<p><strong>장점</strong></p>
+<pre><code>✅ 깔끔한 UI
+✅ 고품질 모델 많음
+✅ FDM 프린터 최적화
+✅ 정기적인 디자인 콘테스트
+✅ 활발한 커뮤니티</code></pre>
+<p><strong>단점</strong></p>
+<pre><code>❌ 상대적으로 모델 수 적음 (50만+)
+❌ 모든 모델이 무료는 아님</code></pre>
+<p><strong>추천 대상:</strong> <strong>뱀부랩 사용자에게 최고</strong> 👍</p>
+<p><strong>강점:</strong> 프루사와의 호환성이 좋아 다른 프린터보다 설정이 간편</p>
+<hr />
+<h2 id="cults3d-검색-좋음">3. Cults3D 🥉 (검색 좋음)</h2>
+<p><strong>주소:</strong> https://cults3d.com</p>
+<p><strong>특징</strong> - 200만+ 모델 - 좋은 검색 및 필터 - 유료/무료 혼합</p>
+<p><strong>장점</strong></p>
+<pre><code>✅ 다양한 선택지 (200만+)
+✅ 검색 필터가 우수함
+✅ 프랑스 기반 (높은 품질 기준)
+✅ UI가 깔끔함</code></pre>
+<p><strong>단점</strong></p>
+<pre><code>❌ 일부 유료 모델
+❌ 커뮤니티 상대적으로 작음</code></pre>
+<p><strong>추천 대상:</strong> 다양한 선택지 원하면서 무료 찾을 때</p>
+<hr />
+<h2 id="myminifactory-미니어처-특화">4. MyMiniFactory (미니어처 특화)</h2>
+<p><strong>주소:</strong> https://www.myminifactory.com</p>
+<p><strong>특징</strong> - 미니어처 3D 프린팅 특화 - 높은 품질 기준 - 편한 필터</p>
+<p><strong>장점</strong></p>
+<pre><code>✅ 미니어처 품질 우수
+✅ 필터가 직관적
+✅ 작은 물건, 디테일 중요할 때 좋음</code></pre>
+<p><strong>추천 대상:</strong> 피규어, 보드게임 미니어처, 작은 공예품</p>
+<hr />
+<h2 id="makerworld-뱀부랩-공식">5. MakerWorld (뱀부랩 공식)</h2>
+<p><strong>주소:</strong> https://makerworld.com</p>
+<p><strong>특징</strong> - 뱀부랩 공식 플랫폼 - A1/A1 Mini 최적화 모델 - 활발한 뱀부랩 커뮤니티</p>
+<p><strong>장점</strong></p>
+<pre><code>✅ 뱀부랩 프린터에 최적화
+✅ 뱀부랩 작업 설정 미리 완료
+✅ 공식 지원</code></pre>
+<p><strong>추천 대상:</strong> <strong>A1/A1 Mini 사용자라면 필수</strong> 👍</p>
+<hr />
+<h2 id="보조-검색-도구">보조 검색 도구</h2>
+<h3 id="stlfinder">STLFinder</h3>
+<p><strong>주소:</strong> https://www.stlfinder.com</p>
+<p><strong>기능</strong></p>
+<pre><code>여러 사이트 한 번에 검색
+- Thingiverse
+- Printables
+- Cults3D
+- MyMiniFactory
+등 동시 검색
+
+사용법:
+1. 검색어 입력
+2. 모든 사이트에서 한 번에 결과
+3. 비교 후 다운로드</code></pre>
+<h3 id="sketchfab">Sketchfab</h3>
+<p><strong>주소:</strong> https://sketchfab.com</p>
+<p><strong>특징</strong></p>
+<pre><code>3D 모델 플랫폼 (STL 일부)
+미술, 게임 모델도 많음
+다양한 포맷 지원</code></pre>
+<hr />
+<h2 id="모델-검색-팁">모델 검색 팁</h2>
+<h3 id="검색-전략">검색 전략</h3>
+<pre><code>1단계: 영어로 검색 (더 많은 결과)
+   예: &quot;organizer&quot; 아닌 &quot;정리함&quot;
+   → &quot;organizer&quot;, &quot;box&quot;, &quot;holder&quot; 사용
+
+2단계: 구체적으로 검색
+   나쁜 예: &quot;상자&quot;
+   좋은 예: &quot;cable management box&quot;
+
+3단계: 평가 높은 것부터 보기
+   다운로드 수 많음 = 잘 작동함
+   사용자 댓글 확인</code></pre>
+<h3 id="인기-검색어">인기 검색어</h3>
+<pre><code>🎯 실용적:
+- cable holder
+- phone stand
+- desk organizer
+- storage box
+- shelf bracket
+
+🎨 장식:
+- miniature figure
+- vase
+- planter
+- photo frame
+
+⚙️ 기계:
+- mechanical gear
+- hinge
+- adaptor</code></pre>
+<hr />
+<h1 id="한국-커뮤니티-정보">🇰🇷 한국 커뮤니티 정보</h1>
+<h2 id="활발한-커뮤니티">활발한 커뮤니티</h2>
+<h3 id="클리앙---3d-메이킹-게시판-가장-추천">1. 클리앙 - 3D 메이킹 게시판 🌟 (가장 추천)</h3>
+<p><strong>주소:</strong> https://www.clien.net/service/board/cm_3dmaking</p>
+<p><strong>특징</strong> - 가장 활발한 한국 커뮤니티 - 실제 사용자들의 생생한 정보 - 전문적인 팁과 노하우</p>
+<p><strong>게시판 분류</strong> | 게시판 | 내용 | |——–|——| | <strong>3D 메이킹</strong> | 프린터 구매, 사용 팁 | | <strong>팁과 강좌</strong> | 모델링, 출력 기술 | | <strong>사용기</strong> | 프린터/악세사리 구매 후기 | | <strong>강좌/사용기</strong> | 초보자 가이드 | | <strong>아무거나질문</strong> | 질문 게시판 |</p>
+<p><strong>추천 이유</strong></p>
+<pre><code>✅ 한국인 사용자 많음
+✅ 뱀부랩, 크리얼리티 사용자 활발
+✅ 한국 가격/판매처 정보 풍부
+✅ 실제 조립, 문제 해결 경험 공유
+✅ 검색해서 이미 답변된 것 많음</code></pre>
+<p><strong>유용한 스레드 찾기</strong></p>
+<pre><code>검색창에:
+- &quot;A1&quot; 또는 &quot;A1 Mini&quot;
+- &quot;뱀부랩&quot;
+- &quot;필라멘트&quot;
+- &quot;모델링&quot;
+- &quot;설정&quot;</code></pre>
+<hr />
+<h3 id="디시인사이드---3d-프린팅-마이너-갤러리">2. 디시인사이드 - 3D 프린팅 마이너 갤러리</h3>
+<p><strong>주소:</strong> https://gall.dcinside.com/mgallery/board/lists/?id=3dprinting</p>
+<p><strong>특징</strong> - 자유로운 분위기 - 다양한 출력 결과물 공유 - 기술적 팁과 트러블 슈팅</p>
+<p><strong>추천 이유</strong></p>
+<pre><code>✅ 실제 출력 결과물 사진 많음
+✅ 자유로운 분위기에서 질문 가능
+✅ 개조, 업그레이드 정보
+✅ 재미있는 프로젝트 사례</code></pre>
+<hr />
+<h3 id="마이너-갤러리-딥한-정보">3. 마이너 갤러리 (딥한 정보)</h3>
+<p><strong>특징</strong> - 고급 사용자 정보 - 모델링 팁 - 수정/개조 기술</p>
+<hr />
+<h2 id="커뮤니티-활용-팁">커뮤니티 활용 팁</h2>
+<h3 id="좋은-질문-작성법">좋은 질문 작성법</h3>
+<pre><code>❌ 나쁜 예:
+&quot;프린터 추천해주세요&quot;
+&quot;뭐가 좋나요?&quot;
+
+✅ 좋은 예:
+&quot;공간 60x40cm, 예산 100만원, PLA 위주입니다. 
+ A1 Mini vs A1 뭐가 나을까요?&quot;
+
+&quot;A1에서 PLA 인쇄 시 자꾸 들뜹니다. 
+ 베드 온도 200도, 속도 150mm/s입니다.&quot;</code></pre>
+<h3 id="검색-먼저">검색 먼저!</h3>
+<pre><code>1. 클리앙에서 같은 질문이 이미 있나?
+   → 있으면 읽기
+   
+2. 시간이 있다면 비슷한 글들 읽기
+   → 패턴 이해, 실제 경험 학습
+
+3. 없으면 그때 질문하기
+   → 이미 있는 내용은 피하기</code></pre>
+<hr />
+<h2 id="커뮤니티-분위기">커뮤니티 분위기</h2>
+<h3 id="클리앙">클리앙</h3>
+<pre><code>장점: 전문적, 친절, 정보 풍부
+단점: 다소 무거운 분위기
+추천: 심각한 기술 문제, 상세한 조언 필요 시</code></pre>
+<h3 id="디시인사이드">디시인사이드</h3>
+<pre><code>장점: 자유로움, 재미, 다양한 프로젝트
+단점: 품질 편차
+추천: 영감, 재미있는 출력물, 개조 아이디어</code></pre>
+<hr />
+<h1 id="학습-로드맵">🎓 학습 로드맵</h1>
+<h2 id="주별-학습-계획">주별 학습 계획</h2>
+<h3 id="주차-기초-인쇄-성공-경험하기">1주차: 기초 인쇄 (성공 경험하기)</h3>
+<p><strong>목표:</strong> 다운로드한 모델을 출력해서 성공 경험</p>
+<pre><code>📌 할 일:
+1. Printables/Thingiverse에서 모델 3-5개 다운로드
+   추천: &quot;cable holder&quot;, &quot;phone stand&quot;, &quot;desk organizer&quot;
+
+2. Bambu Studio 또는 Cura로 슬라이싱
+   - 기본 설정으로 충분
+
+3. 프린터에서 출력
+   - 출력 시간: 2-6시간
+   - 바로 결과 확인 가능
+
+4. 결과 평가
+   - 성공: 매우 만족스러울 것 🎉
+   - 실패: 온라인에서 원인 찾기</code></pre>
+<p><strong>목표 달성:</strong> 프린터가 작동함을 확인 + 자신감 ✅</p>
+<hr />
+<h3 id="주차-간단한-모델링-배우기">2주차: 간단한 모델링 배우기</h3>
+<p><strong>목표:</strong> TinkerCAD로 간단한 물건 만들어보기</p>
+<pre><code>📌 할 일:
+1. TinkerCAD 튜토리얼 (30분)
+   - 기본 인터페이스
+   - 도형 추가, 삭제
+   - 크기 조정
+
+2. 간단한 프로젝트 (1-2시간)
+   - 상자 만들기
+   - 원통 추가하기
+   - 구멍 뚫기
+
+3. 출력해보기
+   - 직접 설계한 모델 인쇄
+   - 성취감 🎉
+
+예시 프로젝트:
+- 펜 홀더
+- 선글라스 케이스
+- 스마트폰 거치대</code></pre>
+<p><strong>목표 달성:</strong> 간단한 설계 경험 + 기초 이해 ✅</p>
+<hr />
+<h3 id="주차-tinkercad-마스터하기">3주차: TinkerCAD 마스터하기</h3>
+<p><strong>목표:</strong> 다양한 모양과 기능 익숙해지기</p>
+<pre><code>📌 할 일:
+1. TinkerCAD 고급 기능 학습 (1-2시간)
+   - 그룹 만들기
+   - 구멍 활용
+   - 원형 배열
+
+2. 중급 프로젝트 (3-5시간)
+   - 케이블 정리함
+   - 선반 거치대
+   - 기계 부품
+
+3. 여러 모델 출력
+   - 디자인 반복하며 개선
+   - 인쇄 품질 향상 경험
+
+TinkerCAD 마스터 프로젝트:</code></pre>
+<p>조립식 상자 (뚜껑 + 바닥) → 실용적 + 어느 정도 복잡 → 완성하면 만족도 높음</p>
+<pre><code>
+**목표 달성:** TinkerCAD 기본 완벽히 마스터 ✅
+
+---
+
+### 4주차: 커뮤니티 활동 시작
+
+**목표:** 온라인 커뮤니티 활동으로 정보 공유
+</code></pre>
+<p>📌 할 일: 1. 클리앙 가입 및 구독 - 3D 메이킹 게시판 구독 - 이전 스레드 읽기</p>
+<ol start="2" type="1">
+<li>디시인사이드 갤러리 보기
+<ul>
+<li>다른 사람의 출력물 감상</li>
+<li>영감 얻기</li>
+</ul></li>
+<li>질문하거나 경험 공유
+<ul>
+<li>잘 안 된 출력물 같은 사진</li>
+<li>팁 요청</li>
+<li>자신의 작품 공유</li>
+</ul></li>
+<li>악세사리 구매 고려
+<ul>
+<li>드라이박스 추가</li>
+<li>여분 노즐 구매 ```</li>
+</ul></li>
+</ol>
+<p><strong>목표 달성:</strong> 커뮤니티 일원 + 정보 교류 ✅</p>
+<hr />
+<h3 id="개월차-fusion-360-도전-선택사항">2개월차: Fusion 360 도전 (선택사항)</h3>
+<p><strong>목표:</strong> 더 정밀한 설계 시작</p>
+<pre><code>📌 하면 좋은 일:
+1. Fusion 360 기초 튜토리얼 (3-5시간)
+   - 인터페이스 이해
+   - 스케치 시작
+   - 가장 기본 익스트루드
+
+2. 간단한 부품 설계
+   - 스마트폰 충전기 거치대
+   - 정확한 홀 크기가 필요한 것
+
+3. 정밀 부품 인쇄
+   - 나사산 부품
+   - 공차가 있는 부품</code></pre>
+<p><strong>목표 달성:</strong> Fusion 360 기초 이해 ✅</p>
+<hr />
+<h3 id="개월차-심화-학습">3개월차+: 심화 학습</h3>
+<p><strong>목표:</strong> 전문 수준의 설계</p>
+<pre><code>📌 심화 방향:
+1. Fusion 360 마스터
+   → 복잡한 기계 부품 설계
+
+2. Blender 도전
+   → 아트 작품, 유기적 형태
+
+3. 커뮤니티 활동 심화
+   → 다른 사람의 설계 평가
+   → 설계 팁 공유
+   → 전문가 커뮤니티 참여</code></pre>
+<hr />
+<h2 id="학습-리소스">학습 리소스</h2>
+<h3 id="youtube-채널-영어">YouTube 채널 (영어)</h3>
+<pre><code>🎬 추천 채널:
+- TinkerCAD 공식 튜토리얼
+- Fusion 360 공식 채널
+- 3D 프린팅 채널들</code></pre>
+<h3 id="한국-블로그-문서">한국 블로그 &amp; 문서</h3>
+<pre><code>📚 클리앙, 디시인사이드에서 찾을 수 있음
+- 사용자 가이드
+- 문제 해결 방법
+- 추천 설정값</code></pre>
+<hr />
+<h1 id="d-모델링-팁과-베스트-프랙티스">🎯 3D 모델링 팁과 베스트 프랙티스</h1>
+<h2 id="성공적인-모델-설계를-위한-기본-원칙">성공적인 모델 설계를 위한 기본 원칙</h2>
+<h3 id="벽-두께-wall-thickness">1. 벽 두께 (Wall Thickness)</h3>
+<p><strong>최소 권장 사항</strong></p>
+<pre><code>🔴 위험: 0.8mm 이하
+🟡 주의: 1.0mm (깨질 수 있음)
+🟢 권장: 1.2mm 이상 (표준)
+🟢 안전: 1.5mm 이상 (강도 우수)</code></pre>
+<p><strong>팁</strong> - 작은 모델: 1.5mm 이상 추천 - 큰 모델: 1.2mm 괜찮음 - 움직이는 부품: 최소 2mm</p>
+<hr />
+<h3 id="오버행-overhang-관리">2. 오버행 (Overhang) 관리</h3>
+<p><strong>오버행이란?</strong></p>
+<pre><code>수직선에서 45도 이상 튀어나온 부분
+→ 서포트 재료 필요
+→ 서포트 제거 흔적 남음</code></pre>
+<p><strong>각도별 필요 서포트</strong> | 각도 | 서포트 필요 | 품질 | |——|———-|——| | 0-45도 | 불필요 | ⭐⭐⭐⭐⭐ | | 45-60도 | 선택 | ⭐⭐⭐⭐ | | 60-80도 | 권장 | ⭐⭐⭐ | | 80도 이상 | 필수 | ⭐⭐ |</p>
+<p><strong>팁</strong> - 설계 시 오버행 최소화하기 - 부분적으로만 서포트 필요하면 수동 배치 - 서포트 나중에 칼로 깔끔하게 제거</p>
+<hr />
+<h3 id="홀과-구멍-holes-threads">3. 홀과 구멍 (Holes &amp; Threads)</h3>
+<p><strong>홀 설계 가이드</strong></p>
+<pre><code>최소 홀 크기: 3mm (안전)
+표준 홀 크기: 5mm 이상
+
+나사산(스레드):
+- 자체 나사산: 직경 3mm 이상, 피치 1.5mm 이상
+- M3 나사: 홀 직경 3.3mm
+- M4 나사: 홀 직경 4.3mm</code></pre>
+<p><strong>팁</strong> - 작은 홀은 드릴링으로 마무리 - 복잡한 나사산은 삽입형 너트 사용 추천 - 정확한 공차 필요시 0.2mm 공간 확보</p>
+<hr />
+<h3 id="파일-크기-최적화">4. 파일 크기 최적화</h3>
+<p><strong>좋은 관행</strong></p>
+<pre><code>✅ STL 파일: 50MB 이하 (프린터 메모리 관리)
+✅ 지나친 디테일 제거 (시각적 영향 없음)
+✅ 필요한 부분만 높은 해상도</code></pre>
+<p><strong>최적화 팁</strong> - TinkerCAD: 내보낼 때 자동 최적화 - Fusion 360: 불필요한 페이스 제거 - Blender: decimation modifier 사용</p>
+<hr />
+<h3 id="출력-방향-최적화">5. 출력 방향 최적화</h3>
+<p><strong>원칙</strong></p>
+<pre><code>1. 주요 면이 베드에 가깝게
+   → 서포트 최소화
+   → 더 나은 표면 품질
+
+2. 우아한 각도로 배치
+   → 45도 정도가 최적
+
+3. 높이 최소화
+   → 인쇄 시간 단축
+   → 실패 위험 감소</code></pre>
+<p><strong>예시</strong></p>
+<pre><code>❌ 나쁜 방향: 세로로 세운 상태 (서포트 많음)
+✅ 좋은 방향: 45도 기울여서 배치</code></pre>
+<hr />
+<h3 id="일반적인-설계-실수">6. 일반적인 설계 실수</h3>
+<table>
+<thead>
+<tr>
+<th>실수</th>
+<th>문제</th>
+<th>해결책</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>너무 얇은 벽</td>
+<td>깨짐</td>
+<td>1.5mm 이상</td>
+</tr>
+<tr>
+<td>과도한 오버행</td>
+<td>물결 무늬</td>
+<td>서포트 추가</td>
+</tr>
+<tr>
+<td>작은 홀</td>
+<td>막힘</td>
+<td>3mm 이상</td>
+</tr>
+<tr>
+<td>복잡한 나사산</td>
+<td>실패</td>
+<td>삽입형 너트</td>
+</tr>
+<tr>
+<td>큰 평면</td>
+<td>처짐</td>
+<td>보강재 추가</td>
+</tr>
+<tr>
+<td>급격한 전환</td>
+<td>약함</td>
+<td>모서리 둥글게</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="설계-체크리스트-인쇄-전">7. 설계 체크리스트 (인쇄 전)</h3>
+<pre><code>□ 최소 벽 두께 1.2mm 확인
+□ 오버행이 있으면 서포트 계획
+□ 모든 홀이 최소 3mm 이상
+□ 예각(sharp angle) 없음 (모서리 둥글게)
+□ 떠있는 부분 없음 (폐곡선 확인)
+□ STL 파일 크기 합리적 (50MB 이하)
+□ 출력 방향 최적화됨
+□ Cura/Bambu Studio에서 시뮬레이션 확인
+□ 서포트 자동 생성 확인
+□ 예상 인쇄 시간 확인</code></pre>
+<hr />
+<h3 id="프린터별-설계-팁">8. 프린터별 설계 팁</h3>
+<p><strong>A1 Mini / A1 (뱀부랩)</strong> - 타이트한 공차 가능 (±0.1mm) - 빠른 속도로도 좋은 품질 - AMS 사용시 컬러 경계선 예상</p>
+<p><strong>P2S (뱀부랩)</strong> - 매우 정밀한 설계 가능 - 모든 재료 지원 (ABS/ASA도 가능) - 큰 모델도 안정적</p>
+<p><strong>Ender 3</strong> - 느슨한 공차 필요 (±0.3mm) - 천천히 인쇄 권장 - 서포트에 신경쓰기</p>
+<hr />
+<h3 id="재료별-주의사항">9. 재료별 주의사항</h3>
+<p><strong>PLA (가장 쉬움)</strong></p>
+<pre><code>✅ 설계 제한 최소
+✅ 오버행 45도까지 가능
+✅ 모든 기능 사용 가능</code></pre>
+<p><strong>PETG (주의 필요)</strong></p>
+<pre><code>⚠️ 약간 수축 (±0.2mm)
+⚠️ 오버행 40도까지만 권장
+⚠️ 얇은 벽 피하기</code></pre>
+<p><strong>ABS / ASA (까다로움)</strong></p>
+<pre><code>🔴 큰 오버행 피하기
+🔴 최소 1.5mm 벽두께
+🔴 냉각 시 변형 고려
+🔴 엔클로저 필요 (A1은 비권장)</code></pre>
+<hr />
+<h1 id="프린터-유지보수-완벽-가이드">🔧 프린터 유지보수 완벽 가이드</h1>
+<h2 id="일일-체크리스트-매-인쇄마다">일일 체크리스트 (매 인쇄마다)</h2>
+<pre><code>✅ 인쇄 전
+□ 베드 표면 깨끗한지 확인 (먼지, 필라멘트 제거)
+□ 노즐이 베드에 닿지 않는지 확인
+□ 필라멘트 충분한지 확인
+□ 스티커/테이프 손상 없는지 확인
+
+✅ 인쇄 중 (첫 10분)
+□ 첫 레이어 제대로 나오는지 모니터링
+□ 필라멘트 올바르게 공급되는지 확인
+□ 노즐에서 필라멘트 정상 흘러나오는지 확인
+
+✅ 인쇄 후
+□ 노즐 온도 식을 때까지 기다림
+□ 베드에서 출력물 조심히 제거
+□ 베드 표면 청소
+□ 다음 인쇄 전에 노즐/베드 냉각 완료 확인</code></pre>
+<hr />
+<h2 id="주간-체크리스트-매주-1회">주간 체크리스트 (매주 1회)</h2>
+<pre><code>✅ 청소
+□ 베드 이물질 완전히 제거
+□ 노즐 끝 지난 인쇄물 잔여물 제거
+□ 엑스트루더 주변 필라멘트 가루 청소
+□ 카메라 렌즈 먼지 제거 (부드러운 천)
+
+✅ 점검
+□ 벨트 팽팽한지 확인 (너무 팽팽하면 안 됨)
+□ 모든 볼트/나사 느슨해진 게 없는지 확인
+□ 차단된 부분 없는지 시각 확인
+□ 이상한 소리/냄새 없는지 확인
+
+✅ 필라멘트 관리
+□ 사용 중인 필라멘트 상태 확인
+□ 드라이박스 습도 체크 (PETG/ABS는 필수)
+□ 필라멘트 감김 상태 확인</code></pre>
+<hr />
+<h2 id="월간-체크리스트-매월-1회">월간 체크리스트 (매월 1회)</h2>
+<pre><code>✅ 정기 유지보수
+□ 노즐 교체 고려 (500시간 사용 후)
+□ 베드 표면 깊은 청소
+□ 엑스트루더 기어 청소 (작은 브러시 사용)
+□ 전체 구동부 나사 조임 확인
+
+✅ 더 깊은 청소
+□ 냉각팬 먼지 제거 (압축 공기)
+□ 내부 공기 흐름 확인
+□ 전자 부품 주변 청소
+
+✅ 성능 검증
+□ 정밀도 테스트 출력 (치수 측정)
+□ 베드 레벨링 정확성 확인
+□ 온도 안정성 확인
+
+✅ 로그 정리
+□ 인쇄 시간/소비량 기록
+□ 발생한 문제 및 해결책 정리
+□ 소비품 교체 기록 (노즐, 필터 등)</code></pre>
+<hr />
+<h2 id="노즐-관리">노즐 관리</h2>
+<h3 id="노즐-청소-매-인쇄마다">노즐 청소 (매 인쇄마다)</h3>
+<p><strong>따뜻한 노즐 청소 (권장)</strong></p>
+<pre><code>1. 노즐을 200°C로 가열
+2. 끈기 있는 금속 브러시로 닦기
+   (주의: 화상 위험, 천천히 진행)
+3. 부드러운 천으로 마무리
+4. 차가워질 때까지 대기
+
+시간: 약 2분
+효과: ⭐⭐⭐⭐⭐ (최고)</code></pre>
+<p><strong>차가운 노즐 청소</strong></p>
+<pre><code>1. 노즐이 완전히 식을 때까지 대기
+2. 부드러운 천에 알코올(IPA)을 적심
+3. 노즐 끝을 조심히 닦음
+
+시간: 약 1분
+효과: ⭐⭐⭐ (경미한 오염용)</code></pre>
+<h3 id="노즐-교체">노즐 교체</h3>
+<p><strong>교체 시기</strong></p>
+<pre><code>500-1000시간 사용 후
+→ 성능 저하 시작
+→ 정밀도 감소
+→ 교체 권장</code></pre>
+<p><strong>교체 방법 (A1 기준 - 10초)</strong></p>
+<pre><code>1. 노즐 200°C 가열
+2. 퀵스왑 홀더 누르기
+3. 기존 노즐 빼기
+4. 새 노즐 끼우기
+5. 클릭 소리 날 때까지 누르기
+→ 완료!</code></pre>
+<p><strong>여러 노즐 보유 권장</strong></p>
+<pre><code>추천: 0.4mm (표준) 1-2개
+      0.6mm (빠름) 1개
+      0.8mm (초빠름) 1개
+비용: 약 3-5만원/개</code></pre>
+<hr />
+<h2 id="베드-관리">베드 관리</h2>
+<h3 id="일일-청소">일일 청소</h3>
+<p><strong>베드 표면 청소</strong></p>
+<pre><code>1. 베드 실온으로 식힐 때까지 대기
+2. 부드러운 천으로 먼지 제거
+3. 필라멘트 입자 세밀하게 제거
+4. 부드럽게 (PEI 코팅 손상 주의)
+
+시간: 약 2분
+빈도: 매 인쇄마다</code></pre>
+<p><strong>베드 접착 향상</strong></p>
+<pre><code>✅ PLA: 깨끗한 베드면으로 충분
+✅ PETG: IPA로 한 번 닦기
+✅ ABS/ASA: 매우 깨끗하게 청소 + IPA
+
+막? 첫 레이어 떠있으면:
+→ 베드 온도 5°C 올리기
+→ 속도 25% 낮추기
+→ 베드 레벨링 다시 하기</code></pre>
+<h3 id="베드-교체">베드 교체</h3>
+<p><strong>교체 시기</strong></p>
+<pre><code>표면 심하게 긁혔을 때
+→ 1년 이상 사용 후
+→ 접착력 급감할 때</code></pre>
+<p><strong>교체 방법</strong></p>
+<pre><code>1. 베드 차게 식히기
+2. 마그네틱 베드 위에서 빼기
+3. 새 베드 올려놓기
+4. 자석이 제대로 잡히는지 확인
+→ 완료! (1분)</code></pre>
+<p><strong>비용</strong></p>
+<pre><code>PEI 마그네틱 베드: 5-7만원
+(2-3년마다 교체)</code></pre>
+<hr />
+<h2 id="필라멘트-관리">필라멘트 관리</h2>
+<h3 id="보관">보관</h3>
+<p><strong>올바른 보관 방법</strong></p>
+<pre><code>✅ 지퍼백 + 실리카겔
+✅ 건조한 곳 (습도 30-50%)
+✅ 햇빛 피하기
+✅ 실온 (15-25°C)
+✅ 수직 세우기 (감길 때)</code></pre>
+<p><strong>습도 체크</strong></p>
+<pre><code>최적: 35-50% 습도
+위험: 70% 이상 (PETG/ABS는 즉시 건조)
+
+측정: 저가 습도계 사용 (5,000원)</code></pre>
+<h3 id="필라멘트-건조">필라멘트 건조</h3>
+<p><strong>습기 있는 필라멘트 신호</strong></p>
+<pre><code>🔴 거품 자국 남음
+🔴 거친 표면
+🔴 취성 (쉽게 부러짐)
+🔴 연기 나는 냄새</code></pre>
+<p><strong>건조 방법</strong></p>
+<p>1️⃣ 오븐 사용</p>
+<pre><code>온도: 50-60°C (PETG), 60-80°C (ABS)
+시간: 2-4시간
+주의: 온도 정확히 (온도계 필수)</code></pre>
+<p>2️⃣ 프린터 건조 기능 (AMS 2 Pro)</p>
+<pre><code>온도: 자동 조절
+시간: 4-6시간
+편함: ⭐⭐⭐⭐⭐
+비용: 50만원 (별도)</code></pre>
+<p>3️⃣ 저가 드라이박스</p>
+<pre><code>가격: 5-15만원
+시간: 8-12시간
+편함: ⭐⭐⭐⭐
+추천: 중급 이상 사용자</code></pre>
+<hr />
+<h2 id="일반적인-문제-해결">일반적인 문제 해결</h2>
+<h3 id="첫-레이어-문제">첫 레이어 문제</h3>
+<p><strong>증상: 베드에 붙지 않음</strong></p>
+<pre><code>🔧 해결책:
+1. 베드 온도 +5°C 올리기
+2. 속도 25% 낮추기
+3. 베드 레벨링 다시 하기
+4. 베드 청소 (IPA 사용)
+5. 베드 표면 교체 고려</code></pre>
+<p><strong>증상: 첫 레이어 물결 무늬</strong></p>
+<pre><code>🔧 해결책:
+1. 베드 레벨링 조정
+2. 베드 평면도 확인
+3. 속도 낮추기
+4. 베드 온도 -5°C 내리기
+5. 노즐 청소</code></pre>
+<hr />
+<h3 id="인쇄-중단-문제">인쇄 중단 문제</h3>
+<p><strong>증상: 필라멘트 끊김</strong></p>
+<pre><code>🔧 해결책:
+1. 필라멘트 습도 확인 (드라이박스 사용)
+2. 노즐 온도 +5°C 올리기
+3. 인쇄 속도 낮추기
+4. 필라멘트 경로 확인 (꼬임 없는지)
+5. 익스트루더 압력 확인</code></pre>
+<p><strong>증상: 필라멘트 공급 안 됨</strong></p>
+<pre><code>🔧 해결책:
+1. 노즐 온도 200°C로 가열
+2. 노즐 청소 (따뜻한 상태에서)
+3. 익스트루더 기어 청소
+4. 필라멘트 경로 확인
+5. 노즐 교체 고려</code></pre>
+<hr />
+<h3 id="품질-문제">품질 문제</h3>
+<p><strong>증상: 층 간 분리 (레이어 라인 심함)</strong></p>
+<pre><code>🔧 해결책:
+1. 노즐 온도 +5°C 올리기
+2. 베드 온도 +5°C 올리기
+3. 인쇄 속도 25% 낮추기
+4. 필라멘트 습도 확인</code></pre>
+<p><strong>증상: 울렁거림 (ringing/ghosting)</strong></p>
+<pre><code>🔧 해결책:
+1. 인쇄 속도 낮추기
+2. 가속도 낮추기
+3. 벨트 팽팽한지 확인
+4. 이상한 소리 확인
+5. 베드 진동 확인</code></pre>
+<p><strong>증상: 표면 거침</strong></p>
+<pre><code>🔧 해결책:
+1. 노즐 온도 -5°C 내리기
+2. 베드 온도 -5°C 내리기
+3. 노즐 크기 맞는지 확인 (0.4mm)
+4. 노즐 청소</code></pre>
+<hr />
+<h2 id="예방-조치-이-문제들을-방지하려면">예방 조치 (이 문제들을 방지하려면)</h2>
+<h3 id="주기적-예방">주기적 예방</h3>
+<pre><code>매주: 시각 점검 + 청소 (5분)
+매월: 부품 점검 + 자리 조임 (15분)
+분기: 정밀도 테스트 인쇄 (1시간)
+반년: 노즐 교체 고려
+1년: 베드 교체 고려</code></pre>
+<h3 id="기록-유지">기록 유지</h3>
+<pre><code>📊 기록할 항목:
+- 인쇄 시간
+- 사용 필라멘트 무게
+- 발생한 문제
+- 해결한 방법
+- 교체한 부품
+
+→ 패턴 발견 가능
+→ 문제 조기 발견
+→ 예방 계획 수립</code></pre>
+<hr />
+<h2 id="긴급-상황-대응">긴급 상황 대응</h2>
+<h3 id="인쇄-중-이상-감지">인쇄 중 이상 감지</h3>
+<pre><code>조용히 멈춤
+→ 전원 끄기 (절대 강제로 움직이지 말 것)
+→ 냉각 후 상태 확인
+→ 원인 파악 후 재시작
+
+탈선/막힘
+→ 즉시 멈춤 (응급 중지 버튼)
+→ 냉각
+→ 물리적 청소
+→ 재시작 전 원인 제거</code></pre>
+<h3 id="연기악취">연기/악취</h3>
+<pre><code>🚨 즉시 전원 끄기!
+🚨 환기 (창문 열기)
+🚨 식을 때까지 기다리기
+→ 모터/전자부품 손상일 수 있음
+→ 기술 지원 연락</code></pre>
+<hr />
+<h2 id="유지보수-로그-템플릿">유지보수 로그 템플릿</h2>
+<pre><code>날짜: 2026-08-??
+인쇄 시간: ?? 시간
+필라멘트 사용: ?? g
+문제: [있음/없음] - 무엇?
+조치: [수행한 유지보수]
+노즐 상태: [양호/교체 필요]
+베드 상태: [양호/교체 필요]
+특이 사항: [기타 메모]</code></pre>
+<hr />
+<h2 id="정리-언제-뭘-할지">정리: 언제 뭘 할지</h2>
+<table>
+<thead>
+<tr>
+<th>시기</th>
+<th>할 일</th>
+<th>시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>매 인쇄마다</strong></td>
+<td>베드 청소, 노즐 확인</td>
+<td>5분</td>
+</tr>
+<tr>
+<td><strong>매주</strong></td>
+<td>청소, 부품 점검</td>
+<td>15분</td>
+</tr>
+<tr>
+<td><strong>매월</strong></td>
+<td>깊은 청소, 정밀도 테스트</td>
+<td>1시간</td>
+</tr>
+<tr>
+<td><strong>3개월마다</strong></td>
+<td>노즐 교체 고려</td>
+<td>10분</td>
+</tr>
+<tr>
+<td><strong>6개월마다</strong></td>
+<td>벨트, 기어 점검</td>
+<td>30분</td>
+</tr>
+<tr>
+<td><strong>1년마다</strong></td>
+<td>베드 교체, 부품 갱신</td>
+<td>1시간</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="최종-팁">최종 팁</h2>
+<p>✅ 작은 문제를 무시하지 말기 (악화됨)<br />
+✅ 기록 유지하기 (패턴 발견)<br />
+✅ 여분 부품 구비하기 (노즐, 필터)<br />
+✅ 커뮤니티에 질문하기 (빠른 해결)<br />
+✅ 정기 유지보수 스케줄 세우기 (달력에 표시)<br />
+✅ 낡은 부품 사용하지 말기 (성능 저하)</p>
+<p><strong>프린터는 자동차처럼 정기 유지보수가 핵심입니다!</strong></p>
+<hr />
+<h3 id="개월-체크리스트">🎯 1개월 체크리스트</h3>
+<pre><code>□ 프린터 구매 및 설치
+□ 첫 출력 성공 (다운로드 모델)
+□ TinkerCAD로 간단한 모델 제작 및 인쇄
+□ 클리앙 가입 및 커뮤니티 활동 시작
+□ 드라이박스, 여분 노즐 구비
+□ 기본 토러블슈팅 경험</code></pre>
+<h3 id="개월-체크리스트-1">🎯 3개월 체크리스트</h3>
+<pre><code>□ TinkerCAD 완벽히 마스터
+□ 다양한 모델 10+ 개 제작 및 인쇄
+□ 커뮤니티에서 유용한 정보 습득
+□ Fusion 360 기초 시작
+□ 프린터 메인테넌스 경험 (노즐 청소 등)
+□ 멀티컬러 출력 시도 (AMS Lite 있을 경우)</code></pre>
+<h3 id="개월-체크리스트-2">🎯 6개월 체크리스트</h3>
+<pre><code>□ Fusion 360으로 정밀 부품 설계 가능
+□ 복잡한 모델 100+ 개 인쇄 경험
+□ 커뮤니티에서 다른 사람에게 조언 가능
+□ 인쇄 품질 문제 스스로 해결 가능
+□ 개인 프로젝트 완성 (책장, 가구 등)
+□ 선택적: Blender 기초 학습</code></pre>
+<hr />
+<h1 id="d-모델링-설계-팁">🎨 3D 모델링 설계 팁</h1>
+<h2 id="프린터-호환성-확인">프린터 호환성 확인</h2>
+<h3 id="빌드-플레이트-크기-확인">빌드 플레이트 크기 확인</h3>
+<p><strong>A1 Mini:</strong></p>
+<pre><code>최대 크기: 180 × 180 × 180mm
+조사: &quot;이 크기를 넘는 물건은 한 번에 출력 불가&quot;
+
+예시:
+✅ 가능: 스마트폰 거치대 (150×100×80mm)
+❌ 불가능: 30cm 이상 대형 모델</code></pre>
+<p><strong>A1 / P2S:</strong></p>
+<pre><code>최대 크기: 256 × 256 × 256mm
+조사: &quot;훨씬 큰 모델 가능&quot;
+
+예시:
+✅ 가능: 소형 기계 부품, 대형 피규어 (250×250mm)
+❌ 불가능: 30cm 이상 매우 큰 모델은 여전히 분할 필요</code></pre>
+<h3 id="오버행overhang-고려">오버행(Overhang) 고려</h3>
+<p><strong>오버행이란:</strong> 밑에 지지가 없는 부분</p>
+<pre><code>🔴 위험한 설계 (45도 이상 오버행):
+   예: 위로 튀어나온 날개, 가파른 경사
+
+✅ 안전한 설계 (45도 이하):
+   예: 완만한 경사, 수평 돌출부
+
+💡 팁: 오버행이 많으면 서포트 필요
+   → 후처리 시간 증가
+   → 재료 낭비</code></pre>
+<h3 id="벽-두께-확인">벽 두께 확인</h3>
+<pre><code>최소 권장 벽 두께: 1.2mm 이상
+- 0.4mm 노즐 기준 3줄 이상
+
+너무 얇으면:
+❌ 출력 실패
+❌ 강도 낮음
+❌ 깨지기 쉬움</code></pre>
+<hr />
+<h2 id="stl-파일-준비">STL 파일 준비</h2>
+<h3 id="스케일-확인">1. 스케일 확인</h3>
+<pre><code>📏 파일 다운로드 후 꼭 스케일 확인!
+
+예시:
+- 다운로드: &quot;miniature_figure.stl&quot;
+- 소프트웨어에서 열면: 5미터 크기? 😱
+- 스케일 조정 필요: 1000배 축소
+
+팁: Printables/Thingiverse의 미리보기로 추천 크기 확인</code></pre>
+<h3 id="모델-방향-설정">2. 모델 방향 설정</h3>
+<pre><code>🎯 좋은 방향:
+- 가장 넓은 면이 빌드 플레이트에 닿도록
+- 오버행 최소화
+- 서포트 가장 적게 필요
+
+예시:
+✅ 피규어: 옆모습으로 (앞뒤로 누우면 안 됨)
+✅ 상자: 평면으로 (세운 상태 좋지 않음)
+✅ 기계부품: 안정적인 방향</code></pre>
+<h3 id="지지대support-설정">3. 지지대(Support) 설정</h3>
+<pre><code>서포트 종류:
+1️⃣ 선형 (Linear)
+   - 얇고 제거 쉬움
+   - 추천 ⭐⭐⭐⭐⭐
+
+2️⃣ 나무(Tree)
+   - 최신 방식, 가장 효율적
+   - 추천 ⭐⭐⭐⭐⭐
+
+3️⃣ 격자(Grid)
+   - 많은 양 필요
+   - 추천하지 않음 ⭐
+
+자동 생성 vs 수동:
+- 자동: 빠르고 쉬움
+- 수동: 제료 절약 (경험 필요)
+
+시작: 자동 생성으로 충분</code></pre>
+<hr />
+<h2 id="슬라이싱-소프트웨어-사용">슬라이싱 소프트웨어 사용</h2>
+<h3 id="bambu-studio-뱀부랩-프린터-사용자-필수">Bambu Studio (뱀부랩 프린터 사용자 필수)</h3>
+<pre><code>✅ 특징:
+- 뱀부랩 프린터 완벽 최적화
+- 직관적인 인터페이스
+- AI 지원 (오류 감지 등)
+- 무료
+
+📥 설치: https://bambulab.com/software</code></pre>
+<p><strong>사용 순서:</strong></p>
+<pre><code>1단계: STL 파일 불러오기
+       File → Import Model
+
+2단계: 모델 배치
+       - 크기 확인
+       - 방향 설정
+       - 분할 필요 시 슬라이싱
+
+3단계: 인쇄 설정
+       - 퀄리티 선택 (초안/표준/정밀)
+       - 재료 선택 (자동 감지)
+       - 서포트 자동 생성
+
+4단계: 미리보기
+       - 인쇄 결과 3D 시뮬레이션
+       - 오버행 확인
+       - 시간/재료 예상량 확인
+
+5단계: 전송
+       - 프린터에 직접 전송 (WiFi)
+       - 또는 파일로 저장</code></pre>
+<h3 id="cura-다양한-프린터-호환">Cura (다양한 프린터 호환)</h3>
+<pre><code>✅ 특징:
+- 모든 프린터 지원
+- 강력한 커스터마이징
+- 무료 오픈소스
+
+📥 설치: https://ultimaker.com/software/ultimaker-cura</code></pre>
+<p><strong>A1/P2S 사용 시:</strong></p>
+<pre><code>1. 프로필: Bambu Lab A1 선택
+2. 기본 설정으로 충분
+3. Bambu Studio보다 학습곡선 가파름</code></pre>
+<hr />
+<h2 id="첫-인쇄-전-체크리스트">첫 인쇄 전 체크리스트</h2>
+<h3 id="출력-전-15분-전">출력 전 (15분 전)</h3>
+<pre><code>□ STL 파일 준비 (스케일 확인)
+□ 프린터 전원 확인
+□ 필라멘트 로드 (완료?)
+□ 빌드 플레이트 청결 확인
+□ 노즐 온도/베드 온도 확인
+□ Bambu Studio에서 미리보기
+□ 예상 시간 확인 (충분한가?)
+□ 파일 전송 또는 USB 로드</code></pre>
+<h3 id="첫-5분-주의">첫 5분 주의</h3>
+<pre><code>✅ 첫 레이어가 가장 중요!
+
+모니터링:
+- 첫 레이어가 잘 붙는가?
+- 필라멘트가 잘 나오는가?
+- 노즐이 막혀 있지 않은가?
+
+문제 발생 시:
+- 즉시 정지 (긴급 중지)
+- 노즐 청소 또는 높이 조정
+- 다시 시도</code></pre>
+<hr />
+<h2 id="모델-최적화-팁">모델 최적화 팁</h2>
+<h3 id="재료-절약">재료 절약</h3>
+<pre><code>💡 경량화 기법:
+1. 내부 구조 최소화
+   - 완전 채워진 모델 피하기
+   - 30-50% 채움률 추천 (Bambu Studio 설정)
+
+2. 벽 두께 최소화
+   - 안전선: 1.2~2mm
+   - 더 얇으면 위험
+
+3. 서포트 최소화
+   - 모델 방향 최적화
+   - 45도 이상 오버행 제거
+
+절약 효과:
+- 시간: 30-50% 단축
+- 재료: 20-40% 절약
+- 비용: 눈에 띄는 절감</code></pre>
+<h3 id="품질-향상">품질 향상</h3>
+<pre><code>🎯 고품질 설정:
+1. 레이어 높이: 0.1mm (기본 0.2mm)
+   - 인쇄 시간 2배 증가
+   - 매우 세밀함
+   - 디테일 중요한 모델에만
+
+2. 천천히 인쇄
+   - 속도: 50-70% (일반: 100%)
+   - 결과: 훨씬 깨끗함
+   - 시간: 길어짐
+
+3. 노즐 온도 조정
+   - 낮춤 (5°C): 더 세밀함
+   - 높임 (5°C): 더 강함
+
+언제 필요한가?
+✅ 섬세한 디테일: 0.1mm 레이어
+✅ 강한 부품: 고온, 느린 속도
+✅ 일반용: 기본 설정으로 충분</code></pre>
+<hr />
+<h1 id="프린터-유지보수-가이드">🔧 프린터 유지보수 가이드</h1>
+<h2 id="일일-체크사항-매번-인쇄-전">일일 체크사항 (매번 인쇄 전)</h2>
+<h3 id="인쇄-전-점검-5분">인쇄 전 점검 (5분)</h3>
+<pre><code>□ 필라멘트 충분한가?
+  → 부족하면 준비해두기
+
+□ 빌드 플레이트 청결?
+  → 먼지/재료 붙은 것 제거
+  → 알코올 와이프로 가볍게 닦기
+
+□ 노즐 상태 (육안으로)
+  → 이전 출력의 필라멘트 남음?
+  → 있으면 제거 (식힌 후)
+
+□ 프린터 정상 음성?
+  → 이상한 소음 없나?
+  → 있으면 원인 확인
+
+□ 카메라/화면 확인
+  → 내부 촬영 가능?
+  → 움직이는지 확인</code></pre>
+<h3 id="인쇄-중-첫-5분만-주의">인쇄 중 (첫 5분만 주의)</h3>
+<pre><code>🎯 모니터링 포인트:
+
+1️⃣ 첫 레이어 (0-5분) 중요!
+   ✅ 플레이트에 잘 붙는가?
+   ✅ 필라멘트가 꾸준히 나오는가?
+   ✅ 색이 균일한가?
+
+2️⃣ 나머지는 자동
+   → 카메라로 원격 모니터링 가능
+   → 필요시 정지
+
+문제 발생 시:
+❌ 첫 레이어 실패 → 바로 정지
+❌ 노즐 막힘 → 바로 정지
+❌ 이상 소음 → 확인 후 필요시 정지</code></pre>
+<h3 id="인쇄-후-5분">인쇄 후 (5분)</h3>
+<pre><code>□ 출력물 제거
+  → 플레이트 식을 때까지 기다릴 필요 없음
+  → 뜨거울 때 빼기 (주의!)
+
+□ 지지대 제거
+  → 소수로 조심히 제거
+  → 분쇄 않도록 주의
+
+□ 출력물 검사
+  → 크기/품질 확인
+  → 문제 있었나?
+
+□ 플레이트 청소
+  → 남은 필라멘트 제거
+  → 다음 인쇄 준비</code></pre>
+<hr />
+<h2 id="주간-유지보수">주간 유지보수</h2>
+<h3 id="필라멘트-관리-1">필라멘트 관리</h3>
+<pre><code>📦 올바른 보관:
+1. 건조 보관
+   - 지퍼백 + 실리카겔
+   - 또는 드라이박스
+   - 습도 낮게 유지
+
+2. 온도 제어
+   - 15-25°C 권장
+   - 햇빛 피하기
+   - 냉동고 절대 금지 (응결 발생)
+
+3. 순서
+   - 선입선출 (먼저 산 것부터 사용)
+   - 개봉 후 2-3개월 안에 사용
+
+습도 확인:
+- PETG, ASA: 매우 민감 (필수 건조)
+- PLA: 어느 정도 내성 (선택)
+- TPU: 중간
+
+문제 신호:
+❌ 기포 발생 (팝팝 소리)
+❌ 재재 질감 (거친 표면)
+❌ 취약성 (쉽게 깨짐)
+→ 필라멘트 건조 후 재인쇄</code></pre>
+<h3 id="노즐-점검">노즐 점검</h3>
+<pre><code>🔍 노즐 상태 확인:
+
+✅ 정상:
+- 매끄러운 표면
+- 잔여물 없음
+- 구멍이 깔끔함
+
+❌ 문제 신호:
+- 누적된 필라멘트 (검은 때)
+- 들쭉날쭉한 끝
+- 구멍 막힘 (필라멘트 안 나옴)
+
+청소 방법:
+1. 프린터 식히기
+2. 고온 필라멘트 로드 (280°C)
+   → 플러시 된 필라멘트로 청소
+3. 노즐 닦기 (알코올 와이프)
+4. 다시 인쇄 테스트</code></pre>
+<h3 id="케이스광학계-청소">케이스/광학계 청소</h3>
+<pre><code>🧹 외부 청소:
+1. 전원 끔
+2. 건식 천으로 먼지 제거
+3. 알코올 와이프로 가볍게 닦기
+4. 건조 후 전원 켜기
+
+주의:
+❌ 물 사용 금지
+❌ 강한 압력 금지
+✅ 극세사 천 사용</code></pre>
+<hr />
+<h2 id="월간-유지보수">월간 유지보수</h2>
+<h3 id="벨트기어-확인">벨트/기어 확인</h3>
+<pre><code>⚙️ 점검:
+1. 프린터 정상 음성?
+   - 이상한 울음 없나?
+   - 톱니바퀴 음 있나?
+
+2. 움직임 부드러운가?
+   - 튀는 느낌 없나?
+   - 걸리는 부분 없나?
+
+3. 벨트 탄성?
+   - 너무 팽팽하지 않나?
+   - 너무 헐렁하지 않나?
+
+문제 발생 시:
+- 벨트 조정 (온라인 가이드)
+- 기어 윤활 (필요 시)
+- 고장: AS 연락</code></pre>
+<h3 id="전자-부품-확인">전자 부품 확인</h3>
+<pre><code>🔌 주요 점검:
+1. 연결 상태
+   - 느슨해진 케이블?
+   - 금속 부분 산화?
+
+2. 팬 작동
+   - 냉각 팬 소음?
+   - 먼지 없나?
+
+3. 센서
+   - BLTouch 작동?
+   - 카메라 초점?
+
+4. 디스플레이
+   - 터치 반응 좋은가?
+   - 화면 손상?
+
+이상 시:
+- 간단한 것은 자체 해결 (온라인 가이드)
+- 복잡하면 AS 연락</code></pre>
+<h3 id="캘리브레이션-재확인">캘리브레이션 재확인</h3>
+<pre><code>⚖️ 정밀도 체크:
+월 1회 기본 캘리브레이션:
+
+A1/A1 Mini:
+- Settings → Maintenance → Auto-leveling
+
+P2S:
+- 자동 자기 센서 (거의 필요 없음)
+
+첫 레이어 문제 시:
+1. 급격한 접착 실패? → 높이 조정
+2. 자꾸 들뜸? → 베드 온도 확인
+3. 중간에 떨어짐? → 냉각 환풍 확인</code></pre>
+<hr />
+<h2 id="부품-교체-주기">부품 교체 주기</h2>
+<h3 id="소모품-교체-일정">소모품 교체 일정</h3>
+<table>
+<thead>
+<tr>
+<th>부품</th>
+<th>교체 주기</th>
+<th>비용</th>
+<th>심각도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>노즐</strong></td>
+<td>500-1000시간</td>
+<td>3-5만원</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>PEI 플레이트</strong></td>
+<td>1-2년</td>
+<td>5-7만원</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>필터 카트리지</strong></td>
+<td>3-6개월</td>
+<td>2-5만원</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>실리카겔</strong></td>
+<td>2-4주</td>
+<td>1-2만원</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td><strong>벨트</strong></td>
+<td>2-3년</td>
+<td>10-20만원</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>팬</strong></td>
+<td>2-3년</td>
+<td>5-15만원</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="노즐-교체-가장-자주">노즐 교체 (가장 자주)</h3>
+<pre><code>🔄 교체 절차:
+1. 프린터 온 상태 (200°C 이상)
+2. Bambu Studio에서 &quot;노즐 교체&quot; 선택
+3. 자동으로 위치 이동
+4. 노즐 시계방향 돌려서 제거
+5. 새 노즐 끼우고 반시계방향 잠금
+6. 테스트 인쇄
+
+유의사항:
+⚠️ 뜨거운 상태 (화상 주의)
+⚠️ 강한 힘 금지 (나사 손상)
+✅ 장갑 사용 권장</code></pre>
+<h3 id="플레이트-교체-1년-후">플레이트 교체 (1년 후)</h3>
+<pre><code>📋 교체 신호:
+- 표면에 줄 많음
+- PEI 벗겨짐
+- 접착력 떨어짐
+
+교체 방법:
+1. 마그네틱 플레이트 제거
+2. 새 플레이트 붙이기 (자석)
+3. 테스트 인쇄
+
+비용: 5-7만원
+시간: 5분</code></pre>
+<hr />
+<h2 id="문제-해결-트러블슈팅">문제 해결 (트러블슈팅)</h2>
+<h3 id="가장-흔한-문제-5가지">가장 흔한 문제 5가지</h3>
+<h4 id="첫-레이어-붙지-않음">1️⃣ 첫 레이어 붙지 않음</h4>
+<p><strong>증상:</strong></p>
+<pre><code>필라멘트가 나오지 않거나
+플레이트에 붙지 않음</code></pre>
+<p><strong>해결책:</strong></p>
+<pre><code>① 노즐 높이 확인 (너무 높을 수 있음)
+   - Bambu Studio: 노즐 높이 +0.1mm
+
+② 플레이트 청소
+   - 알코올 와이프로 깨끗이
+   - 기름 제거
+
+③ 베드 온도 확인
+   - PLA: 50-60°C
+   - PETG/ABS: 70-100°C
+
+④ 자동 레벨링 다시 실행
+   - Maintenance → Auto-leveling
+
+⑤ 여전히 안 되면
+   - 노즐 청소 (고온 플러시)
+   - 플레이트 교체 고려</code></pre>
+<h4 id="필라멘트가-막힘-clog">2️⃣ 필라멘트가 막힘 (Clog)</h4>
+<p><strong>증상:</strong></p>
+<pre><code>필라멘트가 전혀 안 나옴
+노즐에서 아무것도 안 나옴</code></pre>
+<p><strong>해결책:</strong></p>
+<pre><code>① 즉시 정지
+   - 긴급 정지 버튼 누르기
+
+② 고온 플러시 (280°C)
+   - 불필요한 필라멘트 배출
+   - 노즐 통과
+
+③ 노즐 교체
+   - 3-5만원 투자 (해결책)
+   - 가장 빠른 방법
+
+④ 분해 청소 (고급)
+   - 온라인 가이드 참고
+   - 위험하므로 주의
+
+예방:
+- 적절한 온도 사용
+- 고품질 필라멘트 선택
+- 정기적 청소</code></pre>
+<h4 id="표면이-울퉁불퉁함">3️⃣ 표면이 울퉁불퉁함</h4>
+<p><strong>증상:</strong></p>
+<pre><code>완성된 모델이 거친 느낌
+표면에 줄 많음</code></pre>
+<p><strong>해결책:</strong></p>
+<pre><code>① 레이어 높이 줄이기
+   - 0.2mm → 0.1mm
+   - 더 세밀해짐 (시간 2배)
+
+② 느리게 인쇄
+   - 속도 80% 정도로 줄이기
+   - 더 깔끔해짐
+
+③ 노즐 온도 낮추기
+   - 5°C 낮춤
+   - 필라멘트 덜 흐르게 함
+
+④ 필라멘트 품질 확인
+   - 저가 필라멘트 피하기
+   - 뱀부랩/프루사 추천</code></pre>
+<h4 id="필라멘트가-팝팝-소리-습도-문제">4️⃣ 필라멘트가 팝팝 소리 (습도 문제)</h4>
+<p><strong>증상:</strong></p>
+<pre><code>&quot;팝팝팝&quot; 폭발음
+김이 올라옴
+표면이 거침</code></pre>
+<p><strong>해결책:</strong></p>
+<pre><code>① 즉시 드라이박스에 넣기
+   - 50°C에서 4-8시간 건조
+
+② 건조 후 재인쇄
+   - 완벽한 결과
+
+③ 향후 보관
+   - 반드시 지퍼백이나 드라이박스
+   - PETG/ASA는 더 중요</code></pre>
+<h4 id="출력물이-떨어짐-진행-중">5️⃣ 출력물이 떨어짐 (진행 중)</h4>
+<p><strong>증상:</strong></p>
+<pre><code>인쇄 중간에 갑자기 떨어짐
+실패한 모델</code></pre>
+<p><strong>해결책:</strong></p>
+<pre><code>① 즉시 정지
+
+② 원인 분석
+   - 첫 레이어는 잘 붙었나? (냉각 문제)
+   - 중간에 떨어짐? (접착 부족)
+   - 끝에 떨어짐? (경사 문제)
+
+③ 다시 시도 전
+   - 플레이트 청소
+   - 베드 온도 +5°C
+   - 냉각 속도 낮추기
+
+④ 여전히 안 되면
+   - 플레이트 교체 고려
+   - 접착제 사용 (임시방편)</code></pre>
+<h3 id="언제-as-연락해야-하나">언제 AS 연락해야 하나?</h3>
+<pre><code>🆘 AS 필요한 경우:
+- 기계적 울음 (베어링음)
+- 축 이동 불가
+- 터치스크린 반응 없음
+- 전자 부품 고장 (팬, 센서)
+- 해결 안 되는 문제
+
+📞 연락처:
+- 뱀부랩 한국 공식: 덕유항공
+- 온라인: 공식 커뮤니티
+- 클리앙에서 질문</code></pre>
+<hr />
+<h2 id="프린터-수명-연장-팁">프린터 수명 연장 팁</h2>
+<pre><code>🔋 오래 사용하려면:
+
+1. 정기적 청소 (주 1회)
+   - 먼지 제거
+   - 노즐 관리
+
+2. 정기적 윤활 (월 1회)
+   - 경사진 축에 윤활유
+   - 과유금금지 (오일 적게)
+
+3. 온도 관리
+   - 극단적 고온/저온 피하기
+   - 15-25°C 권장
+
+4. 전원 관리
+   - 항상 켜두지 말기
+   - 사용 후 정상 종료
+
+5. 정품 부품 사용
+   - 저가 호환품 피하기
+   - 신뢰할 수 있는 재료
+
+결과:
+- 프린터 수명: 5-10년
+- 안정적 출력
+- AS 비용 절감</code></pre>
+<hr />
+<h1 id="최종-정리">📝 최종 정리</h1>
+<h2 id="프린터-추천">프린터 추천</h2>
+<h3 id="초급자-공간-부족">초급자 (공간 부족)</h3>
+<p><strong>→ A1 Mini Combo (58만원)</strong></p>
+<pre><code>- 컴팩트 + 멀티컬러
+- 가성비 최고
+- 초보자 최적</code></pre>
+<h3 id="초급자-풍족한-공간">초급자 (풍족한 공간)</h3>
+<p><strong>→ A1 Combo (56만원)</strong></p>
+<pre><code>- 큰 출력 공간
+- 고온 재료 지원
+- 장기 사용에 유리</code></pre>
+<h3 id="극저예산">극저예산</h3>
+<p><strong>→ A1 Mini 단품 (58만원)</strong></p>
+<pre><code>- 최소 투자
+- 필요시 나중에 악세사리 추가</code></pre>
+<h3 id="중급자-고급-기능">중급자 (고급 기능)</h3>
+<p><strong>→ P2S (79만원)</strong> 🌟</p>
+<pre><code>- 최신 기술 모두 적용
+- 20색 멀티컬러 가능
+- 모든 재료 지원 (ABS, ASA 등)
+- AMS 2 Pro와 완벽 호환</code></pre>
+<h3 id="프로전문가">프로/전문가</h3>
+<p><strong>→ P2S + AMS 2 Pro (약 130만원)</strong></p>
+<pre><code>- 풀 옵션 (20색 멀티컬러)
+- 필라멘트 자동 건조
+- 최고 성능 조합</code></pre>
+<hr />
+<h2 id="악세사리-추천">악세사리 추천</h2>
+<h3 id="필수">필수</h3>
+<pre><code>특수 필수 악세사리: 없음 ✅
+기본 구성으로 완전히 사용 가능</code></pre>
+<h3 id="첫-달-추천">첫 달 추천</h3>
+<pre><code>1. 드라이박스 (1만원) - 지퍼백 + 실리카겔
+2. 여분 노즐 (8만원) - 0.6, 0.8mm</code></pre>
+<h3 id="개월-후-고려">3개월 후 고려</h3>
+<pre><code>3. AMS Lite (이미 Combo에 있음)
+4. 엔클로저 (고온 재료 필요시)
+5. 프리미엄 드라이박스 (습도 높을 때)</code></pre>
+<hr />
+<h2 id="모델링-프로그램-추천">모델링 프로그램 추천</h2>
+<h3 id="입문자">입문자</h3>
+<p><strong>→ TinkerCAD (무료)</strong></p>
+<pre><code>- 가장 쉬움
+- 즉시 시작 가능
+- 1시간이면 기본 사용</code></pre>
+<h3 id="중급자">중급자</h3>
+<p><strong>→ Fusion 360 (무료 개인용)</strong></p>
+<pre><code>- 강력한 기능
+- 정밀 설계 가능
+- 1-2주 학습으로 기본 마스터</code></pre>
+<h3 id="빨리-만들고-싶을-때">빨리 만들고 싶을 때</h3>
+<p><strong>→ Meshy (AI, 무료/유료)</strong></p>
+<pre><code>- 텍스트 설명 → STL
+- 몇 분 완성
+- 정교함은 떨어지지만 빠름</code></pre>
+<hr />
+<h2 id="모델-다운로드-순서">모델 다운로드 순서</h2>
+<h3 id="첫-번째-printables">첫 번째: Printables</h3>
+<pre><code>고품질 + 한국 프린터 최적화
+→ 첫 인쇄 성공 확률 높음</code></pre>
+<h3 id="두-번째-thingiverse">두 번째: Thingiverse</h3>
+<pre><code>가장 많은 선택지
+→ 다양한 물건 찾기 좋음</code></pre>
+<h3 id="세-번째-cults3d">세 번째: Cults3D</h3>
+<pre><code>검색과 필터 좋음
+→ 원하는 물건 정확하게 찾기</code></pre>
+<hr />
+<h2 id="커뮤니티-활용">커뮤니티 활용</h2>
+<h3 id="기술-문제-해결">기술 문제 해결</h3>
+<p><strong>→ 클리앙</strong></p>
+<pre><code>전문적인 조언
+한국 가격 정보
+사용자 후기</code></pre>
+<h3 id="영감과-아이디어">영감과 아이디어</h3>
+<p><strong>→ 디시인사이드</strong></p>
+<pre><code>다양한 출력물
+개조 사례
+재미있는 프로젝트</code></pre>
+<hr />
+<h1 id="지금-바로-시작하기">🚀 지금 바로 시작하기</h1>
+<h2 id="단계로-시작하기">3단계로 시작하기</h2>
+<h3 id="단계-프린터-구매-1주">1단계: 프린터 구매 (1주)</h3>
+<pre><code>A1 Mini Combo 또는 A1 Combo 구매
+기본 설정 완료 (20분)</code></pre>
+<h3 id="단계-첫-출력-1-2주">2단계: 첫 출력 (1-2주)</h3>
+<pre><code>Printables에서 모델 3개 다운로드
+출력 성공 🎉</code></pre>
+<h3 id="단계-모델링-배우기-2-4주">3단계: 모델링 배우기 (2-4주)</h3>
+<pre><code>TinkerCAD 튜토리얼 (30분)
+간단한 모델 제작 (1시간)
+인쇄 (4시간)
+→ 완성!</code></pre>
+<hr />
+<h2 id="질문이-생기면">질문이 생기면?</h2>
+<h3 id="한국-커뮤니티에서-찾기">한국 커뮤니티에서 찾기</h3>
+<ol type="1">
+<li><strong>클리앙</strong>: https://www.clien.net/service/board/cm_3dmaking</li>
+<li><strong>디시인사이드</strong>: https://gall.dcinside.com/mgallery/board/lists/?id=3dprinting</li>
+</ol>
+<h3 id="영어권-커뮤니티">영어권 커뮤니티</h3>
+<ol type="1">
+<li><strong>Reddit r/3Dprinting</strong>: 전문적인 조언</li>
+<li><strong>YouTube</strong>: 각 문제별 튜토리얼</li>
+</ol>
+<hr />
+<p><strong>이 문서는 2026년 8월 작성되었습니다.</strong><br />
+<strong>3D 프린팅 초급자부터 중급자까지 모든 정보를 담고 있습니다.</strong><br />
+<strong>필요시 커뮤니티에서 최신 정보를 확인하세요.</strong></p>
+<hr />
+<h2 id="문서-이력">문서 이력</h2>
+<table>
+<thead>
+<tr>
+<th>버전</th>
+<th>날짜</th>
+<th>주요 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026.08.08</td>
+<td>초판 작성</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 프린터 비교 완성</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 악세사리 정보 완성</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 모델링 프로그램 정리</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- STL 사이트 정리</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 커뮤니티 정보 추가</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 학습 로드맵 완성</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>2026.08.08</td>
+<td>P2S 추가</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- P2S (챔버형) 상세 정보</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- P1S vs P2S 비교표</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 예산별 추천에 P2S 옵션 추가</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>2026.08.08</td>
+<td>모델링 &amp; 유지보수 추가</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 3D 모델링 설계 팁 완성</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 프린터 호환성 확인 방법</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- STL 파일 준비 가이드</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- Bambu Studio/Cura 사용법</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 프린터 유지보수 완벽 가이드</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 일일/주간/월간 체크리스트</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 부품 교체 주기 정리</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 트러블슈팅 (5가지 문제 해결)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Happy 3D Printing! 🎉</strong></p>
+<p>#3D프린트 #완벽 #가이드</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/3d-프린터-완벽-가이드.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-12 02:21 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

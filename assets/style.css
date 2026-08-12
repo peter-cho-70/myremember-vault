@@ -1,0 +1,1385 @@
+:root {
+  --background: 255 255 255;
+  --foreground: 28 28 28;
+  --card: 255 255 255;
+  --card-foreground: 28 28 28;
+  --primary: 23 23 23;
+  --primary-foreground: 250 250 250;
+  --secondary: 249 249 249;
+  --secondary-foreground: 28 28 28;
+  --muted: 249 249 249;
+  --muted-foreground: 111 111 111;
+  --accent: 237 238 252;
+  --accent-foreground: 28 28 28;
+  --destructive: 255 71 71;
+  --border: 235 235 235;
+  --input: 235 235 235;
+  --ring: 159 159 248;
+  --sidebar: 249 249 249;
+  --sidebar-foreground: 28 28 28;
+  --sidebar-border: 235 235 235;
+  --up: 224 49 49;
+  --down: 37 99 235;
+  /* 그래프 위젯 태그 색상 — dataviz 스킬의 검증된 8색 순서(고정, 순환 금지). 9번째 이후
+     태그와 태그 없는 노트는 --muted-foreground로 폴백(범례+hover 텍스트가 항상 같이 있어
+     색상만으로 구분하지 않음). */
+  --series-1: 42 120 214;
+  --series-2: 235 104 52;
+  --series-3: 27 175 122;
+  --series-4: 237 161 0;
+  --series-5: 232 123 164;
+  --series-6: 0 131 0;
+  --series-7: 74 58 167;
+  --series-8: 227 73 72;
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Pretendard, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: 28 28 28;
+    --foreground: 250 250 250;
+    --card: 42 42 42;
+    --card-foreground: 250 250 250;
+    --primary: 159 159 248;
+    --primary-foreground: 28 28 28;
+    --secondary: 51 51 51;
+    --secondary-foreground: 250 250 250;
+    --muted: 47 47 47;
+    --muted-foreground: 163 163 163;
+    --accent: 51 51 51;
+    --accent-foreground: 250 250 250;
+    --destructive: 255 71 71;
+    --border: 63 63 63;
+    --input: 63 63 63;
+    --ring: 159 159 248;
+    --sidebar: 28 28 28;
+    --sidebar-foreground: 250 250 250;
+    --sidebar-border: 63 63 63;
+    --up: 248 113 113;
+    --down: 96 165 250;
+    --series-1: 57 135 229;
+    --series-2: 217 89 38;
+    --series-3: 25 158 112;
+    --series-4: 201 133 0;
+    --series-5: 213 81 129;
+    --series-6: 0 131 0;
+    --series-7: 144 133 233;
+    --series-8: 230 103 103;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: 28 28 28;
+  --foreground: 250 250 250;
+  --card: 42 42 42;
+  --card-foreground: 250 250 250;
+  --primary: 159 159 248;
+  --primary-foreground: 28 28 28;
+  --secondary: 51 51 51;
+  --secondary-foreground: 250 250 250;
+  --muted: 47 47 47;
+  --muted-foreground: 163 163 163;
+  --accent: 51 51 51;
+  --accent-foreground: 250 250 250;
+  --destructive: 255 71 71;
+  --border: 63 63 63;
+  --input: 63 63 63;
+  --ring: 159 159 248;
+  --sidebar: 28 28 28;
+  --sidebar-foreground: 250 250 250;
+  --sidebar-border: 63 63 63;
+  --up: 248 113 113;
+  --down: 96 165 250;
+  --series-1: 57 135 229;
+  --series-2: 217 89 38;
+  --series-3: 25 158 112;
+  --series-4: 201 133 0;
+  --series-5: 213 81 129;
+  --series-6: 0 131 0;
+  --series-7: 144 133 233;
+  --series-8: 230 103 103;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: rgb(var(--foreground));
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 999px;
+}
+
+/* ── 레이아웃: 사이드바 + 메인 ── */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgb(var(--sidebar));
+  color: rgb(var(--sidebar-foreground));
+  border-right: 1px solid rgb(var(--sidebar-border));
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 48px;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgb(var(--sidebar-border));
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgb(var(--primary));
+  color: rgb(var(--primary-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(var(--sidebar-foreground));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  color: rgb(var(--muted-foreground));
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: background 0.12s, color 0.12s;
+}
+
+.nav-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.nav-link:hover {
+  background: rgb(var(--muted));
+  color: rgb(var(--foreground));
+}
+
+.nav-link.active {
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-foreground));
+  font-weight: 600;
+}
+
+button.nav-link {
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+button.nav-link:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.sidebar-nav-divider {
+  height: 1px;
+  background: rgb(var(--sidebar-border));
+  margin: 0.4rem 0.65rem;
+}
+
+.sidebar-foot {
+  padding: 0.7rem 1rem;
+  font-size: 10.5px;
+  color: rgb(var(--muted-foreground));
+  border-top: 1px solid rgb(var(--sidebar-border));
+  flex-shrink: 0;
+}
+
+.main-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 48px;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid rgb(var(--border));
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  background: rgb(var(--background));
+  z-index: 10;
+}
+
+.page-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  color: rgb(var(--muted-foreground));
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-btn:hover {
+  background: rgb(var(--muted));
+  color: rgb(var(--foreground));
+}
+
+#theme-toggle {
+  margin-left: auto;
+}
+
+#sidebar-toggle {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+@media (max-width: 820px) {
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: transform 0.18s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  #sidebar-toggle {
+    display: inline-flex;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 20;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+
+  .content {
+    padding: 1.1rem 1rem 3rem;
+  }
+}
+
+/* ── 카드 / 공용 컴포넌트 ── */
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0.1rem 0 0.6rem;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.2rem;
+}
+
+.page-lede {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.88rem;
+  margin: 0 0 1.25rem;
+}
+
+.card {
+  background: rgb(var(--card));
+  color: rgb(var(--card-foreground));
+  border-radius: 22px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgb(var(--border) / 0.6);
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.card-title svg {
+  width: 15px;
+  height: 15px;
+  color: rgb(var(--muted-foreground));
+  flex-shrink: 0;
+}
+
+.card-title .muted {
+  font-weight: 400;
+  color: rgb(var(--muted-foreground));
+  font-size: 0.82rem;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.stats-row .stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.stats-row .stat + .stat {
+  border-left: 1px solid rgb(var(--border));
+  padding-left: 1.1rem;
+  margin-left: 1.1rem;
+}
+
+@media (max-width: 560px) {
+  .stats-row .stat + .stat {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    border-top: 1px solid rgb(var(--border));
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-label {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.85rem;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value.up {
+  color: rgb(var(--up));
+}
+
+.stat-value.down {
+  color: rgb(var(--down));
+}
+
+.stats,
+.empty,
+.source-path {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.88rem;
+}
+
+.breadcrumb {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.83rem;
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumb a {
+  color: rgb(var(--muted-foreground));
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(var(--border));
+}
+
+.note-list .note-delete-btn {
+  opacity: 0;
+  transition: opacity 0.12s;
+  flex-shrink: 0;
+}
+
+.note-list li:hover .note-delete-btn {
+  opacity: 1;
+}
+
+.note-delete-btn:hover {
+  color: rgb(var(--destructive));
+}
+
+/* 읽기 전용(클라우드) 빌드 — 쓰기 UI를 전부 숨긴다. 서버가 없는 정적 호스팅에서는
+   눌러도 실패할 버튼이라, 아예 안 보이게 하는 편이 헷갈리지 않는다. */
+.readonly-mode .note-delete-btn {
+  display: none;
+}
+
+.note-list li:last-child {
+  border-bottom: none;
+}
+
+.note-list a {
+  text-decoration: none;
+}
+
+.note-list a:hover {
+  text-decoration: underline;
+}
+
+.note-list .tags {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.85rem;
+  margin-left: 0.4rem;
+}
+
+.tag,
+.tag-cloud a {
+  display: inline-block;
+  background: rgb(var(--secondary));
+  color: rgb(var(--secondary-foreground));
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin: 0 0.3rem 0.3rem 0;
+}
+
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.tag-cloud .count {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.78rem;
+  margin-right: 0.6rem;
+}
+
+.note-body {
+  margin-top: 0.2rem;
+}
+
+.note-body h1 {
+  font-size: 1.3rem;
+}
+
+.note-body h2 {
+  font-size: 1.1rem;
+  margin-top: 1.6rem;
+}
+
+.note-body code {
+  background: rgb(var(--muted));
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.note-body pre {
+  background: rgb(var(--muted));
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+
+.note-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.note-body blockquote {
+  border-left: 3px solid rgb(var(--border));
+  margin: 1rem 0;
+  padding: 0.2rem 1rem;
+  color: rgb(var(--muted-foreground));
+}
+
+.note-body table {
+  border-collapse: collapse;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.note-body th,
+.note-body td {
+  border: 1px solid rgb(var(--border));
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+}
+
+.note-body .broken-link {
+  color: rgb(var(--destructive));
+  border-bottom: 1px dashed rgb(var(--destructive));
+  cursor: help;
+}
+
+.backlinks h2 {
+  font-size: 0.95rem;
+}
+
+input[type="search"],
+input[type="text"],
+input[type="date"],
+textarea {
+  font-family: inherit;
+  font-size: 0.88rem;
+  border: 1px solid transparent;
+  background: rgb(var(--input) / 0.5);
+  color: rgb(var(--foreground));
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: rgb(var(--ring));
+  box-shadow: 0 0 0 3px rgb(var(--ring) / 0.25);
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 32px;
+  padding: 0 0.85rem;
+  border-radius: 12px;
+  border: none;
+  background: rgb(var(--primary));
+  color: rgb(var(--primary-foreground));
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  background: rgb(var(--secondary));
+  color: rgb(var(--secondary-foreground));
+}
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  justify-content: center;
+  background: none;
+  color: rgb(var(--muted-foreground));
+  border-radius: 10px;
+}
+
+.btn-icon:hover {
+  background: rgb(var(--muted));
+  color: rgb(var(--foreground));
+  opacity: 1;
+}
+
+.btn-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.site-footer {
+  text-align: center;
+  color: rgb(var(--muted-foreground));
+  font-size: 0.78rem;
+  padding: 1.5rem;
+}
+
+/* ── 대시보드 위젯 ── */
+
+.dashboard-layout {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+.dashboard-main,
+.dashboard-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+@media (min-width: 860px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .dashboard-side {
+    position: sticky;
+    top: 64px;
+  }
+}
+
+.side-tabs {
+  display: flex;
+  gap: 0.2rem;
+  border-bottom: 1px solid rgb(var(--border));
+  margin-bottom: 0.9rem;
+}
+
+.side-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgb(var(--muted-foreground));
+  padding: 0.5rem 0.2rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.12s, border-color 0.12s;
+}
+
+.side-tab svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.side-tab:hover {
+  color: rgb(var(--foreground));
+}
+
+.side-tab.active {
+  color: rgb(var(--foreground));
+  border-bottom-color: rgb(var(--primary));
+}
+
+.side-tab-summary {
+  font-size: 0.78rem;
+  margin-bottom: 0.4rem;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgb(var(--border));
+  cursor: pointer;
+}
+
+.todo-row:last-child {
+  border-bottom: none;
+}
+
+.todo-box {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid rgb(var(--border));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--primary-foreground));
+}
+
+.todo-row.done .todo-box {
+  background: rgb(var(--primary));
+  border-color: rgb(var(--primary));
+}
+
+.todo-row.done .todo-title {
+  text-decoration: line-through;
+  color: rgb(var(--muted-foreground));
+}
+
+.todo-box svg {
+  width: 11px;
+  height: 11px;
+  display: none;
+}
+
+.todo-row.done .todo-box svg {
+  display: block;
+}
+
+.todo-title {
+  flex: 1;
+  font-size: 0.88rem;
+}
+
+.todo-edit,
+.todo-remove {
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.todo-row:hover .todo-edit,
+.todo-row:hover .todo-remove {
+  opacity: 1;
+}
+
+.todo-edit-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.88rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.todo-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.todo-add-row {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  margin-top: 0.4rem;
+  border-top: 1px solid rgb(var(--border));
+}
+
+.todo-add-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.memo-card textarea {
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+}
+
+.new-note-textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+}
+
+.new-note-textarea-tall {
+  min-height: 340px;
+}
+
+.import-note-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.import-note-head .card-title {
+  margin: 0;
+}
+
+.icon-toggle {
+  position: relative;
+  display: inline-flex;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.icon-toggle input[type="checkbox"] {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.icon-toggle-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--muted-foreground));
+  background: rgb(var(--secondary));
+  border: 1px solid rgb(var(--border));
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.icon-toggle-box svg {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-toggle input[type="checkbox"]:checked + .icon-toggle-box {
+  background: rgb(var(--primary));
+  color: rgb(var(--primary-foreground));
+  border-color: rgb(var(--primary));
+}
+
+.icon-toggle input[type="checkbox"]:focus-visible + .icon-toggle-box {
+  box-shadow: 0 0 0 3px rgb(var(--ring) / 0.35);
+}
+
+.memo-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.memo-status {
+  font-size: 0.75rem;
+  color: rgb(var(--muted-foreground));
+}
+
+.mail-row,
+.event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgb(var(--border));
+}
+
+.mail-row:last-child,
+.event-row:last-child {
+  border-bottom: none;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.mail-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.mail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.mail-from {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mail-time {
+  font-size: 0.72rem;
+  color: rgb(var(--muted-foreground));
+  flex-shrink: 0;
+}
+
+.mail-subject,
+.mail-snippet {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.mail-snippet {
+  color: rgb(var(--muted-foreground));
+}
+
+.event-time {
+  width: 108px;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: rgb(var(--muted-foreground));
+  font-variant-numeric: tabular-nums;
+}
+
+.event-title {
+  font-size: 0.88rem;
+  flex: 1;
+}
+
+.event-cal-badge {
+  flex: none;
+  font-size: 0.68rem;
+  color: rgb(var(--muted-foreground));
+  background: rgb(var(--secondary));
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
+}
+
+.yt-channel-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.yt-channel-row + .yt-channel-row {
+  margin-top: 2px;
+}
+
+.yt-channel-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: rgb(var(--accent));
+  border-radius: 8px;
+  z-index: 0;
+}
+
+.yt-channel-name,
+.yt-channel-count {
+  position: relative;
+  z-index: 1;
+}
+
+.yt-channel-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yt-channel-count {
+  flex: none;
+  color: rgb(var(--muted-foreground));
+  font-variant-numeric: tabular-nums;
+}
+
+.day-sep {
+  background: rgb(var(--muted) / 0.6);
+  padding: 0.35rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgb(var(--muted-foreground));
+  margin: 0.3rem 0;
+}
+
+.stock-table-wrap {
+  overflow-x: auto;
+}
+
+table.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+table.stock-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: rgb(var(--muted-foreground));
+  border-bottom: 1px solid rgb(var(--border));
+  padding: 0.4rem 0.5rem;
+}
+
+table.stock-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid rgb(var(--border));
+  font-variant-numeric: tabular-nums;
+}
+
+table.stock-table .sector-row td {
+  background: rgb(var(--muted) / 0.5);
+  color: rgb(var(--muted-foreground));
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+table.stock-table td.num {
+  text-align: right;
+}
+
+.up-text {
+  color: rgb(var(--up));
+}
+
+.down-text {
+  color: rgb(var(--down));
+}
+
+.empty-hint {
+  color: rgb(var(--muted-foreground));
+  font-size: 0.85rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.card-note {
+  font-size: 0.72rem;
+  color: rgb(var(--muted-foreground));
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgb(var(--border));
+}
+
+/* 대시보드 그래프 위젯 (태그 기준 노트 네트워크 미리보기) */
+.graph-widget-svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+.graph-edge {
+  stroke: rgb(var(--border));
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.graph-tag-edge {
+  stroke: rgb(var(--muted-foreground));
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+  opacity: 0.55;
+  fill: none;
+}
+
+.graph-node-hit {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.graph-hub-label {
+  font-size: 8px;
+  fill: rgb(var(--muted-foreground));
+  pointer-events: none;
+  user-select: none;
+}
+
+.graph-hub-dot {
+  stroke: rgb(var(--card));
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.graph-node-dot {
+  stroke: rgb(var(--card));
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.graph-node-hit:hover + .graph-node-dot,
+.graph-node-link:hover .graph-node-dot,
+.graph-node-link:hover .graph-hub-dot {
+  stroke: rgb(var(--ring));
+}
+
+.graph-node-link:hover .graph-hub-label {
+  fill: rgb(var(--foreground));
+}
+
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  padding: 0.6rem 0 0;
+}
+
+.graph-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: rgb(var(--muted-foreground));
+}
+
+.graph-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* 태그 관리 페이지 (병합 + 상위/하위 관계) */
+.tag-manage-select {
+  font-family: inherit;
+  font-size: 0.85rem;
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--input) / 0.5);
+  color: rgb(var(--foreground));
+  border-radius: 10px;
+  padding: 0.35rem;
+  outline: none;
+}
+
+.tag-manage-select:focus {
+  border-color: rgb(var(--ring));
+  box-shadow: 0 0 0 3px rgb(var(--ring) / 0.25);
+}
+
+.tag-manage-select option {
+  padding: 0.2rem 0.4rem;
+}
+
+.tag-manage-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tag-manage-row .tag-manage-select {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.tag-manage-row input[type="text"] {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.tag-manage-arrow {
+  color: rgb(var(--muted-foreground));
+  font-size: 1.1rem;
+  flex: none;
+}
+
+.tag-manage-select-single {
+  font-family: inherit;
+  font-size: 0.85rem;
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--input) / 0.5);
+  color: rgb(var(--foreground));
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  outline: none;
+  width: 100%;
+  max-width: 340px;
+}
+
+.tag-manage-select-single:focus {
+  border-color: rgb(var(--ring));
+  box-shadow: 0 0 0 3px rgb(var(--ring) / 0.25);
+}
+
+.tag-manage-row .tag-manage-select-single {
+  flex: 1 1 220px;
+  max-width: none;
+  min-width: 180px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-foreground));
+  border-radius: 999px;
+  padding: 0.3rem 0.45rem 0.3rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.chip-remove {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-remove:hover {
+  background: rgb(var(--border));
+}
+
+/* 클라우드 배포용 비밀번호 게이트 — 진짜 보안이 아니라 캐주얼한 방문만 막는 수준.
+   .gate-locked는 <head>의 인라인 스크립트가 body 렌더링 전에 동기적으로 추가해서
+   내용이 잠깐이라도 보이는 걸 막는다 (password-gate.js가 실행되면 필요 없어질 때 뗀다). */
+html.gate-locked body {
+  visibility: hidden;
+}
+
+#gate-overlay {
+  visibility: visible;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--background));
+}
+
+#gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: min(260px, 80vw);
+}
+
+.gate-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 0.25rem;
+}
+
+.gate-error {
+  color: rgb(var(--destructive));
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 0;
+}

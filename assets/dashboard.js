@@ -84,10 +84,19 @@
   }
 
   // ── 할 일 (날짜별, localStorage, vault 파일과 무관) ──
+  // 데이터 모델: "myremember-todo-{날짜}"는 그날의 실제 항목 배열
+  // {id, text, done, recurring, templateId, carriedFrom}. "매일" 항목은 별도
+  // 템플릿 목록(myremember-todo-recurring-templates, {id, text}만 저장 — done은
+  // 날짜마다 다르므로 템플릿엔 없음)에서 그날 화면에 처음 뜰 때 그 날짜 배열로
+  // "복제"(materialize)된다. 완료 못한 일반 항목은 다음날 화면을 열 때 전날 배열을
+  // 보고 같은 방식으로 하루치만 복제된다(연쇄적으로 여러 날을 건너뛰어도 계속
+  // 넘어가려면 중간 날짜들을 다 열어봐야 함 — 정적 localStorage라 백그라운드 처리가
+  // 없어서 "본 날짜만 이어진다"는 게 자연스러운 한계).
   var todoList = document.getElementById("todo-list");
   if (todoList) {
     var todoEmpty = document.getElementById("todo-empty");
     var todoInput = document.getElementById("todo-input");
+    var todoRecurringBox = document.getElementById("todo-recurring");
     var todoAddBtn = document.getElementById("todo-add");
     var todoDatePicker = document.getElementById("todo-date-picker");
     var todoDateLabel = document.getElementById("todo-date-label");
@@ -96,13 +105,52 @@
     var todoTodayBtn = document.getElementById("todo-today-btn");
     var statTodo = document.getElementById("stat-todo");
     var currentDate = TODAY_STR;
+    var RECURRING_KEY = "myremember-todo-recurring-templates";
 
-    var loadTodos = function (dateStr) {
+    var loadRawTodos = function (dateStr) {
       try { return JSON.parse(localStorage.getItem("myremember-todo-" + dateStr) || "[]"); }
       catch (e) { return []; }
     };
-    var saveTodos = function (dateStr, list) {
+    var saveRawTodos = function (dateStr, list) {
       localStorage.setItem("myremember-todo-" + dateStr, JSON.stringify(list));
+    };
+    var loadRecurringTemplates = function () {
+      try { return JSON.parse(localStorage.getItem(RECURRING_KEY) || "[]"); }
+      catch (e) { return []; }
+    };
+    var saveRecurringTemplates = function (list) {
+      localStorage.setItem(RECURRING_KEY, JSON.stringify(list));
+    };
+    // 그날 배열에 "매일" 템플릿과 전날의 미완료 항목을 복제해 넣는다(이미 있으면
+    // 건너뜀). 전날은 원시 읽기만 한다 — 재귀적으로 계속 materialize하면 한 번도
+    // 안 열어본 날짜까지 무한히 거슬러 올라갈 수 있어서, 딱 하루 앞만 본다.
+    var ensureMaterialized = function (dateStr) {
+      var list = loadRawTodos(dateStr);
+      var changed = false;
+
+      loadRecurringTemplates().forEach(function (tpl) {
+        var exists = list.some(function (t) { return t.templateId === tpl.id; });
+        if (!exists) {
+          list.push({ id: "rec-" + tpl.id + "-" + dateStr, text: tpl.text, done: false, recurring: true, templateId: tpl.id });
+          changed = true;
+        }
+      });
+
+      var prevDate = fromDateStr(dateStr);
+      prevDate.setDate(prevDate.getDate() - 1);
+      var prevList = loadRawTodos(toDateStr(prevDate));
+      prevList.forEach(function (t) {
+        if (t.done || t.recurring) return;
+        var origId = t.carriedFrom || t.id;
+        var exists = list.some(function (x) { return (x.carriedFrom || x.id) === origId; });
+        if (!exists) {
+          list.push({ id: "carry-" + origId + "-" + dateStr, text: t.text, done: false, recurring: false, carriedFrom: origId });
+          changed = true;
+        }
+      });
+
+      if (changed) saveRawTodos(dateStr, list);
+      return list;
     };
     var checkSvg = function () {
       return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
@@ -111,9 +159,11 @@
       var row = document.createElement("div");
       row.className = "todo-row" + (todo.done ? " done" : "");
       row.dataset.id = todo.id;
+      var badge = todo.recurring ? '<span class="todo-badge">매일</span>' : (todo.carriedFrom ? '<span class="todo-badge">이월</span>' : "");
       row.innerHTML =
         '<span class="todo-box">' + checkSvg() + "</span>" +
         '<span class="todo-title"></span>' +
+        badge +
         '<button type="button" class="btn-icon todo-edit" aria-label="수정">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>' +
         '<button type="button" class="btn-icon todo-remove" aria-label="삭제">' +
@@ -138,11 +188,19 @@
         if (save) {
           var newText = input.value.trim();
           if (newText) {
-            var list = loadTodos(currentDate);
+            var list = loadRawTodos(currentDate);
             var t = list.find(function (x) { return x.id === todo.id; });
             if (t) {
               t.text = newText;
-              saveTodos(currentDate, list);
+              saveRawTodos(currentDate, list);
+            }
+            if (todo.templateId) {
+              var templates = loadRecurringTemplates();
+              var tpl = templates.find(function (x) { return x.id === todo.templateId; });
+              if (tpl) {
+                tpl.text = newText;
+                saveRecurringTemplates(templates);
+              }
             }
           }
         }
@@ -158,21 +216,29 @@
     };
     var renderTodos = function () {
       todoList.innerHTML = "";
-      var list = loadTodos(currentDate);
+      var list = ensureMaterialized(currentDate);
       list.forEach(function (todo) { todoList.appendChild(buildRow(todo)); });
       todoEmpty.style.display = list.length ? "none" : "";
       if (todoDateLabel) {
         todoDateLabel.textContent = currentDate === TODAY_STR ? "· 오늘 · " + toKoreanLabel(currentDate) : "· " + toKoreanLabel(currentDate);
       }
       if (todoDatePicker) todoDatePicker.value = currentDate;
-      if (statTodo) statTodo.textContent = loadTodos(TODAY_STR).filter(function (t) { return !t.done; }).length;
+      if (statTodo) statTodo.textContent = ensureMaterialized(TODAY_STR).filter(function (t) { return !t.done; }).length;
     };
-    var addTodo = function (text) {
+    var addTodo = function (text, recurring) {
       text = text.trim();
       if (!text) return;
-      var list = loadTodos(currentDate);
-      list.push({ id: "todo-" + Date.now(), text: text, done: false });
-      saveTodos(currentDate, list);
+      var list = loadRawTodos(currentDate);
+      if (recurring) {
+        var templates = loadRecurringTemplates();
+        var tplId = "tpl-" + Date.now();
+        templates.push({ id: tplId, text: text });
+        saveRecurringTemplates(templates);
+        list.push({ id: "rec-" + tplId + "-" + currentDate, text: text, done: false, recurring: true, templateId: tplId });
+      } else {
+        list.push({ id: "todo-" + Date.now(), text: text, done: false });
+      }
+      saveRawTodos(currentDate, list);
       renderTodos();
     };
     var goToDate = function (dateStr) {
@@ -187,29 +253,38 @@
       var removeBtn = e.target.closest(".todo-remove");
       var row = e.target.closest(".todo-row");
       if (!row) return;
-      var list = loadTodos(currentDate);
+      var list = loadRawTodos(currentDate);
       if (editBtn) {
         var editTodo = list.find(function (t) { return t.id === row.dataset.id; });
         if (editTodo) startEdit(row, editTodo);
         return;
       }
       if (removeBtn) {
+        var removeTodo = list.find(function (t) { return t.id === row.dataset.id; });
+        if (removeTodo && removeTodo.templateId) {
+          saveRecurringTemplates(loadRecurringTemplates().filter(function (t) { return t.id !== removeTodo.templateId; }));
+        }
         list = list.filter(function (t) { return t.id !== row.dataset.id; });
-        saveTodos(currentDate, list);
+        saveRawTodos(currentDate, list);
         renderTodos();
         return;
       }
       var todo = list.find(function (t) { return t.id === row.dataset.id; });
       if (todo) {
         todo.done = !todo.done;
-        saveTodos(currentDate, list);
+        saveRawTodos(currentDate, list);
         renderTodos();
       }
     });
 
-    todoAddBtn.addEventListener("click", function () { addTodo(todoInput.value); todoInput.value = ""; todoInput.focus(); });
+    var addFromInput = function () {
+      addTodo(todoInput.value, !!(todoRecurringBox && todoRecurringBox.checked));
+      todoInput.value = "";
+      if (todoRecurringBox) todoRecurringBox.checked = false;
+    };
+    todoAddBtn.addEventListener("click", function () { addFromInput(); todoInput.focus(); });
     todoInput.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") { e.preventDefault(); addTodo(todoInput.value); todoInput.value = ""; }
+      if (e.key === "Enter") { e.preventDefault(); addFromInput(); }
     });
     todoDatePicker.addEventListener("change", function () { if (todoDatePicker.value) goToDate(todoDatePicker.value); });
     todoPrevBtn.addEventListener("click", function () { var d = fromDateStr(currentDate); d.setDate(d.getDate() - 1); goToDate(toDateStr(d)); });

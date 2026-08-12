@@ -50,7 +50,7 @@
         카카오톡
       </a>
     </nav>
-    <div class="sidebar-foot">생성 시각: 2026-08-12 11:12 UTC</div>
+    <div class="sidebar-foot">생성 시각: 2026-08-12 11:30 UTC</div>
   </aside>
 
   <div class="main-col">
@@ -107,12 +107,16 @@
       <p id="todo-empty" class="empty-hint" style="display:none;">이 날짜에 등록된 할 일이 없습니다.</p>
       <div class="todo-add-row">
         <input id="todo-input" type="text" placeholder="할 일 추가…">
+        <label class="todo-recurring-label" title="체크하면 이 할 일이 매일 자동으로 다시 나타납니다">
+          <input id="todo-recurring" type="checkbox">
+          매일
+        </label>
         <button id="todo-add" class="btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
           추가
         </button>
       </div>
-      <p class="card-note">이 목록은 vault 마크다운과는 별개로, 이 브라우저의 localStorage에만 저장됩니다.</p>
+      <p class="card-note">이 목록은 vault 마크다운과는 별개로, 이 브라우저의 localStorage에만 저장됩니다. "매일" 항목은 매일 자동으로 다시 나타나고, 완료하지 못한 일반 항목은 다음날에도 자동으로 이어집니다(그 날짜를 한 번 열어봐야 넘어감).</p>
     </div>
 
     <div class="card">
@@ -234,25 +238,8 @@
       </div>
 
       <div class="side-tab-panel" data-panel="calendar" hidden>
-        <p class="muted side-tab-summary">이번 주 일정 · 캘린더 6개 (08/11 ~ 08/17)</p>
+        <p class="muted side-tab-summary">오늘 기준 3일 일정 · 캘린더 3개 (08/12 ~ 08/14)</p>
         <div>
-          <div class="day-sep">08/11 (화)</div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">Y</span>
-<span class="event-cal-badge">보도기술부 일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">10:30-13:00</span>
-              <span class="event-title">[장익선] 멘토링 미팅(이대경)</span>
-<span class="event-cal-badge">KOBETA</span>            </div>
-            <div class="event-row">
-              <span class="event-time">15:00-18:00</span>
-              <span class="event-title">[장익선]조명업계 대표님 간담회</span>
-<span class="event-cal-badge">KOBETA</span>            </div>
-            <div class="event-row">
-              <span class="event-time">18:30-21:00</span>
-              <span class="event-title">[장익선] 1830 조명모임</span>
-<span class="event-cal-badge">KOBETA</span>            </div>
           <div class="day-sep">08/12 (수) · 오늘</div>
             <div class="event-row">
               <span class="event-time">종일</span>
@@ -294,12 +281,12 @@
           <div class="day-sep">08/14 (금)</div>
             <div class="event-row">
               <span class="event-time">종일</span>
-              <span class="event-title">[백선하] 패밀리데이</span>
-<span class="event-cal-badge">KOBETA</span>            </div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
               <span class="event-title">휴</span>
 <span class="event-cal-badge">보도기술부 일정</span>            </div>
+            <div class="event-row">
+              <span class="event-time">종일</span>
+              <span class="event-title">[백선하] 패밀리데이</span>
+<span class="event-cal-badge">KOBETA</span>            </div>
             <div class="event-row">
               <span class="event-time">07:00-07:30</span>
               <span class="event-title">성현 10시 수업 깨우기</span>
@@ -308,51 +295,8 @@
               <span class="event-time">08:00-12:00</span>
               <span class="event-title">장안정) 오후 반차</span>
 <span class="event-cal-badge">KOBETA</span>            </div>
-          <div class="day-sep">08/15 (토)</div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">광복절</span>
-<span class="event-cal-badge">대한민국의 휴일</span>            </div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">전기료(13.9만)</span>
-<span class="event-cal-badge">조충남 개인일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">U</span>
-<span class="event-cal-badge">보도기술부 일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">16:00-24:00</span>
-              <span class="event-title">근무 (익일로 이어짐)</span>
-<span class="event-cal-badge">조충남 개인일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">21:30-22:30</span>
-              <span class="event-title">전은진 생일</span>
-<span class="event-cal-badge">조충남 개인일정</span>            </div>
-          <div class="day-sep">08/16 (일)</div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">W</span>
-<span class="event-cal-badge">보도기술부 일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">00:00-07:30</span>
-              <span class="event-title">근무 (전일 야간 연속)</span>
-<span class="event-cal-badge">조충남 개인일정</span>            </div>
-            <div class="event-row">
-              <span class="event-time">13:00-17:00</span>
-              <span class="event-title">성윤이 학원-고등학교</span>
-<span class="event-cal-badge">조충남 개인일정</span>            </div>
-          <div class="day-sep">08/17 (월)</div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">쉬는 날 광복절</span>
-<span class="event-cal-badge">대한민국의 휴일</span>            </div>
-            <div class="event-row">
-              <span class="event-time">종일</span>
-              <span class="event-title">Y</span>
-<span class="event-cal-badge">보도기술부 일정</span>            </div>
         </div>
-        <p class="card-note">Google Calendar API로 가져온 스냅샷입니다 (2026-08-12 기준, 접근 가능한 캘린더 전체: 대한민국의 휴일·조충남 개인일정·KOBETA·보도기술부 일정에 이번 주 일정 있음 — 쌍용 프로젝트 진행 보고·2026학년 대입 전형일·경매일정·MBC 보도NPS 구축 프로젝트·MBC기술인협회·30대 MBC 방송기술인 협회는 이번 주엔 일정 없음).</p>
+        <p class="card-note">Google Calendar API로 가져온 스냅샷입니다 (2026-08-12 기준, 접근 가능한 캘린더 전체: 조충남 개인일정·KOBETA·보도기술부 일정에 일정 있음 — zisomtb@gmail.com·대한민국의 휴일·쌍용 프로젝트 진행 보고·2026학년 대입 전형일·경매일정·MBC 보도NPS 구축 프로젝트·MBC기술인협회·30대 MBC 방송기술인 협회는 이 3일간 일정 없음).</p>
       </div>
 
       <p class="card-note" style="border-top:none;">Gmail·캘린더는 생성 시점의 스냅샷입니다 — 실시간 데이터가 아닙니다.</p>
@@ -362,7 +306,7 @@
 </div>
     </main>
     <footer class="site-footer">
-      <p>MyRemember · 생성 시각: 2026-08-12 11:12 UTC</p>
+      <p>MyRemember · 생성 시각: 2026-08-12 11:30 UTC</p>
     </footer>
   </div>
 </div>

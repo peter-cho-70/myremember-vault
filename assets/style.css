@@ -891,6 +891,26 @@ textarea:focus {
   min-width: 0;
 }
 
+.todo-recurring-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: rgb(var(--muted-foreground));
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.todo-badge {
+  flex: none;
+  font-size: 0.68rem;
+  color: rgb(var(--muted-foreground));
+  background: rgb(var(--secondary));
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
+}
+
 .memo-card textarea {
   width: 100%;
   min-height: 200px;

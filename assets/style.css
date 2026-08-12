@@ -729,6 +729,15 @@ textarea:focus {
   align-items: start;
 }
 
+/* 관심종목/유튜브/카카오톡처럼 원래 300px 사이드 탭 안에 있던 콘텐츠(막대그래프,
+   태그 칩)가 전용 페이지로 옮겨지며 .content 전체(최대 980px)를 다 쓰게 됐는데,
+   내용물 자체는 좁은 폭에 맞춰 만들어져서 넓은 화면(태블릿 가로/데스크톱)에서는
+   카드 오른쪽에 빈 공간만 남아 어색해 보인다. 그 페이지들만 폭을 좁혀 내용과
+   화면 비율이 맞게 만든다 — 모바일에서는 어차피 .content보다 좁아서 영향 없음. */
+.page-narrow {
+  max-width: 640px;
+}
+
 .dashboard-main,
 .dashboard-side {
   display: flex;

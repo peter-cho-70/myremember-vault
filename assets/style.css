@@ -1054,7 +1054,7 @@ textarea:focus {
   white-space: nowrap;
 }
 
-.yt-channel-row {
+.bar-row {
   position: relative;
   display: flex;
   align-items: center;
@@ -1066,11 +1066,11 @@ textarea:focus {
   overflow: hidden;
 }
 
-.yt-channel-row + .yt-channel-row {
+.bar-row + .bar-row {
   margin-top: 2px;
 }
 
-.yt-channel-bar {
+.bar-fill {
   position: absolute;
   inset: 0 auto 0 0;
   background: rgb(var(--accent));
@@ -1078,19 +1078,19 @@ textarea:focus {
   z-index: 0;
 }
 
-.yt-channel-name,
-.yt-channel-count {
+.bar-label,
+.bar-count {
   position: relative;
   z-index: 1;
 }
 
-.yt-channel-name {
+.bar-label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.yt-channel-count {
+.bar-count {
   flex: none;
   color: rgb(var(--muted-foreground));
   font-variant-numeric: tabular-nums;

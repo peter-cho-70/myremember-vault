@@ -1073,16 +1073,6 @@ textarea:focus {
   flex: 1;
 }
 
-.event-cal-badge {
-  flex: none;
-  font-size: 0.68rem;
-  color: rgb(var(--muted-foreground));
-  background: rgb(var(--secondary));
-  border-radius: 999px;
-  padding: 0.15rem 0.55rem;
-  white-space: nowrap;
-}
-
 .bar-row {
   position: relative;
   display: flex;

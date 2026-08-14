@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>탈리 시스템 재설계 구성도 · 착수 우선순위 · 단말 표시장치 검토 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+      <div class="sidebar-nav-divider"></div>
+      <a href="../stocks.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        관심종목
+      </a>
+      <a href="../youtube.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+        유튜브
+      </a>
+      <a href="../kakao.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        카카오톡
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-14 07:14 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">탈리 시스템 재설계 구성도 · 착수 우선순위 · 단말 표시장치 검토</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/IOT.html">#IOT</a><a class="tag" href="../tags/LED.html">#LED</a><a class="tag" href="../tags/md.html">#md</a><a class="tag" href="../tags/매트릭스.html">#매트릭스</a><a class="tag" href="../tags/장안.html">#장안</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="탈리-시스템-재설계-구성도-착수-우선순위-단말-표시장치-검토">탈리 시스템 재설계 구성도 · 착수 우선순위 · 단말 표시장치 검토</h1>
+<p>Broadcast Engineering · Design Review</p>
+<h1 id="탈리-시스템-재설계-구성도-착수-우선순위-단말-표시장치-검토-1">탈리 시스템 재설계 구성도 · 착수 우선순위 · 단말 표시장치 검토</h1>
+<p>백본 <strong>이더넷 / PoE 전면 전환</strong> 소스 <strong>HW 스위처 + vMix + 큐시트/MASTER</strong> 규모 <strong>부조 1식 · 단말 8~16대 시범</strong> 표시 <strong>도트매트릭스 → LCD 검토</strong></p>
+<ul>
+<li><a href="#arch" class="active">1. 전체 구성도</a></li>
+<li><a href="#order">2. 무엇부터 만들까</a></li>
+<li><a href="#display">3. LCD vs 도트매트릭스</a></li>
+<li><a href="#next">4. 다음 액션</a></li>
+<li><a href="#glossary">📖 용어집</a></li>
+</ul>
+<h2 id="전체-구성도">1. 전체 구성도</h2>
+<p>소스가 여러 개(하드웨어 스위처 · vMix · 큐시트)이므로, 핵심은 <strong>“어떤 소스가 붙어도 코어는 한 가지 형태의 이벤트만 안다”</strong>는 정규화 계층입니다. 이 한 가지 설계가 이후 확장성의 90%를 결정합니다.</p>
+<h3 id="계층-구조">1-1. 계층 구조</h3>
+<p><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZGlhZ3JhbSIgdmlld2JveD0iMCAwIDEwMDAgNzAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLEJsaW5rTWFjU3lzdGVtRm9udCwmIzM5O0FwcGxlIFNEIEdvdGhpYyBOZW8mIzM5OyxzYW5zLXNlcmlmIj4KICAgIDxkZWZzPgogICAgICA8bWFya2VyIGlkPSJhciIgbWFya2Vyd2lkdGg9IjkiIG1hcmtlcmhlaWdodD0iOSIgcmVmeD0iNyIgcmVmeT0iNC41IiBvcmllbnQ9ImF1dG8iPgogICAgICAgIDxwYXRoIGQ9Ik0wLDAgTDksNC41IEwwLDkgeiIgZmlsbD0iIzdhODg5OSIgLz4KICAgICAgPC9tYXJrZXI+CiAgICA8L2RlZnM+CgogICAgPCEtLSBMYXllciAwIC0tPgogICAgPHJlY3QgeD0iMzAiIHk9IjIwIiB3aWR0aD0iOTQwIiBoZWlnaHQ9Ijg2IiByeD0iMTIiIGZpbGw9IiNlZWYxZjUiIHN0cm9rZT0iI2Q1ZGJlMyIgLz4KICAgIDx0ZXh0IHg9IjQ2IiB5PSI0MiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzViNjY3MyI+4pOqIFNPVVJDRSBMQVlFUiDigJQg7IOB7YOc7J2YIOybkOyynDwvdGV4dD4KICAgIDxyZWN0IHg9IjUyIiB5PSI1MiIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI0MiIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2M5ZDJkZCIgLz4KICAgIDx0ZXh0IHg9IjY4IiB5PSI3MCIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFjMjEyOCI+SFcg7Iqk7JyE7LKYIChHVkcgLyBTb255IC8gUm9zcyk8L3RleHQ+CiAgICA8dGV4dCB4PSI2OCIgeT0iODYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM1YjY2NzMiPlRTTCBVTUQgVjMuMcK3VjUuMCAvIEdQSSDsoJHsoJAgLyDsi5zrpqzslrw8L3RleHQ+CiAgICA8cmVjdCB4PSIzNTIiIHk9IjUyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyIiByeD0iOCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYzlkMmRkIiAvPgogICAgPHRleHQgeD0iMzY4IiB5PSI3MCIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFjMjEyOCI+dk1peCAoU1cg7Iqk7JyE7LKYKTwvdGV4dD4KICAgIDx0ZXh0IHg9IjM2OCIgeT0iODYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM1YjY2NzMiPlRDUCBBUEkgOjgwOTkgLyBXZWIgQVBJPC90ZXh0PgogICAgPHJlY3QgeD0iNjEyIiB5PSI1MiIgd2lkdGg9IjMzNiIgaGVpZ2h0PSI0MiIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2M5ZDJkZCIgLz4KICAgIDx0ZXh0IHg9IjYyOCIgeT0iNzAiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxYzIxMjgiPu2BkOyLnO2KuCAvIE1BU1RFUiDsi5zsiqTthZw8L3RleHQ+CiAgICA8dGV4dCB4PSI2MjgiIHk9Ijg2IiBmb250LXNpemU9IjExIiBmaWxsPSIjNWI2NjczIj5SRVNUIMK3IFdlYlNvY2tldCAvIOy5tOuplOudvOuqhSDCtyDtgZAgwrcg7J6Q66eJPC90ZXh0PgoKICAgIDxsaW5lIHgxPSIxOTIiIHkxPSIxMDYiIHgyPSIxOTIiIHkyPSIxMzIiIHN0cm9rZT0iIzdhODg5OSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iNDcyIiB5MT0iMTA2IiB4Mj0iNDcyIiB5Mj0iMTMyIiBzdHJva2U9IiM3YTg4OTkiIHN0cm9rZS13aWR0aD0iMS42IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSI+PC9saW5lPgogICAgPGxpbmUgeDE9Ijc4MCIgeTE9IjEwNiIgeDI9Ijc4MCIgeTI9IjEzMiIgc3Ryb2tlPSIjN2E4ODk5IiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhcikiPjwvbGluZT4KCiAgICA8IS0tIExheWVyIDEgLS0+CiAgICA8cmVjdCB4PSIzMCIgeT0iMTM4IiB3aWR0aD0iOTQwIiBoZWlnaHQ9IjgyIiByeD0iMTIiIGZpbGw9IiNlOGYwZmQiIHN0cm9rZT0iI2I5Y2RmMCIgLz4KICAgIDx0ZXh0IHg9IjQ2IiB5PSIxNjAiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyZjZmZGIiPuKRoCBJTkdFU1Qg4oCUIO2UhOuhnO2GoOy9nCDslrTrjJHthLAgKO2UjOufrOq3uOyduCk8L3RleHQ+CiAgICA8cmVjdCB4PSI1MiIgeT0iMTcwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI2IiByeD0iNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYjljZGYwIiAvPjx0ZXh0IHg9IjEyNyIgeT0iMTg4IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij5UU0wgQWRhcHRlcjwvdGV4dD4KICAgIDxyZWN0IHg9IjIxMiIgeT0iMTcwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjI2IiByeD0iNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYjljZGYwIiAvPjx0ZXh0IHg9IjI4NyIgeT0iMTg4IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij52TWl4IEFkYXB0ZXI8L3RleHQ+CiAgICA8cmVjdCB4PSIzNzIiIHk9IjE3MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIyNiIgcng9IjYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I5Y2RmMCIgLz48dGV4dCB4PSI0NDciIHk9IjE4OCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFjMjEyOCI+R1BJIEFkYXB0ZXI8L3RleHQ+CiAgICA8cmVjdCB4PSI1MzIiIHk9IjE3MCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIyNiIgcng9IjYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I5Y2RmMCIgLz48dGV4dCB4PSI2MjIiIHk9IjE4OCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFjMjEyOCI+Q3Vlc2hlZXQgQWRhcHRlcjwvdGV4dD4KICAgIDxyZWN0IHg9IjcyMiIgeT0iMTcwIiB3aWR0aD0iMjI2IiBoZWlnaHQ9IjI2IiByeD0iNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYjljZGYwIiBzdHJva2UtZGFzaGFycmF5PSI0IDMiIC8+PHRleHQgeD0iODM1IiB5PSIxODgiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YjY2NzMiPuKApiDtlqXtm4Qg7LaU6rCAPC90ZXh0PgogICAgPHRleHQgeD0iNTIiIHk9IjIxMiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzJmNmZkYiI+4pa4IOuqqOuRkCDtlZjrgpjsnZgg7KCV6rec7ZmUIOydtOuypO2KuOuhnCDrs4DtmZgg4oaSIHsgc3JjLCBpbnB1dCwgY2FtZXJhX2lkLCBzdGF0ZVtdLCBsYWJlbCwgc2VxLCB0cyB9PC90ZXh0PgoKICAgIDxsaW5lIHgxPSI1MDAiIHkxPSIyMjAiIHgyPSI1MDAiIHkyPSIyNDYiIHN0cm9rZT0iIzdhODg5OSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXIpIj48L2xpbmU+CgogICAgPCEtLSBMYXllciAyIC0tPgogICAgPHJlY3QgeD0iMzAiIHk9IjI1MiIgd2lkdGg9Ijk0MCIgaGVpZ2h0PSIxMDQiIHJ4PSIxMiIgZmlsbD0iI2ZkZWRlZCIgc3Ryb2tlPSIjZjBiY2JjIiAvPgogICAgPHRleHQgeD0iNDYiIHk9IjI3NCIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2Q5M2EzYSI+4pGhIFRBTExZIENPUkUg4oCUIOyDge2DnCDsl5Tsp4QgKOyLnOyKpO2FnOydmCDsi6zsnqUpPC90ZXh0PgogICAgPHJlY3QgeD0iNTIiIHk9IjI4NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2YwYmNiYyIgLz4KICAgIDx0ZXh0IHg9IjE1OCIgeT0iMzA0IiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSI3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYzIxMjgiPuunpO2VkSDthYzsnbTruJQ8L3RleHQ+CiAgICA8dGV4dCB4PSIxNTgiIHk9IjMyMiIgZm9udC1zaXplPSIxMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj7siqTsnITsspgg7J6F66ClIOKGlCDsubTrqZTrnbwgSUQ8L3RleHQ+CiAgICA8dGV4dCB4PSIxNTgiIHk9IjMzNSIgZm9udC1zaXplPSIxMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj7ihpQg64uo66eQIElEIOKGlCDrnbzrsqg8L3RleHQ+CiAgICA8cmVjdCB4PSIyNzQiIHk9IjI4NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2YwYmNiYyIgLz4KICAgIDx0ZXh0IHg9IjM4MCIgeT0iMzA0IiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSI3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYzIxMjgiPuyasOyEoOyInOychCDtjJDsoJU8L3RleHQ+CiAgICA8dGV4dCB4PSIzODAiIHk9IjMyMiIgZm9udC1zaXplPSIxMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj5QR00gJmd0OyBDQUxMICZndDsgUFZXPC90ZXh0PgogICAgPHRleHQgeD0iMzgwIiB5PSIzMzUiIGZvbnQtc2l6ZT0iMTAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzViNjY3MyI+Jmd0OyBJU08gJmd0OyBJRExFPC90ZXh0PgogICAgPHJlY3QgeD0iNDk2IiB5PSIyODQiIHdpZHRoPSIyMTIiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmMGJjYmMiIC8+CiAgICA8dGV4dCB4PSI2MDIiIHk9IjMwNCIgZm9udC1zaXplPSIxMi41IiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij7sg4Htg5wg66i47IugPC90ZXh0PgogICAgPHRleHQgeD0iNjAyIiB5PSIzMjIiIGZvbnQtc2l6ZT0iMTAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzViNjY3MyI+7KCQ66m4IMK3IO2ZgOuTnCDCtyDrlJTrsJTsmrTsiqQ8L3RleHQ+CiAgICA8dGV4dCB4PSI2MDIiIHk9IjMzNSIgZm9udC1zaXplPSIxMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj5MYXN0LUtub3duLUdvb2Q8L3RleHQ+CiAgICA8cmVjdCB4PSI3MTgiIHk9IjI4NCIgd2lkdGg9IjIzMCIgaGVpZ2h0PSI1NiIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2YwYmNiYyIgLz4KICAgIDx0ZXh0IHg9IjgzMyIgeT0iMzA0IiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSI3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYzIxMjgiPuydtOykke2ZlDwvdGV4dD4KICAgIDx0ZXh0IHg9IjgzMyIgeT0iMzIyIiBmb250LXNpemU9IjEwLjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YjY2NzMiPkFjdGl2ZSAvIFN0YW5kYnkgMuuFuOuTnDwvdGV4dD4KICAgIDx0ZXh0IHg9IjgzMyIgeT0iMzM1IiBmb250LXNpemU9IjEwLjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YjY2NzMiPkhlYXJ0YmVhdCArIOqwgOyDgSBJUDwvdGV4dD4KCiAgICA8bGluZSB4MT0iNTAwIiB5MT0iMzU2IiB4Mj0iNTAwIiB5Mj0iMzgyIiBzdHJva2U9IiM3YTg4OTkiIHN0cm9rZS13aWR0aD0iMS42IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSI+PC9saW5lPgoKICAgIDwhLS0gTGF5ZXIgMyAtLT4KICAgIDxyZWN0IHg9IjMwIiB5PSIzODgiIHdpZHRoPSI5NDAiIGhlaWdodD0iNzIiIHJ4PSIxMiIgZmlsbD0iI2VhZjZlZiIgc3Ryb2tlPSIjYjRkY2M0IiAvPgogICAgPHRleHQgeD0iNDYiIHk9IjQxMCIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFmOTI1NCI+4pGiIERJU1RSSUJVVElPTiDigJQg67Cw7Y+sPC90ZXh0PgogICAgPHJlY3QgeD0iNTIiIHk9IjQyMCIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyOCIgcng9IjYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I0ZGNjNCIgLz48dGV4dCB4PSIxOTYiIHk9IjQzOSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFjMjEyOCI+7KO8IOqyveuhnDogVURQIOupgO2LsOy6kOyKpO2KuCAo7KCA7KeA7JewKTwvdGV4dD4KICAgIDxyZWN0IHg9IjM1MiIgeT0iNDIwIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI4IiByeD0iNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYjRkY2M0IiAvPjx0ZXh0IHg9IjQ5NiIgeT0iNDM5IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij7rs7TsobA6IFRDUCAvIE1RVFQg7Jyg64uI7LqQ7Iqk7Yq4PC90ZXh0PgogICAgPHJlY3QgeD0iNjUyIiB5PSI0MjAiIHdpZHRoPSIyOTYiIGhlaWdodD0iMjgiIHJ4PSI2IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNiNGRjYzQiIC8+PHRleHQgeD0iODAwIiB5PSI0MzkiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYzIxMjgiPuyXreuwqe2WpTog64uo66eQIEhlYXJ0YmVhdCDCtyDsnpDquLDsp4Tri6g8L3RleHQ+CgogICAgPGxpbmUgeDE9IjIwMCIgeTE9IjQ2MCIgeDI9IjIwMCIgeTI9IjQ5MCIgc3Ryb2tlPSIjN2E4ODk5IiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhcikiPjwvbGluZT4KICAgIDxsaW5lIHgxPSI1MDAiIHkxPSI0NjAiIHgyPSI1MDAiIHkyPSI0OTAiIHN0cm9rZT0iIzdhODg5OSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXIpIj48L2xpbmU+CiAgICA8bGluZSB4MT0iODAwIiB5MT0iNDYwIiB4Mj0iODAwIiB5Mj0iNDkwIiBzdHJva2U9IiM3YTg4OTkiIHN0cm9rZS13aWR0aD0iMS42IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSI+PC9saW5lPgoKICAgIDwhLS0gTGF5ZXIgNCAtLT4KICAgIDxyZWN0IHg9IjMwIiB5PSI0OTYiIHdpZHRoPSIzMDAiIGhlaWdodD0iOTYiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYzlkMmRkIiBzdHJva2Utd2lkdGg9IjIiIC8+CiAgICA8dGV4dCB4PSIxODAiIHk9IjUyMCIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFjMjEyOCI+4pGjIOyLoO2YlSDri6jrp5A8L3RleHQ+CiAgICA8dGV4dCB4PSIxODAiIHk9IjU0MSIgZm9udC1zaXplPSIxMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj5FU1AzMi1TMyArIExDRCArIFBvRSBTcGxpdHRlcjwvdGV4dD4KICAgIDx0ZXh0IHg9IjE4MCIgeT0iNTU4IiBmb250LXNpemU9IjExLjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YjY2NzMiPisg7YWM65GQ66asIFJHQiBMRUQ8L3RleHQ+CiAgICA8dGV4dCB4PSIxODAiIHk9IjU3NyIgZm9udC1zaXplPSIxMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj5PVEEg7Y6M7Juo7Ja0IMK3IOyhsOuPhOyEvOyEnDwvdGV4dD4KCiAgICA8cmVjdCB4PSIzNTAiIHk9IjQ5NiIgd2lkdGg9IjMwMCIgaGVpZ2h0PSI5NiIgcng9IjEyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjOWQyZGQiIHN0cm9rZS13aWR0aD0iMiIgLz4KICAgIDx0ZXh0IHg9IjUwMCIgeT0iNTIwIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iODAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij7ikaPigLIg6rCA7IOBIOuLqOunkCAo7Ju5KTwvdGV4dD4KICAgIDx0ZXh0IHg9IjUwMCIgeT0iNTQxIiBmb250LXNpemU9IjExLjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1YjY2NzMiPuu4jOudvOyasOyggCDCtyDtg5zruJTrpr8gKFdlYlNvY2tldCk8L3RleHQ+CiAgICA8dGV4dCB4PSI1MDAiIHk9IjU1OCIgZm9udC1zaXplPSIxMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj7rtoDsobAg66qo64uI7YSwIO2RnOyLnDwvdGV4dD4KICAgIDx0ZXh0IHg9IjUwMCIgeT0iNTc3IiBmb250LXNpemU9IjExLjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxZjkyNTQiPuKWuCDtiKzsnpAgMOybkCDsi6Tspp0g7IiY64uoPC90ZXh0PgoKICAgIDxyZWN0IHg9IjY3MCIgeT0iNDk2IiB3aWR0aD0iMzAwIiBoZWlnaHQ9Ijk2IiByeD0iMTIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2M5ZDJkZCIgc3Ryb2tlLXdpZHRoPSIyIiAvPgogICAgPHRleHQgeD0iODIwIiB5PSI1MjAiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYzIxMjgiPuKRo+KAsyDroIjqsbDsi5wg6rKM7J207Yq47Juo7J20PC90ZXh0PgogICAgPHRleHQgeD0iODIwIiB5PSI1NDEiIGZvbnQtc2l6ZT0iMTEuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzViNjY3MyI+RXRoZXJuZXQg4oaSIFJTLTQyMiDrs4DtmZg8L3RleHQ+CiAgICA8dGV4dCB4PSI4MjAiIHk9IjU1OCIgZm9udC1zaXplPSIxMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWI2NjczIj7quLDsobQg64+E7Yq466ek7Yq466at7IqkIOuLqOunkCDsiJjsmqk8L3RleHQ+CiAgICA8dGV4dCB4PSI4MjAiIHk9IjU3NyIgZm9udC1zaXplPSIxMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYzk4YTEyIj7ilrgg66Gk67CxIOqyveuhnCA9IOyViOyghOyepey5mDwvdGV4dD4KCiAgICA8IS0tIExheWVyIDUgLS0+CiAgICA8cmVjdCB4PSIzMCIgeT0iNjA4IiB3aWR0aD0iOTQwIiBoZWlnaHQ9IjcyIiByeD0iMTIiIGZpbGw9IiNmM2YwZmEiIHN0cm9rZT0iI2NmYzRlOCIgLz4KICAgIDx0ZXh0IHg9IjQ2IiB5PSI2MzAiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM2YjRmYjAiPuKRpCBPUFMg4oCUIOq0gOumrCDCtyDsmrTsmIE8L3RleHQ+CiAgICA8cmVjdCB4PSI1MiIgeT0iNjQwIiB3aWR0aD0iNDQwIiBoZWlnaHQ9IjI4IiByeD0iNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZjNGU4IiAvPjx0ZXh0IHg9IjI3MiIgeT0iNjU5IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWMyMTI4Ij7sm7kg7L2Y7IaUOiDrp6TtlZEg7Y647ISxIMK3IO2UhOuhnOq3uOueqOuzhCDtlITrpqzshYsgwrcg64uo66eQIO2XrOyKpOuntSDCtyDsi5zrrqzroIjsnbTthLA8L3RleHQ+CiAgICA8cmVjdCB4PSI1MDQiIHk9IjY0MCIgd2lkdGg9IjQ0NCIgaGVpZ2h0PSIyOCIgcng9IjYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NmYzRlOCIgLz48dGV4dCB4PSI3MjYiIHk9IjY1OSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFjMjEyOCI+REI6IFBvc3RncmVTUUwo6rWs7ISxwrftlITrpqzshYspICsg7Iuc6rOE7Je0IOydtOuypO2KuCDroZzqt7go6rCQ7IKsIOy2lOyggSk8L3RleHQ+CiAgPC9zdmc+" class="diagram" /></p>
+<h3 id="물리-구성-부조-1식-단말-16대-기준">1-2. 물리 구성 (부조 1식 · 단말 16대 기준)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">구간</th>
+<th style="text-align: left;">장비</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">코어</td>
+<td style="text-align: left;">산업용 미니PC ×2 (Active/Standby)</td>
+<td style="text-align: left;">Docker 컨테이너, 무팬 모델 권장(소음)</td>
+</tr>
+<tr>
+<td style="text-align: left;">네트워크</td>
+<td style="text-align: left;">PoE+ 스위치 24포트 ×2</td>
+<td style="text-align: left;">단말 16 × 5~8W = 80~130W → <strong>PoE 버짓은 소요의 2배 확보</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">VLAN</td>
+<td style="text-align: left;">Tally 전용 VLAN 분리</td>
+<td style="text-align: left;">IGMP Snooping 반드시 ON</td>
+</tr>
+<tr>
+<td style="text-align: left;">단말</td>
+<td style="text-align: left;">카메라 상단 온에어 램프 + 뷰파인더 옆 UMD</td>
+<td style="text-align: left;">3장의 하이브리드 권장안 참조</td>
+</tr>
+<tr>
+<td style="text-align: left;">게이트웨이</td>
+<td style="text-align: left;">RS-422 변환기 ×1</td>
+<td style="text-align: left;">기존 단말 병행 운용 / 즉시 롤백 경로</td>
+</tr>
+<tr>
+<td style="text-align: left;">전원</td>
+<td style="text-align: left;">코어 · 스위치 UPS</td>
+<td style="text-align: left;">탈리 정지 = 방송사고. 무정전 필수</td>
+</tr>
+</tbody>
+</table>
+<h3 id="지연-예산-latency-budget">1-3. 지연 예산 (Latency Budget)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">구간</th>
+<th style="text-align: left;">목표</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">스위처 이벤트 → 어댑터 수신</td>
+<td style="text-align: left;">≤ 10 ms</td>
+<td style="text-align: left;">vMix API를 폴링으로 쓰면 여기서 수십 ms 손해 — 이벤트/구독 방식 우선</td>
+</tr>
+<tr>
+<td style="text-align: left;">코어 처리</td>
+<td style="text-align: left;">≤ 5 ms</td>
+<td style="text-align: left;">매핑 · 우선순위 판정</td>
+</tr>
+<tr>
+<td style="text-align: left;">네트워크 전송</td>
+<td style="text-align: left;">≤ 5 ms</td>
+<td style="text-align: left;">L2 내부 멀티캐스트</td>
+</tr>
+<tr>
+<td style="text-align: left;">단말 수신 → 화면 갱신</td>
+<td style="text-align: left;">≤ 30 ms</td>
+<td style="text-align: left;">⚠ LCD의 최대 리스크 구간</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>End-to-End</strong></td>
+<td style="text-align: left;"><strong>≤ 50 ms</strong></td>
+<td style="text-align: left;">허용 한계 100 ms · 파일럿에서 반드시 실측</td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>먼저 합의할 질문:</strong> 탈리가 <strong>1프레임(약 33ms) 단위로 맞아야 하는가?</strong><br />
+온에어 램프는 프레임 정확도가 중요하고, UMD 문자 정보는 100ms여도 실무상 문제가 없습니다. <strong>이 둘을 분리해서 설계하는 것</strong>이 이번 재설계의 가장 중요한 판단입니다.</p>
+<h2 id="무엇부터-만들-것인가">2. 무엇부터 만들 것인가</h2>
+<p><strong>결론:</strong> 하드웨어가 아니라 <strong>“상태 모델 → 코어 → 가상 단말”</strong> 순서입니다.<br />
+탈리 재설계에서 가장 흔한 실패는 단말부터 만드는 것입니다. 단말은 부품 수급·시제품·설치 리드타임이 길고 한 번 정하면 되돌리기 비쌉니다. 반면 코어와 프로토콜은 하루에도 몇 번씩 고칠 수 있습니다. <strong>바꾸기 싼 것부터 확정하고, 바꾸기 비싼 것을 마지막에 정하는 순서</strong>가 맞습니다.</p>
+<p>Phase 0</p>
+<h4 id="규격-확정">규격 확정</h4>
+<p>탈리 상태 모델, 정규화 이벤트 스키마, 단말 프로토콜 스펙, ID 체계를 문서 한 장으로 못박습니다.</p>
+<p>산출물: 규격서 10p · 기간 1~2주 · <strong>이후 모든 작업이 이 문서를 참조합니다. 여기가 애매하면 전부 흔들립니다.</strong></p>
+<p>Phase 1</p>
+<h4 id="tally-core-스위처-시뮬레이터">Tally Core + 스위처 시뮬레이터</h4>
+<p>어댑터 1개(TSL) + 상태 엔진 + 매핑 테이블. 동시에 <strong>가짜 스위처</strong>를 만들어 둡니다.</p>
+<p>기간 3~4주 · 실장비 없이 개발 가능해지고, 야간·주말에도 회귀 테스트가 돌아갑니다</p>
+<p>Phase 2</p>
+<h4 id="가상-단말-웹">가상 단말 (웹)</h4>
+<p>브라우저에서 PGM/PVW를 표시. 부조 스위처에 노트북 하나 물려서 하루만 돌려봅니다.</p>
+<p><strong>투자 0원으로 전체 체인 검증.</strong> 매핑 오류·우선순위 충돌·라벨 규칙 문제가 여기서 거의 다 드러납니다</p>
+<p>Phase 3</p>
+<h4 id="단말-프로토타입-12대">단말 프로토타입 1~2대</h4>
+<p>ESP32-S3 + LCD + PoE. 밝기·시야각·지연·카메라 촬영 테스트.</p>
+<p>기간 3~4주 · <strong>LCD 채택 여부의 실측 근거를 여기서 확보</strong> (3-6 체크리스트)</p>
+<p>Phase 4</p>
+<h4 id="웹-관리-콘솔">웹 관리 콘솔</h4>
+<p>매핑 편성, 프로그램별 프리셋, 단말 헬스맵, 로그 조회.</p>
+<p>기간 3~4주 · 운용 담당이 개발자 없이 직접 바꿀 수 있어야 시스템이 삽니다</p>
+<p>Phase 5</p>
+<h4 id="파일럿-816대-설치-이중화-검증">파일럿 8~16대 설치 + 이중화 검증</h4>
+<p>코어 다운, 스위치 다운, 케이블 절단 — 장애 시나리오를 실제로 재현합니다.</p>
+<p>기간 4~6주 · 기존 시스템 병행 운용 유지</p>
+<p>Phase 6</p>
+<h4 id="확장">확장</h4>
+<p>vMix 어댑터, 큐시트/MASTER 연동, RS-422 게이트웨이, 타 스튜디오 전개.</p>
+<p>코어가 안정된 뒤에 붙여야 합니다</p>
+<h3 id="지금-당장-착수한다면-이-3가지">지금 당장 착수한다면, 이 3가지</h3>
+<h4 style="margin-top:0" id="탈리-상태-모델-정의-반나절-회의">① 탈리 상태 모델 정의 (반나절 회의)</h4>
+<ul>
+<li>상태 종류: PGM / PVW / ISO / REC / CALL / IDLE / FAULT — 몇 개까지?</li>
+<li>동시 상태 우선순위 — PGM이면서 CALL이면 무엇을 보여줄 것인가?</li>
+<li>카메라맨용 / 출연자용 표시가 달라야 하는가?</li>
+</ul>
+<h4 style="margin-top:0" id="정규화-이벤트-스키마-확정">② 정규화 이벤트 스키마 확정</h4>
+<p>{ "src": "switcher-a", "input": 3, "camera_id": "CAM3", "state": ["PGM"], "label": "3번 카메라", "seq": 1024, "ts": 1755100000123 }</p>
+<h4 style="margin-top:0" id="가상-단말로-하루-실증">③ 가상 단말로 하루 실증</h4>
+<p>부조 스위처 TSL 출력에 노트북 한 대 물려서, 웹페이지가 PGM을 제대로 따라오는지만 확인합니다. <strong>이 하루가 이후 6개월의 방향을 정합니다.</strong></p>
+<p>⚠ <strong>하지 말아야 할 것</strong> — 처음부터 전 스튜디오 표준으로 설계하기 · 단말 외형·금형부터 확정하기 · 기존 RS-422를 즉시 철거하기.<br />
+<strong>롤백 경로(기존 시스템 병행)를 파일럿 종료까지 반드시 유지하세요.</strong></p>
+<h2 id="단말-표시장치-lcd-vs-도트매트릭스">3. 단말 표시장치 — LCD vs 도트매트릭스</h2>
+<h3 id="한눈에-보기">3-1. 한눈에 보기</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">비교 축</th>
+<th style="text-align: left;">도트매트릭스 (현행)</th>
+<th style="text-align: left;">LCD (IPS TFT)</th>
+<th style="text-align: left;">유리한 쪽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>시야각</strong></td>
+<td style="text-align: left;">사실상 전방위. 각도에 따른 밝기 저하가 적음</td>
+<td style="text-align: left;">IPS라도 극단 각도에서 명암비·색 저하</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>휘도</strong></td>
+<td style="text-align: left;">매우 높음. 조명 아래·야외에서도 판독</td>
+<td style="text-align: left;">일반 패널 200~500 nit, 고휘도는 단가 급증</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>응답 속도</strong></td>
+<td style="text-align: left;">사실상 즉시</td>
+<td style="text-align: left;">패널 응답 + 프레임버퍼 갱신 → 수십 ms 추가</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>표현 정보량</strong></td>
+<td style="text-align: left;">영문·숫자 위주. 한글은 16×16 이상 필요</td>
+<td style="text-align: left;">한글·다국어·아이콘·컬러 자유. 큐 정보·타이머까지</td>
+<td style="text-align: left;">LCD</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>상태 구분</strong></td>
+<td style="text-align: left;">색 LED 조합으로 제한적</td>
+<td style="text-align: left;">전체 화면 색면 + 문자 → 상태 종류 무제한</td>
+<td style="text-align: left;">LCD</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>기능 확장</strong></td>
+<td style="text-align: left;">표시 방식을 바꾸려면 하드웨어를 손대야 함</td>
+<td style="text-align: left;">레이아웃이 소프트웨어 → OTA로 기능 추가</td>
+<td style="text-align: left;">LCD</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>수명 · 고장률</strong></td>
+<td style="text-align: left;">구조 단순, LED 수명 장대</td>
+<td style="text-align: left;">백라이트 열화, FPC 커넥터 등 고장 포인트 증가</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>온도 내성</strong></td>
+<td style="text-align: left;">저온·고온 모두 안정적</td>
+<td style="text-align: left;">저온에서 응답 저하, 고온에서 흑화 — 야외 중계 취약</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>글레어(반사)</strong></td>
+<td style="text-align: left;">반사면이 적음</td>
+<td style="text-align: left;">유리 표면 반사 → AG 코팅 필수</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>촬영 플리커</strong></td>
+<td style="text-align: left;">LED 스캔 구동 시 밴딩 발생 가능</td>
+<td style="text-align: left;">백라이트 PWM 디밍 시 플리커 발생 가능</td>
+<td style="text-align: left;">둘 다 주의</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>단가</strong></td>
+<td style="text-align: left;">낮음</td>
+<td style="text-align: left;">3~5배 (패널 + SoC + 메모리)</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>소비전력</strong></td>
+<td style="text-align: left;">낮음</td>
+<td style="text-align: left;">높음(백라이트) — 단, PoE로 충분히 커버 가능</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>개발 난이도</strong></td>
+<td style="text-align: left;">낮음 (펌웨어 단순)</td>
+<td style="text-align: left;">높음 (그래픽 스택 · 폰트 · 렌더링 · OTA)</td>
+<td style="text-align: left;">도트매트릭스</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lcd의-진짜-가치-정보-단말로의-격상">3-2. LCD의 진짜 가치 — “정보 단말”로의 격상</h3>
+<p>LCD 전환의 의미는 “예쁜 탈리”가 아닙니다. <strong>탈리 단말이 카메라맨을 향한 정보 채널이 된다</strong>는 것입니다. 큐시트/MASTER 연동을 함께 가져가시기로 한 이상, LCD가 열어주는 화면은 이런 모습입니다.</p>
+<p>P G M</p>
+<p><strong>CAM 3</strong>   김앵커</p>
+<p>▸ 다음: BS 풀샷</p>
+<p>⏱ 00:42</p>
+<p>테두리 = RGB LED (상태) · 내부 = LCD (정보)</p>
+<p>도트매트릭스로는 이 중 <strong>첫 줄밖에 못 합니다.</strong> 뒤집어 말하면 — <strong>큐시트 연동을 하지 않을 거라면 LCD의 가치는 절반 이하로 떨어집니다.</strong> LCD 채택의 정당성은 화질이 아니라 <strong>연동 계획</strong>에서 나옵니다.</p>
+<h3 id="lcd의-진짜-리스크-세-가지">3-3. LCD의 진짜 리스크 — 세 가지</h3>
+<h4 style="margin-top:0" id="시야각-휘도">① 시야각 · 휘도</h4>
+<p>카메라맨은 단말을 정면에서만 보지 않습니다. 옆에서, 아래에서, 어깨 너머로 봅니다. 스튜디오 조명(수천 lux)이 화면에 직격하는 각도도 생깁니다.<br />
+→ <strong>최소 500 nit, 가능하면 800~1000 nit + AG 코팅 + 조도센서 자동 밝기</strong></p>
+<h4 id="지연">② 지연</h4>
+<p>스위칭 순간과 탈리 점등이 1~2프레임 어긋나면 카메라맨은 “탈리가 늦다”고 체감합니다. 한 번 그런 인상이 생기면 시스템 신뢰가 무너집니다.<br />
+→ <strong>파일럿에서 스위처 화면과 단말을 한 프레임에 담아 촬영해 실측</strong></p>
+<h4 id="촬영-시-플리커">③ 촬영 시 플리커</h4>
+<p>방송 카메라에 단말이 잡히는 경우, 백라이트 PWM 디밍 주파수가 셔터와 간섭해 밴딩이 생깁니다.<br />
+→ <strong>DC 디밍 또는 고주파 PWM(20kHz 이상) 구동 패널 선정</strong></p>
+<h3 id="권장안-하이브리드-역할-분리">3-4. 권장안 — 하이브리드 (역할 분리)</h3>
+<p>하나의 단말이 두 가지 일을 억지로 하게 하지 말고, <strong>“상태 표시”와 “정보 표시”를 물리적으로 나누는 것</strong>을 권합니다.</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">용도</th>
+<th style="text-align: left;">대상</th>
+<th style="text-align: left;">권장 방식</th>
+<th style="text-align: left;">이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>온에어 상태 표시</strong></td>
+<td style="text-align: left;">출연자 · 원거리 시인</td>
+<td style="text-align: left;">고휘도 LED 색면 패널<br />
+(도트매트릭스 계열 유지)</td>
+<td style="text-align: left;">시야각 · 휘도 · 즉시성이 절대 우선. 정보량은 불필요</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>카메라맨 정보 단말</strong></td>
+<td style="text-align: left;">카메라맨 근거리</td>
+<td style="text-align: left;">LCD + 테두리 RGB LED</td>
+<td style="text-align: left;">한글 · 큐 정보 표시 + 테두리 LED가 시야각/즉시성을 보완</td>
+</tr>
+</tbody>
+</table>
+<p><strong>테두리 RGB LED 조합이 핵심 아이디어입니다.</strong> 상태(PGM/PVW)는 화면 <em>바깥</em> 테두리 LED가 즉시·광시야각으로 알리고, LCD는 문자 정보만 담당합니다. 이렇게 하면 LCD의 두 약점(시야각·지연)이 <strong>상태 전달 경로에서 아예 빠지므로</strong>, 채택 리스크가 크게 줄어듭니다.</p>
+<h3 id="lcd-채택-시-권장-스펙">3-5. LCD 채택 시 권장 스펙</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">항목</th>
+<th style="text-align: left;">권장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">패널</td>
+<td style="text-align: left;">2.4~3.5인치 IPS TFT, 해상도 320×240 이상</td>
+</tr>
+<tr>
+<td style="text-align: left;">휘도</td>
+<td style="text-align: left;">500 nit 이상 (권장 800~1000), AG 코팅</td>
+</tr>
+<tr>
+<td style="text-align: left;">디밍</td>
+<td style="text-align: left;">DC 디밍 또는 PWM 20kHz 이상 (카메라 플리커 방지)</td>
+</tr>
+<tr>
+<td style="text-align: left;">인터페이스</td>
+<td style="text-align: left;">병렬 RGB 또는 고속 SPI — 저속 SPI는 화면 갱신 지연의 주범</td>
+</tr>
+<tr>
+<td style="text-align: left;">MCU</td>
+<td style="text-align: left;">ESP32-S3 (PSRAM 탑재) — 프레임버퍼 여유 + OTA</td>
+</tr>
+<tr>
+<td style="text-align: left;">급전</td>
+<td style="text-align: left;">PoE Splitter 또는 PoE 모듈, 단말당 5~8W</td>
+</tr>
+<tr>
+<td style="text-align: left;">부가</td>
+<td style="text-align: left;">조도센서(자동 밝기) · 테두리 RGB LED · 온도센서</td>
+</tr>
+<tr>
+<td style="text-align: left;">하우징</td>
+<td style="text-align: left;">회전/틸트 마운트 — 시야각 약점을 설치 자유도로 보완</td>
+</tr>
+<tr>
+<td style="text-align: left;">펌웨어</td>
+<td style="text-align: left;">Last-Known-Good 유지 + 링크 끊김 시 명시적 “LINK LOST” 표시</td>
+</tr>
+</tbody>
+</table>
+<h3 id="파일럿에서-반드시-측정할-것-채택-판단-기준">3-6. 파일럿에서 반드시 측정할 것 (채택 판단 기준)</h3>
+<ul>
+<li>스튜디오 조명 직격 각도에서 <strong>3m 거리 판독</strong>이 가능한가</li>
+<li>좌우 60°, 상하 40°에서 <strong>상태 색이 명확히 구분</strong>되는가</li>
+<li>스위칭 → 표시 <strong>지연 실측</strong> (목표 50ms, 허용 100ms)</li>
+<li>방송 카메라로 단말을 촬영했을 때 <strong>밴딩·플리커가 없는가</strong></li>
+<li>8시간 연속 운용 시 <strong>표면 온도 및 밝기 변화</strong></li>
+<li><strong>카메라맨 5명 이상의 주관 평가</strong> — 현행 도트매트릭스 대비</li>
+</ul>
+<h2 id="다음-액션-제안">4. 다음 액션 제안</h2>
+<p>1</p>
+<h4 id="phase-0-규격-회의">Phase 0 규격 회의</h4>
+<p>상태 종류 · 우선순위 · 라벨 규칙 확정 — 반나절이면 충분합니다.</p>
+<p>2</p>
+<h4 id="가상-단말-실증">가상 단말 실증</h4>
+<p>부조 스위처 TSL 출력에 노트북을 물려 하루 테스트.</p>
+<p>3</p>
+<h4 id="lcd-시제품-1대-발주">LCD 시제품 1대 발주</h4>
+<p>3.5인치 IPS + 테두리 RGB + ESP32-S3 — 부품 수급 2~3주.</p>
+<p>위 세 가지를 <strong>병렬로</strong> 진행하면, 약 <strong>1개월 뒤 LCD 채택 여부를 감이 아니라 데이터로</strong> 결정할 수 있습니다.</p>
+<h2 id="용어집">📖 용어집</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">용어</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>탈리 (Tally)</strong></td>
+<td style="text-align: left;">어느 카메라가 지금 방송에 나가는지(PGM), 다음 예비인지(PVW)를 카메라맨·출연자에게 알려주는 신호 및 표시 장치</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PGM / PVW</strong></td>
+<td style="text-align: left;">Program(현재 송출) / Preview(다음 예비)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>UMD</strong></td>
+<td style="text-align: left;">Under Monitor Display. 모니터 하단에 소스 이름을 표시하는 장치. 탈리 상태를 함께 표시하는 경우가 많음</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSL UMD 프로토콜</strong></td>
+<td style="text-align: left;">영국 TSL사가 만든 탈리/UMD 표준 통신 규격. V3.1(시리얼 기반)과 V5.0(이더넷/UDP 기반)이 널리 쓰임</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPI / GPO</strong></td>
+<td style="text-align: left;">General Purpose Input/Output. 단순 접점 신호로 상태를 주고받는 방식</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RS-422</strong></td>
+<td style="text-align: left;">차동 신호 방식의 시리얼 통신 규격. 장거리·노이즈에 강해 방송장비에서 오래 사용</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PoE / PoE+</strong></td>
+<td style="text-align: left;">Power over Ethernet. 랜선 하나로 데이터와 전원을 함께 공급. PoE+는 포트당 최대 약 25.5W</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IGMP Snooping</strong></td>
+<td style="text-align: left;">스위치가 멀티캐스트 트래픽을 필요한 포트에만 보내도록 하는 기능. 켜지 않으면 네트워크 전체로 방송됨</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>멀티캐스트</strong></td>
+<td style="text-align: left;">하나의 송신으로 여러 수신자에게 동시 전달하는 통신 방식. 단말이 많을수록 유리</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Last-Known-Good</strong></td>
+<td style="text-align: left;">통신이 끊겨도 마지막 정상 상태를 유지하는 설계. 탈리가 갑자기 꺼지는 것보다 안전</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>nit (칸델라/m²)</strong></td>
+<td style="text-align: left;">화면 밝기 단위. 실내 모니터 250~350, 야외 시인용 1000 이상</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PWM 디밍</strong></td>
+<td style="text-align: left;">백라이트를 빠르게 켜고 꺼서 밝기를 조절하는 방식. 주파수가 낮으면 카메라에 줄무늬(밴딩)로 잡힘</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AG 코팅</strong></td>
+<td style="text-align: left;">Anti-Glare. 화면 표면 반사를 줄이는 처리</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IPS 패널</strong></td>
+<td style="text-align: left;">LCD 패널 방식 중 시야각과 색 재현이 좋은 편에 속하는 구조</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OTA</strong></td>
+<td style="text-align: left;">Over-The-Air. 단말을 분해하지 않고 네트워크로 펌웨어를 갱신하는 것</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ESP32-S3</strong></td>
+<td style="text-align: left;">무선·USB를 갖춘 저가 마이크로컨트롤러. 화면 구동과 네트워크 처리를 함께 수행 가능</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>디바운스</strong></td>
+<td style="text-align: left;">신호가 짧게 떨릴 때 이를 무시해 표시가 깜빡이지 않도록 하는 처리</td>
+</tr>
+</tbody>
+</table>
+<p>탈리 시스템 재설계 검토 문서 · 2026-08-14 · 용어에 밑줄이 있는 항목은 마우스를 올리면 설명이 나타납니다.</p>
+<p>#IOT #LED #md #매트릭스 #장안</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/탈리-시스템-재설계-구성도--착수-우선순위--단말-표시장치-검토.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-14 07:14 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

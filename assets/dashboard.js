@@ -124,6 +124,26 @@
     var SNAPSHOT = (window.MYREMEMBER_TODOS && typeof window.MYREMEMBER_TODOS === "object")
       ? window.MYREMEMBER_TODOS : { days: {}, recurring: [] };
 
+    // 스냅샷 재적용(2026-08-14부터): 위 SNAPSHOT은 원래 "그 날짜를 이 기기가 한 번도
+    // 안 열어봤을 때"만 쓰이는 최초 1회용 초기값이었다 — 그래서 폰에서 오늘 날짜를 이미
+    // 한 번 열어본 뒤로는, PC에서 "할 일을 스마트폰에 보내기"를 아무리 눌러도 폰에는
+    // 절대 반영되지 않는 문제가 있었다(폰은 그때부터 자기 localStorage만 봄).
+    // SNAPSHOT.synced_at(PC가 그 스냅샷을 만든 시각)이 이 기기가 마지막으로 반영한
+    // 시각(아래 키)보다 새로우면, SNAPSHOT에 들어있는 모든 날짜를 이 기기의 localStorage에
+    // 강제로 덮어쓴다 — 즉 "보내기"를 누른 뒤에는 PC 쪽 내용이 항상 우선이고, 그 사이
+    // 폰에서 직접 체크·수정한 내용은 덮어써질 수 있다. synced_at이 없는 옛 스냅샷이면
+    // 예전처럼 최초 1회 시딩만 한다.
+    var SNAPSHOT_APPLIED_KEY = "myremember-todo-snapshot-applied";
+    if (SNAPSHOT.synced_at && localStorage.getItem(SNAPSHOT_APPLIED_KEY) !== SNAPSHOT.synced_at) {
+      Object.keys(SNAPSHOT.days || {}).forEach(function (dateStr) {
+        localStorage.setItem("myremember-todo-" + dateStr, JSON.stringify(SNAPSHOT.days[dateStr]));
+      });
+      if (SNAPSHOT.recurring) {
+        localStorage.setItem(RECURRING_KEY, JSON.stringify(SNAPSHOT.recurring));
+      }
+      localStorage.setItem(SNAPSHOT_APPLIED_KEY, SNAPSHOT.synced_at);
+    }
+
     // 이 기기의 localStorage 상태 전체를 서버 파일(scripts/webviewer/data/todos.json)로
     // 미러링한다 — 다음에 사이트를 재생성/배포할 때 그 파일을 읽어 위 스냅샷으로 구워
     // 넣는다. 이 서버가 없는 환경(배포된 정적 사이트)에서는 fetch가 그냥 실패하므로

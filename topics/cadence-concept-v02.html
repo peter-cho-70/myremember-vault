@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 행동기반 지식 저장학 CADENCE CONCEPT v0.2 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+      <div class="sidebar-nav-divider"></div>
+      <a href="../stocks.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        관심종목
+      </a>
+      <a href="../youtube.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+        유튜브
+      </a>
+      <a href="../kakao.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        카카오톡
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-14 03:47 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">내 행동기반 지식 저장학 CADENCE CONCEPT v0.2</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/LED.html">#LED</a><a class="tag" href="../tags/WS2812.html">#WS2812</a><a class="tag" href="../tags/md.html">#md</a><a class="tag" href="../tags/근무.html">#근무</a><a class="tag" href="../tags/대시보드.html">#대시보드</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="내-행동기반-지식-저장학-cadence-concept-v0.2">내 행동기반 지식 저장학 CADENCE CONCEPT v0.2</h1>
+<p>CADENCE</p>
+<p>행동 축적형 개인 업무 OS<br />
+컨셉 설계 v0.1</p>
+<p>개념</p>
+<p><a href="#s0">0. 한 문장 정의</a> <a href="#s1">1. 왜 대부분 실패하는가</a> <a href="#s2">2. 4계층 데이터 피라미드</a> <a href="#s3">3. 3주기 엔진</a></p>
+<p>설계</p>
+<p><a href="#s4">4. 데이터 모델</a> <a href="#s5">5. 수집 · 교대근무 보정</a> <a href="#s6">6. 하루 3분 회고</a> <a href="#s7">7. 닫힌 피드백 루프</a></p>
+<p>산출물</p>
+<p><a href="#s8">8. 주간 리포트</a> <a href="#s9">9. 격주 프로세스 제안</a> <a href="#s10">10. 월간 노하우 응결</a></p>
+<p>구현</p>
+<p><a href="#s11">11. 앱 구조</a> <a href="#s12">12. 기술 스택</a> <a href="#s13">13. 단계별 로드맵</a></p>
+<p>리스크</p>
+<p><a href="#s14">14. 안티패턴 방어</a> <a href="#s15">15. 다음 결정사항</a></p>
+<h1 id="cadence-concept-v0.2">CADENCE CONCEPT v0.2</h1>
+<p>업무의 90%가 지나가는 하나의 앱을 만들고 — 그 안에서 벌어진 행동을 자동으로 쌓아, <strong>주간에는 습관을 관찰</strong>하고, <strong>격주에는 프로세스를 실험</strong>하고, <strong>월간에는 노하우로 응결</strong>시키는 개인 업무 운영체제.</p>
+<p>허브</p>
+<p>직접 만드는 전용 데스크톱 앱 (로컬 우선)</p>
+<p>수집</p>
+<p>자동 로깅 + 하루 3분 구조화 회고</p>
+<p>범위</p>
+<p>회사 업무 + 개인 프로젝트 (vMix / Tally / LED / 큐시트 등)</p>
+<p>연계</p>
+<p>기존 지식관리 시스템(MyRemember)의 <code>/areas</code> <code>/topics</code>에 출력</p>
+<h2 id="한-문장-정의">00한 문장 정의</h2>
+<p><strong>CADENCE는 "내가 무엇을 했는가"를 기록하는 도구가 아니라, "내가 어떻게 일하는 사람인가"를 시간이 지날수록 더 정확하게 알아내는 기계다.</strong></p>
+<p>이 구분이 전체 설계를 지배합니다. 전자는 타임트래커고, 이미 세상에 100개쯤 있고, 3주 뒤에 안 씁니다. 후자는 <em>관찰 → 가설 → 실험 → 승격</em>이라는 루프가 돌아야만 성립하고, 그 루프가 이 문서의 핵심입니다.</p>
+<h3 id="이름-후보">이름 후보</h3>
+<p>CADENCE 리듬·박자. 주기가 핵심인 시스템 성격에 맞음 (본 문서 기본값) MyRhythm 기존 MyRemember(지식)와 짝 — 지식/행동 2축 LOOP 짧고 직관적. 피드백 루프 강조 Flywheel 누적 가속 은유. 다소 유행어</p>
+<h2 id="왜-이런-시스템은-대부분-실패하는가">01왜 이런 시스템은 대부분 실패하는가</h2>
+<p>먼저 실패 지점을 못 박고 시작해야 설계가 그걸 피해갑니다. 관찰되는 실패 유형은 4가지입니다.</p>
+<h4 id="기록은-쌓이는데-아무-일도-안-일어남">① 기록은 쌓이는데 아무 일도 안 일어남</h4>
+<p>리포트를 읽고 "오 그렇구나" 하고 닫음. 다음 주에 똑같은 리포트가 옴. <strong>→ 방어책: 격주 제안은 반드시 "실험" 객체로 등록되고, 채택된 실험의 진행률이 주간 리포트에 강제로 박힌다.</strong></p>
+<h4 id="입력-마찰로-3주-만에-사망">② 입력 마찰로 3주 만에 사망</h4>
+<p>로깅이 귀찮아지는 순간 앱을 안 켬. 앱을 안 켜면 데이터가 끊기고 리포트가 무의미해짐. <strong>→ 방어책: 수동 입력 총량을 하루 3분으로 하드 캡. 질문 4개 고정, 늘리지 않음.</strong></p>
+<h4 id="지표를-목표로-착각해-자기기만">③ 지표를 목표로 착각해 자기기만</h4>
+<p>"집중시간 지표"를 올리려고 의미 없이 앱을 켜둠. 데이터가 오염됨. <strong>→ 방어책: 모든 숫자는 <em>목표치 없이</em> 표시. 점수·등급·연속기록(streak) 일절 없음.</strong></p>
+<h4 id="초반-3주가-시시해서-이탈">④ 초반 3주가 시시해서 이탈</h4>
+<p>데이터가 없으니 리포트가 얄팍하고, 얄팍하니 안 씀. <strong>→ 방어책: 콜드스타트 설계 — 1주차는 "리포트" 대신 "이번 주 발견 3개"만. 기대치를 명시적으로 낮춤.</strong></p>
+<h2 id="계층-데이터-피라미드">024계층 데이터 피라미드</h2>
+<p>설계의 중심 아이디어는 이겁니다: <strong>데이터 계층과 리포트 주기가 1:1로 대응한다.</strong> 주기를 임의로 정한 게 아니라, 각 계층이 의미를 가지려면 그만큼의 시간이 필요하기 때문에 정해진 겁니다.</p>
+<p>월 1회 L3 — KNOWHOW 노하우 / 워크플로우</p>
+<p>재사용 가능한 절차와 판단 기준. "Tally 배선 트러블슈팅은 이 순서로 한다"</p>
+<p>격주 1회 L2 — PATTERN 행동 패턴</p>
+<p>반복되는 경향과 마찰. "화요일 오후엔 40분 이상 세션이 한 번도 안 만들어진다"</p>
+<p>주 1회 L1 — SESSION 작업 세션</p>
+<p>이벤트를 묶은 의미 단위. "Tally 펌웨어 디버깅 47분, 중단 3회"</p>
+<p>실시간 L0 — EVENT 원시 이벤트</p>
+<p>앱이 자동으로 남기는 초/분 단위 흔적. 커밋, 파일저장, 세션 시작·전환, 앱 포커스</p>
+<h4 id="주기가-왜-1주-2주-1개월인가">주기가 왜 1주 / 2주 / 1개월인가</h4>
+<ul>
+<li><strong>1주</strong> — 근무 유형(R/L/U/W)이 최소 한 바퀴 도는 단위. 하루 단위는 노이즈, 한 달 단위는 유형별 차이가 뭉개짐.</li>
+<li><strong>2주</strong> — <em>비교</em>가 성립하는 최소 단위. 주간 리포트 2개가 있어야 "지난주 대비"가 아니라 "경향"을 말할 수 있고, 각 근무 유형이 4~6회씩 표집되어 실험 판정에 필요한 최소 표본이 확보됨.</li>
+<li><strong>1개월</strong> — 같은 유형의 작업이 최소 2~3회 반복되어야 "절차"로 추출 가능. 방송기술 업무는 월/분기 주기 업무가 많아 특히 맞음.</li>
+</ul>
+<h2 id="주기-엔진-각-주기의-역할-분담">033주기 엔진 — 각 주기의 역할 분담</h2>
+<p>세 주기는 성격이 완전히 다릅니다. 섞이면 전부 망가집니다.</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 7%" />
+<col style="width: 59%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">주기</th>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">태도</th>
+<th style="text-align: left;">하는 일</th>
+<th style="text-align: left;">절대 하지 않는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>주 1회</strong><br />
+ISO 주 종료 시</td>
+<td style="text-align: left;"><strong>습관 리포트</strong><br />
+Habit Report</td>
+<td style="text-align: left;">관찰</td>
+<td style="text-align: left;">시간이 어디로 갔는지, 리듬이 어땠는지, 무엇에 막혔는지를 <strong>판단 없이</strong> 보여줌. 진행 중인 실험의 상태를 함께 표시.</td>
+<td style="text-align: left;">개선안 제시 ✕<br />
+평가·점수 ✕</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>격주</strong><br />
+ISO 짝수주 종료 시</td>
+<td style="text-align: left;"><strong>프로세스 제안</strong><br />
+Process Proposal</td>
+<td style="text-align: left;">개입</td>
+<td style="text-align: left;">2주치 패턴에서 반복 마찰을 뽑아 <strong>실험 후보 최대 3개</strong> 제시 (이 중 채택은 최대 2개). 지난 실험의 성패를 먼저 판정.</td>
+<td style="text-align: left;">4개 이상 제안 ✕<br />
+추상적 조언 ✕</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>월 1회</strong><br />
+말일</td>
+<td style="text-align: left;"><strong>노하우 응결</strong><br />
+Consolidation</td>
+<td style="text-align: left;">축적</td>
+<td style="text-align: left;">반복된 작업 시퀀스를 <strong>워크플로우 문서</strong>로, 해결한 문제를 <strong>트러블슈팅 노트</strong>로 뽑아 지식 저장소에 커밋.</td>
+<td style="text-align: left;">새 지표 도입 ✕<br />
+지난달 반성 ✕</td>
+</tr>
+</tbody>
+</table>
+<p>핵심: <strong>주간은 절대 조언하지 않습니다.</strong> 매주 조언을 받으면 인간은 조언을 무시하는 법을 배웁니다. 조언 창구를 격주로 좁혀야 그 3개의 제안이 무게를 가집니다.</p>
+<h2 id="데이터-모델">04데이터 모델</h2>
+<p>로컬 SQLite 기준. 테이블 5개면 충분합니다.</p>
+<p>-- L0: 자동으로만 쌓임. 사람이 절대 안 건드림 TABLE event ( id, ts, kind, source, payload_json ) kind : session_start | session_end | switch | commit | file_save | build | test_run | app_focus | idle_detected source : cadence_ui | git_watcher | claude_code | cursor | vscode -- L1: 이벤트를 묶은 의미 단위. 회고 때 살이 붙음 TABLE session ( id, start_ts, end_ts, duration_min, project, -- tally-redesign | vmix-autocam | ws2812 | 큐시트 | 정규업무 activity, -- 설계 | 구현 | 디버깅 | 조사 | 문서 | 회의 | 대응 shift_type, -- R | L | U | W | OFF ← 교대 근무 축 (필수) shift_elapsed, -- 근무 시작 후 경과 분. 시계 시각 대신 이걸로 리듬 분석 interrupt_cnt, -- 자동 계산: switch 이벤트 수 energy, -- 1~5, 회고에서 입력 (nullable) friction_tag, -- 회고에서 입력 (nullable) note -- 1줄, 선택 ) -- 하루 3분 회고. 하루 1행. 이게 유일한 수동 입력 TABLE reflection ( date, longest_task, longest_why, friction_tags[], energy_avg, learned_one_line, mood_note ) -- 격주 제안이 채택되면 여기로. 루프를 닫는 핵심 테이블 TABLE experiment ( id, created_at, proposal_text, hypothesis, action, -- 구체적 실행 방법 metric, -- 무엇으로 측정할지 baseline, -- 시작 시점 값 status, -- proposed | running | succeeded | failed | dropped verdict_at, result_value, verdict_note ) -- 월간에 응결된 결과물. MyRemember로 내보내짐 TABLE knowhow ( id, created_at, type, -- workflow | troubleshooting | rule | decision title, body_md, derived_from_json, -- 근거가 된 session/experiment id 목록 export_path -- /areas/tally-system-redesign.md 등 )</p>
+<h4 id="설계-원칙-3개">설계 원칙 3개</h4>
+<ul>
+<li><strong>L0는 append-only.</strong> 원시 이벤트는 절대 수정·삭제하지 않음. 나중에 분석 로직이 바뀌어도 과거를 다시 계산할 수 있어야 함.</li>
+<li><strong>수동 입력은 <code>reflection</code>과 <code>session</code>의 nullable 컬럼에만.</strong> 안 채워도 시스템이 돌아가야 함.</li>
+<li><strong><code>knowhow.derived_from_json</code>은 필수.</strong> "이 노하우가 어떤 실제 작업에서 나왔는지" 추적 안 되면, 6개월 뒤 그 문서를 믿을 수 없음.</li>
+</ul>
+<h2 id="수집-전략-자동-90-수동-10">05수집 전략 — 자동 90 : 수동 10</h2>
+<h4 id="자동으로-잡는-것-마찰-0">자동으로 잡는 것 마찰 0</h4>
+<ul>
+<li><strong>세션 시작/종료</strong> — 앱에서 프로젝트 선택 후 시작 버튼 1회 (또는 유휴 감지로 자동 종료)</li>
+<li><strong>git 워처</strong> — 지정 폴더의 커밋을 감시. 커밋 메시지 = 무료 작업 로그</li>
+<li><strong>파일 저장 이벤트</strong> — 작업 강도의 대리 지표</li>
+<li><strong>Claude Code / Cursor 세션 임포트</strong> — 대화 로그에서 작업 주제 추출</li>
+<li><strong>유휴 감지</strong> — 5분 무입력 시 세션 자동 일시정지</li>
+<li><strong>컨텍스트 스위치</strong> — 프로젝트 전환 횟수 자동 집계</li>
+</ul>
+<h4 id="사람만-줄-수-있는-것-하루-3분">사람만 줄 수 있는 것 하루 3분</h4>
+<ul>
+<li><strong>왜</strong> 그 일이 오래 걸렸는가 — 자동으로는 절대 안 나옴</li>
+<li><strong>마찰의 종류</strong> — 대기? 정보부족? 도구? 사람? 내 집중?</li>
+<li><strong>에너지</strong> — 같은 60분도 질이 다름</li>
+<li><strong>배운 것</strong> — 월간 노하우 응결의 원재료</li>
+</ul>
+<p>이 4가지가 없으면 리포트가 "당신은 이번 주 32시간 일했습니다" 수준에서 멈춥니다.</p>
+<h3 id="비개발-업무는-어떻게-잡는가">비개발 업무는 어떻게 잡는가</h3>
+<p>방송기술 업무 상당수는 커밋이 안 남습니다 — 장비 점검, 중계 대응, 회의, 큐시트 작업. 이건 앱에서 <strong>3탭</strong>으로 끝내는 퀵 로깅으로 처리합니다: <code>[프로젝트] → [활동유형] → 시작</code>. 종료는 유휴 감지 또는 다음 세션 시작 시 자동. 평균 입력 시간 5초 이하가 목표선입니다.</p>
+<h3 id="교대-근무-보정-이-시스템의-최대-변수">교대 근무 보정 — 이 시스템의 최대 변수</h3>
+<p><strong>보도기술부 근무는 R(12:30–19:30) / L(06:00–16:00) / U(15:30–24:00) / W(00:00–07:30) 교대입니다. 이 사실 하나가 일반적인 행동분석 도구의 전제를 전부 무너뜨립니다.</strong></p>
+<ul>
+<li><strong>"요일별 리듬"은 의미가 없습니다.</strong> 이번 주 수요일은 W(심야), 다음 주 수요일은 L(새벽출근)일 수 있습니다. 요일 축으로 집계하면 근무 유형이 섞여 노이즈만 남습니다.</li>
+<li><strong>"오전 9–11시가 몰입대"도 성립하지 않습니다.</strong> W 근무 중 오전 9시는 퇴근 후이고, L 근무 중 오전 9시는 근무 3시간째입니다.</li>
+<li><strong>"하루"의 경계가 흔들립니다.</strong> U 근무는 자정을 넘고, W 근무는 자정에 시작합니다. 날짜 기준으로 세션을 자르면 한 번의 근무가 두 날로 쪼개집니다.</li>
+</ul>
+<h4 id="대응-설계-3가지">대응 설계 3가지</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">일반 도구의 축</th>
+<th style="text-align: left;">CADENCE의 축</th>
+<th style="text-align: left;">이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">요일 (월~일)</td>
+<td style="text-align: left;"><strong>근무 유형 (R/L/U/W/OFF)</strong></td>
+<td style="text-align: left;">같은 유형끼리 묶어야 비교가 성립. 월 5~6회씩 반복되므로 표본도 충분</td>
+</tr>
+<tr>
+<td style="text-align: left;">시계 시각 (09:00, 14:00…)</td>
+<td style="text-align: left;"><strong>근무 경과시간 (근무 시작 후 N분)</strong></td>
+<td style="text-align: left;">"근무 2시간째가 가장 집중된다"는 유형을 넘어 일반화되는 발견</td>
+</tr>
+<tr>
+<td style="text-align: left;">날짜 (00:00 기준)</td>
+<td style="text-align: left;"><strong>근무 블록 (shift block)</strong></td>
+<td style="text-align: left;">U 근무 22:00~01:00 세션이 하나로 유지됨. 회고도 근무 종료 시점 기준</td>
+</tr>
+</tbody>
+</table>
+<p><strong>부수 효과 — 이게 오히려 이 시스템의 킬러 기능이 됩니다.</strong> 교대 근무자는 "나는 어느 근무에서 어떤 일을 해야 손해가 없는가"를 감으로만 알고 있습니다. 6개월치 데이터가 쌓이면 <em>"설계 작업은 L 근무 초반 3시간에 몰아야 하고, W 근무에는 문서·정리만 넣는다"</em> 같은 결론이 숫자로 나옵니다. 일반 직장인용 생산성 도구가 절대 줄 수 없는 답입니다.</p>
+<p>회고 알림도 시각 고정(예: 저녁 9시)이 아니라 <strong>근무 종료 시각 기준</strong>으로 걸어야 합니다. W 근무 퇴근은 오전 7:30이고, 그때 저녁 9시 알림을 기다리면 기억이 이미 날아갑니다. 근무 일정 데이터(캘린더)를 앱이 읽어와야 하는 이유이기도 합니다.</p>
+<h2 id="하루-3분-회고-질문-4개-고정">06하루 3분 회고 — 질문 4개 고정</h2>
+<p>가장 중요한 제약: <strong>질문은 4개에서 절대 늘어나지 않습니다.</strong> "이것도 물어보면 좋을 텐데"는 전부 격주 제안이나 월간에서 처리합니다.</p>
+<p>CADENCE — 오늘의 회고 · 2026-08-14 (금)</p>
+<p>오늘 기록된 세션 4개 · 총 5시간 20분<br />
+<br />
+Q1. 오늘 가장 오래 걸린 건 [Tally 펌웨어 디버깅 · 2h 10m] 였네요. 왜 오래 걸렸나요?<br />
+→ ____________________________________ (1줄)<br />
+<br />
+Q2. 오늘 막힌 지점은?<br />
+대기정보부족도구한계사람/조율집중안됨범위불명확없었음<br />
+<br />
+Q3. 오늘 에너지는?   1 ─ 2 ─ 3 ─ 4 ─ 5<br />
+<br />
+Q4. 오늘 알게 된 것 한 줄 (없으면 건너뛰기)<br />
+→ ____________________________________</p>
+<h4 id="각-질문의-존재-이유">각 질문의 존재 이유</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">질문</th>
+<th style="text-align: left;">채우는 데이터</th>
+<th style="text-align: left;">어느 주기에서 쓰이나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Q1</strong></td>
+<td style="text-align: left;">시간 소모의 원인</td>
+<td style="text-align: left;">격주 반복되는 "왜"가 곧 프로세스 개선 후보</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Q2</strong></td>
+<td style="text-align: left;">마찰 유형 분포</td>
+<td style="text-align: left;">주간 Top 3 마찰  격주 개선 실험의 타겟</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Q3</strong></td>
+<td style="text-align: left;">시간대·요일별 컨디션</td>
+<td style="text-align: left;">주간 리듬 곡선 → 일정 배치 근거</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Q4</strong></td>
+<td style="text-align: left;">학습 조각</td>
+<td style="text-align: left;">월간 노하우 문서의 원재료</td>
+</tr>
+</tbody>
+</table>
+<p>회고를 건너뛴 날은 <strong>패널티 없이 그냥 비어 있게</strong> 둡니다. 연속기록 표시를 넣는 순간 이 시스템은 죄책감 유발 장치가 되고, 죄책감은 회피를 낳습니다.</p>
+<h2 id="닫힌-피드백-루프-이-설계의-심장">07닫힌 피드백 루프 — 이 설계의 심장</h2>
+<p>앞서 말한 실패 유형 ①(기록만 쌓이고 아무 일도 안 일어남)을 구조적으로 막는 장치입니다. <strong>격주 제안은 조언이 아니라 실험 객체를 생성합니다.</strong></p>
+<p>① 관찰</p>
+<p>주간 리포트가 마찰을 드러냄<br />
+"대기" 마찰 6회</p>
+<p>② 가설</p>
+<p>격주 엔진이 제안 생성<br />
+가설 + 실행법 + 측정지표</p>
+<p>③ 채택</p>
+<p>내가 승인 → experiment 등록<br />
+status = running</p>
+<p>④ 측정</p>
+<p>주간 리포트에 자동 표시<br />
+2주간 강제 노출</p>
+<p>⑤ 판정</p>
+<p>다음 격주에 성패 판단<br />
+succeeded / failed</p>
+<p>⑥ 승격</p>
+<p>성공 → 월간에 노하우로<br />
+실패 → 폐기 기록 보존</p>
+<h4 id="이-루프가-만드는-것">이 루프가 만드는 것</h4>
+<ul>
+<li>제안이 <strong>추적</strong>되므로 무시할 수 없음</li>
+<li>실패한 실험도 기록 → 같은 제안이 재생성되는 것을 방지</li>
+<li>성공한 실험만 노하우가 됨 → <strong>노하우 문서의 신뢰도</strong>가 근거로 뒷받침됨</li>
+<li>6개월 뒤 "내가 시도한 것 12개 중 성공 5개" 라는 자기 이해가 남음</li>
+</ul>
+<h4 id="안전장치">안전장치</h4>
+<ul>
+<li><strong>동시 진행 실험은 최대 2개.</strong> 3개 이상이면 무엇이 효과를 냈는지 구분 불가</li>
+<li>채택하지 않은 제안은 <code>dropped</code>로 남기고 <strong>같은 제안을 60일간 재생성 금지</strong></li>
+<li>2주 안에 측정 불가능한 제안은 <strong>애초에 생성하지 않음</strong> ("커뮤니케이션을 개선한다" 같은 것)</li>
+</ul>
+<h2 id="주간-리포트-관찰만-1스크롤">08주간 리포트 — 관찰만, 1스크롤</h2>
+<p>WEEKLY HABIT REPORT · 2026-W33 (08.10 – 08.16)</p>
+<p>── 시간이 어디로 갔나 ──────────────────────<br />
+</p>
+<p>Tally 시스템 재설계11h 20m</p>
+<p>정규 방송 대응8h 15m</p>
+<p>큐시트 연동4h 40m</p>
+<p>WS2812 (개인)3h 10m</p>
+<p>── 리듬 ────────────────────────────────<br />
+평균 세션 길이 34분 · 40분 이상 몰입 세션 주 5회<br />
+근무 유형별 몰입 세션: L 3회 / R 2회 / U 0회 / W 0회<br />
+가장 긴 몰입대: L 근무 시작 후 1~3시간 · 에너지 최저: W 근무 후반부<br />
+컨텍스트 스위치 주 41회 (근무당 평균 8.2회)<br />
+<br />
+── 마찰 TOP 3 ─────────────────────────<br />
+1. 정보부족 7회   — 주로 큐시트 연동 작업 중<br />
+2. 대기 5회   — 장비 점유 대기<br />
+3. 집중안됨 4회   — 수요일에 3회 집중<br />
+<br />
+── 진행 중인 실험 ──────────────────────<br />
+EXP-004 오전 첫 90분 알림 차단  — 8일차 / 14일<br />
+  기준선 40분+ 세션 주 3회 → 현재 주 5회<br />
+<br />
+── 이번 주의 나 ────────────────────────<br />
+"Tally에 시간의 40%를 썼고, 그 중 절반이 40분 이상 몰입 세션이었습니다. 큐시트 연동에서는 반대로, 4시간 40분이 평균 22분짜리 조각으로 흩어졌고 '정보부족' 마찰이 그 시간대에 집중되어 있습니다."</p>
+<h4 id="주간-리포트-규칙">주간 리포트 규칙</h4>
+<ul>
+<li><strong>1스크롤 이내.</strong> 넘으면 안 읽음</li>
+<li><strong>점수·등급·목표 대비 달성률 없음.</strong> 숫자는 관찰치로만</li>
+<li><strong>마지막 문단은 LLM 요약 1개.</strong> 판단 없이 "무슨 일이 있었는지"를 문장으로</li>
+<li><strong>진행 중 실험 블록은 생략 불가.</strong> 실험이 없으면 "진행 중인 실험 없음"이라고 명시 (다음 격주에 뭘 시도할지 상기시킴)</li>
+</ul>
+<h2 id="격주-프로세스-제안-실험으로만-말한다">09격주 프로세스 제안 — 실험으로만 말한다</h2>
+<p>제안은 반드시 이 4칸 구조를 갖습니다. 4칸이 안 채워지면 제안 자체가 생성되지 않습니다.</p>
+<p>PROCESS PROPOSAL · 2026-W32~33</p>
+<p>── 지난 실험 판정 ──────────────────────<br />
+EXP-003 · 성공 디버깅 전 5분 재현 절차 먼저 쓰기<br />
+  디버깅 세션 평균 68분 → 41분 · 월간 노하우로 승격 예약<br />
+EXP-002 · 실패 오후에 회의 몰아넣기<br />
+  회의 일정 통제권이 없어 실행 자체가 3회 중 1회만 성사 → 폐기<br />
+<br />
+── 새 제안 (2개) ──────────────────────<br />
+<br />
+제안 A. 큐시트 연동 작업 전 "미확정 항목" 목록 먼저 작성<br />
+ 관찰 2주간 '정보부족' 마찰 13회 중 9회가 큐시트 연동 세션에서 발생<br />
+ 가설 모르는 것을 작업 중에 발견해서 세션이 끊긴다. 미리 뽑으면 한 번에 물어볼 수 있다<br />
+ 실행 큐시트 세션 시작 시 앱이 "미확정 항목 3개 적기" 프롬프트 노출<br />
+ 측정 2주 뒤 큐시트 세션 평균 길이 (기준선 22분) 및 정보부족 마찰 횟수 (기준선 9회)<br />
+<br />
+제안 B. W 근무(00:00–07:30)에는 설계·디버깅을 배치하지 않기<br />
+ 관찰 4주간 W 근무 평균 에너지 2.1 (전체 평균 3.4), '집중안됨' 마찰의 절반이 W 근무에 집중<br />
+ 가설 W 근무에 사고력 필요한 작업을 넣는 게 손해. 문서·정리·조사로 바꾼다<br />
+ 실행 W 근무 중 '설계/구현/디버깅' 세션 시작 시 앱이 1회 확인 질문<br />
+ 측정 2주 뒤(W 근무 약 5회) '집중안됨' 마찰 횟수 (기준선 8회) 및 W 평균 에너지 (기준선 2.1)<br />
+<br />
+[ 제안 A 채택 ]  [ 제안 B 채택 ]  [ 둘 다 보류 ]</p>
+<h4 id="좋은-제안의-조건">좋은 제안의 조건</h4>
+<ul>
+<li>내가 <strong>혼자서 통제 가능한</strong> 행동일 것 (EXP-002는 이걸 어겨서 실패)</li>
+<li>2주 안에 <strong>숫자로 판정 가능</strong>할 것</li>
+<li>실행 비용이 <strong>하루 5분 이하</strong>일 것</li>
+<li>기준선(baseline)이 <strong>이미 측정되어 있을</strong> 것</li>
+</ul>
+<h4 id="생성-금지-제안">생성 금지 제안</h4>
+<ul>
+<li>"집중력을 높이세요" — 행동이 아님</li>
+<li>"팀과 소통을 늘리세요" — 통제 불가 + 측정 불가</li>
+<li>"더 일찍 시작하세요" — 원인이 아니라 증상 지적</li>
+<li>새 도구 도입 — 2주로 판정 불가, 도입 자체가 마찰</li>
+</ul>
+<h2 id="월간-노하우-응결-지식-저장소로-흘려보내기">10월간 노하우 응결 — 지식 저장소로 흘려보내기</h2>
+<p>월간은 리포트가 아니라 <strong>문서 생산</strong>입니다. 한 달치 세션·회고·성공 실험을 재료로, 기존 지식관리 시스템(MyRemember)에 커밋될 마크다운을 만듭니다.</p>
+<h3 id="월간이-뽑아내는-4가지-산출물">월간이 뽑아내는 4가지 산출물</h3>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 52%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">타입</th>
+<th style="text-align: left;">추출 방법</th>
+<th style="text-align: left;">출력 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">workflow<br />
+워크플로우</td>
+<td style="text-align: left;">같은 <code>project + activity</code> 조합이 월 3회 이상 반복 → 세션 순서를 절차로 정규화</td>
+<td style="text-align: left;"><code>/areas/&lt;project&gt;.md</code> 의 "작업 절차" 섹션</td>
+</tr>
+<tr>
+<td style="text-align: left;">troubleshooting<br />
+트러블슈팅</td>
+<td style="text-align: left;">회고 Q1(왜 오래 걸렸나) + Q4(배운 것)에서 문제–해결 쌍 추출</td>
+<td style="text-align: left;"><code>/topics/&lt;domain&gt;.md</code> 의 "트러블슈팅" 섹션</td>
+</tr>
+<tr>
+<td style="text-align: left;">rule<br />
+개인 규칙</td>
+<td style="text-align: left;">성공 판정된 실험 → "나는 ~할 때 ~한다" 형식의 규칙으로 승격</td>
+<td style="text-align: left;"><code>/topics/work-rules.md</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">decision<br />
+의사결정 기록</td>
+<td style="text-align: left;">세션 노트에서 "A 대신 B를 골랐다" 패턴 추출 + 그때의 근거</td>
+<td style="text-align: left;"><code>/areas/&lt;project&gt;.md</code> 의 "결정 기록"</td>
+</tr>
+</tbody>
+</table>
+<p>MONTHLY CONSOLIDATION · 2026-08 — 생성된 문서 초안</p>
+<p>① 워크플로우 — "Tally 펌웨어 변경 시 표준 절차" (세션 7회에서 추출)<br />
+  1. 재현 절차 문서화(5분) → 2. 시리얼 로그 확보 → 3. 단일 노드 테스트 → 4. Thru 체인 3노드 확장 → 5. 종단 저항 확인 → 6. 커밋<br />
+<br />
+② 트러블슈팅 — "RS-422 Thru 체인에서 3번째 노드부터 깨질 때"<br />
+  원인 3가지와 판별 순서 · 근거: 08/07, 08/19 세션<br />
+<br />
+③ 개인 규칙 (EXP-003 승격)<br />
+  "디버깅을 시작하기 전에 재현 절차부터 5분간 글로 쓴다. 평균 27분을 아낀다."<br />
+<br />
+④ 다음 달 초점 1개<br />
+  "큐시트 연동 작업의 파편화" — 8월 내내 평균 세션 22분에서 개선되지 않음<br />
+<br />
+[ 초안 검토 후 /areas, /topics 에 커밋 ]</p>
+<p>월간 산출물은 <strong>초안</strong>입니다. 자동 커밋하지 않고 내가 한 번 훑고 승인합니다. 기존 지식관리 설계의 "Approval 패턴"과 동일한 원칙 — 지식 저장소에 들어가는 것은 반드시 사람이 통과시킵니다.</p>
+<h3 id="다음-달-초점은-왜-1개인가">다음 달 초점은 왜 1개인가</h3>
+<p>월간이 3~5개의 개선 방향을 던지면 격주 엔진이 그걸 다 실험으로 만들려 하고, 동시 진행 실험 2개 제한과 충돌합니다. <strong>월간은 방향 1개만 정하고, 그 방향 안에서 격주가 구체적 실험을 만듭니다.</strong> 이게 두 주기의 역할 분리입니다.</p>
+<h2 id="앱-구조-화면-4개면-충분">11앱 구조 — 화면 4개면 충분</h2>
+<h4 id="now-기본-화면">① NOW — 기본 화면</h4>
+<p>현재 세션 타이머 + 프로젝트/활동 선택 + 시작·전환·종료 버튼. 하루 중 99%의 시간 동안 이 화면만 떠 있음. <strong>3탭 안에 세션이 시작되어야 함.</strong></p>
+<h4 id="today-하루-끝">② TODAY — 하루 끝</h4>
+<p>오늘 세션 타임라인 + 회고 질문 4개. 저녁 시간에 알림 1회. <strong>3분 안에 닫힐 수 있어야 함.</strong></p>
+<h4 id="reports-읽기-전용">③ REPORTS — 읽기 전용</h4>
+<p>주간/격주/월간 리포트 아카이브. 격주 리포트에서만 [채택] 버튼이 동작.</p>
+<h4 id="vault-축적물">④ VAULT — 축적물</h4>
+<p>누적된 노하우·규칙·실험 이력. MyRemember 저장소와 동기화 상태 표시. <strong>이 화면이 시간이 갈수록 두꺼워지는 게 이 시스템의 보상 구조.</strong></p>
+<h4 id="화면을-4개로-묶는-이유">화면을 4개로 묶는 이유</h4>
+<p>설정·통계·대시보드·프로젝트관리 화면을 추가하고 싶어지는 순간이 반드시 옵니다. 그때 판단 기준: <strong>"이 화면 없이 주간/격주/월간 리포트가 나오는가?"</strong> 나온다면 만들지 않습니다. 이 앱의 목적은 사용하는 게 아니라 <em>지나가는</em> 것입니다.</p>
+<h2 id="기술-스택-제안">12기술 스택 제안</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">레이어</th>
+<th style="text-align: left;">선택</th>
+<th style="text-align: left;">이유 / 대안</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>앱 셸</strong></td>
+<td style="text-align: left;">Tauri + React 추천</td>
+<td style="text-align: left;">Electron 대비 메모리 1/5. 상시 떠 있는 앱이라 중요. 대안: Electron(생태계 넓음)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>저장소</strong></td>
+<td style="text-align: left;">로컬 SQLite</td>
+<td style="text-align: left;">로컬 우선 원칙 유지. 클라우드 의존 없음. WAL 모드로 워처와 동시 쓰기</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>git 워처</strong></td>
+<td style="text-align: left;">Rust 백그라운드 스레드 or Python + watchdog</td>
+<td style="text-align: left;">지정 폴더의 <code>.git/logs/HEAD</code> 감시가 가장 가벼움</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>스케줄러</strong></td>
+<td style="text-align: left;">앱 내장 (앱 실행 시 미처리 주기 확인)</td>
+<td style="text-align: left;">cron보다 안전 — PC가 꺼져 있어도 다음 실행 때 밀린 리포트 생성</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>리포트 생성</strong></td>
+<td style="text-align: left;">규칙기반 집계 + LLM 서술</td>
+<td style="text-align: left;">숫자는 SQL로, 문장만 LLM으로. <strong>숫자를 LLM에 맡기면 틀립니다</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LLM 호출</strong></td>
+<td style="text-align: left;">주간 Haiku · 격주 Sonnet · 월간 Opus</td>
+<td style="text-align: left;">주간은 요약, 월간은 문서 생성이라 난이도가 다름. 월 비용 수천 원 수준</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>출력</strong></td>
+<td style="text-align: left;">Markdown 원본 + HTML 뷰어</td>
+<td style="text-align: left;">기존 보고서 워크플로우와 동일 — MD가 정본, HTML은 읽기용</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>지식 연동</strong></td>
+<td style="text-align: left;">MyRemember 저장소에 직접 파일 쓰기 + git commit</td>
+<td style="text-align: left;">기존 <code>git-auto-commit.sh</code> 재사용</td>
+</tr>
+</tbody>
+</table>
+<h2 id="단계별-로드맵-앱부터-만들지-않습니다">13단계별 로드맵 — 앱부터 만들지 않습니다</h2>
+<p><strong>가장 중요한 조언: Phase 0을 건너뛰지 마세요.</strong> 전용 앱을 먼저 만들면, 2주 뒤에 "내가 이 데이터를 실제로 안 남긴다"는 사실을 알게 되고 앱이 버려집니다. Phase 0의 목적은 <em>기능 검증이 아니라 나 자신의 습관 검증</em>입니다.</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 39%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">단계</th>
+<th style="text-align: left;">기간</th>
+<th style="text-align: left;">만드는 것</th>
+<th style="text-align: left;">통과 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Phase 0</strong><br />
+검증</td>
+<td style="text-align: left;">1주</td>
+<td style="text-align: left;">앱 없음. 마크다운 파일 1개 + 회고 질문 4개를 손으로 채움. 세션은 간단한 CLI 한 줄</td>
+<td style="text-align: left;"><strong>7일 중 5일 이상 회고를 채웠는가.</strong> 못 채웠으면 질문을 더 줄이거나 이 컨셉 자체를 재검토</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 1</strong><br />
+수집</td>
+<td style="text-align: left;">2~3주</td>
+<td style="text-align: left;">Tauri 앱 셸 + NOW/TODAY 화면 + SQLite. 세션 타이머, 유휴 감지, 회고 입력</td>
+<td style="text-align: left;">2주간 데이터가 끊김 없이 쌓이고, 세션 시작 평균 소요 5초 이하</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 2</strong><br />
+관찰</td>
+<td style="text-align: left;">2주</td>
+<td style="text-align: left;">주간 리포트 생성기. SQL 집계 + LLM 서술 문단. MD/HTML 출력</td>
+<td style="text-align: left;"><strong>첫 리포트에서 내가 몰랐던 사실이 1개 이상 나오는가</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 3</strong><br />
+개입</td>
+<td style="text-align: left;">2주</td>
+<td style="text-align: left;">격주 제안 엔진 + experiment 테이블 + 채택 UI + 주간 리포트에 실험 블록 삽입</td>
+<td style="text-align: left;">제안 1개를 실제로 채택해서 2주 돌리고 판정까지 완주</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 4</strong><br />
+축적</td>
+<td style="text-align: left;">2주</td>
+<td style="text-align: left;">월간 응결 엔진 + VAULT 화면 + MyRemember 저장소 export</td>
+<td style="text-align: left;">월간 초안 4종이 생성되고, 그 중 2개 이상을 실제로 저장소에 커밋할 만하다고 판단</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 5</strong><br />
+확장</td>
+<td style="text-align: left;">이후</td>
+<td style="text-align: left;">git 워처, Claude Code 세션 임포트, 비개발 업무 퀵로깅 개선</td>
+<td style="text-align: left;">자동 수집 비중이 전체 이벤트의 70% 이상</td>
+</tr>
+</tbody>
+</table>
+<p>총 <strong>9~11주</strong>. 다만 Phase 2가 끝나는 시점(약 5~6주)에 이미 매주 리포트를 받고 있으므로, 그 뒤로는 시스템을 쓰면서 만드는 구조입니다.</p>
+<h2 id="안티패턴-방어-체크리스트">14안티패턴 방어 체크리스트</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">유혹</th>
+<th style="text-align: left;">판정</th>
+<th style="text-align: left;">대신</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">연속기록(streak) / 점수 / 등급 추가</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">지표는 목표 없는 관찰치로만 표시</td>
+</tr>
+<tr>
+<td style="text-align: left;">회고 질문 5개, 6개로 늘리기</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">궁금한 건 격주 제안의 측정 항목으로</td>
+</tr>
+<tr>
+<td style="text-align: left;">주간 리포트에 개선 조언 넣기</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">조언 창구는 격주 하나로 유지</td>
+</tr>
+<tr>
+<td style="text-align: left;">키로깅 / 화면 캡처 등 강한 자동수집</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">감시 피로가 앱 이탈의 1순위 원인. 이벤트 수준까지만</td>
+</tr>
+<tr>
+<td style="text-align: left;">동시 실험 3개 이상</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">인과 구분 불가. 최대 2개</td>
+</tr>
+<tr>
+<td style="text-align: left;">지표를 팀·타인과 비교</td>
+<td style="text-align: left;">금지</td>
+<td style="text-align: left;">이 시스템은 나 자신의 과거와만 비교</td>
+</tr>
+<tr>
+<td style="text-align: left;">대시보드 화면 추가</td>
+<td style="text-align: left;">보류</td>
+<td style="text-align: left;">"이거 없이 리포트가 나오는가?" 나오면 만들지 않음</td>
+</tr>
+<tr>
+<td style="text-align: left;">모바일 앱</td>
+<td style="text-align: left;">보류</td>
+<td style="text-align: left;">Phase 5 이후. 회고 입력만 웹으로 여는 정도</td>
+</tr>
+<tr>
+<td style="text-align: left;">업무 외 일상 데이터 확장</td>
+<td style="text-align: left;">보류</td>
+<td style="text-align: left;">업무+개인 프로젝트로 6개월 돌린 뒤 재검토</td>
+</tr>
+</tbody>
+</table>
+<h4 id="가장-큰-리스크-개인정보와-회사-데이터">가장 큰 리스크 — 개인정보와 회사 데이터</h4>
+<p>세션 노트와 회고에 회사 업무 내용이 들어갑니다. LLM 호출 시 <strong>프로젝트명·활동유형·시간·마찰태그 같은 메타데이터만 보내고, 자유 서술 텍스트는 보내지 않는 모드</strong>를 기본값으로 두는 것을 권합니다. 월간 문서 생성 때만 선택적으로 서술 텍스트를 포함하고, 그것도 로컬 모델로 대체 가능하게 설계해두면 안전합니다.</p>
+<h2 id="다음에-결정할-것">15다음에 결정할 것</h2>
+<h4 id="지금-정해야-할-것">지금 정해야 할 것</h4>
+<ol type="1">
+<li><strong>프로젝트 분류 체계</strong> — 회사 업무를 몇 개 버킷으로 나눌지 (5~8개 권장). 이게 모든 집계의 축</li>
+<li><strong>활동 유형 목록</strong> — 설계/구현/디버깅/조사/문서/회의/대응 이 7개면 충분한지</li>
+<li><strong>마찰 태그 목록</strong> — 6개 제안했는데 실제 업무에 맞는지</li>
+<li><strong>회고 알림 기준</strong> — 근무 종료 시각 기준으로 걸 것 (W 근무 퇴근은 오전 7:30). 근무 일정을 앱이 어디서 읽을지 — 캘린더 연동인지 수동 입력인지</li>
+<li><strong>OFF일 처리</strong> — 비번일의 개인 프로젝트 세션을 근무일과 같은 축에서 볼지, <code>shift_type=OFF</code>로 분리 집계할지</li>
+</ol>
+<h4 id="phase-0-준비물-이번-주-시작-가능">Phase 0 준비물 (이번 주 시작 가능)</h4>
+<ul>
+<li>회고 템플릿 마크다운 1개</li>
+<li>세션 기록용 CSV 또는 한 줄짜리 CLI 스크립트</li>
+<li>저녁 알림 1개 (휴대폰 알람이면 충분)</li>
+<li>7일 뒤 자가 점검: 며칠 채웠는가</li>
+</ul>
+<h4 id="이-컨셉의-최종-그림">이 컨셉의 최종 그림</h4>
+<p>1년 뒤, VAULT 화면에는 <strong>워크플로우 문서 10~15개, 개인 규칙 8~12개, 완주한 실험 20여 개</strong>가 쌓여 있습니다. 새로운 방송 시스템 프로젝트를 시작할 때 "비슷한 작업을 언제 했고, 그때 무슨 순서로 했고, 어디서 막혔는지"가 검색 한 번으로 나옵니다. 그게 이 시스템이 만드는 최종 산출물입니다 — <em>리포트가 아니라, 시간이 지날수록 두꺼워지는 나의 작동 설명서.</em></p>
+<p>CADENCE 컨셉 설계 v0.2 · 2026-08-14 · 교대 근무(R/L/U/W) 축 반영 · 기존 지식관리 시스템(MyRemember)의 <code>/areas</code> <code>/topics</code> 계층과 연동 전제</p>
+<p>#LED #WS2812 #md #근무 #대시보드</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/cadence-concept-v02.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-14 03:47 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

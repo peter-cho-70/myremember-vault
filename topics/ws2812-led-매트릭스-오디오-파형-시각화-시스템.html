@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WS2812 LED 매트릭스 오디오 파형 시각화 시스템 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+      <div class="sidebar-nav-divider"></div>
+      <a href="../stocks.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        관심종목
+      </a>
+      <a href="../youtube.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+        유튜브
+      </a>
+      <a href="../kakao.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        카카오톡
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-14 03:47 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">WS2812 LED 매트릭스 오디오 파형 시각화 시스템</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/LED.html">#LED</a><a class="tag" href="../tags/WS2812.html">#WS2812</a><a class="tag" href="../tags/매트릭스.html">#매트릭스</a><a class="tag" href="../tags/오디오.html">#오디오</a><a class="tag" href="../tags/파형.html">#파형</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="ws2812-led-매트릭스-오디오-파형-시각화-시스템">WS2812 LED 매트릭스 오디오 파형 시각화 시스템</h1>
+<h2 id="프로젝트-개요">📋 프로젝트 개요</h2>
+<p><strong>목표</strong>: WS2812 LED 16×16 매트릭스(256 픽셀)를 이용하여 오디오 입력의 음량과 주파수에 따라 움직이는 실시간 파형 시각화 시스템 구축</p>
+<p><strong>핵심 기능</strong>: - 실시간 오디오 신호 입력 (마이크/라인인) - FFT를 통한 주파수 영역 분석 - 16개 주파수 대역별 높이/색상 매핑 - 256개 RGB LED 개별 제어</p>
+<hr />
+<h2 id="시스템-아키텍처">🏗️ 시스템 아키텍처</h2>
+<h3 id="단계-신호-흐름">6단계 신호 흐름</h3>
+<pre><code>1. 오디오 입력 (마이크/라인인)
+   ↓
+2. 마이크로컨트롤러 (ADC 샘플링)
+   ↓
+3. 신호 분석 (FFT 계산)
+   ↓
+4. 시각화 로직 (음량 처리 + 주파수 매핑)
+   ↓
+5. WS2812 드라이버 (DIN 신호 생성)
+   ↓
+6. LED 매트릭스 (256 픽셀 점등)</code></pre>
+<h3 id="각-단계-상세">각 단계 상세</h3>
+<h4 id="오디오-입력">1️⃣ 오디오 입력</h4>
+<ul>
+<li>아날로그 오디오 신호 수신 (마이크/라인인)</li>
+<li>DC 4.5-5.4V 또는 외부 5V 전원 공급</li>
+</ul>
+<h4 id="마이크로컨트롤러">2️⃣ 마이크로컨트롤러</h4>
+<ul>
+<li><strong>칩</strong>: ESP32 (듀얼코어, 240MHz) 또는 STM32F4/H7</li>
+<li><strong>역할</strong>: ADC로 신호 디지털화, FFT 계산, LED 드라이브</li>
+<li><strong>샘플링</strong>: 44.1kHz 이상</li>
+</ul>
+<h4 id="신호-분석">3️⃣ 신호 분석</h4>
+<ul>
+<li><strong>FFT (고속 푸리에 변환)</strong>: 시간 영역 → 주파수 영역 변환</li>
+<li><strong>분해</strong>: 저주파(베이스), 중주파(미드), 고주파(트레블) 분리</li>
+<li><strong>윈도우 크기</strong>: 512~4096 샘플</li>
+</ul>
+<h4 id="시각화-로직">4️⃣ 시각화 로직</h4>
+<p><strong>병렬 처리</strong>: - <strong>음량 처리</strong>: 전체 에너지량 → LED 밝기 (0~255) - <strong>주파수 매핑</strong>: 16개 주파수 대역 → 16개 열 높이 (0~16행) - <strong>파형 생성</strong>: 각 픽셀에 RGB 값 할당 (색상은 주파수별)</p>
+<h4 id="ws2812-드라이버">5️⃣ WS2812 드라이버</h4>
+<ul>
+<li>FFT 계산 결과 → WS2812 프로토콜로 변환</li>
+<li><strong>신호 속도</strong>: ~800KHz (PWM/SPI)</li>
+<li><strong>DIN 핀</strong>: GPIO 신호 입력</li>
+</ul>
+<h4 id="led-매트릭스">6️⃣ LED 매트릭스</h4>
+<ul>
+<li>256개 LED 직렬 연결</li>
+<li>각 LED: 이전 LED 신호 입력 → 자체 색상 설정 → 다음 LED로 전달</li>
+<li>데이터 포맷: GRB (그린-레드-블루 순서, 상위 비트 먼저)</li>
+</ul>
+<hr />
+<h2 id="색상-스키마-주파수별">🎨 색상 스키마 (주파수별)</h2>
+<pre><code>저주파 (60-250Hz)   → 빨강  🔴 (베이스/킥드럼)
+저중음 (250-500Hz)  → 주황  🟠
+중음  (500-2kHz)    → 초록  🟢 (보컬/스넥드럼)
+고음  (2-8kHz)      → 청록  🟦 (하이햇/칫소리)
+초고음 (8kHz+)      → 보라  🟣 (공기음)</code></pre>
+<hr />
+<h2 id="필수-부품-리스트-전원-제외">⚡ 필수 부품 리스트 (전원 제외)</h2>
+<h3 id="필수-부품">🔴 필수 부품</h3>
+<table>
+<thead>
+<tr>
+<th>부품</th>
+<th>용도</th>
+<th>비용</th>
+<th>개수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAX4466 마이크 모듈</strong></td>
+<td>오디오 신호 입력</td>
+<td>~$4</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>470Ω 저항</strong> (1/4W)</td>
+<td>GPIO → LED DIN 신호선 보호</td>
+<td>~$0.5</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>100μF 커패시터</strong> (전해/세라믹)</td>
+<td>VDD 전원 필터링</td>
+<td>~$1</td>
+<td>1-3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="권장-부품">🟡 권장 부품</h3>
+<table>
+<thead>
+<tr>
+<th>부품</th>
+<th>용도</th>
+<th>비용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>점프 와이어 (50개 팩)</td>
+<td>배선 연결</td>
+<td>~$2-3</td>
+</tr>
+<tr>
+<td>USB 데이터 케이블</td>
+<td>프로그래밍</td>
+<td>있음</td>
+</tr>
+<tr>
+<td>브레드보드</td>
+<td>테스트/프로토타이핑</td>
+<td>~$5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="전원-요구사항">📌 전원 요구사항</h3>
+<pre><code>외부 5V 전원: 10A 이상 (권장)
+계산: 256 LED × 60mA = 최대 15.36A
+실제: 평균 50-70% 밝기 사용 시 7-10A</code></pre>
+<p><strong>비용 요약</strong>: 추가 부품 ~$7-15 (대부분 저가 부품)</p>
+<hr />
+<h2 id="정확한-핀-연결-ws2812-데이터시트-기반">🔌 정확한 핀 연결 (WS2812 데이터시트 기반)</h2>
+<h3 id="esp32-ws2812-led-연결">ESP32 → WS2812 LED 연결</h3>
+<pre><code>ESP32                           WS2812 LED (16×16)
+────                            ──────────────────
+GPIO 25 ──[470Ω]────→ (DIN)   ← Pin 2 (데이터 입력)
+GPIO 26 ←──────────── MAX4466  ← 마이크 입력
+3.3V  ───────────────→ MAX4466 VCC
+GND   ─────────┬──────→ (VSS)  ← Pin 6 (그라운드)
+              │
+5V    ──[100μF]┴──────→ (VDD)  ← Pin 5 (LED 전원)
+
+WS2812 추가 연결:
+Pin 1 (DOUT) → 다음 LED의 Pin 2 (DIN) 으로 연결 (캐스케이드)
+Pin 3 (VCC)  → 3.3V (제어 회로 전원)</code></pre>
+<h3 id="연결-순서">연결 순서</h3>
+<ol type="1">
+<li><strong>GND 먼저 연결</strong> (공통 그라운드)</li>
+<li><strong>전원 연결</strong> (5V + 100μF 캡, 3.3V)</li>
+<li><strong>신호선 연결</strong> (470Ω 저항 경유)</li>
+<li><strong>데이터 케이블</strong> (DOUT → 다음 LED DIN)</li>
+</ol>
+<hr />
+<h2 id="ws2812-핀-상세-정보">🔧 WS2812 핀 상세 정보</h2>
+<h3 id="핀-설정-6-pin-5050-package">핀 설정 (6-Pin 5050 Package)</h3>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>기호</th>
+<th>설명</th>
+<th>연결처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DOUT</td>
+<td>데이터 출력 (다음 LED로)</td>
+<td>→ 다음 LED DIN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DIN</td>
+<td>데이터 입력</td>
+<td>← ESP32 GPIO 25 (470Ω)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VCC</td>
+<td>제어 회로 전원</td>
+<td>← 3.3V</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NC</td>
+<td>미사용</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>VDD</td>
+<td>LED 전원</td>
+<td>← 5V (100μF 캡)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>VSS</td>
+<td>그라운드</td>
+<td>← GND</td>
+</tr>
+</tbody>
+</table>
+<h3 id="전압-사양">전압 사양</h3>
+<pre><code>제어 회로 (VCC):     3.3V ± 0.3V
+LED 전원 (VDD):      4.5V ~ 5.5V (권장) 또는 6.0V ~ 7.0V
+입력 신호 레벨:      0.7 × VDD (High), 0.3 × VDD (Low)
+작동 온도:           -25°C ~ +80°C
+저장 온도:           -55°C ~ +150°C</code></pre>
+<hr />
+<h2 id="ws2812-데이터-전송-방식">📊 WS2812 데이터 전송 방식</h2>
+<h3 id="비트-타이밍-1th-tl-1.25µs-600ns">비트 타이밍 (1TH + TL = 1.25µs ± 600ns)</h3>
+<pre><code>0 코드:  T0H = 0.35µs,  T0L = 0.8µs
+1 코드:  T1H = 0.7µs,   T1L = 0.6µs
+리셋:    RES = 50µs 이상 (낮음)</code></pre>
+<h3 id="비트-데이터-구성">24비트 데이터 구성</h3>
+<pre><code>비트 순서: G7 G6 G5 G4 G3 G2 G1 G0 | R7 R6 R5 R4 R3 R2 R1 R0 | B7 B6 B5 B4 B3 B2 B1 B0
+           ──────────────────────────   ──────────────────────────   ──────────────────────────
+                   그린 (8bit)                  빨강 (8bit)                   파랑 (8bit)
+
+⚠️ 주의: GRB 순서 (RGB 아님), 상위 비트부터 전송</code></pre>
+<h3 id="캐스케이드-방식">캐스케이드 방식</h3>
+<pre><code>ESP32 GPIO 25 → [저항] → LED #1 DIN
+                             ↓ (신호 정형 및 전달)
+                         LED #1 DOUT → LED #2 DIN
+                                          ↓
+                                      ... → LED #256 DIN</code></pre>
+<p>각 LED는 입력된 데이터에서 자신의 24bit를 처리한 후, 나머지를 다음 LED로 자동 전달.</p>
+<hr />
+<h2 id="구현-기술-스택">💻 구현 기술 스택</h2>
+<h3 id="마이크로컨트롤러-mcu">마이크로컨트롤러 (MCU)</h3>
+<pre><code>1순위: ESP32
+  - 듀얼코어 240MHz
+  - WiFi/Bluetooth 내장
+  - ADC 해상도 12bit
+  - GPIO 다수
+
+2순위: STM32F4/H7
+  - 고속 처리 (168MHz ~)
+  - 풍부한 주변기기
+  - 상대적으로 복잡한 셋업</code></pre>
+<h3 id="라이브러리">라이브러리</h3>
+<table>
+<thead>
+<tr>
+<th>라이브러리</th>
+<th>용도</th>
+<th>언어</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Arduino FFT</strong></td>
+<td>FFT 계산</td>
+<td>C++</td>
+</tr>
+<tr>
+<td><strong>KissFFT</strong></td>
+<td>경량 FFT</td>
+<td>C</td>
+</tr>
+<tr>
+<td><strong>CMSIS-DSP</strong></td>
+<td>ARM 최적화 FFT</td>
+<td>C</td>
+</tr>
+<tr>
+<td><strong>Adafruit NeoPixel</strong></td>
+<td>WS2812 제어</td>
+<td>C++</td>
+</tr>
+<tr>
+<td><strong>FastLED</strong></td>
+<td>고성능 LED 제어</td>
+<td>C++</td>
+</tr>
+</tbody>
+</table>
+<h3 id="개발-환경">개발 환경</h3>
+<pre><code>1순위: Arduino IDE + PlatformIO
+  - 설치 용이
+  - 라이브러리 풍부
+  
+2순위: VSCode + ESP-IDF
+  - 고급 기능
+  - 더 깊은 제어</code></pre>
+<hr />
+<h2 id="주요-기술-사양">📐 주요 기술 사양</h2>
+<h3 id="샘플링-및-처리">샘플링 및 처리</h3>
+<pre><code>ADC 샘플링 속도:      44.1kHz 이상 (권장 48kHz)
+FFT 윈도우 크기:      512 ~ 4096 샘플
+주파수 해상도:        샘플레이트 / FFT크기
+                      (48kHz / 512 = 93.75Hz per bin)
+
+처리 시간:            FFT 계산 &lt; 20ms (16x16 업데이트)</code></pre>
+<h3 id="led-성능">LED 성능</h3>
+<pre><code>작동 속도 (Fosc2):    800KHz
+신호 전송 속도:       400Kbps 이상
+최대 캐스케이드:      1024개 LED (30fps, 낮은 속도 모드)
+                      또는 512개 LED (다양한 속도)
+
+LED당 전류:           각 색상 최대 20mA
+총 전력:              256 × 20mA × 3색 = ~15A (최대)</code></pre>
+<h3 id="주파수-분석">주파수 분석</h3>
+<pre><code>분석 대역:            20Hz ~ 20kHz (인간의 가청 대역)
+분할 방식:            16개 주파수 대역
+대역폭:               약 1.25kHz per 열 (16×16 배열)
+
+색상 매핑:            주파수가 높을수록 채도/밝기 증가
+높이 매핑:            주파수 에너지 ∝ LED 점등 높이</code></pre>
+<hr />
+<h2 id="명확한-구동-가능성-판단">🎯 명확한 구동 가능성 판단</h2>
+<h3 id="led-esp32만으로는-불가능">❌ LED + ESP32만으로는 불가능</h3>
+<pre><code>부족한 부분:
+- 오디오 입력 장치 없음
+- 신호 보호 없음
+- 노이즈 필터링 없음</code></pre>
+<h3 id="완전한-구동-구성">✅ 완전한 구동 구성</h3>
+<pre><code>필수 부품:
+1. ESP32 개발보드
+2. WS2812 16×16 LED 패널
+3. MAX4466 마이크 모듈        ← 추가 필요
+4. 470Ω 저항 1개              ← 추가 필요
+5. 100μF 커패시터             ← 추가 필요
+6. 5V 10A 이상 전원
+7. 점프 와이어</code></pre>
+<h3 id="추가-부품-총-비용">추가 부품 총 비용</h3>
+<pre><code>~$7-15 (대부분 저가 부품)</code></pre>
+<hr />
+<h2 id="다음-단계">🚀 다음 단계</h2>
+<h3 id="단계-부품-준비">1단계: 부품 준비</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />ESP32 개발보드 확인</label></li>
+<li><label><input type="checkbox" />WS2812 16×16 LED 패널 확인</label></li>
+<li><label><input type="checkbox" />MAX4466 마이크 모듈 구매</label></li>
+<li><label><input type="checkbox" />470Ω 저항 + 100μF 커패시터 구매</label></li>
+</ul>
+<h3 id="단계-환경-설정">2단계: 환경 설정</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Arduino IDE 또는 PlatformIO 설치</label></li>
+<li><label><input type="checkbox" />Adafruit NeoPixel 또는 FastLED 라이브러리 설치</label></li>
+<li><label><input type="checkbox" />FFT 라이브러리 선택 및 설치</label></li>
+</ul>
+<h3 id="단계-배선">3단계: 배선</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />핀 연결 다시 확인</label></li>
+<li><label><input type="checkbox" />테스트 LED로 신호선 검증</label></li>
+<li><label><input type="checkbox" />전체 연결 최종 확인</label></li>
+</ul>
+<h3 id="단계-코딩">4단계: 코딩</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />ADC 샘플링 코드 작성</label></li>
+<li><label><input type="checkbox" />FFT 처리 구현</label></li>
+<li><label><input type="checkbox" />LED 시각화 로직 개발</label></li>
+<li><label><input type="checkbox" />색상 매핑 미세 조정</label></li>
+</ul>
+<h3 id="단계-테스트-및-최적화">5단계: 테스트 및 최적화</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />오디오 입력 신호 테스트</label></li>
+<li><label><input type="checkbox" />FFT 분석 검증</label></li>
+<li><label><input type="checkbox" />LED 밝기/색상 조정</label></li>
+<li><label><input type="checkbox" />실시간 성능 최적화</label></li>
+</ul>
+<hr />
+<h2 id="참고-자료">📚 참고 자료</h2>
+<h3 id="데이터시트">데이터시트</h3>
+<ul>
+<li><strong>WS2812 Datasheet</strong>:
+<ul>
+<li>핀 설정, 전기적 사양, 타이밍 정보</li>
+<li>데이터 전송 방식, 캐스케이드 구성</li>
+</ul></li>
+<li><strong>ESP32 Datasheet</strong>:
+<ul>
+<li>GPIO 정의, ADC 사양, 타이밍</li>
+</ul></li>
+<li><strong>MAX4466 Datasheet</strong>:
+<ul>
+<li>마이크 증폭기 특성, 출력 임피던스</li>
+</ul></li>
+</ul>
+<h3 id="유용한-라이브러리-문서">유용한 라이브러리 문서</h3>
+<ul>
+<li>Adafruit NeoPixel: RGB LED 제어</li>
+<li>FastLED: 고급 LED 효과</li>
+<li>Arduino FFT: 주파수 분석</li>
+</ul>
+<hr />
+<h2 id="주의사항">⚠️ 주의사항</h2>
+<h3 id="전원-관리">전원 관리</h3>
+<ul>
+<li><strong>절대 USB 전원으로만 16×16 LED 구동 금지</strong> (최소 5V 10A 필요)</li>
+<li>VDD와 VCC를 혼동하지 말 것 (VDD = 5V LED, VCC = 3.3V 제어)</li>
+</ul>
+<h3 id="신호-무결성">신호 무결성</h3>
+<ul>
+<li>470Ω 저항은 필수 (신호 보호)</li>
+<li>100μF 커패시터는 LED 최대한 가까이 설치</li>
+<li>긴 배선 사용 시 신호 감쇠 주의</li>
+</ul>
+<h3 id="작동-온도">작동 온도</h3>
+<ul>
+<li>작동 온도: -25°C ~ +80°C</li>
+<li>장시간 운영 시 열 발산 고려</li>
+</ul>
+<h3 id="데이터-형식">데이터 형식</h3>
+<ul>
+<li>GRB 순서 기억 (RGB 아님)</li>
+<li>상위 비트부터 전송</li>
+<li>마지막에 50µs 이상 낮음 신호 (리셋)</li>
+</ul>
+<hr />
+<h2 id="트러블슈팅">📞 트러블슈팅</h2>
+<h3 id="led가-점등되지-않음">LED가 점등되지 않음</h3>
+<pre><code>확인사항:
+1. VDD (5V)와 VSS (GND) 연결 확인
+2. GPIO 25에서 신호 출력 확인
+3. 470Ω 저항 연결 확인
+4. 첫 번째 LED의 DIN 핀에 신호 도달 확인</code></pre>
+<h3 id="불규칙한-색상-표시">불규칙한 색상 표시</h3>
+<pre><code>원인:
+- 신호 노이즈 → 470Ω 저항, 짧은 배선 사용
+- 전원 부족 → 5V 10A 이상 공급
+- 캐패시터 누락 → 100μF 추가
+
+해결:
+- 캡 추가 (VDD 근처)
+- 신호 라인 shielding
+- 공통 그라운드 확인</code></pre>
+<h3 id="fft-결과-이상">FFT 결과 이상</h3>
+<pre><code>확인사항:
+1. ADC 입력 신호 레벨 (0V ~ 3.3V)
+2. 샘플링 속도 설정 (44.1kHz 이상)
+3. FFT 윈도우 함수 적용 (Hann 또는 Hamming)</code></pre>
+<hr />
+<p><strong>프로젝트 제작일</strong>: 2026년 8월 <strong>마지막 업데이트</strong>: 2026년 8월 12일 <strong>버전</strong>: 1.0</p>
+<p>#WS2812 #LED #매트릭스 #오디오 #파형</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/ws2812-led-매트릭스-오디오-파형-시각화-시스템.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-14 03:47 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

@@ -83,7 +83,7 @@
     });
   }
 
-  // ── 할 일 (날짜별, localStorage, vault 파일과 무관) ──
+  // ── 할 일 (날짜별, localStorage가 원본, vault 파일과 무관) ──
   // 데이터 모델: "myremember-todo-{날짜}"는 그날의 실제 항목 배열
   // {id, text, done, recurring, templateId, carriedFrom}. "매일" 항목은 별도
   // 템플릿 목록(myremember-todo-recurring-templates, {id, text}만 저장 — done은
@@ -92,6 +92,16 @@
   // 보고 같은 방식으로 하루치만 복제된다(연쇄적으로 여러 날을 건너뛰어도 계속
   // 넘어가려면 중간 날짜들을 다 열어봐야 함 — 정적 localStorage라 백그라운드 처리가
   // 없어서 "본 날짜만 이어진다"는 게 자연스러운 한계).
+  //
+  // 기기 간 동기화(2026-08-13부터): localStorage는 브라우저(기기)별로 완전히 갈라져
+  // 있어서, 원래는 배포된 사이트를 모바일에서 열면 로컬 PC에서 넣은 할 일이 전혀 안
+  // 보였다. 그래서 이 컴퓨터에서 server.py로 띄웠을 때는 저장할 때마다 전체 상태를
+  // `/api/save-todos`로도 흘려보내 scripts/webviewer/data/todos.json에 미러링해두고,
+  // generate-html.py가 사이트를 만들 때마다 그걸 assets/todos-data.js
+  // (window.MYREMEMBER_TODOS)로 구워 넣는다. 이 파일은 "그 기기에 아직 로컬 기록이
+  // 전혀 없는 날짜"에만 초기값으로 쓰이고(SNAPSHOT), 그 뒤로는 그 기기의 localStorage가
+  // 그대로 상호작용을 이어받는다 — 즉 모바일에서 보고 체크/수정해도 그건 그 기기에만
+  // 남고 PC로 다시 동기화되진 않는다(뷰어일 뿐, 양방향 동기화 아님).
   var todoList = document.getElementById("todo-list");
   if (todoList) {
     var todoEmpty = document.getElementById("todo-empty");
@@ -106,20 +116,62 @@
     var statTodo = document.getElementById("stat-todo");
     var currentDate = TODAY_STR;
     var RECURRING_KEY = "myremember-todo-recurring-templates";
+    var DAY_KEY_RE = /^myremember-todo-(\d{4}-\d{2}-\d{2})$/;
+    // generate-html.py가 구워 넣는, 로컬에서 마지막으로 동기화된 스냅샷(assets/todos-data.js)
+    // — 이 기기의 localStorage에 그 날짜 기록이 아예 없을 때만 초기값으로 쓴다. 배포된
+    // 정적 사이트(모바일 등, /api/save-todos가 없는 곳)에서 처음 열었을 때도 로컬에서
+    // 넣은 할 일이 보이게 하기 위함.
+    var SNAPSHOT = (window.MYREMEMBER_TODOS && typeof window.MYREMEMBER_TODOS === "object")
+      ? window.MYREMEMBER_TODOS : { days: {}, recurring: [] };
+
+    // 이 기기의 localStorage 상태 전체를 서버 파일(scripts/webviewer/data/todos.json)로
+    // 미러링한다 — 다음에 사이트를 재생성/배포할 때 그 파일을 읽어 위 스냅샷으로 구워
+    // 넣는다. 이 서버가 없는 환경(배포된 정적 사이트)에서는 fetch가 그냥 실패하므로
+    // 조용히 무시한다.
+    var syncToServer = function () {
+      var days = {};
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var m = key && key.match(DAY_KEY_RE);
+        if (!m) continue;
+        try { days[m[1]] = JSON.parse(localStorage.getItem(key) || "[]"); }
+        catch (e) { /* 손상된 항목은 건너뜀 */ }
+      }
+      fetch("/api/save-todos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ days: days, recurring: loadRecurringTemplates() }),
+      }).catch(function () {});
+    };
 
     var loadRawTodos = function (dateStr) {
-      try { return JSON.parse(localStorage.getItem("myremember-todo-" + dateStr) || "[]"); }
+      var key = "myremember-todo-" + dateStr;
+      var raw = localStorage.getItem(key);
+      if (raw === null) {
+        var seeded = (SNAPSHOT.days && SNAPSHOT.days[dateStr]) || [];
+        localStorage.setItem(key, JSON.stringify(seeded));
+        return seeded;
+      }
+      try { return JSON.parse(raw || "[]"); }
       catch (e) { return []; }
     };
     var saveRawTodos = function (dateStr, list) {
       localStorage.setItem("myremember-todo-" + dateStr, JSON.stringify(list));
+      syncToServer();
     };
     var loadRecurringTemplates = function () {
-      try { return JSON.parse(localStorage.getItem(RECURRING_KEY) || "[]"); }
+      var raw = localStorage.getItem(RECURRING_KEY);
+      if (raw === null) {
+        var seeded = SNAPSHOT.recurring || [];
+        localStorage.setItem(RECURRING_KEY, JSON.stringify(seeded));
+        return seeded;
+      }
+      try { return JSON.parse(raw || "[]"); }
       catch (e) { return []; }
     };
     var saveRecurringTemplates = function (list) {
       localStorage.setItem(RECURRING_KEY, JSON.stringify(list));
+      syncToServer();
     };
     // 그날 배열에 "매일" 템플릿과 전날의 미완료 항목을 복제해 넣는다(이미 있으면
     // 건너뜀). 전날은 원시 읽기만 한다 — 재귀적으로 계속 materialize하면 한 번도
@@ -290,6 +342,35 @@
     todoPrevBtn.addEventListener("click", function () { var d = fromDateStr(currentDate); d.setDate(d.getDate() - 1); goToDate(toDateStr(d)); });
     todoNextBtn.addEventListener("click", function () { var d = fromDateStr(currentDate); d.setDate(d.getDate() + 1); goToDate(toDateStr(d)); });
     todoTodayBtn.addEventListener("click", function () { goToDate(TODAY_STR); });
+
+    // ── 할 일을 배포된 사이트(스마트폰 등)로 보내기 — 필요할 때만, 수동 ──
+    // /api/save-todos는 이 컴퓨터에서 편집할 때마다 자동으로 todos.json에 미러링해두지만,
+    // 그건 로컬 파일일 뿐 배포된 사이트에는 자동으로 안 나간다. 이 버튼을 눌러야
+    // scripts/sync-cloud-todos.py가 그 시점 todos.json을 클라우드 배포 사이트에 커밋+푸시한다.
+    var cloudSyncBtn = document.getElementById("todo-cloud-sync");
+    var cloudSyncStatus = document.getElementById("todo-cloud-sync-status");
+    if (cloudSyncBtn) {
+      cloudSyncBtn.addEventListener("click", function () {
+        cloudSyncBtn.disabled = true;
+        if (cloudSyncStatus) cloudSyncStatus.textContent = "보내는 중…";
+        fetch("/api/sync-cloud-todos", { method: "POST" })
+          .then(function (res) { return res.json().then(function (data) { return { res: res, data: data }; }); })
+          .then(function (result) {
+            if (!result.res.ok || !result.data.ok) throw new Error(result.data.error || "HTTP " + result.res.status);
+            var now = new Date();
+            var stamp = pad2(now.getHours()) + ":" + pad2(now.getMinutes());
+            if (cloudSyncStatus) {
+              cloudSyncStatus.textContent = result.data.pushed
+                ? "반영됨 · " + stamp
+                : "이미 최신 상태 · " + stamp;
+            }
+          })
+          .catch(function (err) {
+            if (cloudSyncStatus) cloudSyncStatus.textContent = "실패 — " + err.message;
+          })
+          .finally(function () { cloudSyncBtn.disabled = false; });
+      });
+    }
   }
 
   // ── 빠른 메모 (단일 스크래치 메모, localStorage, vault 파일과 무관) ──

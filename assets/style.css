@@ -326,24 +326,22 @@ button.nav-link:disabled {
 /* 넓은 PC 화면에서는 980px에 고정하지 않고 창을 넓힐수록 실제로 더 많은 정보(대시보드
    카드·메일 목록·노트 그래프 등)가 보이게 단계적으로 넓힌다. `.page-narrow`(관심종목/
    유튜브/카카오톡)는 내용 자체가 적어서 일부러 넓히지 않음(이미 640px로 맞춰둠 —
-   같이 넓히면 다시 카드 오른쪽에 빈 공간만 남는 문제로 되돌아감). */
+   같이 넓히면 다시 카드 오른쪽에 빈 공간만 남는 문제로 되돌아감).
+
+   .dashboard-layout의 사이드 폭(메일·캘린더)은 이 아래(860px)가 아니라 파일 뒤쪽의
+   860px 브레이크포인트 블록에서 1280px/1600px과 함께 오름차순으로 정의한다 — 같은
+   지정자를 여러 min-width 블록에서 재정의할 때는 캐스케이드가 "더 큰 min-width"가
+   아니라 "소스 순서상 나중"을 우선하므로, 넓은 화면용 규칙을 좁은 화면용 규칙보다
+   앞에 두면 절대 적용되지 않는다. */
 @media (min-width: 1280px) {
   .content {
     max-width: 1180px;
-  }
-
-  .dashboard-layout {
-    grid-template-columns: 1fr 340px;
   }
 }
 
 @media (min-width: 1600px) {
   .content {
     max-width: 1400px;
-  }
-
-  .dashboard-layout {
-    grid-template-columns: 1fr 380px;
   }
 }
 
@@ -773,14 +771,30 @@ textarea:focus {
   min-width: 0;
 }
 
+/* 메일·캘린더 사이드 패널(.dashboard-side)은 초광폭 화면에서 기존 폭의 2배까지
+   늘어나되, 고정폭 대신 vw 기반 clamp()로 흐르게 해서 창을 좁힐 때 원래 폭(각
+   구간의 clamp 최소값)까지 단계적으로 먼저 줄어들고, 그 아래는 세로 스택으로
+   전환된다. */
 @media (min-width: 860px) {
   .dashboard-layout {
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr clamp(300px, 26vw, 600px);
   }
 
   .dashboard-side {
     position: sticky;
     top: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr clamp(340px, 27vw, 680px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr clamp(380px, 28vw, 760px);
   }
 }
 
@@ -926,6 +940,18 @@ textarea:focus {
   padding-top: 0.75rem;
   margin-top: 0.4rem;
   border-top: 1px solid rgb(var(--border));
+}
+
+.todo-cloud-sync-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.todo-cloud-sync-status {
+  font-size: 0.75rem;
+  color: rgb(var(--muted-foreground));
 }
 
 .todo-add-row input {
@@ -1127,6 +1153,10 @@ textarea:focus {
 .event-title {
   font-size: 0.88rem;
   flex: 1;
+}
+
+.event-title-mine {
+  font-weight: 700;
 }
 
 .bar-row {

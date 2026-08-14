@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko" class="readonly-mode">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>근무 일정 자동 추가 가이드 — MyRemember</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.classList.add('gate-locked');</script>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="brand-mark">M</span>
+      <a class="brand-name" href="../index.html">MyRemember</a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        대시보드
+      </a>
+      <a href="../vault.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        노트
+      </a>
+      <a href="../tags/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.5 2 8.5 8.5-10 10L1 11V2Z"/><path d="M6.5 6.5h.01"/></svg>
+        태그
+      </a>
+      <a href="../search.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        검색
+      </a>
+      <a href="../daily/index.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        Daily 아카이브
+      </a>
+      <div class="sidebar-nav-divider"></div>
+      <a href="../stocks.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        관심종목
+      </a>
+      <a href="../youtube.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+        유튜브
+      </a>
+      <a href="../kakao.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        카카오톡
+      </a>
+    </nav>
+    <div class="sidebar-foot">생성 시각: 2026-08-14 03:47 UTC</div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-btn" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <h1 class="page-title">근무 일정 자동 추가 가이드</h1>
+      <button id="theme-toggle" class="icon-btn" aria-label="다크모드 전환" title="다크모드 전환">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </header>
+    <main class="content">
+<article class="note">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
+    <p class="breadcrumb" style="margin:0;">
+      <a href="../index.html">대시보드</a> / <a href="../vault.html">노트</a> / topics
+    </p>
+  </div>
+  <p class="tags">
+<a class="tag" href="../tags/가이드.html">#가이드</a><a class="tag" href="../tags/구글.html">#구글</a><a class="tag" href="../tags/근무.html">#근무</a><a class="tag" href="../tags/자동입력하기.html">#자동입력하기</a><a class="tag" href="../tags/캘린더.html">#캘린더</a>  </p>
+  <div class="card" id="note-view">
+    <div class="note-body">
+      <h1 id="근무-일정-자동-추가-가이드">근무 일정 자동 추가 가이드</h1>
+<blockquote>
+<p>보도기술부 일정의 R, L, U, W를 조충남 개인일정 캘린더에 자동으로 추가하는 작업</p>
+</blockquote>
+<h2 id="근무-시간-정의">📋 근무 시간 정의</h2>
+<table>
+<thead>
+<tr>
+<th>근무 유형</th>
+<th>시작 시간</th>
+<th>종료 시간</th>
+<th>지속 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R</strong></td>
+<td>12:30</td>
+<td>19:30</td>
+<td>7시간</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td>06:00</td>
+<td>16:00</td>
+<td>10시간</td>
+</tr>
+<tr>
+<td><strong>U</strong></td>
+<td>15:30</td>
+<td>00:00(자정)</td>
+<td>8.5시간</td>
+</tr>
+<tr>
+<td><strong>W</strong></td>
+<td>00:00</td>
+<td>07:30</td>
+<td>7.5시간</td>
+</tr>
+</tbody>
+</table>
+<h2 id="작업-목표">🎯 작업 목표</h2>
+<p>보도기술부 캘린더(48c8fff631f866c716304a88bcf658b2a4e0afdf644c2bd4888265168b3bf1ac@group.calendar.google.com)의 모든 R, L, U, W 일정을 조충남 개인일정(ubsoldboy@gmail.com)에 정확한 시간과 함께 추가</p>
+<h2 id="자동화-python-스크립트">🔄 자동화 Python 스크립트</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Google Calendar API 설정</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>PERSONAL_CALENDAR_ID <span class="op">=</span> <span class="st">&quot;ubsoldboy@gmail.com&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>SHIFT_TIMES <span class="op">=</span> {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;R&#39;</span>: (<span class="st">&#39;12:30&#39;</span>, <span class="st">&#39;19:30&#39;</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;L&#39;</span>: (<span class="st">&#39;06:00&#39;</span>, <span class="st">&#39;16:00&#39;</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;U&#39;</span>: (<span class="st">&#39;15:30&#39;</span>, <span class="st">&#39;24:00&#39;</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;W&#39;</span>: (<span class="st">&#39;00:00&#39;</span>, <span class="st">&#39;07:30&#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> time_to_iso(date_str, time_str):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;시간을 ISO 8601 형식으로 변환&quot;&quot;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> time_str <span class="op">==</span> <span class="st">&#39;24:00&#39;</span>:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 자정은 다음날 00:00으로</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        date_obj <span class="op">=</span> datetime.strptime(date_str, <span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st">&#39;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        date_obj <span class="op">+=</span> timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> date_obj.strftime(<span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st">T00:00:00+09:00&#39;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span>date_str<span class="sc">}</span><span class="ss">T</span><span class="sc">{</span>time_str<span class="sc">}</span><span class="ss">:00+09:00&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_work_event(date_str, shift_type):</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;근무 이벤트 생성&quot;&quot;&quot;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    start_time, end_time <span class="op">=</span> SHIFT_TIMES[shift_type]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    start_iso <span class="op">=</span> time_to_iso(date_str, start_time)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    end_iso <span class="op">=</span> time_to_iso(date_str, end_time)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    event <span class="op">=</span> {</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;summary&quot;</span>: <span class="st">&quot;근무&quot;</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;description&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>shift_type<span class="sc">}</span><span class="ss"> 근무&quot;</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;start&quot;</span>: {<span class="st">&quot;dateTime&quot;</span>: start_iso, <span class="st">&quot;timeZone&quot;</span>: <span class="st">&quot;Asia/Seoul&quot;</span>},</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;end&quot;</span>: {<span class="st">&quot;dateTime&quot;</span>: end_iso, <span class="st">&quot;timeZone&quot;</span>: <span class="st">&quot;Asia/Seoul&quot;</span>}</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> event</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_bulk_events(schedule_list):</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;일괄 이벤트 추가</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">        schedule_list: [(&#39;2026-09-01&#39;, &#39;R&#39;), (&#39;2026-09-02&#39;, &#39;L&#39;), ...] 형식</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> []</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> date_str, shift_type <span class="kw">in</span> schedule_list:</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> shift_type <span class="kw">in</span> SHIFT_TIMES:</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            event <span class="op">=</span> create_work_event(date_str, shift_type)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            events.append(event)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> events</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># 사용 예시</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>schedule_from_calendar <span class="op">=</span> [</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;2026-09-01&#39;</span>, <span class="st">&#39;L&#39;</span>),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;2026-09-02&#39;</span>, <span class="st">&#39;U&#39;</span>),</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&#39;2026-09-03&#39;</span>, <span class="st">&#39;W&#39;</span>),</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ... 보도기술부 일정에서 추출한 모든 R, L, U, W</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> add_bulk_events(schedule_from_calendar)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;생성된 이벤트: </span><span class="sc">{</span><span class="bu">len</span>(events)<span class="sc">}</span><span class="ss">개&quot;</span>)</span></code></pre></div>
+<h2 id="단계별-실행-방법">📝 단계별 실행 방법</h2>
+<h3 id="단계-보도기술부-캘린더-조회">1단계: 보도기술부 캘린더 조회</h3>
+<pre><code>보도기술부 캘린더 ID: 48c8fff631f866c716304a88bcf658b2a4e0afdf644c2bd4888265168b3bf1ac@group.calendar.google.com
+
+다음 기간의 모든 R, L, U, W 이벤트를 추출:
+- 기간: 2026-09-01 ~ 2026-12-31
+- 필터: summary가 &#39;R&#39;, &#39;L&#39;, &#39;U&#39;, &#39;W&#39; 중 하나인 이벤트만</code></pre>
+<h3 id="단계-근무-일정-목록-생성">2단계: 근무 일정 목록 생성</h3>
+<pre><code>추출된 이벤트에서:
+- 날짜 (YYYY-MM-DD)
+- 근무 유형 (R/L/U/W)
+
+형식: (날짜, 근무유형)
+예: (&#39;2026-09-01&#39;, &#39;L&#39;), (&#39;2026-09-02&#39;, &#39;U&#39;), ...</code></pre>
+<h3 id="단계-조충남-개인일정에-추가">3단계: 조충남 개인일정에 추가</h3>
+<pre><code>각 근무일마다:
+1. 이벤트 제목: &quot;근무&quot;
+2. 설명: &quot;{근무유형} 근무&quot; (R 근무, L 근무 등)
+3. 시간: 해당 근무 유형의 시작~종료 시간
+4. 타임존: Asia/Seoul
+
+Google Calendar API 호출:
+POST /calendar/v3/calendars/{calendarId}/events</code></pre>
+<h2 id="claude에게-요청하는-문구">🔗 Claude에게 요청하는 문구</h2>
+<pre><code>9월 1일부터 12월 31일까지 보도기술부 일정의 R, L, U, W를 조충남 개인일정에 
+다음 시간으로 &quot;근무&quot; 일정 추가:
+- R: 12:30~19:30
+- L: 06:00~16:00
+- U: 15:30~00:00(자정)
+- W: 00:00~07:30</code></pre>
+<h2 id="예상-결과">📊 예상 결과</h2>
+<table>
+<thead>
+<tr>
+<th>월</th>
+<th>일정 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9월</td>
+<td>23개</td>
+</tr>
+<tr>
+<td>10월</td>
+<td>22개</td>
+</tr>
+<tr>
+<td>11월</td>
+<td>20개</td>
+</tr>
+<tr>
+<td>12월</td>
+<td>23개</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td><strong>88개</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="확인-사항">✅ 확인 사항</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />모든 일정이 “근무”로 제목 설정됨</label></li>
+<li><label><input type="checkbox" />설명에 근무 유형(R/L/U/W) 표시</label></li>
+<li><label><input type="checkbox" />시간대가 정확히 설정됨 (Asia/Seoul)</label></li>
+<li><label><input type="checkbox" />자정 넘는 시간(U, W) 정확히 처리됨</label></li>
+<li><label><input type="checkbox" />조충남 개인일정(ubsoldboy@gmail.com)에만 추가됨</label></li>
+</ul>
+<h2 id="반복-작업-팁">🔄 반복 작업 팁</h2>
+<p><strong>매월 작업할 때:</strong> 1. “9월부터 12월까지” → 특정 월 범위로 변경 2. 기간만 수정하고 동일한 근무 시간 사용 3. 보도기술부 캘린더의 R, L, U, W만 필터링</p>
+<p><strong>편리한 요청 문구:</strong></p>
+<pre><code>[월] 근무일정을 조충남 개인일정에 추가해줘</code></pre>
+<p>그러면 Claude가 자동으로: - 보도기술부 캘린더 조회 - 해당 월의 모든 R, L, U, W 추출 - 정확한 시간 설정 - 일괄 추가 수행</p>
+<p>#가이드 #구글 #캘린더 #근무 #자동입력하기</p>
+
+    </div>
+  </div>
+  <p class="source-path"><code>topics/구글-캘린더에-내-근무-자동입력하기.md</code></p>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>MyRemember · 생성 시각: 2026-08-14 03:47 UTC</p>
+    </footer>
+  </div>
+</div>
+<script src="../assets/theme.js"></script>
+<script src="../assets/nav.js"></script>
+<script src="../assets/gate-hash.js"></script>
+<script src="../assets/password-gate.js"></script>
+</body>
+</html>

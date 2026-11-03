@@ -5,6 +5,15 @@
   // SHA-256 해시만 비교한다(scripts/build-cloud-site.py가 빌드 시점에 해시를 만들어
   // assets/gate-hash.js에 넣는다).
   var hash = window.MYREMEMBER_GATE_HASH;
+  // 비밀번호를 바꾼 직후에는 브라우저(캐시 10분)가 예전 해시를 들고 있을 수 있다 — 틀렸을 때 최신 해시를 캐시 없이 다시 받아 한 번 더 비교한다
+  var gateSrc = document.currentScript && document.currentScript.src;
+  function fetchFreshHash() {
+    if (!gateSrc) return Promise.resolve("");
+    return fetch(gateSrc.replace(/password-gate\.js[^/]*$/, "gate-hash.js?t=" + Date.now()), { cache: "no-store" })
+      .then(function (r) { return r.text(); })
+      .then(function (t) { var m = /"([0-9a-f]{64})"/.exec(t); return m ? m[1] : ""; })
+      .catch(function () { return ""; });
+  }
   var root = document.documentElement;
 
   if (!hash) {
@@ -65,15 +74,14 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       sha256Hex(input.value).then(function (entered) {
-        if (entered === hash) {
-          sessionStorage.setItem(STORAGE_KEY, hash);
-          root.classList.remove("gate-locked");
-          overlay.remove();
-        } else {
+        function ok(h) { sessionStorage.setItem(STORAGE_KEY, h); root.classList.remove("gate-locked"); overlay.remove(); }
+        if (entered === hash) { ok(hash); return; }
+        fetchFreshHash().then(function (fresh) {
+          if (fresh && fresh !== hash && entered === fresh) { ok(fresh); return; }
           errorEl.hidden = false;
           input.value = "";
           input.focus();
-        }
+        });
       });
     });
   }
